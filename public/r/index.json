@@ -1,0 +1,262 @@
+[
+  {
+    "name": "button",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/button.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tabs",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/tabs.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "switch",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/switch.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tabs-default-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/tabs-default-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tabs-pill-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/tabs-pill-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tabs-rounded-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/tabs-rounded-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tabs-underline-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/tabs-underline-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tabs-folder-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/tabs-folder-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tabs-vertical-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/tabs-vertical-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-default-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-default-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-destructive-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-destructive-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-outline-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-outline-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-secondary-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-secondary-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-ghost-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-ghost-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-link-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-link-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-expand-icon-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-expand-icon-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-ring-hover-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-ring-hover-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-ring-hover-outline-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-ring-hover-outline-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-shine-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-shine-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-gooey-right-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-gooey-right-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-gooey-left-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-gooey-left-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-link-hover-1-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-link-hover-1-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-link-hover-2-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-link-hover-2-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-sm-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-sm-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-lg-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-lg-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-icon-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/button-icon-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  }
+]
