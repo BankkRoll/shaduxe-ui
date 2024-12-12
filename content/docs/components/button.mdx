@@ -1,0 +1,150 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+author: bankk
+published: true
+---
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+{" "}
+<TabsContent value="cli">
+  ```bash npx shadcn@latest add "https://ui.shaduxe.com/r/button" ```
+</TabsContent>
+
+  <TabsContent value="manual">
+    <Steps>
+      <Step title="Copy the Code">
+        Copy and paste the following code snippet into your project:
+      </Step>
+
+      <ComponentSource name="button" />
+
+      <Step>
+        Make sure the import path is correct and matches your project setup:
+      </Step>
+
+        ```tsx {1,6} showLineNumbers
+        import { Button } from "@/components/ui/button";
+
+        export default function Home() {
+          return (
+            <div className="flex items-center justify-center h-screen">
+              <Button>Click me</Button>
+            </div>
+          );
+        }
+        ```
+
+        <Step>Update `tailwind.config.js`</Step>
+
+        Add the following animations to your `tailwind.config.js` file:
+
+        ```js title="tailwind.config.js" {6,9-19} showLineNumbers
+        /** @type {import('tailwindcss').Config} */
+        module.exports = {
+          theme: {
+            extend: {
+              animation: {
+                shine: "shine var(--duration) infinite linear",
+              },
+              keyframes: {
+                shine: {
+                  "0%": {
+                    "background-position": "0% 0%",
+                  },
+                  "50%": {
+                    "background-position": "100% 100%",
+                  },
+                  to: {
+                    "background-position": "0% 0%",
+                  },
+                },
+              },
+            },
+          },
+        };
+        ```
+
+    </Steps>
+
+  </TabsContent>
+</Tabs>
+
+## Button Variants
+
+### Default Button
+
+<ComponentPreview name="button-default-example" />
+
+### Secondary Button
+
+<ComponentPreview name="button-secondary-example" />
+
+### Outline Button
+
+<ComponentPreview name="button-outline-example" />
+
+### Destructive Button
+
+<ComponentPreview name="button-destructive-example" />
+
+### Ghost Button
+
+<ComponentPreview name="button-ghost-example" />
+
+### Link Button
+
+<ComponentPreview name="button-link-example" />
+
+### Link Hover 1 Button
+
+<ComponentPreview name="button-link-hover-1-example" />
+
+### Link Hover 2 Button
+
+<ComponentPreview name="button-link-hover-2-example" />
+
+### Expand Icon Button
+
+<ComponentPreview name="button-expand-icon-example" />
+
+### Ring Hover Button
+
+<ComponentPreview name="button-ring-hover-example" />
+
+### Ring Hover Outline Button
+
+<ComponentPreview name="button-ring-hover-outline-example" />
+
+### Shine Button
+
+<ComponentPreview name="button-shine-example" />
+
+### Gooey Right Button
+
+<ComponentPreview name="button-gooey-right-example" />
+
+### Gooey Left Button
+
+<ComponentPreview name="button-gooey-left-example" />
+
+## Button Sizes
+
+### Icon Button
+
+<ComponentPreview name="button-icon-example" />
+
+### Small Button
+
+<ComponentPreview name="button-sm-example" />
+
+### Large Button
+
+<ComponentPreview name="button-lg-example" />
