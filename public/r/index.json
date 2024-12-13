@@ -64,6 +64,16 @@
     ]
   },
   {
+    "name": "mode-toggle",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/mode-toggle.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "tabs-default-example",
     "type": "registry:ui",
     "files": [
