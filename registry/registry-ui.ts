@@ -2,6 +2,11 @@ import { Registry } from "@/registry/schema";
 
 export const ui: Registry = [
   {
+    name: "avatar",
+    type: "registry:ui",
+    files: ["ui/avatar.tsx"],
+  },
+  {
     name: "button",
     type: "registry:ui",
     files: ["ui/button.tsx"],
@@ -31,9 +36,14 @@ export const ui: Registry = [
     },
   },
   {
-    name: "tabs",
+    name: "input",
     type: "registry:ui",
-    files: ["ui/tabs.tsx"],
+    files: ["ui/input.tsx"],
+  },
+  {
+    name: "mode-toggle",
+    type: "registry:ui",
+    files: ["ui/mode-toggle.tsx"],
   },
   {
     name: "switch",
@@ -41,13 +51,8 @@ export const ui: Registry = [
     files: ["ui/switch.tsx"],
   },
   {
-    name: "avatar",
+    name: "tabs",
     type: "registry:ui",
-    files: ["ui/avatar.tsx"],
-  },
-  {
-    name: "mode-toggle",
-    type: "registry:ui",
-    files: ["ui/mode-toggle.tsx"],
+    files: ["ui/tabs.tsx"],
   },
 ];

@@ -109,6 +109,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Input",
+          href: "/docs/components/input",
+          label: "NEW",
+          items: [],
+        },
+        {
           title: "Switch",
           href: "/docs/components/switch",
           label: "NEW",

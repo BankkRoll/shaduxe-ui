@@ -1,7 +1,7 @@
 ---
 title: Switch
-description: A toggle switch component for binary choices.
-author: v0
+description: A toggle switch component for binary choices with various styles and sizes.
+author: shadcn
 published: true
 ---
 
@@ -17,7 +17,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://ui.shaduxe.com/r/switch"
+npx shadcn@latest add switch
 ```
 
 </TabsContent>
@@ -26,28 +26,28 @@ npx shadcn@latest add "https://ui.shaduxe.com/r/switch"
 
 <Steps>
 
-<Step title="Copy the Code">
-    Copy and paste the following code snippet into your project:
-</Step>
+<Step title="Copy and paste the following code into your project.">
 
 <ComponentSource name="switch" />
 
-<Step>
-    Make sure the import path is correct and matches your project setup:
 </Step>
 
-```tsx {1,6} showLineNumbers
+<Step title="Update the import paths to match your project setup.">
+
+```tsx
 import { Switch } from "@/components/ui/switch"
 
 export default function Home() {
-    return (
-        <div className="flex items-center space-x-2">
-            <Switch id="airplane-mode" />
-            <label htmlFor="airplane-mode">Airplane Mode</label>
-        </div>
-    );
+  return (
+    <div className="flex items-center space-x-2">
+      <Switch id="airplane-mode" />
+      <label htmlFor="airplane-mode">Airplane Mode</label>
+    </div>
+  )
 }
 ```
+
+</Step>
 
 </Steps>
 
@@ -55,21 +55,58 @@ export default function Home() {
 
 </Tabs>
 
-## Switch Variants
+## Examples
 
 ### Default Switch
 
 <ComponentPreview name="switch-default-example" />
 
+### Rounded Switch
+
+<ComponentPreview name="switch-rounded-example" />
+
 ### Square Switch
 
 <ComponentPreview name="switch-square-example" />
 
-### Box Switch
+### IOS Switch
 
-<ComponentPreview name="switch-box-example" />
+<ComponentPreview name="switch-ios-example" />
 
-### Retro Switch
+### Switch With Icons
 
-<ComponentPreview name="switch-retro-example" />
+<ComponentPreview name="switch-icons-example" />
 
+### Switch With Labels
+
+<ComponentPreview name="switch-labels-example" />
+
+## Props
+
+| Prop         | Type                                                  | Description                           | Default   |
+|--------------|-------------------------------------------------------|---------------------------------------|-----------|
+| variant      | `default` \| `rounded` \| `square` \| `ios`            | Style variant of the switch           | `default` |
+| size         | `icon` \| `xs` \| `sm` \| `md` \| `lg`                 | Size of the switch                    | `md`      |
+| thumbVariant | `default` \| `rounded` \| `square` \| `ios`            | Style variant of the switch thumb     | -         |
+| showLabels   | `boolean`                                              | Show text labels                      | `false`   |
+| labelOn      | `string`                                               | Text for the "on" label               | `"On"`    |
+| labelOff     | `string`                                               | Text for the "off" label              | `"Off"`   |
+| showIcons    | `boolean`                                              | Show icons in the switch thumb        | `false`   |
+| className    | `string`                                               | Additional CSS classes                | -         |
+
+### Supported HTML Attributes
+
+Because the Switch uses Radix UI's `Switch` component, it inherits and supports **all standard HTML input attributes**, including:
+
+- `checked`
+- `defaultChecked`
+- `required`
+- `name`
+- `value`
+- `onCheckedChange`
+- `disabled`
+- `aria-*` attributes
+- `data-*` attributes
+- Event handlers like `onFocus`, `onBlur`, etc.
+
+The Switch component uses Radix UI's primitives, ensuring proper accessibility and semantic HTML.

@@ -2,9 +2,12 @@ import { Button } from "@/components/ui/button";
 
 const sizes = [
   { name: "icon", label: "Icon" },
+  { name: "xs", label: "XSmall" },
   { name: "sm", label: "Small" },
-  { name: "default", label: "Default" },
+  { name: "md", label: "Medium" },
   { name: "lg", label: "Large" },
+  { name: "xl", label: "XLarge" },
+  { name: "2xl", label: "XXLarge" },
 ] as const;
 
 export default function ButtonSecondaryExample() {

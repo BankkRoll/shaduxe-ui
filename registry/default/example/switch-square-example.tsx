@@ -1,8 +1,10 @@
 import { Switch } from "@/components/ui/switch";
 
 const sizes = [
+  { name: "icon", label: "Icon" },
+  { name: "xs", label: "XSmall" },
   { name: "sm", label: "Small" },
-  { name: "default", label: "Default" },
+  { name: "md", label: "Medium" },
   { name: "lg", label: "Large" },
 ] as const;
 

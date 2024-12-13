@@ -1,22 +1,25 @@
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 
 const sizes = [
-  { name: "icon", label: "Icon" },
   { name: "xs", label: "XSmall" },
   { name: "sm", label: "Small" },
   { name: "md", label: "Medium" },
   { name: "lg", label: "Large" },
   { name: "xl", label: "XLarge" },
-  { name: "2xl", label: "XXLarge" },
 ] as const;
 
-export default function ButtonDefaultExample() {
+export default function InputIconExample() {
   return (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-col space-y-4 p-2">
       {sizes.map((size) => (
         <div key={size.name} className="flex flex-col items-center gap-2">
-          <Button size={size.name}>{size.label}</Button>
-          <span className="text-sm text-muted-foreground">{size.name}</span>
+          <Input
+            inputSize={size.name}
+            placeholder="Search..."
+            Icon={Search}
+            iconPlacement="left"
+          />
         </div>
       ))}
     </div>

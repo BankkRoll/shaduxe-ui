@@ -136,18 +136,59 @@ export const examples: Registry = [
     files: ["example/switch-default-example.tsx"],
   },
   {
+    name: "switch-rounded-example",
+    type: "registry:ui",
+    files: ["example/switch-rounded-example.tsx"],
+  },
+  {
     name: "switch-square-example",
     type: "registry:ui",
     files: ["example/switch-square-example.tsx"],
   },
   {
-    name: "switch-box-example",
+    name: "switch-ios-example",
     type: "registry:ui",
-    files: ["example/switch-box-example.tsx"],
+    files: ["example/switch-ios-example.tsx"],
   },
   {
-    name: "switch-retro-example",
+    name: "switch-labels-example",
     type: "registry:ui",
-    files: ["example/switch-retro-example.tsx"],
+    files: ["example/switch-labels-example.tsx"],
+  },
+  {
+    name: "switch-icons-example",
+    type: "registry:ui",
+    files: ["example/switch-icons-example.tsx"],
+  },
+  // Input examples
+  {
+    name: "input-default-example",
+    type: "registry:ui",
+    files: ["example/input-default-example.tsx"],
+  },
+  {
+    name: "input-underline-example",
+    type: "registry:ui",
+    files: ["example/input-underline-example.tsx"],
+  },
+  {
+    name: "input-pill-example",
+    type: "registry:ui",
+    files: ["example/input-pill-example.tsx"],
+  },
+  {
+    name: "input-default-icon-example",
+    type: "registry:ui",
+    files: ["example/input-default-icon-example.tsx"],
+  },
+  {
+    name: "input-underline-icon-example",
+    type: "registry:ui",
+    files: ["example/input-underline-icon-example.tsx"],
+  },
+  {
+    name: "input-pill-icon-example",
+    type: "registry:ui",
+    files: ["example/input-pill-icon-example.tsx"],
   },
 ];
