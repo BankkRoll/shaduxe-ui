@@ -6,7 +6,6 @@ import { useEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import { Label } from "../ui/label";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
@@ -46,7 +45,7 @@ export default function Hero() {
     <div className="container mx-auto px-4 py-16 md:py-32 max-w-7xl">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
         <motion.div
-          className="flex-1 md:-mt-24 lg:-mt-36"
+          className="flex-1"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -67,11 +66,14 @@ export default function Hero() {
             Beautifully designed, expertly crafted component variants. The
             perfect extension for your shadcn/ui components.
           </p>
-          <Link href="/docs/components/button" passHref>
-            <Button className="mt-8" size="lg">
-              Browse components
-            </Button>
-          </Link>
+          <div className="flex items-center space-x-4 mt-8">
+            <Link href="/docs/" passHref>
+              <Button>View Docs</Button>
+            </Link>
+            <Link href="/docs/components/avatar" passHref>
+              <Button variant="outline">Browse components</Button>
+            </Link>
+          </div>
         </motion.div>
 
         <motion.div
