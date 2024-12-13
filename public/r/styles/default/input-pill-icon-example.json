@@ -1,0 +1,12 @@
+{
+  "name": "input-pill-icon-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/input-pill-icon-example.tsx",
+      "content": "import { Input } from \"@/components/ui/input\";\nimport { Mail } from \"lucide-react\";\n\nconst sizes = [\n  { name: \"xs\", label: \"XSmall\" },\n  { name: \"sm\", label: \"Small\" },\n  { name: \"md\", label: \"Medium\" },\n  { name: \"lg\", label: \"Large\" },\n  { name: \"xl\", label: \"XLarge\" },\n] as const;\n\nexport default function InputIconExample() {\n  return (\n    <div className=\"flex flex-col space-y-4 p-2\">\n      {sizes.map((size) => (\n        <div key={size.name} className=\"flex flex-col items-center gap-2\">\n          <Input\n            inputSize={size.name}\n            variant=\"pill\"\n            placeholder=\"Enter email\"\n            Icon={Mail}\n            iconPlacement=\"right\"\n          />\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

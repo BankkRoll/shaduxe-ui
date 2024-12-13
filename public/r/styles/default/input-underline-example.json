@@ -1,0 +1,12 @@
+{
+  "name": "input-underline-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/input-underline-example.tsx",
+      "content": "import { Input } from \"@/components/ui/input\";\n\nconst sizes = [\n  { name: \"xs\", label: \"XSmall\" },\n  { name: \"sm\", label: \"Small\" },\n  { name: \"md\", label: \"Medium\" },\n  { name: \"lg\", label: \"Large\" },\n  { name: \"xl\", label: \"XLarge\" },\n] as const;\n\nexport default function InputUnderlineExample() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-4 p-2\">\n      {sizes.map((size) => (\n        <div key={size.name} className=\"flex flex-col items-center gap-2\">\n          <Input\n            variant=\"underline\"\n            inputSize={size.name}\n            placeholder={size.label}\n          />\n          <span className=\"text-sm text-muted-foreground\">{size.name}</span>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

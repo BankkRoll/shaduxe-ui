@@ -1,0 +1,12 @@
+{
+  "name": "input-icon-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/input-icon-example.tsx",
+      "content": "import { Lock, Mail, Search } from \"lucide-react\";\n\nimport { Input } from \"@/components/ui/input\";\n\nexport default function InputIconExample() {\n  return (\n    <div className=\"flex flex-col space-y-4 p-2\">\n      <Input placeholder=\"Search...\" Icon={Search} iconPlacement=\"left\" />\n      <Input\n        variant=\"pill\"\n        placeholder=\"Enter email\"\n        Icon={Mail}\n        iconPlacement=\"right\"\n      />\n      <Input\n        variant=\"underline\"\n        type=\"password\"\n        placeholder=\"Enter password\"\n        Icon={Lock}\n        iconPlacement=\"left\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

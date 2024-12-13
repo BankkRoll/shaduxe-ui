@@ -1,5 +1,15 @@
 [
   {
+    "name": "avatar",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/avatar.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "button",
     "type": "registry:ui",
     "files": [
@@ -34,11 +44,21 @@
     }
   },
   {
-    "name": "tabs",
+    "name": "input",
     "type": "registry:ui",
     "files": [
       {
-        "path": "ui/tabs.tsx",
+        "path": "ui/input.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "mode-toggle",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/mode-toggle.tsx",
         "type": "registry:ui"
       }
     ]
@@ -54,21 +74,11 @@
     ]
   },
   {
-    "name": "avatar",
+    "name": "tabs",
     "type": "registry:ui",
     "files": [
       {
-        "path": "ui/avatar.tsx",
-        "type": "registry:ui"
-      }
-    ]
-  },
-  {
-    "name": "mode-toggle",
-    "type": "registry:ui",
-    "files": [
-      {
-        "path": "ui/mode-toggle.tsx",
+        "path": "ui/tabs.tsx",
         "type": "registry:ui"
       }
     ]
@@ -334,6 +344,16 @@
     ]
   },
   {
+    "name": "switch-rounded-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/switch-rounded-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "switch-square-example",
     "type": "registry:ui",
     "files": [
@@ -344,21 +364,91 @@
     ]
   },
   {
-    "name": "switch-box-example",
+    "name": "switch-ios-example",
     "type": "registry:ui",
     "files": [
       {
-        "path": "example/switch-box-example.tsx",
+        "path": "example/switch-ios-example.tsx",
         "type": "registry:ui"
       }
     ]
   },
   {
-    "name": "switch-retro-example",
+    "name": "switch-labels-example",
     "type": "registry:ui",
     "files": [
       {
-        "path": "example/switch-retro-example.tsx",
+        "path": "example/switch-labels-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "switch-icons-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/switch-icons-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "input-default-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/input-default-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "input-underline-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/input-underline-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "input-pill-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/input-pill-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "input-default-icon-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/input-default-icon-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "input-underline-icon-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/input-underline-icon-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "input-pill-icon-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/input-pill-icon-example.tsx",
         "type": "registry:ui"
       }
     ]

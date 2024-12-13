@@ -1,0 +1,12 @@
+{
+  "name": "switch-ios-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/switch-ios-example.tsx",
+      "content": "import { Switch } from \"@/components/ui/switch\";\n\nconst sizes = [\n  { name: \"icon\", label: \"Icon\" },\n  { name: \"xs\", label: \"XSmall\" },\n  { name: \"sm\", label: \"Small\" },\n  { name: \"md\", label: \"Medium\" },\n  { name: \"lg\", label: \"Large\" },\n] as const;\n\nexport default function SwitchIOSExample() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-6\">\n      {sizes.map((size) => (\n        <div key={size.name} className=\"flex flex-col items-center gap-2\">\n          <Switch variant=\"ios\" size={size.name} />\n          <span className=\"text-sm text-muted-foreground\">{size.label}</span>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

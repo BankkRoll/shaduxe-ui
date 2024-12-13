@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "example/button-ring-hover-outline-example.tsx",
-      "content": "import { Button } from \"@/components/ui/button\";\n\nconst sizes = [\n  { name: \"icon\", label: \"Icon\" },\n  { name: \"sm\", label: \"Small\" },\n  { name: \"default\", label: \"Default\" },\n  { name: \"lg\", label: \"Large\" },\n] as const;\n\nexport default function ButtonRingHoverOutlineExample() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-4\">\n      {sizes.map((size) => (\n        <div key={size.name} className=\"flex flex-col items-center gap-2\">\n          <Button variant=\"ringHoverOutline\" size={size.name}>\n            {size.label}\n          </Button>\n          <span className=\"text-sm text-muted-foreground\">{size.name}</span>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "content": "import { Button } from \"@/components/ui/button\";\n\nconst sizes = [\n  { name: \"icon\", label: \"Icon\" },\n  { name: \"xs\", label: \"XSmall\" },\n  { name: \"sm\", label: \"Small\" },\n  { name: \"md\", label: \"Medium\" },\n  { name: \"lg\", label: \"Large\" },\n  { name: \"xl\", label: \"XLarge\" },\n  { name: \"2xl\", label: \"XXLarge\" },\n] as const;\n\nexport default function ButtonRingHoverOutlineExample() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-4 p-4\">\n      {sizes.map((size) => (\n        <div key={size.name} className=\"flex flex-col items-center gap-2\">\n          <Button variant=\"ringHoverOutline\" size={size.name}>\n            {size.label}\n          </Button>\n          <span className=\"text-sm text-muted-foreground\">{size.name}</span>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
       "type": "registry:ui",
       "target": ""
     }

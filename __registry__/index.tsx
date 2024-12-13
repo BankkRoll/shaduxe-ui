@@ -5,6 +5,17 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "default": {
+    "avatar": {
+      name: "avatar",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/ui/avatar.tsx"],
+      component: React.lazy(() => import("@/registry/default/ui/avatar.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "button": {
       name: "button",
       type: "registry:ui",
@@ -16,12 +27,23 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "tabs": {
-      name: "tabs",
+    "input": {
+      name: "input",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: ["registry/default/ui/tabs.tsx"],
-      component: React.lazy(() => import("@/registry/default/ui/tabs.tsx")),
+      files: ["registry/default/ui/input.tsx"],
+      component: React.lazy(() => import("@/registry/default/ui/input.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "mode-toggle": {
+      name: "mode-toggle",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/ui/mode-toggle.tsx"],
+      component: React.lazy(() => import("@/registry/default/ui/mode-toggle.tsx")),
       source: "",
       category: "undefined",
       subcategory: "undefined",
@@ -38,23 +60,12 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "avatar": {
-      name: "avatar",
+    "tabs": {
+      name: "tabs",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: ["registry/default/ui/avatar.tsx"],
-      component: React.lazy(() => import("@/registry/default/ui/avatar.tsx")),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
-    "mode-toggle": {
-      name: "mode-toggle",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: ["registry/default/ui/mode-toggle.tsx"],
-      component: React.lazy(() => import("@/registry/default/ui/mode-toggle.tsx")),
+      files: ["registry/default/ui/tabs.tsx"],
+      component: React.lazy(() => import("@/registry/default/ui/tabs.tsx")),
       source: "",
       category: "undefined",
       subcategory: "undefined",
@@ -346,6 +357,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "switch-rounded-example": {
+      name: "switch-rounded-example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/example/switch-rounded-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/switch-rounded-example.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "switch-square-example": {
       name: "switch-square-example",
       type: "registry:ui",
@@ -357,23 +379,100 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "switch-box-example": {
-      name: "switch-box-example",
+    "switch-ios-example": {
+      name: "switch-ios-example",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: ["registry/default/example/switch-box-example.tsx"],
-      component: React.lazy(() => import("@/registry/default/example/switch-box-example.tsx")),
+      files: ["registry/default/example/switch-ios-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/switch-ios-example.tsx")),
       source: "",
       category: "undefined",
       subcategory: "undefined",
       chunks: []
     },
-    "switch-retro-example": {
-      name: "switch-retro-example",
+    "switch-labels-example": {
+      name: "switch-labels-example",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: ["registry/default/example/switch-retro-example.tsx"],
-      component: React.lazy(() => import("@/registry/default/example/switch-retro-example.tsx")),
+      files: ["registry/default/example/switch-labels-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/switch-labels-example.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "switch-icons-example": {
+      name: "switch-icons-example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/example/switch-icons-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/switch-icons-example.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "input-default-example": {
+      name: "input-default-example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/example/input-default-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/input-default-example.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "input-underline-example": {
+      name: "input-underline-example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/example/input-underline-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/input-underline-example.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "input-pill-example": {
+      name: "input-pill-example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/example/input-pill-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/input-pill-example.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "input-default-icon-example": {
+      name: "input-default-icon-example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/example/input-default-icon-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/input-default-icon-example.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "input-underline-icon-example": {
+      name: "input-underline-icon-example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/example/input-underline-icon-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/input-underline-icon-example.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "input-pill-icon-example": {
+      name: "input-pill-icon-example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/example/input-pill-icon-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/input-pill-icon-example.tsx")),
       source: "",
       category: "undefined",
       subcategory: "undefined",
