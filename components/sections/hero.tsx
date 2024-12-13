@@ -1,14 +1,14 @@
 "use client";
 
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight, Eye, EyeOff, LockIcon, Mail } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Variants, motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Input } from "../ui/input";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
 
 const container: Variants = {
   hidden: { opacity: 0 },
@@ -34,6 +34,7 @@ export default function Hero() {
   const controls = useAnimation();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (inView) {
@@ -84,6 +85,63 @@ export default function Hero() {
               </Button>
             </Link>
           </div>
+          <div className="mt-12 space-y-8">
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                <Input inputSize="xs" placeholder="XS input" />
+                <Input variant="underline" placeholder="Underline input" />
+                <Input variant="pill" placeholder="Pill input" />
+                <Input
+                  inputSize="lg"
+                  placeholder="Large input"
+                  Icon={Mail}
+                  iconPlacement="right"
+                />
+                <div className="relative">
+                  <Input
+                    variant="underline"
+                    inputSize="lg"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password input"
+                    Icon={LockIcon}
+                    iconPlacement="left"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-500"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5" aria-hidden="true" />
+                    ) : (
+                      <Eye className="h-5 w-5" aria-hidden="true" />
+                    )}
+                  </button>
+                </div>
+                <div className="relative">
+                  <Input
+                    variant="pill"
+                    inputSize="lg"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password input"
+                    Icon={LockIcon}
+                    iconPlacement="left"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-500"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5" aria-hidden="true" />
+                    ) : (
+                      <Eye className="h-5 w-5" aria-hidden="true" />
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
@@ -94,7 +152,6 @@ export default function Hero() {
           className="flex-1 w-full max-w-md space-y-6"
         >
           <motion.div variants={item} className="space-y-6">
-            <h3 className="text-lg font-semibold">Buttons</h3>
             <div className="flex flex-wrap gap-4">
               <Button variant="default">Default</Button>
               <Button variant="secondary">Secondary</Button>
@@ -107,7 +164,6 @@ export default function Hero() {
             </div>
           </motion.div>
           <motion.div variants={item} className="space-y-6">
-            <h3 className="text-lg font-semibold">Tabs</h3>
             <div className="flex flex-col gap-8">
               <Tabs variant="rounded" defaultValue="teams" className="w-full">
                 <TabsList className="grid w-full grid-cols-2">
