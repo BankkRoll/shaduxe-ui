@@ -11,8 +11,6 @@ const avatarVariants = cva("relative flex shrink-0 overflow-hidden", {
       circle: "rounded-full",
       square: "rounded-none",
       rounded: "rounded-md",
-      octagon:
-        "clip-path-[polygon(30%_0%,70%_0%,100%_30%,100%_70%,70%_100%,30%_100%,0%_70%,0%_30%)]",
     },
     size: {
       xs: "size-6",
@@ -35,7 +33,6 @@ const avatarImageVariants = cva("aspect-square size-full", {
       circle: "rounded-full",
       square: "rounded-none",
       rounded: "rounded-md",
-      octagon: "",
     },
   },
   defaultVariants: {

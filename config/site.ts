@@ -7,6 +7,7 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/bankkroll_eth",
     github: "https://github.com/BankkRoll/shaduxe-ui",
+    discord: "https://discord.com",
   },
   keywords: ["Tailwind CSS", "Components", "Next.js", "shadcn/ui"],
 };

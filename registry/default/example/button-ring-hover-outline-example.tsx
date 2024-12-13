@@ -9,7 +9,7 @@ const sizes = [
 
 export default function ButtonRingHoverOutlineExample() {
   return (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-center gap-4 p-4">
       {sizes.map((size) => (
         <div key={size.name} className="flex flex-col items-center gap-2">
           <Button variant="ringHoverOutline" size={size.name}>

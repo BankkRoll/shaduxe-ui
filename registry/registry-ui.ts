@@ -45,4 +45,9 @@ export const ui: Registry = [
     type: "registry:ui",
     files: ["ui/avatar.tsx"],
   },
+  {
+    name: "mode-toggle",
+    type: "registry:ui",
+    files: ["ui/mode-toggle.tsx"],
+  },
 ];
