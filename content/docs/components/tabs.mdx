@@ -8,49 +8,57 @@ published: true
 ## Installation
 
 <Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
 
-{" "}
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
 <TabsContent value="cli">
-  ```bash npx shadcn@latest add "https://ui.shaduxe.com/r/tabs" ```
+
+```bash
+npx shadcn@latest add "https://ui.shaduxe.com/r/tabs"
+```
+
 </TabsContent>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step title="Copy the Code">
-        Copy and paste the following code snippet into your project:
-      </Step>
+<TabsContent value="manual">
 
-      <ComponentSource name="tabs" />
+<Steps>
 
-      <Step>
-        Make sure the import path is correct and matches your project setup:
-      </Step>
+<Step title="Copy the Code">
+  Copy and paste the following code snippet into your project:
+</Step>
 
-        ```tsx {1,6-13} showLineNumbers
-        import { Tabs } from "@/components/ui/tabs";
+<ComponentSource name="tabs" />
 
-        export default function Home() {
-          return (
-            <div className="flex items-center justify-center h-screen">
-              <Tabs defaultValue="account" className="w-[400px]">
-                <TabsList>
-                  <TabsTrigger value="account">Account</TabsTrigger>
-                  <TabsTrigger value="password">Password</TabsTrigger>
-                </TabsList>
-                <TabsContent value="account">Make changes to your account here.</TabsContent>
-                <TabsContent value="password">Change your password here.</TabsContent>
-              </Tabs>
-            </div>
-          );
-        }
-        ```
-    </Steps>
+<Step>
+  Make sure the import path is correct and matches your project setup:
+</Step>
 
-  </TabsContent>
+```tsx {1,6-13} showLineNumbers
+import { Tabs } from "@/components/ui/tabs";
+
+export default function Home() {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">Make changes to your account here.</TabsContent>
+        <TabsContent value="password">Change your password here.</TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+```
+
+</Steps>
+
+</TabsContent>
+
 </Tabs>
 
 ## Tabs Variants

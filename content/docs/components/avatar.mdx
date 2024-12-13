@@ -1,0 +1,78 @@
+---
+title: Avatar
+description: Displays a user's profile picture or initials.
+author: v0
+published: true
+---
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.shaduxe.com/r/avatar"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step title="Copy the Code">
+    Copy and paste the following code snippet into your project:
+</Step>
+
+<ComponentSource name="avatar" />
+
+<Step>
+    Make sure the import path is correct and matches your project setup:
+</Step>
+
+```tsx {1,5-8} showLineNumbers
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
+export default function Home() {
+  return (
+      <Avatar>
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+  );
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Avatar Variants
+
+### Circle Avatar (Default)
+
+<ComponentPreview name="avatar-circle-example" />
+
+### Rounded Avatar
+
+<ComponentPreview name="avatar-rounded-example" />
+
+### Square Avatar
+
+<ComponentPreview name="avatar-square-example" />
+
+## Avatar with Fallback
+
+<ComponentPreview name="avatar-fallback-example" />
+
+## Avatar in a Group
+
+<ComponentPreview name="avatar-group-example" />

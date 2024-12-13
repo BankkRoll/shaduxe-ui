@@ -8,73 +8,80 @@ published: true
 ## Installation
 
 <Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
 
-{" "}
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
 <TabsContent value="cli">
-  ```bash npx shadcn@latest add "https://ui.shaduxe.com/r/button" ```
+
+```bash
+npx shadcn@latest add "https://ui.shaduxe.com/r/button"
+```
+
 </TabsContent>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step title="Copy the Code">
-        Copy and paste the following code snippet into your project:
-      </Step>
+<TabsContent value="manual">
 
-      <ComponentSource name="button" />
+<Steps>
 
-      <Step>
-        Make sure the import path is correct and matches your project setup:
-      </Step>
+<Step title="Copy the Code">
+  Copy and paste the following code snippet into your project:
+</Step>
 
-        ```tsx {1,6} showLineNumbers
-        import { Button } from "@/components/ui/button";
+<ComponentSource name="button" />
 
-        export default function Home() {
-          return (
-            <div className="flex items-center justify-center h-screen">
-              <Button>Click me</Button>
-            </div>
-          );
-        }
-        ```
+<Step>
+  Make sure the import path is correct and matches your project setup:
+</Step>
 
-        <Step>Update `tailwind.config.js`</Step>
+```tsx {1,6} showLineNumbers
+import { Button } from "@/components/ui/button";
 
-        Add the following animations to your `tailwind.config.js` file:
+export default function Home() {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <Button>Click me</Button>
+    </div>
+  );
+}
+```
 
-        ```js title="tailwind.config.js" {6,9-19} showLineNumbers
-        /** @type {import('tailwindcss').Config} */
-        module.exports = {
-          theme: {
-            extend: {
-              animation: {
-                shine: "shine var(--duration) infinite linear",
-              },
-              keyframes: {
-                shine: {
-                  "0%": {
-                    "background-position": "0% 0%",
-                  },
-                  "50%": {
-                    "background-position": "100% 100%",
-                  },
-                  to: {
-                    "background-position": "0% 0%",
-                  },
-                },
-              },
-            },
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {6,9-19} showLineNumbers
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        shine: "shine var(--duration) infinite linear",
+      },
+      keyframes: {
+        shine: {
+          "0%": {
+            "background-position": "0% 0%",
           },
-        };
-        ```
+          "50%": {
+            "background-position": "100% 100%",
+          },
+          to: {
+            "background-position": "0% 0%",
+          },
+        },
+      },
+    },
+  },
+}
+```
 
-    </Steps>
+</Steps>
 
-  </TabsContent>
+</TabsContent>
+
 </Tabs>
 
 ## Button Variants
@@ -135,16 +142,3 @@ published: true
 
 <ComponentPreview name="button-gooey-left-example" />
 
-## Button Sizes
-
-### Icon Button
-
-<ComponentPreview name="button-icon-example" />
-
-### Small Button
-
-<ComponentPreview name="button-sm-example" />
-
-### Large Button
-
-<ComponentPreview name="button-lg-example" />
