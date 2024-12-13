@@ -71,12 +71,9 @@ export function constructMetadata({
     title,
     description,
     keywords: [
-      "React",
       "Tailwind CSS",
-      "Framer Motion",
-      "Landing Page",
       "Components",
-      "Next.js",
+      "shadcn",
     ],
     openGraph: {
       title,

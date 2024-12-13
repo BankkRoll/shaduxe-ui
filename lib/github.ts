@@ -43,5 +43,5 @@ export function getGitHubIssueUrl(params: GitHubIssueUrlParams): string {
 }
 
 export function getGithubFileUrl(slug: string) {
-  return `https://github.com/Slice-UI/Slice-UI/blob/main/content${slug === "/docs" ? "/docs/index" : slug}.mdx`;
+  return `https://github.com/BankkRoll/shaduxe-ui/blob/main/content${slug === "/docs" ? "/docs/index" : slug}.mdx`;
 }
