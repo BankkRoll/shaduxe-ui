@@ -56,10 +56,10 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="pr-0 mt-16">
+      <SheetContent side="left">
         <MobileLink
           href="/"
-          className="flex items-center"
+          className="-mt-1 flex items-center"
           onOpenChange={setOpen}
         >
           <img
@@ -70,10 +70,7 @@ export function MobileNav() {
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
 
-        <div className="flex flex-col py-2 pr-2">
-          <CommandMenu />
-        </div>
-        <ScrollArea className="my-4 h-[calc(100vh-12rem)] pb-5 pl-4">
+        <ScrollArea className="my-4 h-[calc(100vh-4rem)] pb-8 pl-2">
           <div className="flex flex-col space-y-3">
             {docsConfig.mainNav?.map(
               (item) =>
@@ -85,7 +82,7 @@ export function MobileNav() {
                   >
                     {item.title}
                   </MobileLink>
-                ),
+                )
             )}
           </div>
           <div className="flex flex-col space-y-2">
@@ -101,7 +98,7 @@ export function MobileNav() {
                       onClick={() => item.event && posthog.capture(item.event)}
                       className={cn(
                         "text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60",
+                        item.disabled && "cursor-not-allowed opacity-60"
                       )}
                     >
                       {item.title}
@@ -116,7 +113,7 @@ export function MobileNav() {
                       key={index}
                       className={cn(
                         "text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60",
+                        item.disabled && "cursor-not-allowed opacity-60"
                       )}
                     >
                       {item.title}
@@ -126,7 +123,7 @@ export function MobileNav() {
                         </span>
                       )}
                     </span>
-                  ),
+                  )
                 )}
               </div>
             ))}

@@ -49,6 +49,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "mode-toggle": {
+      name: "mode-toggle",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/ui/mode-toggle.tsx"],
+      component: React.lazy(() => import("@/registry/default/ui/mode-toggle.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "tabs-default-example": {
       name: "tabs-default-example",
       type: "registry:ui",

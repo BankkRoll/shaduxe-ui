@@ -1,11 +1,11 @@
 "use client";
 
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Variants, motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
@@ -67,11 +67,21 @@ export default function Hero() {
             perfect extension for your shadcn/ui components.
           </p>
           <div className="flex items-center space-x-4 mt-8">
-            <Link href="/docs/" passHref>
-              <Button>View Docs</Button>
-            </Link>
+            {/* <Link href="/docs" passHref>
+              <Button
+                variant="ringHoverOutline"
+              >
+                View Docs
+              </Button>
+            </Link> */}
             <Link href="/docs/components/avatar" passHref>
-              <Button variant="outline">Browse components</Button>
+              <Button
+                variant="expandIcon"
+                Icon={ArrowRight}
+                iconPlacement="right"
+              >
+                Browse components
+              </Button>
             </Link>
           </div>
         </motion.div>
@@ -81,51 +91,9 @@ export default function Hero() {
           variants={container}
           initial="hidden"
           animate={controls}
-          className="flex-1 w-full max-w-md space-y-8"
+          className="flex-1 w-full max-w-md space-y-6"
         >
           <motion.div variants={item} className="space-y-6">
-            <h3 className="text-lg font-semibold">Switch</h3>
-            <div className="flex items-center space-x-12">
-              <Switch id="airplane-mode" size="sm" />
-              <Switch
-                id="airplane-mode"
-                size="sm"
-                variant="box"
-                defaultChecked
-              />
-              <Switch id="airplane-mode" size="sm" variant="retro" />
-              <Switch
-                id="airplane-mode"
-                size="sm"
-                variant="square"
-                defaultChecked
-              />
-            </div>
-            <div className="flex items-center space-x-10">
-              <Switch id="airplane-mode" defaultChecked />
-              <Switch id="airplane-mode" variant="box" />
-              <Switch id="airplane-mode" variant="retro" defaultChecked />
-              <Switch id="airplane-mode" variant="square" />
-            </div>
-            <div className="flex items-center space-x-6">
-              <Switch id="airplane-mode" size="lg" />
-              <Switch
-                id="airplane-mode"
-                size="lg"
-                variant="box"
-                defaultChecked
-              />
-              <Switch id="airplane-mode" size="lg" variant="retro" />
-              <Switch
-                id="airplane-mode"
-                size="lg"
-                variant="square"
-                defaultChecked
-              />
-            </div>
-          </motion.div>
-
-          <motion.div variants={item} className="space-y-4">
             <h3 className="text-lg font-semibold">Buttons</h3>
             <div className="flex flex-wrap gap-4">
               <Button variant="default">Default</Button>
@@ -138,39 +106,51 @@ export default function Hero() {
               <Button variant="linkHover2">LinkHover2</Button>
             </div>
           </motion.div>
-
-          <motion.div variants={item} className="space-y-4">
+          <motion.div variants={item} className="space-y-6">
             <h3 className="text-lg font-semibold">Tabs</h3>
-            <Tabs defaultValue="account" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </motion.div>
-          <motion.div variants={item} className="space-y-4">
-            <Tabs variant="rounded" defaultValue="account" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </motion.div>
-          <motion.div variants={item} className="space-y-4">
-            <Tabs variant="folder" defaultValue="account" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </motion.div>
-          <motion.div variants={item} className="space-y-4">
-            <Tabs variant="underline" defaultValue="account" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-              </TabsList>
-            </Tabs>
+            <div className="flex flex-col gap-8">
+              <Tabs variant="rounded" defaultValue="teams" className="w-full">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="teams">For Teams</TabsTrigger>
+                  <TabsTrigger value="individuals">For Individuals</TabsTrigger>
+                </TabsList>
+              </Tabs>
+
+              <Tabs variant="pill" defaultValue="easy" className="w-full">
+                <TabsList className="grid w-full grid-cols-3">
+                  <TabsTrigger value="easy">Easy</TabsTrigger>
+                  <TabsTrigger value="medium">Medium</TabsTrigger>
+                  <TabsTrigger value="hard">Hard</TabsTrigger>
+                </TabsList>
+              </Tabs>
+
+              <Tabs defaultValue="profile" className="w-full">
+                <TabsList className="grid w-full grid-cols-3">
+                  <TabsTrigger value="profile">Profile</TabsTrigger>
+                  <TabsTrigger value="account">Account</TabsTrigger>
+                  <TabsTrigger value="password">Password</TabsTrigger>
+                </TabsList>
+              </Tabs>
+
+              <Tabs variant="folder" defaultValue="file1" className="w-full">
+                <TabsList className="grid w-full grid-cols-4">
+                  <TabsTrigger value="file1">FILE 1</TabsTrigger>
+                  <TabsTrigger value="file2">FILE 2</TabsTrigger>
+                  <TabsTrigger value="file3">FILE 3</TabsTrigger>
+                  <TabsTrigger value="file4">FILE 4</TabsTrigger>
+                </TabsList>
+              </Tabs>
+
+              <Tabs variant="underline" defaultValue="docs" className="w-full">
+                <TabsList className="grid w-full grid-cols-5">
+                  <TabsTrigger value="docs">Docs</TabsTrigger>
+                  <TabsTrigger value="install">Install</TabsTrigger>
+                  <TabsTrigger value="preview">Preview</TabsTrigger>
+                  <TabsTrigger value="cli">CLI</TabsTrigger>
+                  <TabsTrigger value="code">Code</TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
           </motion.div>
         </motion.div>
       </div>
