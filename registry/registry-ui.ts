@@ -6,27 +6,28 @@ export const ui: Registry = [
     type: "registry:ui",
     files: ["ui/avatar.tsx"],
   },
-  {
-    name: "button",
-    type: "registry:ui",
-    files: ["ui/button.tsx"],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              shine: "shine var(--duration) infinite linear",
-            },
-            keyframes: {
-              shine: {
-                "0%": {
-                  "background-position": "0% 0%",
-                },
-                "50%": {
-                  "background-position": "100% 100%",
-                },
-                to: {
-                  "background-position": "0% 0%",
+    {
+      name: "button",
+      type: "registry:ui",
+      files: ["ui/button.tsx"],
+      tailwind: {
+        config: {
+          theme: {
+            extend: {
+              animation: {
+                shine: "shine var(--duration) infinite linear",
+              },
+              keyframes: {
+                shine: {
+                  "0%": {
+                    "background-position": "0% 0%",
+                  },
+                  "50%": {
+                    "background-position": "100% 100%",
+                  },
+                  to: {
+                    "background-position": "0% 0%",
+                  },
                 },
               },
             },
@@ -34,7 +35,6 @@ export const ui: Registry = [
         },
       },
     },
-  },
   {
     name: "input",
     type: "registry:ui",
