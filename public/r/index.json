@@ -452,5 +452,15 @@
         "type": "registry:ui"
       }
     ]
+  },
+  {
+    "name": "input-pill-icon-password-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/input-pill-icon-password-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
   }
 ]

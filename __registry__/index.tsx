@@ -478,6 +478,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "input-pill-icon-password-example": {
+      name: "input-pill-icon-password-example",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/example/input-pill-icon-password-example.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/input-pill-icon-password-example.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "utils": {
       name: "utils",
       type: "registry:lib",
