@@ -1,34 +1,23 @@
 "use client";
 
-import { ArrowRight, ChevronRight, Eye, EyeOff, LockIcon, Mail } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronRight,
+  Eye,
+  EyeOff,
+  LockIcon,
+  Mail,
+} from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Variants, motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-
-const container: Variants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 300, damping: 24 },
-  },
-};
+import { Switch } from "@/components/ui/switch";
 
 export default function Hero() {
   const controls = useAnimation();
@@ -68,13 +57,6 @@ export default function Hero() {
             perfect extension for your shadcn/ui components.
           </p>
           <div className="flex items-center space-x-4 mt-8">
-            {/* <Link href="/docs" passHref>
-              <Button
-                variant="ringHoverOutline"
-              >
-                View Docs
-              </Button>
-            </Link> */}
             <Link href="/docs/components/avatar" passHref>
               <Button
                 variant="expandIcon"
@@ -144,70 +126,105 @@ export default function Hero() {
           </div>
         </motion.div>
 
+        {/* Right Content - Interactive UI */}
         <motion.div
           ref={ref}
-          variants={container}
-          initial="hidden"
-          animate={controls}
-          className="flex-1 w-full max-w-md space-y-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="relative"
         >
-          <motion.div variants={item} className="space-y-6">
+          <div className="relative  grid gap-6 transform rotate-6">
+            {/* Switch Variants */}
             <div className="flex flex-wrap gap-4">
-              <Button variant="default">Default</Button>
+              <Switch variant="default" />
+              <Switch variant="ios" />
+              <Switch variant="rounded" />
+              <Switch variant="square" />
+              <Switch showIcons />
+              <Switch showLabels />
+            </div>
+
+            {/* Tabs Variants */}
+            <div className="space-y-8">
+              <Tabs defaultValue="tab1">
+                <TabsList>
+                  <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+                  <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+                </TabsList>
+              </Tabs>
+              <Tabs variant="pill" defaultValue="tab1">
+                <TabsList>
+                  <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+                  <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+                  <TabsTrigger value="tab3">Tab 3</TabsTrigger>
+                </TabsList>
+              </Tabs>
+              <Tabs variant="folder" defaultValue="folder1">
+                <TabsList>
+                  <TabsTrigger value="folder1">Folder 1</TabsTrigger>
+                  <TabsTrigger value="folder2">Folder 2</TabsTrigger>
+                  <TabsTrigger value="folder3">Folder 3</TabsTrigger>
+                  <TabsTrigger value="folder4">Folder 4</TabsTrigger>
+                </TabsList>
+              </Tabs>
+              <Tabs variant="underline" defaultValue="tab1">
+                <TabsList>
+                  <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+                  <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+                  <TabsTrigger value="tab3">Tab 3</TabsTrigger>
+                  <TabsTrigger value="tab4">Tab 4</TabsTrigger>
+                  <TabsTrigger value="tab5">Tab 5</TabsTrigger>
+                  <TabsTrigger className="hidden md:flex" value="tab6">Tab 6</TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
+
+            {/* Button Variants */}
+            <div className="flex flex-wrap max-w-md gap-4">
+              <Button size="icon">Icon</Button>
+              <Button>Default</Button>
               <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
               <Button variant="destructive">Destructive</Button>
+              <Button variant="outline">Outline</Button>
               <Button variant="ghost">Ghost</Button>
-              <Button variant="link">Link</Button>
-              <Button variant="linkHover1">LinkHover1</Button>
-              <Button variant="linkHover2">LinkHover2</Button>
+              <Button variant="ringHover">Ring Hover</Button>
+              <Button variant="shine">Shine</Button>
+              <Button variant="ringHoverOutline">Ring Hover Outline</Button>
+              <Button variant="linkHover1">Link Hover 1</Button>
+              <Button variant="linkHover2">Link Hover 2</Button>
+              <Button variant="gooeyLeft">Gooey Left</Button>
+              <Button variant="gooeyRight">Gooey Right</Button>
             </div>
-          </motion.div>
-          <motion.div variants={item} className="space-y-6">
-            <div className="flex flex-col gap-8">
-              <Tabs variant="rounded" defaultValue="teams" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="teams">For Teams</TabsTrigger>
-                  <TabsTrigger value="individuals">For Individuals</TabsTrigger>
-                </TabsList>
-              </Tabs>
 
-              <Tabs variant="pill" defaultValue="easy" className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="easy">Easy</TabsTrigger>
-                  <TabsTrigger value="medium">Medium</TabsTrigger>
-                  <TabsTrigger value="hard">Hard</TabsTrigger>
-                </TabsList>
-              </Tabs>
-
-              <Tabs defaultValue="profile" className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="profile">Profile</TabsTrigger>
-                  <TabsTrigger value="account">Account</TabsTrigger>
-                  <TabsTrigger value="password">Password</TabsTrigger>
-                </TabsList>
-              </Tabs>
-
-              <Tabs variant="folder" defaultValue="file1" className="w-full">
-                <TabsList className="grid w-full grid-cols-4">
-                  <TabsTrigger value="file1">FILE 1</TabsTrigger>
-                  <TabsTrigger value="file2">FILE 2</TabsTrigger>
-                  <TabsTrigger value="file3">FILE 3</TabsTrigger>
-                  <TabsTrigger value="file4">FILE 4</TabsTrigger>
-                </TabsList>
-              </Tabs>
-
-              <Tabs variant="underline" defaultValue="docs" className="w-full">
-                <TabsList className="grid w-full grid-cols-5">
-                  <TabsTrigger value="docs">Docs</TabsTrigger>
-                  <TabsTrigger value="install">Install</TabsTrigger>
-                  <TabsTrigger value="preview">Preview</TabsTrigger>
-                  <TabsTrigger value="cli">CLI</TabsTrigger>
-                  <TabsTrigger value="code">Code</TabsTrigger>
-                </TabsList>
-              </Tabs>
+            {/* Avatar Variants */}
+            <div className="flex flex-wrap gap-6">
+              <Avatar size="xs">
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar size="sm">
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar size="md" variant="rounded">
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar size="lg" variant="rounded">
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar size="xl" variant="square">
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar className="hidden md:flex" size="2xl" variant="square">
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </div>
