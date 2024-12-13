@@ -1,6 +1,7 @@
 import { Registry } from "@/registry/schema";
 
 export const examples: Registry = [
+  // tabs examples
   {
     name: "tabs-default-example",
     type: "registry:ui",
@@ -31,6 +32,7 @@ export const examples: Registry = [
     type: "registry:ui",
     files: ["example/tabs-vertical-example.tsx"],
   },
+  // button examples
   {
     name: "button-default-example",
     type: "registry:ui",
@@ -101,19 +103,51 @@ export const examples: Registry = [
     type: "registry:ui",
     files: ["example/button-link-hover-2-example.tsx"],
   },
+  // Avatar examples
   {
-    name: "button-sm-example",
+    name: "avatar-circle-example",
     type: "registry:ui",
-    files: ["example/button-sm-example.tsx"],
+    files: ["example/avatar-circle-example.tsx"],
   },
   {
-    name: "button-lg-example",
+    name: "avatar-square-example",
     type: "registry:ui",
-    files: ["example/button-lg-example.tsx"],
+    files: ["example/avatar-square-example.tsx"],
   },
   {
-    name: "button-icon-example",
+    name: "avatar-rounded-example",
     type: "registry:ui",
-    files: ["example/button-icon-example.tsx"],
+    files: ["example/avatar-rounded-example.tsx"],
+  },
+  {
+    name: "avatar-fallback-example",
+    type: "registry:ui",
+    files: ["example/avatar-fallback-example.tsx"],
+  },
+  {
+    name: "avatar-group-example",
+    type: "registry:ui",
+    files: ["example/avatar-group-example.tsx"],
+  },
+  // Switch examples
+  {
+    name: "switch-default-example",
+    type: "registry:ui",
+    files: ["example/switch-default-example.tsx"],
+  },
+  {
+    name: "switch-square-example",
+    type: "registry:ui",
+    files: ["example/switch-square-example.tsx"],
+  },
+  {
+    name: "switch-box-example",
+    type: "registry:ui",
+    files: ["example/switch-box-example.tsx"],
+  },
+  {
+    name: "switch-retro-example",
+    type: "registry:ui",
+    files: ["example/switch-retro-example.tsx"],
   },
 ];

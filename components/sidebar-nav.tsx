@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { SidebarNavItem } from "@/types";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+import { SidebarNavItem } from "@/types";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import posthog from "posthog-js";
-
-import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[];
@@ -81,7 +80,7 @@ export function DocsSidebarNavItems({
             )}
             <span className="relative z-10 shrink-0">{item.title}</span>
             {item.label && (
-              <span className="relative z-10 ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+              <span className="relative z-10 ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
                 {item.label}
               </span>
             )}
