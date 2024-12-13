@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to shaduxe/ui! We appreciate your support and look forward to your contributions. This guide will help you understand the directory structure and provide detailed instructions on how to add a new component to MagicUI.
 
-Read the [example PR](https://github.com/BankkRoll/shaduxe-ui/pull/1) to learn which files you need to add. **You only need to change 5 files to add a new component or effect** and it only takes around 10 minutes of work!
+Read the [example PR](https://github.com/BankkRoll/shaduxe-ui/pull/2) to learn which files you need to add. **You only need to change 5 files to add a new component or effect** and it only takes around 10 minutes of work!
 
 Once done, open a pull request from your forked repo to the main repo [here](https://github.com/BankkRoll/shaduxe-ui/compare).
 
@@ -172,7 +172,7 @@ export { Button, buttonVariants };
 
 ### 2. Add/Update Component Demo [{component}-{variant}-example.tsx]
 
-Provide a basic example for each variation to showcase your component in the `registry/default/ui` directory. If it has sizes please show sizes for each variant, here is example of one with sizes and one without
+Add/Update a basic example for each variation to showcase your component in the `registry/default/ui` directory. If it has sizes please show sizes for each variant, here is example of one with sizes and one without
 
 - ex. with sizes: `registry/default/example/button-default-example.tsx`
 
@@ -233,9 +233,9 @@ const TabsDefaultExample: React.FC = () => {
 export default TabsDefaultExample;
 ```
 
-### 3. Update Sidebar (Only Applies To New Additions)
+### 3. Add/Update Sidebar (Only Applies To New Additions)
 
-Add the component to the sidebar in `config/docs.ts`
+Add/Update the component to the sidebar in `config/docs.ts`
 
 ```typescript
 {
@@ -246,9 +246,9 @@ Add the component to the sidebar in `config/docs.ts`
 }
 ```
 
-### 4. Create docs
+### 4. Add/Update Docs File [{component}.mdx]
 
-Create/Update the MDX file for documenting the component in `content/docs/components/button.mdx`
+Add/Update the MDX file for documenting the component in `content/docs/components/button.mdx`
 
 ````md
 ---
@@ -397,9 +397,9 @@ module.exports = {
 <ComponentPreview name="button-gooey-left-example" />
 ```
 
-### 5. Update Registry
+### 5. Add/Update Registry
 
-Verify the export of the component and example in the registry files:
+Add/Update the export of the component and example in the registry files:
 
 In `registry/registry-ui.ts` make sure that if you add or create variants with tailwind they contian the tailwind config:
 
@@ -443,7 +443,9 @@ export const ui: Registry = [
 ];
 ```
 
-In `registry/registry-examples.ts` make sure we export each the default and all variations:
+### 6. Add/Update Registry Examples
+
+Add/Update `registry/registry-examples.ts` make sure we export each the default and all variations:
 
 ```typescript
 export const examples: Registry = [
