@@ -1,0 +1,26 @@
+import { Input } from "@/components/ui/input";
+
+const sizes = [
+  { name: "xs", label: "XSmall" },
+  { name: "sm", label: "Small" },
+  { name: "md", label: "Medium" },
+  { name: "lg", label: "Large" },
+  { name: "xl", label: "XLarge" },
+] as const;
+
+export default function InputUnderlineExample() {
+  return (
+    <div className="flex flex-wrap items-center gap-4 p-2">
+      {sizes.map((size) => (
+        <div key={size.name} className="flex flex-col items-center gap-2">
+          <Input
+            variant="underline"
+            inputSize={size.name}
+            placeholder={size.label}
+          />
+          <span className="text-sm text-muted-foreground">{size.name}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
