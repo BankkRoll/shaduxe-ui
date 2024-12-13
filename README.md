@@ -1,6 +1,6 @@
 # shaduxe/ui
 
-![og](https://github.com/user-attachments/assets/2422fa8c-cfcf-48fd-ae99-d23d7cb1d0f2)
+![og-meta](https://github.com/user-attachments/assets/2f571cbc-fa29-476e-b6e4-88e5372c69dc)
 
 **shaduxe/ui** is a powerful extension of [shadcn/ui](https://ui.shadcn.com), delivering advanced and beautifully designed components to supercharge your application's UI. With shaduxe/ui, you can install, customize, and deploy accessible and reusable components effortlessly.
 
