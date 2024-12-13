@@ -3,7 +3,6 @@ import "@/styles/mdx.css";
 
 import { cn, constructMetadata } from "@/lib/utils";
 
-import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import { PHProvider } from "@/components/posthog-provider";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -46,7 +45,6 @@ export default function RootLayout({
             <TooltipProvider>
               {children}
               <Toaster />
-              <Analytics />
             </TooltipProvider>
           </ThemeProvider>
         </PHProvider>
