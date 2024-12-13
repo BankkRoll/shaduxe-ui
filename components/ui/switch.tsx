@@ -13,7 +13,7 @@ const switchVariants = cva(
         default: "rounded-full shadow-sm",
         box: "rounded-md shadow-sm",
         square: "rounded-none shadow-sm",
-        retro: "rounded border-2 border-border bg-background shadow-inner",
+        retro: "rounded border-2 border-border",
       },
       size: {
         sm: "h-4 w-7",
