@@ -1,0 +1,12 @@
+{
+  "name": "tabs-folder-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/tabs-folder-example.tsx",
+      "content": "import { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/components/ui/tabs\";\n\nimport React from \"react\";\n\nexport default function TabsFolderExample() {\n  return (\n    <Tabs variant=\"folder\" defaultValue=\"account\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n        <TabsTrigger value=\"settings\">Settings</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">\n        <p>account</p>\n      </TabsContent>\n      <TabsContent value=\"password\">\n        <p>password</p>\n      </TabsContent>\n      <TabsContent value=\"settings\">\n        <p>settings</p>\n      </TabsContent>\n    </Tabs>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "avatar-2xl-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/avatar-2xl-example.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\nexport default function Avatar2xlExample() {\n  return (\n    <Avatar size=\"2xl\">\n      <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

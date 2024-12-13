@@ -1,0 +1,12 @@
+{
+  "name": "button-lg-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/button-lg-example.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\n\nexport default function ButtonLargeExample() {\n  return (\n    <div className=\"p-2\">\n      <Button size=\"lg\">Large</Button>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

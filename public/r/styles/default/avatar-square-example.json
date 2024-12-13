@@ -1,0 +1,12 @@
+{
+  "name": "avatar-square-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/avatar-square-example.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\nconst sizes = [\"xs\", \"sm\", \"md\", \"lg\", \"xl\", \"2xl\"] as const;\n\nexport default function AvatarSquareExample() {\n  return (\n    <div className=\"flex flex-wrap items-end gap-4\">\n      {sizes.map((size) => (\n        <div key={size} className=\"flex flex-col items-center gap-2\">\n          <Avatar variant=\"square\" size={size}>\n            <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n            <AvatarFallback>CN</AvatarFallback>\n          </Avatar>\n          <span className=\"text-sm text-muted-foreground\">{size}</span>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

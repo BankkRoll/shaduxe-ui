@@ -1,0 +1,12 @@
+{
+  "name": "button-expand-icon-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/button-expand-icon-example.tsx",
+      "content": "import { ArrowRight } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\n\nconst sizes = [\n  { name: \"icon\", label: \"Icon\" },\n  { name: \"sm\", label: \"Small\" },\n  { name: \"default\", label: \"Default\" },\n  { name: \"lg\", label: \"Large\" },\n] as const;\n\nexport default function ButtonExpandIconExample() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-4\">\n      {sizes.map((size) => (\n        <div key={size.name} className=\"flex flex-col items-center gap-2\">\n          <Button\n            variant=\"expandIcon\"\n            size={size.name}\n            Icon={ArrowRight}\n            iconPlacement=\"right\"\n          >\n            {size.name === \"icon\" ? (\n              <ArrowRight className=\"h-4 w-4\" />\n            ) : (\n              size.label\n            )}\n          </Button>\n          <span className=\"text-sm text-muted-foreground\">{size.name}</span>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "avatar-group-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/avatar-group-example.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\nexport default function AvatarGroupExample() {\n  return (\n    <div className=\"flex -space-x-4\">\n      <Avatar>\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage src=\"https://github.com/tj.png\" alt=\"@tj\" />\n        <AvatarFallback>TJ</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarImage\n          src=\"https://github.com/ianstormtaylor.png\"\n          alt=\"@ianstormtaylor\"\n        />\n        <AvatarFallback>IT</AvatarFallback>\n      </Avatar>\n      <Avatar>\n        <AvatarFallback>+2</AvatarFallback>\n      </Avatar>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

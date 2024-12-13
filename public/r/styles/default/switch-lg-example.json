@@ -1,0 +1,12 @@
+{
+  "name": "switch-lg-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/switch-lg-example.tsx",
+      "content": "import { Switch } from \"@/components/ui/switch\";\n\nexport default function SwitchLgExample() {\n  return <Switch size=\"lg\" />;\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

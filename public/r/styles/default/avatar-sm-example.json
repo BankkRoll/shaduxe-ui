@@ -1,0 +1,12 @@
+{
+  "name": "avatar-sm-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/avatar-sm-example.tsx",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\";\n\nexport default function AvatarSmExample() {\n  return (\n    <Avatar size=\"sm\">\n      <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

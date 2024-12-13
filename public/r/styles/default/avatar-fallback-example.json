@@ -1,0 +1,12 @@
+{
+  "name": "avatar-fallback-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/avatar-fallback-example.tsx",
+      "content": "import { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\n\nconst sizes = [\"xs\", \"sm\", \"md\", \"lg\", \"xl\", \"2xl\"] as const;\n\nexport default function AvatarFallbackExample() {\n  return (\n    <div className=\"flex flex-wrap items-end gap-4\">\n      {sizes.map((size) => (\n        <div key={size} className=\"flex flex-col items-center gap-2\">\n          <Avatar size={size}>\n            <AvatarFallback>CN</AvatarFallback>\n          </Avatar>\n          <span className=\"text-sm text-muted-foreground\">{size}</span>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "switch-sm-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/switch-sm-example.tsx",
+      "content": "import { Switch } from \"@/components/ui/switch\";\n\nexport default function SwitchSmExample() {\n  return <Switch size=\"sm\" />;\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

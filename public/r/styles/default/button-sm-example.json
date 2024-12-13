@@ -1,0 +1,12 @@
+{
+  "name": "button-sm-example",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "example/button-sm-example.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\n\nexport default function ButtonSmallExample() {\n  return (\n    <div className=\"p-2\">\n      <Button size=\"sm\">Small</Button>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

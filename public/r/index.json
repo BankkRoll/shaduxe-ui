@@ -7,7 +7,31 @@
         "path": "ui/button.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "tailwind": {
+      "config": {
+        "theme": {
+          "extend": {
+            "animation": {
+              "shine": "shine var(--duration) infinite linear"
+            },
+            "keyframes": {
+              "shine": {
+                "0%": {
+                  "background-position": "0% 0%"
+                },
+                "50%": {
+                  "background-position": "100% 100%"
+                },
+                "to": {
+                  "background-position": "0% 0%"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   {
     "name": "tabs",
@@ -25,6 +49,16 @@
     "files": [
       {
         "path": "ui/switch.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "avatar",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/avatar.tsx",
         "type": "registry:ui"
       }
     ]
@@ -230,31 +264,91 @@
     ]
   },
   {
-    "name": "button-sm-example",
+    "name": "avatar-circle-example",
     "type": "registry:ui",
     "files": [
       {
-        "path": "example/button-sm-example.tsx",
+        "path": "example/avatar-circle-example.tsx",
         "type": "registry:ui"
       }
     ]
   },
   {
-    "name": "button-lg-example",
+    "name": "avatar-square-example",
     "type": "registry:ui",
     "files": [
       {
-        "path": "example/button-lg-example.tsx",
+        "path": "example/avatar-square-example.tsx",
         "type": "registry:ui"
       }
     ]
   },
   {
-    "name": "button-icon-example",
+    "name": "avatar-rounded-example",
     "type": "registry:ui",
     "files": [
       {
-        "path": "example/button-icon-example.tsx",
+        "path": "example/avatar-rounded-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "avatar-fallback-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/avatar-fallback-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "avatar-group-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/avatar-group-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "switch-default-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/switch-default-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "switch-square-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/switch-square-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "switch-box-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/switch-box-example.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "switch-retro-example",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "example/switch-retro-example.tsx",
         "type": "registry:ui"
       }
     ]
