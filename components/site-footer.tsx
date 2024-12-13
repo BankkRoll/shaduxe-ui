@@ -110,7 +110,7 @@ export function SiteFooter() {
               </Link>
             </nav>
             <div className="flex flex-row items-center gap-1">
-              <p className="text-xs text-muted-foreground">© 2024 Slice UI</p>
+              <p className="text-xs text-muted-foreground">© 2024 shaduxe/ui</p>
               <p className="hidden text-xs text-muted-foreground md:flex">
                 - All rights reserved.
               </p>

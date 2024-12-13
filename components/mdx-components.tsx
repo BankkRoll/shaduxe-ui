@@ -1,24 +1,23 @@
-import { useMDXComponent } from "@content-collections/mdx/react";
-import Image from "next/image";
-import Link from "next/link";
-
-import { Callout } from "@/components/callout";
-import RepoDownload from "@/components/repo-download";
-import TechStack from "@/components/tech-stack";
-import TemplatePreview from "@/components/template-preview";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { CopyButton, CopyNpmCommandButton } from "./copy-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Event } from "@/lib/events";
-import { cn } from "@/lib/utils";
 
+import { Callout } from "@/components/callout";
 import { ComponentPreview } from "./component-preview";
 import { ComponentSource } from "./component-source";
-import { CopyButton, CopyNpmCommandButton } from "./copy-button";
+import { Event } from "@/lib/events";
+import Image from "next/image";
+import Link from "next/link";
+import RepoDownload from "@/components/repo-download";
+import TechStack from "@/components/tech-stack";
+import TemplatePreview from "@/components/template-preview";
+import { cn } from "@/lib/utils";
+import { useMDXComponent } from "@content-collections/mdx/react";
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -240,7 +239,7 @@ const components = {
       <>
         <pre
           className={cn(
-            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900",
+            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-card py-4",
             className,
           )}
           {...props}
@@ -273,7 +272,7 @@ const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        "relative rounded bg-card px-[0.3rem] py-[0.2rem] font-mono text-sm",
         className,
       )}
       {...props}

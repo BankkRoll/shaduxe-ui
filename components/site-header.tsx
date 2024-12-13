@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 
 export async function SiteHeader() {
-  let stars = 300; // Default value
+  let stars = 1; // Default value
 
   try {
     const response = await fetch(

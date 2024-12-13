@@ -1,19 +1,20 @@
 "use client";
 
 import * as React from "react";
-import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu";
-import { CheckIcon, ClipboardIcon } from "lucide-react";
-import { NpmCommands } from "types/unist";
 
-import { Event, trackEvent } from "@/lib/events";
-import { cn } from "@/lib/utils";
 import { Button, ButtonProps } from "@/components/ui/button";
+import { CheckIcon, ClipboardIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Event, trackEvent } from "@/lib/events";
+
+import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu";
+import { NpmCommands } from "types/unist";
+import { cn } from "@/lib/utils";
 
 interface CopyButtonProps extends ButtonProps {
   value: string;
@@ -50,7 +51,7 @@ export function CopyButton({
       variant={variant}
       className={cn(
         "relative z-10 size-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:size-3",
-        className,
+        className
       )}
       onClick={() => {
         copyToClipboardWithMeta(
@@ -63,7 +64,7 @@ export function CopyButton({
                   code: value,
                 },
               }
-            : undefined,
+            : undefined
         );
         setHasCopied(true);
       }}
@@ -108,7 +109,7 @@ export function CopyWithClassNames({
           variant="ghost"
           className={cn(
             "relative z-10 size-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
-            className,
+            className
           )}
         >
           {hasCopied ? (
@@ -159,7 +160,7 @@ export function CopyNpmCommandButton({
       });
       setHasCopied(true);
     },
-    [],
+    []
   );
 
   return (
@@ -170,7 +171,7 @@ export function CopyNpmCommandButton({
           variant="ghost"
           className={cn(
             "relative z-10 size-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
-            className,
+            className
           )}
         >
           {hasCopied ? (
