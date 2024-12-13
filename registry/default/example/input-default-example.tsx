@@ -10,11 +10,10 @@ const sizes = [
 
 export default function InputDefaultExample() {
   return (
-    <div className="flex flex-wrap items-center gap-4 p-2">
+    <div className="flex flex-col items-center gap-4 p-2">
       {sizes.map((size) => (
         <div key={size.name} className="flex flex-col items-center gap-2">
           <Input inputSize={size.name} placeholder={size.label} />
-          <span className="text-sm text-muted-foreground">{size.name}</span>
         </div>
       ))}
     </div>

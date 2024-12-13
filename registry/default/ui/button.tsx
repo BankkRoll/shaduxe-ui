@@ -35,15 +35,18 @@ const buttonVariants = cva(
           "relative after:absolute after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
+        xs: " h-8 px-3",
+        sm: "h-9 px-3",
+        md: "h-10 px-4 py-2",
+        lg: "h-11 px-8",
+        xl: "h-12 px-8",
+        "2xl": "h-14 px-8",
       },
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
+      size: "md",
     },
   },
 );

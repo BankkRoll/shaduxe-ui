@@ -191,4 +191,9 @@ export const examples: Registry = [
     type: "registry:ui",
     files: ["example/input-pill-icon-example.tsx"],
   },
+  {
+    name: "input-pill-icon-password-example",
+    type: "registry:ui",
+    files: ["example/input-pill-icon-password-example.tsx"],
+  },
 ];
