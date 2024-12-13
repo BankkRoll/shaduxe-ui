@@ -1,149 +1,149 @@
----
-title: Button
-description: Displays a button or a component that looks like a button.
-author: bankk
-published: true
----
-
-## Installation
-
-<Tabs defaultValue="cli">
-
-<TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
-  <TabsTrigger value="manual">Manual</TabsTrigger>
-</TabsList>
-
-<TabsContent value="cli">
-
-```bash
-npx shadcn@latest add "https://ui.shaduxe.com/r/button"
-```
-
-</TabsContent>
-
-<TabsContent value="manual">
-
-<Steps>
-
-<Step title="Copy the Code">
-  Copy and paste the following code snippet into your project:
-</Step>
-
-<ComponentSource name="button" />
-
-<Step>Update `tailwind.config.js`:</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {6,9-19} showLineNumbers
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        shine: "shine var(--duration) infinite linear",
-      },
-      keyframes: {
-        shine: {
-          "0%": {
-            "background-position": "0% 0%",
-          },
-          "50%": {
-            "background-position": "100% 100%",
-          },
-          to: {
-            "background-position": "0% 0%",
+  ---
+  title: Button
+  description: Displays a button or a component that looks like a button.
+  author: bankk
+  published: true
+  ---
+  
+  ## Installation
+  
+  <Tabs defaultValue="cli">
+  
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="cli">
+  
+  ```bash
+  npx shadcn@latest add "https://ui.shaduxe.com/r/button"
+  ```
+  
+  </TabsContent>
+  
+  <TabsContent value="manual">
+  
+  <Steps>
+  
+  <Step title="Copy the Code">
+    Copy and paste the following code snippet into your project:
+  </Step>
+  
+  <ComponentSource name="button" />
+  
+  <Step>Update `tailwind.config.js`:</Step>
+  
+  Add the following animations to your `tailwind.config.js` file:
+  
+  ```js title="tailwind.config.js" {6,9-19} showLineNumbers
+  /** @type {import('tailwindcss').Config} */
+  module.exports = {
+    theme: {
+      extend: {
+        animation: {
+          shine: "shine var(--duration) infinite linear",
+        },
+        keyframes: {
+          shine: {
+            "0%": {
+              "background-position": "0% 0%",
+            },
+            "50%": {
+              "background-position": "100% 100%",
+            },
+            to: {
+              "background-position": "0% 0%",
+            },
           },
         },
       },
     },
-  },
-}
-```
-
-<Step>Make sure the import path is correct and matches your project setup:</Step>
-
-```tsx {1,6} showLineNumbers
-import { Button } from "@/components/ui/button";
-
-export default function Home() {
-  return (
-    <div className="flex items-center justify-center h-screen">
-      <Button>Click me</Button>
-    </div>
-  );
-}
-```
-
-</Steps>
-
-</TabsContent>
-
-</Tabs>
-
-## Examples
-
-### Default Button
-
-<ComponentPreview name="button-default-example" />
-
-### Secondary Button
-
-<ComponentPreview name="button-secondary-example" />
-
-### Outline Button
-
-<ComponentPreview name="button-outline-example" />
-
-### Destructive Button
-
-<ComponentPreview name="button-destructive-example" />
-
-### Ghost Button
-
-<ComponentPreview name="button-ghost-example" />
-
-### Link Button
-
-<ComponentPreview name="button-link-example" />
-
-### Expand Icon Button
-
-<ComponentPreview name="button-expand-icon-example" />
-
-### Shine Button
-
-<ComponentPreview name="button-shine-example" />
-
-### Gooey Right Button
-
-<ComponentPreview name="button-gooey-right-example" />
-
-## Props
-
-| Prop         | Type                                                     | Description                                       | Default    |
-|--------------|----------------------------------------------------------|---------------------------------------------------|------------|
-| variant      | `default` \| `destructive` \| `outline` \| `secondary` \| `ghost` \| `link` \| `expandIcon` \| `ringHover` \| `ringHoverOutline` \| `shine` \| `gooeyRight` \| `gooeyLeft` \| `linkHover1` \| `linkHover2` | Button style variant                  | `default`  |
-| size         | `icon` \| `xs` \| `sm` \| `md` \| `lg` \| `xl` \| `2xl`   | Size of the button                                | `md`       |
-| asChild      | `boolean`                                                | Render as a child component                       | `false`    |
-| Icon         | `React.ElementType`                                      | Icon component to display                         | -          |
-| iconPlacement| `left` \| `right`                                        | Position of the icon relative to the text         | -          |
-| className    | `string`                                                 | Additional CSS classes                            | -          |
-
-### Supported HTML Attributes
-
-Because the Button uses Radix UI, it inherits and supports **all standard HTML button attributes**, including:
-
-- `onClick`
-- `disabled`
-- `type` (`"button"`, `"submit"`, `"reset"`)
-- `form`
-- `formAction`
-- `name`
-- `value`
-- `aria-*` attributes
-- `data-*` attributes
-- Event handlers like `onMouseEnter`, `onFocus`, etc.
-
-The Button component uses Radix UI's primitives, ensuring proper accessibility, keyboard navigation and semantic HTML.
+  }
+  ```
+  
+  <Step>Make sure the import path is correct and matches your project setup:</Step>
+  
+  ```tsx {1,6} showLineNumbers
+  import { Button } from "@/components/ui/button";
+  
+  export default function Home() {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Button>Click me</Button>
+      </div>
+    );
+  }
+  ```
+  
+  </Steps>
+  
+  </TabsContent>
+  
+  </Tabs>
+  
+  ## Examples
+  
+  ### Default Button
+  
+  <ComponentPreview name="button-default-example" />
+  
+  ### Secondary Button
+  
+  <ComponentPreview name="button-secondary-example" />
+  
+  ### Outline Button
+  
+  <ComponentPreview name="button-outline-example" />
+  
+  ### Destructive Button
+  
+  <ComponentPreview name="button-destructive-example" />
+  
+  ### Ghost Button
+  
+  <ComponentPreview name="button-ghost-example" />
+  
+  ### Link Button
+  
+  <ComponentPreview name="button-link-example" />
+  
+  ### Expand Icon Button
+  
+  <ComponentPreview name="button-expand-icon-example" />
+  
+  ### Shine Button
+  
+  <ComponentPreview name="button-shine-example" />
+  
+  ### Gooey Right Button
+  
+  <ComponentPreview name="button-gooey-right-example" />
+  
+  ## Props
+  
+  | Prop         | Type                                                     | Description                                       | Default    |
+  |--------------|----------------------------------------------------------|---------------------------------------------------|------------|
+  | variant      | `default` \| `destructive` \| `outline` \| `secondary` \| `ghost` \| `link` \| `expandIcon` \| `ringHover` \| `ringHoverOutline` \| `shine` \| `gooeyRight` \| `gooeyLeft` \| `linkHover1` \| `linkHover2` | Button style variant                  | `default`  |
+  | size         | `icon` \| `xs` \| `sm` \| `md` \| `lg` \| `xl` \| `2xl`   | Size of the button                                | `md`       |
+  | asChild      | `boolean`                                                | Render as a child component                       | `false`    |
+  | Icon         | `React.ElementType`                                      | Icon component to display                         | -          |
+  | iconPlacement| `left` \| `right`                                        | Position of the icon relative to the text         | -          |
+  | className    | `string`                                                 | Additional CSS classes                            | -          |
+  
+  ### Supported HTML Attributes
+  
+  Because the Button uses Radix UI, it inherits and supports **all standard HTML button attributes**, including:
+  
+  - `onClick`
+  - `disabled`
+  - `type` (`"button"`, `"submit"`, `"reset"`)
+  - `form`
+  - `formAction`
+  - `name`
+  - `value`
+  - `aria-*` attributes
+  - `data-*` attributes
+  - Event handlers like `onMouseEnter`, `onFocus`, etc.
+  
+  The Button component uses Radix UI's primitives, ensuring proper accessibility, keyboard navigation and semantic HTML.
