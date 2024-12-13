@@ -102,12 +102,12 @@ export const docsConfig: DocsConfig = {
           label: "NEW",
           items: [],
         },
-        {
-          title: "Button",
-          href: "/docs/components/button",
-          label: "NEW",
-          items: [],
-        },
+          {
+            title: "Button",
+            href: "/docs/components/button",
+            label: "NEW",
+            items: [],
+          },
         {
           title: "Input",
           href: "/docs/components/input",
