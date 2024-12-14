@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "example/input-default-icon-example.tsx",
-      "content": "import { Input } from \"@/components/ui/input\";\nimport { Search } from \"lucide-react\";\n\nconst sizes = [\n  { name: \"xs\", label: \"XSmall\" },\n  { name: \"sm\", label: \"Small\" },\n  { name: \"md\", label: \"Medium\" },\n  { name: \"lg\", label: \"Large\" },\n  { name: \"xl\", label: \"XLarge\" },\n] as const;\n\nexport default function InputIconExample() {\n  return (\n    <div className=\"flex flex-col space-y-4 p-2\">\n      {sizes.map((size) => (\n        <div key={size.name} className=\"flex flex-col items-center gap-2\">\n          <Input\n            inputSize={size.name}\n            placeholder=\"Search...\"\n            Icon={Search}\n            iconPlacement=\"left\"\n          />\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "content": "import { Input } from \"@/components/ui/input\";\nimport { Search } from \"lucide-react\";\n\nconst sizes = [\n  { name: \"xs\", label: \"XSmall\" },\n  { name: \"sm\", label: \"Small\" },\n  { name: \"md\", label: \"Medium\" },\n  { name: \"lg\", label: \"Large\" },\n  { name: \"xl\", label: \"XLarge\" },\n] as const;\n\nexport default function InputIconExample() {\n  return (\n    <div className=\"flex flex-col space-y-4 p-2\">\n      {sizes.map((size) => (\n        <div key={size.name} className=\"flex flex-col items-center gap-2\">\n          <Input\n            inputSize={size.name}\n            placeholder={size.label}\n            Icon={Search}\n            iconPlacement=\"left\"\n          />\n        </div>\n      ))}\n    </div>\n  );\n}\n",
       "type": "registry:ui",
       "target": ""
     }
