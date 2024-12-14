@@ -18,7 +18,7 @@ export default function InputIconExample() {
             inputSize={size.name}
             variant="underline"
             type="password"
-            placeholder="Enter password"
+            placeholder={size.label}
             Icon={Lock}
             iconPlacement="left"
           />

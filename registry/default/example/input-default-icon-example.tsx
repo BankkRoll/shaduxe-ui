@@ -16,7 +16,7 @@ export default function InputIconExample() {
         <div key={size.name} className="flex flex-col items-center gap-2">
           <Input
             inputSize={size.name}
-            placeholder="Search..."
+            placeholder={size.label}
             Icon={Search}
             iconPlacement="left"
           />

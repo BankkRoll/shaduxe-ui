@@ -17,7 +17,7 @@ export default function InputIconExample() {
           <Input
             inputSize={size.name}
             variant="pill"
-            placeholder="Enter email"
+            placeholder={size.label}
             Icon={Mail}
             iconPlacement="right"
           />
