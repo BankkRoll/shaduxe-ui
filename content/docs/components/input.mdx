@@ -7,6 +7,12 @@ published: true
 
 ## Installation
 
+<Callout>
+
+**Note:** We have the exact same installation process as [shadcn/ui](https://ui.shadcn.com/docs/installation/).
+
+</Callout>
+
 <Tabs defaultValue="cli">
 
 <TabsList>
@@ -26,13 +32,13 @@ npx shadcn@latest add "https://ui.shaduxe.com/r/input"
 
 <Steps>
 
-<Step title="Copy and paste the following code into your project.">
+<Step title="Copy the Code">
+    Copy and paste the following code snippet into your project:
+</Step>
 
 <ComponentSource name="input" />
 
-</Step>
-
-<Step title="Update the import paths to match your project setup.">
+<Step>Make sure the import path is correct and matches your project setup:</Step>
 
 ```tsx {1,6} showLineNumbers
 import { Input } from "@/components/ui/input";
@@ -45,8 +51,6 @@ export default function Home() {
   );
 }
 ```
-
-</Step>
 
 </Steps>
 

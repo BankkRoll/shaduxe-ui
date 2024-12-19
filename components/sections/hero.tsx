@@ -32,7 +32,7 @@ export default function Hero() {
   }, [controls, inView]);
 
   return (
-    <div className="container mx-auto px-4 py-16 md:py-32 max-w-7xl">
+    <div className="overflow-hidden container mx-auto px-4 py-16 md:py-32 max-w-7xl">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
         <motion.div
           className="flex-1"

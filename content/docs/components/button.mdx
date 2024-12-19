@@ -7,6 +7,12 @@ published: true
 
 ## Installation
 
+<Callout>
+
+**Note:** We have the exact same installation process as [shadcn/ui](https://ui.shadcn.com/docs/installation/).
+
+</Callout>
+
 <Tabs defaultValue="cli">
 
 <TabsList>
@@ -27,16 +33,14 @@ npx shadcn@latest add "https://ui.shaduxe.com/r/button"
 <Steps>
 
 <Step title="Copy the Code">
-  Copy and paste the following code snippet into your project:
+    Copy and paste the following code snippet into your project:
 </Step>
 
 <ComponentSource name="button" />
 
-<Step>Update `tailwind.config.js`:</Step>
+<Step>Add the following animations to your `tailwind.config.js` file:</Step>
 
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {6,9-19} showLineNumbers
+```js {6,9-19} showLineNumbers
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
