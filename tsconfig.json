@@ -33,7 +33,7 @@
     ".next/types/**/*.ts",
     ".content-colletions/generated",
     "registry/default/example/feature-lis"
-, "content/docs/components/button.mdx"  ],
+, "content/docs/components/button.mdx", "content/docs/blocks/pricing-two.mdx"  ],
   "exclude": [
     "node_modules",
     "packages/**/*",

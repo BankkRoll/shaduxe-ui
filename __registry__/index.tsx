@@ -489,6 +489,39 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "pricing-one": {
+      name: "pricing-one",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: ["registry/default/blocks/pricing-one.tsx"],
+      component: React.lazy(() => import("@/registry/default/blocks/pricing-one.tsx")),
+      source: "__registry__/default/blocks/pricing-one.tsx",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "pricing-two": {
+      name: "pricing-two",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: ["registry/default/blocks/pricing-two.tsx"],
+      component: React.lazy(() => import("@/registry/default/blocks/pricing-two.tsx")),
+      source: "__registry__/default/blocks/pricing-two.tsx",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "pricing-three": {
+      name: "pricing-three",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: ["registry/default/blocks/pricing-three.tsx"],
+      component: React.lazy(() => import("@/registry/default/blocks/pricing-three.tsx")),
+      source: "__registry__/default/blocks/pricing-three.tsx",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "utils": {
       name: "utils",
       type: "registry:lib",

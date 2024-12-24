@@ -76,6 +76,7 @@
     "gray-matter": "^4.0.3",
     "jotai": "^2.10.0",
     "lodash.template": "^4.5.0",
+    "lucide": "^0.469.0",
     "lucide-react": "^0.401.0",
     "micro": "^10.0.1",
     "next": "14.2.13",
