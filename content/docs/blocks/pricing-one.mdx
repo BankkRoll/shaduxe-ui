@@ -1,0 +1,90 @@
+---
+title: Pricing One
+description: A pricing section for your website.
+author: bankk
+published: true
+---
+
+## Installation
+
+<Callout>
+
+**Note:** We have the exact same installation process as [shadcn/ui](https://ui.shadcn.com/docs/installation/).
+
+</Callout>
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.shaduxe.com/r/pricing-one"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step title="Add shadcn/ui Components">
+    Add shadcn/ui Components
+</Step>
+
+```tsx
+npx shadcn@latest add button badge
+```
+
+<Step title="Install Packages">
+    Install Packages
+</Step>
+
+```tsx
+npm install lucide-react framer-motion
+```
+
+<Step title="Copy the Code">
+    Copy and paste the following code snippet into your project:
+</Step>
+
+<ComponentSource name="pricing-one" />
+
+<Step>Make sure the import path is correct and matches your project setup:</Step>
+
+```tsx {1,5} showLineNumbers
+import { PricingOne } from "@/components/blocks/pricing-one";
+
+export default function Home() {
+  return (
+      <PricingOne />
+  );
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { PricingOne } from "@/components/blocks/pricing-one";
+```
+
+```tsx
+<PricingOne />
+```
+
+## Examples
+
+<ComponentPreview name="pricing-one" />
+
+
+## Props

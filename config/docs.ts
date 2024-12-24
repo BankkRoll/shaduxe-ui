@@ -99,30 +99,48 @@ export const docsConfig: DocsConfig = {
         {
           title: "Avatar",
           href: "/docs/components/avatar",
-          label: "NEW",
           items: [],
         },
         {
           title: "Button",
           href: "/docs/components/button",
-          label: "NEW",
           items: [],
         },
         {
           title: "Input",
           href: "/docs/components/input",
-          label: "NEW",
           items: [],
         },
         {
           title: "Switch",
           href: "/docs/components/switch",
-          label: "NEW",
           items: [],
         },
         {
           title: "Tabs",
           href: "/docs/components/tabs",
+          items: [],
+        },
+      ],
+    },
+    {
+      title: "Pricing Blocks",
+      items: [
+        {
+          title: "Pricing One",
+          href: "/docs/blocks/pricing-one",
+          label: "NEW",
+          items: [],
+        },
+        {
+          title: "Pricing Two",
+          href: "/docs/blocks/pricing-two",
+          label: "NEW",
+          items: [],
+        },
+        {
+          title: "Pricing Three",
+          href: "/docs/blocks/pricing-three",
           label: "NEW",
           items: [],
         },

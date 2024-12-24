@@ -57,6 +57,15 @@ export default function Hero() {
             perfect extension for your shadcn/ui components.
           </p>
           <div className="flex items-center space-x-4 mt-8">
+            <Link href="/docs/blocks/pricing-one" passHref>
+              <Button
+                variant="expandIcon"
+                Icon={ArrowRight}
+                iconPlacement="right"
+              >
+                Browse blocks
+              </Button>
+            </Link>
             <Link href="/docs/components/avatar" passHref>
               <Button
                 variant="expandIcon"
@@ -175,7 +184,9 @@ export default function Hero() {
                   <TabsTrigger value="tab3">Tab 3</TabsTrigger>
                   <TabsTrigger value="tab4">Tab 4</TabsTrigger>
                   <TabsTrigger value="tab5">Tab 5</TabsTrigger>
-                  <TabsTrigger className="hidden md:flex" value="tab6">Tab 6</TabsTrigger>
+                  <TabsTrigger className="hidden md:flex" value="tab6">
+                    Tab 6
+                  </TabsTrigger>
                 </TabsList>
               </Tabs>
             </div>
