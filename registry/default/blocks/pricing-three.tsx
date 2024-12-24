@@ -11,12 +11,22 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
-const CONFIG = {
-  badgeLabel: "Pricing",
-  heading: "Simple, Transparent Pricing",
-  subheading:
-    "Choose the plan that's right for you and start optimizing your workflow today.",
-  plans: [
+interface Feature {
+  name: string;
+  included: boolean;
+}
+
+interface Plan {
+  name: string;
+  price: string;
+  description: string;
+  features: Feature[];
+  ctaLabel: string;
+  isPrimary: boolean;
+}
+
+export default function PricingSection() {
+  const plans: Plan[] = [
     {
       name: "Basic",
       price: "$9",
@@ -59,11 +69,7 @@ const CONFIG = {
       ctaLabel: "Contact Sales",
       isPrimary: false,
     },
-  ],
-};
-
-export default function PricingSection() {
-  const { badgeLabel, heading, subheading, plans } = CONFIG;
+  ];
 
   return (
     <section className="py-24 sm:py-32">
@@ -75,7 +81,7 @@ export default function PricingSection() {
             transition={{ duration: 0.5 }}
           >
             <Badge variant="secondary" className="mb-4">
-              {badgeLabel}
+              Pricing
             </Badge>
           </motion.div>
           <motion.h2
@@ -84,7 +90,7 @@ export default function PricingSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {heading}
+            Simple, Transparent Pricing
           </motion.h2>
           <motion.p
             className="mt-4 text-lg text-muted-foreground"
@@ -92,7 +98,8 @@ export default function PricingSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {subheading}
+            Choose the plan that's right for you and start optimizing your
+            workflow today.
           </motion.p>
         </div>
 

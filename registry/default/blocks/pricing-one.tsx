@@ -65,11 +65,6 @@ export default function PricingComponent() {
     },
   ];
 
-  const badgeLabel = "Launch Your Product";
-  const heading = "No credit card required";
-  const subheading =
-    "Launch smarter, faster, and better with pre-integrated tools like Supabase, Stripe, Resend, and Framer Motion. Emerald empowers your SaaS journey with a modern, scalable architecture.";
-
   return (
     <div className="w-full py-10 md:py-20">
       <div className="container mx-auto px-4">
@@ -79,7 +74,7 @@ export default function PricingComponent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge>{badgeLabel}</Badge>
+            <Badge>Launch Your Product</Badge>
           </motion.div>
           <motion.h2
             className="font-regular max-w-xl text-center text-3xl tracking-tighter md:text-5xl lg:text-7xl"
@@ -87,7 +82,7 @@ export default function PricingComponent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {heading}
+            No credit card required
           </motion.h2>
           <motion.p
             className="max-w-xl text-center text-base leading-relaxed tracking-tight text-gray-400 md:text-lg"
@@ -95,7 +90,9 @@ export default function PricingComponent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            {subheading}
+            Launch smarter, faster, and better with pre-integrated tools like
+            Supabase, Stripe, Resend, and Framer Motion. Emerald empowers your
+            SaaS journey with a modern, scalable architecture.
           </motion.p>
         </div>
         <motion.div
