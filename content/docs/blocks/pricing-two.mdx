@@ -1,0 +1,110 @@
+---
+title: Pricing Two
+description: A pricing section for your website.
+author: bankk
+published: true
+component: true
+---
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Single-card pricing showcase with feature highlights</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Animated entrance with progressive reveal of features</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Responsive design that adapts to mobile and desktop</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Organized features and perks categories</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/pricing-two"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="pricing-two" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { PricingTwo } from "@/components/blocks/pricing-two"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5} showLineNumbers
+import { PricingTwo } from "@/components/blocks/pricing-two";
+
+export default function Home() {
+  return (
+    <PricingTwo />
+  );
+}
+```
+
+<ComponentPreview name="pricing-two" />
+
+## Props
+
+| Prop          | Type                | Default   | Description                    |
+| ------------- | ------------------- | --------- | ------------------------------ |
+| className     | `string`            | -         | Additional CSS classes         |
+| price         | `string`            | "$99"     | Price display                  |
+| originalPrice | `string`            | "$199"    | Original price (shown striked) |
+| title         | `string`            | "Ultimate Plan" | Plan title              |
+| description   | `string`            | -         | Short plan description         |
+| features      | `string[]`          | See below | Array of features             |
+| perks         | `string[]`          | See below | Array of perks                |
+| ctaLabel      | `string`            | "Get Started" | Call-to-action button text |
+
+## Customization
+
+You can customize the pricing block by passing props:
+
+```tsx
+<PricingTwo
+  title="Pro Plan"
+  price="$49"
+  originalPrice="$99"
+  description="Everything you need to grow your business"
+  features={[
+    "Custom Domain",
+    "Advanced Analytics",
+    "API Access",
+    "Team Collaboration"
+  ]}
+  perks={[
+    "Priority Support",
+    "Dedicated Account Manager",
+    "Training Sessions",
+    "Custom Integrations"
+  ]}
+  ctaLabel="Subscribe Now"
+/>
+```

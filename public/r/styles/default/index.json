@@ -1,0 +1,573 @@
+{
+  "avatar": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "avatar",
+    "type": "registry:ui",
+    "title": "Avatar",
+    "description": "An image element with a fallback for representing the user.",
+    "author": "shaduxe-ui",
+    "files": [
+      {
+        "path": "default/ui/avatar",
+        "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as AvatarPrimitive from \"@radix-ui/react-avatar\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\nconst avatarVariants = cva(\"relative flex shrink-0 overflow-hidden\", {\n  variants: {\n    variant: {\n      circle: \"rounded-full\",\n      square: \"rounded-none\",\n      rounded: \"rounded-md\",\n    },\n    size: {\n      xs: \"size-6\",\n      sm: \"size-8\",\n      md: \"size-10\",\n      lg: \"size-12\",\n      xl: \"size-16\",\n      \"2xl\": \"size-20\",\n    },\n  },\n  defaultVariants: {\n    variant: \"circle\",\n    size: \"md\",\n  },\n});\n\nconst avatarImageVariants = cva(\"aspect-square size-full\", {\n  variants: {\n    variant: {\n      circle: \"rounded-full\",\n      square: \"rounded-none\",\n      rounded: \"rounded-md\",\n    },\n  },\n  defaultVariants: {\n    variant: \"circle\",\n  },\n});\n\nexport interface AvatarProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof avatarVariants> {}\n\nconst Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(\n  ({ className, variant, size, ...props }, ref) => (\n    <AvatarPrimitive.Root\n      ref={ref}\n      className={cn(avatarVariants({ variant, size }), className)}\n      {...props}\n    >\n      {React.Children.map(props.children, (child) =>\n        React.isValidElement(child)\n          ? React.cloneElement(child as React.ReactElement<any>, {\n              variant,\n              className: cn(\n                (child as React.ReactElement<any>).props.className,\n                avatarImageVariants({ variant }),\n              ),\n            })\n          : child,\n      )}\n    </AvatarPrimitive.Root>\n  ),\n);\nAvatar.displayName = AvatarPrimitive.Root.displayName;\n\nexport interface AvatarImageProps\n  extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image> {\n  variant?: VariantProps<typeof avatarVariants>[\"variant\"];\n}\n\nconst AvatarImage = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Image>,\n  AvatarImageProps\n>(({ className, variant, ...props }, ref) => (\n  <AvatarPrimitive.Image\n    ref={ref}\n    className={cn(avatarImageVariants({ variant }), className)}\n    {...props}\n  />\n));\nAvatarImage.displayName = AvatarPrimitive.Image.displayName;\n\nconst AvatarFallback = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Fallback>,\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>\n>(({ className, ...props }, ref) => (\n  <AvatarPrimitive.Fallback\n    ref={ref}\n    className={cn(\n      \"flex size-full items-center justify-center bg-muted\",\n      className,\n    )}\n    {...props}\n  />\n));\nAvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;\n\nexport { Avatar, AvatarImage, AvatarFallback };",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  "button": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "button",
+    "type": "registry:ui",
+    "title": "Button",
+    "description": "Interactive button with multiple variants and animations.",
+    "author": "shaduxe-ui",
+    "files": [
+      {
+        "path": "default/ui/button",
+        "content": "import * as React from \"react\";\nimport { Slot, Slottable } from \"@radix-ui/react-slot\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-destructive-foreground hover:bg-destructive/90\",\n        outline:\n          \"border border-input bg-background hover:bg-accent hover:text-accent-foreground\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost: \"hover:bg-accent hover:text-accent-foreground\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n        expandIcon:\n          \"group relative bg-primary text-primary-foreground hover:bg-primary/90\",\n        ringHover:\n          \"bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:ring-2 hover:ring-primary/90 hover:ring-offset-2\",\n        ringHoverOutline:\n          \"border border-input bg-background transition-all duration-300  hover:ring-2 hover:ring-primary/90 hover:ring-offset-2\",\n        shine:\n          \"animate-shine bg-gradient-to-r from-primary via-primary/75 to-primary bg-[length:400%_100%] text-primary-foreground \",\n        gooeyRight:\n          \"relative z-0 overflow-hidden bg-primary from-zinc-400 text-primary-foreground transition-all duration-500 before:absolute before:inset-0 before:-z-10 before:translate-x-[150%] before:translate-y-[150%] before:scale-[2.5] before:rounded-[100%] before:bg-gradient-to-r before:transition-transform before:duration-1000  hover:before:translate-x-[0%] hover:before:translate-y-[0%] \",\n        gooeyLeft:\n          \"relative z-0 overflow-hidden bg-primary from-zinc-400 text-primary-foreground transition-all duration-500 after:absolute after:inset-0 after:-z-10 after:translate-x-[-150%] after:translate-y-[150%] after:scale-[2.5] after:rounded-[100%] after:bg-gradient-to-l after:transition-transform after:duration-1000  hover:after:translate-x-[0%] hover:after:translate-y-[0%] \",\n        linkHover1:\n          \"relative after:absolute after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-left after:scale-x-100 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-right hover:after:scale-x-0\",\n        linkHover2:\n          \"relative after:absolute after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100\",\n      },\n      size: {\n        icon: \"h-10 w-10\",\n        xs: \" h-8 px-3\",\n        sm: \"h-9 px-3\",\n        md: \"h-10 px-4 py-2\",\n        lg: \"h-11 px-8\",\n        xl: \"h-12 px-8\",\n        \"2xl\": \"h-14 px-8\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"md\",\n    },\n  },\n);\n\ninterface IconProps {\n  Icon: React.ElementType;\n  iconPlacement: \"left\" | \"right\";\n}\n\ninterface IconRefProps {\n  Icon?: never;\n  iconPlacement?: undefined;\n}\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  asChild?: boolean;\n}\n\nexport type ButtonIconProps = IconProps | IconRefProps;\n\nconst Button = React.forwardRef<\n  HTMLButtonElement,\n  ButtonProps & ButtonIconProps\n>(\n  (\n    {\n      className,\n      variant,\n      size,\n      asChild = false,\n      Icon,\n      iconPlacement,\n      ...props\n    },\n    ref,\n  ) => {\n    const Comp = asChild ? Slot : \"button\";\n    return (\n      <Comp\n        className={cn(buttonVariants({ variant, size, className }))}\n        ref={ref}\n        {...props}\n      >\n        {Icon && iconPlacement === \"left\" && (\n          <div className=\"group-hover:translate-x-100 w-0 translate-x-[0%] pr-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:pr-2 group-hover:opacity-100\">\n            <Icon />\n          </div>\n        )}\n        <Slottable>{props.children}</Slottable>\n        {Icon && iconPlacement === \"right\" && (\n          <div className=\"w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-2 group-hover:opacity-100\">\n            <Icon />\n          </div>\n        )}\n      </Comp>\n    );\n  },\n);\nButton.displayName = \"Button\";\n\nexport { Button, buttonVariants };",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  "input": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "input",
+    "type": "registry:ui",
+    "title": "Input",
+    "description": "Form input component with various styles and icon support.",
+    "author": "shaduxe-ui",
+    "files": [
+      {
+        "path": "default/ui/input",
+        "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\nconst inputVariants = cva(\n  \"flex w-full rounded-md text-sm transition-all file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border border-input bg-background shadow-sm focus-visible:ring-1 focus-visible:ring-ring\",\n        underline:\n          \"border-b border-input bg-transparent px-0 focus-visible:border-primary rounded-none focus-visible:ring-0 focus-visible:outline-none transition-colors duration-200\",\n        pill: \"rounded-full border border-input bg-background px-6 focus-visible:ring-1 focus-visible:ring-ring\",\n      },\n      inputSize: {\n        xs: \"h-7 px-2 text-xs\",\n        sm: \"h-8 px-3 text-sm\",\n        md: \"h-10 px-4 py-2\",\n        lg: \"h-12 px-6 text-lg\",\n        xl: \"h-14 px-8 text-xl\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      inputSize: \"md\",\n    },\n  },\n);\n\ninterface IconProps {\n  Icon: React.ElementType;\n  iconPlacement: \"left\" | \"right\";\n}\n\ninterface IconlessProps {\n  Icon?: never;\n  iconPlacement?: undefined;\n}\n\nexport interface InputProps\n  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, \"size\">,\n    VariantProps<typeof inputVariants> {\n  asChild?: boolean;\n}\n\nexport type InputIconProps = IconProps | IconlessProps;\n\nconst Input = React.forwardRef<HTMLInputElement, InputProps & InputIconProps>(\n  (\n    {\n      className,\n      variant,\n      inputSize,\n      asChild = false,\n      type,\n      Icon,\n      iconPlacement,\n      ...props\n    },\n    ref,\n  ) => {\n    const Comp = asChild ? Slot : \"input\";\n\n    const inputClassName = cn(\n      inputVariants({ variant, inputSize, className }),\n      Icon && (iconPlacement === \"left\" ? \"pl-8\" : \"pr-8\"),\n    );\n\n    return (\n      <div className=\"relative\">\n        {Icon && (\n          <div\n            className={cn(\n              \"absolute top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none\",\n              iconPlacement === \"left\" ? \"left-2\" : \"right-2\",\n            )}\n          >\n            <Icon className=\"w-5 h-5\" />\n          </div>\n        )}\n        <Comp type={type} className={inputClassName} ref={ref} {...props} />\n      </div>\n    );\n  },\n);\nInput.displayName = \"Input\";\n\nexport { Input, inputVariants };",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  "mode-toggle": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "mode-toggle",
+    "type": "registry:ui",
+    "title": "Mode Toggle",
+    "description": "A toggle for switching between light and dark modes.",
+    "author": "shaduxe-ui",
+    "dependencies": [
+      "next-themes"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "default/ui/mode-toggle",
+        "content": "\"use client\";\n\nimport { MoonIcon, SunIcon } from \"@radix-ui/react-icons\";\n\nimport { Button } from \"@/components/ui/button\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { useTheme } from \"next-themes\";\n\nconst ModeToggle = React.forwardRef<\n  HTMLButtonElement,\n  React.ComponentPropsWithoutRef<typeof Button> & { className?: string }\n>(({ className, ...props }, ref) => {\n  const { theme, setTheme } = useTheme();\n\n  return (\n    <Button\n      ref={ref}\n      variant=\"outline\"\n      type=\"button\"\n      size=\"icon\"\n      className={cn(\"px-2\", className)}\n      aria-label=\"Toggle theme\"\n      onClick={() => setTheme(theme === \"dark\" ? \"light\" : \"dark\")}\n      {...props}\n    >\n      <SunIcon className=\"size-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200\" />\n      <MoonIcon className=\"hidden size-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200\" />\n    </Button>\n  );\n});\n\nModeToggle.displayName = \"ModeToggle\";\n\nexport default ModeToggle;",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  "switch": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "switch",
+    "type": "registry:ui",
+    "title": "Switch",
+    "description": "A control that allows the user to toggle between checked and not checked.",
+    "author": "shaduxe-ui",
+    "files": [
+      {
+        "path": "default/ui/switch",
+        "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as SwitchPrimitives from \"@radix-ui/react-switch\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\nimport { Sun, Moon } from \"lucide-react\";\n\nconst switchVariants = cva(\n  \"peer inline-flex shrink-0 cursor-pointer items-center border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input\",\n  {\n    variants: {\n      variant: {\n        default: \"rounded\",\n        rounded: \"rounded-full\",\n        square: \"rounded-none\",\n        ios: \"rounded-full data-[state=checked]:bg-green-400\",\n      },\n      size: {\n        icon: \"h-5 w-5\",\n        xs: \"h-3 w-6\",\n        sm: \"h-4 w-7\",\n        md: \"h-5 w-9\",\n        lg: \"h-6 w-11\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"md\",\n    },\n  },\n);\n\nconst switchThumbVariants = cva(\n  \"pointer-events-none block bg-background shadow-lg ring-0 transition-transform data-[state=unchecked]:translate-x-0\",\n  {\n    variants: {\n      variant: {\n        default: \"rounded\",\n        rounded: \"rounded-full\",\n        square: \"rounded-none\",\n        ios: \"rounded-full shadow-md\",\n      },\n      size: {\n        icon: \"h-4 w-4 data-[state=checked]:translate-x-0\",\n        xs: \"h-2 w-2 data-[state=checked]:translate-x-3\",\n        sm: \"h-3 w-3 data-[state=checked]:translate-x-3\",\n        md: \"h-4 w-4 data-[state=checked]:translate-x-4\",\n        lg: \"h-5 w-5 data-[state=checked]:translate-x-5\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"md\",\n    },\n  },\n);\n\nexport interface SwitchProps\n  extends React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,\n    VariantProps<typeof switchVariants> {\n  thumbVariant?: VariantProps<typeof switchThumbVariants>[\"variant\"];\n  showLabels?: boolean;\n  labelOn?: string;\n  labelOff?: string;\n  showIcons?: boolean;\n}\n\nconst Switch = React.forwardRef<\n  React.ElementRef<typeof SwitchPrimitives.Root>,\n  SwitchProps\n>(\n  (\n    {\n      className,\n      variant,\n      size,\n      thumbVariant,\n      showLabels,\n      labelOn = \"On\",\n      labelOff = \"Off\",\n      showIcons,\n      checked,\n      defaultChecked,\n      onCheckedChange,\n      ...props\n    },\n    ref,\n  ) => {\n    const iconSize = React.useMemo(() => {\n      switch (size) {\n        case \"icon\":\n          return 12;\n        case \"xs\":\n          return 8;\n        case \"sm\":\n          return 10;\n        case \"md\":\n          return 12;\n        case \"lg\":\n          return 14;\n        default:\n          return 12;\n      }\n    }, [size]);\n\n    const [internalChecked, setInternalChecked] = React.useState(\n      defaultChecked || false,\n    );\n\n    const isControlled = checked !== undefined;\n    const isChecked = isControlled ? checked : internalChecked;\n\n    const handleCheckedChange = (newChecked: boolean) => {\n      if (!isControlled) {\n        setInternalChecked(newChecked);\n      }\n      onCheckedChange?.(newChecked);\n    };\n\n    return (\n      <div className=\"inline-flex items-center\">\n        {showLabels && (\n          <span\n            className={cn(\n              \"mr-2 text-sm\",\n              isChecked ? \"text-primary/80\" : \"text-primary\",\n            )}\n          >\n            {labelOff}\n          </span>\n        )}\n        <SwitchPrimitives.Root\n          className={cn(switchVariants({ variant, size, className }))}\n          checked={isChecked}\n          onCheckedChange={handleCheckedChange}\n          {...props}\n          ref={ref}\n        >\n          <SwitchPrimitives.Thumb\n            className={cn(\n              switchThumbVariants({\n                variant: thumbVariant || variant,\n                size,\n              }),\n              \"flex items-center justify-center\",\n            )}\n          >\n            {showIcons &&\n              (isChecked ? <Sun size={iconSize} /> : <Moon size={iconSize} />)}\n          </SwitchPrimitives.Thumb>\n        </SwitchPrimitives.Root>\n        {showLabels && (\n          <span\n            className={cn(\n              \"ml-2 text-sm\",\n              isChecked ? \"text-primary\" : \"text-primary/80\",\n            )}\n          >\n            {labelOn}\n          </span>\n        )}\n      </div>\n    );\n  },\n);\nSwitch.displayName = SwitchPrimitives.Root.displayName;\n\nexport { Switch };",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  "tabs": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "tabs",
+    "type": "registry:ui",
+    "title": "Tabs",
+    "description": "A set of layered sections of content that display one panel at a time.",
+    "author": "shaduxe-ui",
+    "files": [
+      {
+        "path": "default/ui/tabs",
+        "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as TabsPrimitive from \"@radix-ui/react-tabs\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\nconst tabsVariants = cva(\"\", {\n  variants: {\n    variant: {\n      default: \"\",\n      underline: \"\",\n      pill: \"\",\n      rounded: \"\",\n      folder: \"\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n  },\n});\n\nconst tabsListVariants = cva(\n  \"inline-flex items-center justify-center text-muted-foreground\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-muted p-1 rounded-md\",\n        underline:\n          \"space-x-6 bg-transparent space-x-4 p-0 border-b rounded-none\",\n        pill: \"bg-transparent p-0 gap-0.5\",\n        rounded: \"bg-muted p-2 rounded-full\",\n        folder: \"space-x-1 border-b\",\n      },\n    },\n  },\n);\n\nconst tabsTriggerVariants = cva(\n  \"inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"rounded-sm data-[state=active]:bg-background data-[state=inactive]:hover:bg-primary/5 data-[state=active]:text-foreground data-[state=active]:shadow-sm\",\n        underline:\n          \"rounded-none data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=inactive]:hover:text-foreground\",\n        pill: \"data-[state=active]:bg-primary data-[state=inactive]:bg-muted data-[state=inactive]:hover:bg-primary/20 data-[state=active]:text-primary-foreground  first:rounded-l-full last:rounded-r-full data-[state=active]:shadow-sm\",\n        rounded:\n          \"rounded-full data-[state=active]:bg-primary data-[state=inactive]:hover:bg-primary/5 data-[state=active]:text-primary-foreground\",\n        folder:\n          \"h-9 px-3 rounded-t-lg -mb-[2px] transition-all duration-200 ease-in-out border border-transparent data-[state=inactive]:hover:bg-muted data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:border-border data-[state=active]:border-b-transparent hover:data-[state=active]:border-b-transparent\",\n      },\n    },\n  },\n);\n\nexport interface TabsProps\n  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>,\n    VariantProps<typeof tabsVariants> {}\n\nconst TabsContext = React.createContext<VariantProps<typeof tabsVariants>>({\n  variant: \"default\",\n});\n\nconst Tabs = React.forwardRef<\n  React.ElementRef<typeof TabsPrimitive.Root>,\n  TabsProps\n>(({ className, variant = \"default\", ...props }, ref) => (\n  <TabsContext.Provider value={{ variant }}>\n    <TabsPrimitive.Root\n      ref={ref}\n      className={cn(tabsVariants({ variant, className }))}\n      {...props}\n    />\n  </TabsContext.Provider>\n));\nTabs.displayName = TabsPrimitive.Root.displayName;\n\nconst TabsList = React.forwardRef<\n  React.ElementRef<typeof TabsPrimitive.List>,\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>\n>(({ className, ...props }, ref) => {\n  const { variant } = React.useContext(TabsContext);\n  return (\n    <TabsPrimitive.List\n      ref={ref}\n      className={cn(tabsListVariants({ variant }), className)}\n      {...props}\n    />\n  );\n});\nTabsList.displayName = TabsPrimitive.List.displayName;\n\nconst TabsTrigger = React.forwardRef<\n  React.ElementRef<typeof TabsPrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>\n>(({ className, ...props }, ref) => {\n  const { variant } = React.useContext(TabsContext);\n  return (\n    <TabsPrimitive.Trigger\n      ref={ref}\n      className={cn(tabsTriggerVariants({ variant }), className)}\n      {...props}\n    />\n  );\n});\nTabsTrigger.displayName = TabsPrimitive.Trigger.displayName;\n\nconst TabsContent = React.forwardRef<\n  React.ElementRef<typeof TabsPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>\n>(({ className, ...props }, ref) => (\n  <TabsPrimitive.Content\n    ref={ref}\n    className={cn(\n      \"mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n      className,\n    )}\n    {...props}\n  />\n));\nTabsContent.displayName = TabsPrimitive.Content.displayName;\n\nexport { Tabs, TabsList, TabsTrigger, TabsContent };",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  "avatar-demo": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "avatar-demo",
+    "type": "registry:ui",
+    "title": "Avatar Demo",
+    "description": "Examples showcasing avatar component variants and sizes.",
+    "author": "shaduxe-ui",
+    "registryDependencies": [
+      "avatar"
+    ],
+    "files": [
+      {
+        "path": "default/example/avatar-demo",
+        "content": "import { Avatar, AvatarFallback, AvatarImage } from \"../ui/avatar\";\n\n// Basic demo\nexport function AvatarDemo() {\n  return (\n    <Avatar>\n      <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n\n// Variant demos\nexport function AvatarCircle() {\n  return (\n    <Avatar variant=\"circle\">\n      <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n\nexport function AvatarSquare() {\n  return (\n    <Avatar variant=\"square\">\n      <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n\n// Size demos\nexport function AvatarSizes() {\n  return (\n    <div className=\"flex flex-col space-y-4\">\n      <Avatar size=\"xs\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar size=\"sm\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar size=\"md\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar size=\"lg\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar size=\"xl\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n    </div>\n  );\n}\n\n// Custom demos\nexport function AvatarWithFallback() {\n  return (\n    <Avatar>\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n\nexport const avatarVariants = {\n  demo: AvatarDemo,\n  circle: AvatarCircle,\n  square: AvatarSquare,\n  sizes: AvatarSizes,\n  withFallback: AvatarWithFallback,\n};",
+        "type": "registry:ui"
+      }
+    ],
+    "variants": {
+      "demo": {
+        "name": "demo",
+        "description": "demo variant of avatar",
+        "component": "AvatarDemo"
+      },
+      "circle": {
+        "name": "circle",
+        "description": "circle variant of avatar",
+        "component": "AvatarCircle"
+      },
+      "square": {
+        "name": "square",
+        "description": "square variant of avatar",
+        "component": "AvatarSquare"
+      },
+      "sizes": {
+        "name": "sizes",
+        "description": "sizes variant of avatar",
+        "component": "AvatarSizes"
+      },
+      "withFallback": {
+        "name": "withFallback",
+        "description": "withFallback variant of avatar",
+        "component": "AvatarWithFallback"
+      }
+    }
+  },
+  "button-demo": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "button-demo",
+    "type": "registry:ui",
+    "title": "Button Demo",
+    "description": "Examples showcasing button component variants, sizes, and icon placements.",
+    "author": "shaduxe-ui",
+    "dependencies": [
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "default/example/button-demo",
+        "content": "import { ArrowLeft, ArrowRight } from \"lucide-react\";\nimport { Button } from \"../ui/button\";\n\n// Basic demo\nexport function ButtonDemo() {\n  return <Button>Click me</Button>;\n}\n\n// Variant demos\nexport function ButtonDefault() {\n  return <Button variant=\"default\">Default</Button>;\n}\n\nexport function ButtonDestructive() {\n  return <Button variant=\"destructive\">Delete</Button>;\n}\n\nexport function ButtonOutline() {\n  return <Button variant=\"outline\">Outline</Button>;\n}\n\nexport function ButtonSecondary() {\n  return <Button variant=\"secondary\">Secondary</Button>;\n}\n\nexport function ButtonGhost() {\n  return <Button variant=\"ghost\">Ghost</Button>;\n}\n\nexport function ButtonLink() {\n  return <Button variant=\"link\">Link</Button>;\n}\n\nexport function ButtonExpandIcon() {\n  return <Button variant=\"expandIcon\">Expand</Button>;\n}\n\nexport function ButtonRingHover() {\n  return <Button variant=\"ringHover\">Ring Hover</Button>;\n}\n\nexport function ButtonRingHoverOutline() {\n  return <Button variant=\"ringHoverOutline\">Ring Hover Outline</Button>;\n}\n\nexport function ButtonShine() {\n  return <Button variant=\"shine\">Shine</Button>;\n}\n\nexport function ButtonGooeyRight() {\n  return <Button variant=\"gooeyRight\">Gooey Right</Button>;\n}\n\nexport function ButtonGooeyLeft() {\n  return <Button variant=\"gooeyLeft\">Gooey Left</Button>;\n}\n\nexport function ButtonLinkHover1() {\n  return <Button variant=\"linkHover1\">Link Hover 1</Button>;\n}\n\nexport function ButtonLinkHover2() {\n  return <Button variant=\"linkHover2\">Link Hover 2</Button>;\n}\n\n// Size demo\nexport function ButtonSizes() {\n  return (\n    <div className=\"flex flex-col space-y-4\">\n      <Button size=\"icon\">\n        <ArrowRight className=\"h-4 w-4\" />\n      </Button>\n      <Button size=\"xs\">Extra Small</Button>\n      <Button size=\"sm\">Small</Button>\n      <Button size=\"md\">Medium</Button>\n      <Button size=\"lg\">Large</Button>\n      <Button size=\"xl\">Extra Large</Button>\n      <Button size=\"2xl\">2XL</Button>\n    </div>\n  );\n}\n\n// Icon placement demos\nexport function ButtonIconLeft() {\n  return (\n    <Button Icon={ArrowLeft} iconPlacement=\"left\">\n      Left Icon\n    </Button>\n  );\n}\n\nexport function ButtonIconRight() {\n  return (\n    <Button Icon={ArrowRight} iconPlacement=\"right\">\n      Right Icon\n    </Button>\n  );\n}\n\nexport const buttonVariants = {\n  demo: ButtonDemo,\n  default: ButtonDefault,\n  destructive: ButtonDestructive,\n  outline: ButtonOutline,\n  secondary: ButtonSecondary,\n  ghost: ButtonGhost,\n  link: ButtonLink,\n  expandIcon: ButtonExpandIcon,\n  ringHover: ButtonRingHover,\n  ringHoverOutline: ButtonRingHoverOutline,\n  shine: ButtonShine,\n  gooeyRight: ButtonGooeyRight,\n  gooeyLeft: ButtonGooeyLeft,\n  linkHover1: ButtonLinkHover1,\n  linkHover2: ButtonLinkHover2,\n  sizes: ButtonSizes,\n  iconLeft: ButtonIconLeft,\n  iconRight: ButtonIconRight,\n};",
+        "type": "registry:ui"
+      }
+    ],
+    "variants": {
+      "demo": {
+        "name": "demo",
+        "description": "demo variant of button",
+        "component": "ButtonDemo"
+      },
+      "default": {
+        "name": "default",
+        "description": "default variant of button",
+        "component": "ButtonDefault"
+      },
+      "destructive": {
+        "name": "destructive",
+        "description": "destructive variant of button",
+        "component": "ButtonDestructive"
+      },
+      "outline": {
+        "name": "outline",
+        "description": "outline variant of button",
+        "component": "ButtonOutline"
+      },
+      "secondary": {
+        "name": "secondary",
+        "description": "secondary variant of button",
+        "component": "ButtonSecondary"
+      },
+      "ghost": {
+        "name": "ghost",
+        "description": "ghost variant of button",
+        "component": "ButtonGhost"
+      },
+      "link": {
+        "name": "link",
+        "description": "link variant of button",
+        "component": "ButtonLink"
+      },
+      "expandIcon": {
+        "name": "expandIcon",
+        "description": "expandIcon variant of button",
+        "component": "ButtonExpandIcon"
+      },
+      "ringHover": {
+        "name": "ringHover",
+        "description": "ringHover variant of button",
+        "component": "ButtonRingHover"
+      },
+      "ringHoverOutline": {
+        "name": "ringHoverOutline",
+        "description": "ringHoverOutline variant of button",
+        "component": "ButtonRingHoverOutline"
+      },
+      "shine": {
+        "name": "shine",
+        "description": "shine variant of button",
+        "component": "ButtonShine"
+      },
+      "gooeyRight": {
+        "name": "gooeyRight",
+        "description": "gooeyRight variant of button",
+        "component": "ButtonGooeyRight"
+      },
+      "gooeyLeft": {
+        "name": "gooeyLeft",
+        "description": "gooeyLeft variant of button",
+        "component": "ButtonGooeyLeft"
+      },
+      "linkHover1": {
+        "name": "linkHover1",
+        "description": "linkHover1 variant of button",
+        "component": "ButtonLinkHover1"
+      },
+      "linkHover2": {
+        "name": "linkHover2",
+        "description": "linkHover2 variant of button",
+        "component": "ButtonLinkHover2"
+      },
+      "sizes": {
+        "name": "sizes",
+        "description": "sizes variant of button",
+        "component": "ButtonSizes"
+      },
+      "iconLeft": {
+        "name": "iconLeft",
+        "description": "iconLeft variant of button",
+        "component": "ButtonIconLeft"
+      },
+      "iconRight": {
+        "name": "iconRight",
+        "description": "iconRight variant of button",
+        "component": "ButtonIconRight"
+      }
+    }
+  },
+  "input-demo": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "input-demo",
+    "type": "registry:ui",
+    "title": "Input Demo",
+    "description": "Examples showcasing input component variants, sizes, and icon integrations.",
+    "author": "shaduxe-ui",
+    "dependencies": [
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "input"
+    ],
+    "files": [
+      {
+        "path": "default/example/input-demo",
+        "content": "import { Mail, Search } from \"lucide-react\";\nimport { Input } from \"../ui/input\";\n\n// Basic demo\nexport function InputDemo() {\n  return <Input placeholder=\"Input\" />;\n}\n\n// Variant demos\nexport function InputDefault() {\n  return <Input variant=\"default\" placeholder=\"Default input\" />;\n}\n\nexport function InputUnderline() {\n  return <Input variant=\"underline\" placeholder=\"Underline input\" />;\n}\n\nexport function InputPill() {\n  return <Input variant=\"pill\" placeholder=\"Pill input\" />;\n}\n\n// Size demo\nexport function InputSizes() {\n  return (\n    <div className=\"flex flex-col space-y-4\">\n      <Input inputSize=\"xs\" placeholder=\"Extra Small\" />\n      <Input inputSize=\"sm\" placeholder=\"Small\" />\n      <Input inputSize=\"md\" placeholder=\"Medium\" />\n      <Input inputSize=\"lg\" placeholder=\"Large\" />\n      <Input inputSize=\"xl\" placeholder=\"Extra Large\" />\n    </div>\n  );\n}\n\n// Icon demos\nexport function InputIconLeft() {\n  return <Input Icon={Search} iconPlacement=\"left\" placeholder=\"Search...\" />;\n}\n\nexport function InputIconRight() {\n  return <Input Icon={Mail} iconPlacement=\"right\" placeholder=\"Email\" />;\n}\n\nexport const inputVariants = {\n  demo: InputDemo,\n  default: InputDefault,\n  underline: InputUnderline,\n  pill: InputPill,\n  sizes: InputSizes,\n  iconLeft: InputIconLeft,\n  iconRight: InputIconRight,\n};",
+        "type": "registry:ui"
+      }
+    ],
+    "variants": {
+      "demo": {
+        "name": "demo",
+        "description": "demo variant of input",
+        "component": "InputDemo"
+      },
+      "default": {
+        "name": "default",
+        "description": "default variant of input",
+        "component": "InputDefault"
+      },
+      "underline": {
+        "name": "underline",
+        "description": "underline variant of input",
+        "component": "InputUnderline"
+      },
+      "pill": {
+        "name": "pill",
+        "description": "pill variant of input",
+        "component": "InputPill"
+      },
+      "sizes": {
+        "name": "sizes",
+        "description": "sizes variant of input",
+        "component": "InputSizes"
+      },
+      "iconLeft": {
+        "name": "iconLeft",
+        "description": "iconLeft variant of input",
+        "component": "InputIconLeft"
+      },
+      "iconRight": {
+        "name": "iconRight",
+        "description": "iconRight variant of input",
+        "component": "InputIconRight"
+      }
+    }
+  },
+  "switch-demo": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "switch-demo",
+    "type": "registry:ui",
+    "title": "Switch Demo",
+    "description": "Examples showcasing switch component variants, sizes, and thumb variations.",
+    "author": "shaduxe-ui",
+    "registryDependencies": [
+      "switch"
+    ],
+    "files": [
+      {
+        "path": "default/example/switch-demo",
+        "content": "import { Switch } from \"../ui/switch\";\n\n// Basic demo\nexport function SwitchDemo() {\n  return <Switch />;\n}\n\n// Variant demos\nexport function SwitchDefault() {\n  return <Switch variant=\"default\" />;\n}\n\nexport function SwitchRounded() {\n  return <Switch variant=\"rounded\" />;\n}\n\nexport function SwitchSquare() {\n  return <Switch variant=\"square\" />;\n}\n\nexport function SwitchIOS() {\n  return <Switch variant=\"ios\" />;\n}\n\n// Size demo\nexport function SwitchSizes() {\n  return (\n    <div className=\"flex flex-col space-y-4\">\n      <Switch size=\"icon\" />\n      <Switch size=\"xs\" />\n      <Switch size=\"sm\" />\n      <Switch size=\"md\" />\n      <Switch size=\"lg\" />\n    </div>\n  );\n}\n\n// Thumb variant demos\nexport function SwitchThumbDefault() {\n  return <Switch thumbVariant=\"default\" />;\n}\n\nexport function SwitchThumbRounded() {\n  return <Switch thumbVariant=\"rounded\" />;\n}\n\nexport function SwitchThumbSquare() {\n  return <Switch thumbVariant=\"square\" />;\n}\n\nexport function SwitchThumbIOS() {\n  return <Switch thumbVariant=\"ios\" />;\n}\n\n// Feature demos\nexport function SwitchWithLabels() {\n  return <Switch showLabels />;\n}\n\nexport function SwitchWithIcons() {\n  return <Switch showIcons />;\n}\n\nexport function SwitchDisabled() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Switch disabled />\n      <label className=\"text-sm font-medium text-muted-foreground\">\n        Disabled\n      </label>\n    </div>\n  );\n}\n\nexport function SwitchDefaultChecked() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Switch defaultChecked />\n      <label className=\"text-sm font-medium\">Enabled</label>\n    </div>\n  );\n}\n\nexport function SwitchCustomThumb() {\n  return (\n    <div className=\"grid gap-4\">\n      <Switch variant=\"default\" thumbVariant=\"rounded\" />\n      <Switch variant=\"default\" thumbVariant=\"square\" />\n    </div>\n  );\n}\n\nexport function SwitchGrid() {\n  return (\n    <div className=\"grid grid-cols-2 gap-4 md:grid-cols-4\">\n      <SwitchDefault />\n      <SwitchRounded />\n      <SwitchSquare />\n      <SwitchIOS />\n    </div>\n  );\n}\n\nexport default function SwitchDemos() {\n  return (\n    <div className=\"grid gap-6\">\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Default</h3>\n        <SwitchDemo />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Variants</h3>\n        <SwitchGrid />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Sizes</h3>\n        <SwitchSizes />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">With Labels</h3>\n        <SwitchWithLabels />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">With Icons</h3>\n        <SwitchWithIcons />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">State</h3>\n        <div className=\"grid gap-4\">\n          <SwitchDisabled />\n          <SwitchDefaultChecked />\n        </div>\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Custom Thumb</h3>\n        <SwitchCustomThumb />\n      </div>\n    </div>\n  );\n}\n\nexport const switchVariants = {\n  demo: SwitchDemo,\n  default: SwitchDefault,\n  rounded: SwitchRounded,\n  square: SwitchSquare,\n  ios: SwitchIOS,\n  sizes: SwitchSizes,\n  thumbDefault: SwitchThumbDefault,\n  thumbRounded: SwitchThumbRounded,\n  thumbSquare: SwitchThumbSquare,\n  thumbIOS: SwitchThumbIOS,\n  withLabels: SwitchWithLabels,\n  withIcons: SwitchWithIcons,\n  disabled: SwitchDisabled,\n  defaultChecked: SwitchDefaultChecked,\n  customThumb: SwitchCustomThumb,\n  grid: SwitchGrid,\n};",
+        "type": "registry:ui"
+      }
+    ],
+    "variants": {
+      "demo": {
+        "name": "demo",
+        "description": "demo variant of switch",
+        "component": "SwitchDemo"
+      },
+      "default": {
+        "name": "default",
+        "description": "default variant of switch",
+        "component": "SwitchDefault"
+      },
+      "rounded": {
+        "name": "rounded",
+        "description": "rounded variant of switch",
+        "component": "SwitchRounded"
+      },
+      "square": {
+        "name": "square",
+        "description": "square variant of switch",
+        "component": "SwitchSquare"
+      },
+      "ios": {
+        "name": "ios",
+        "description": "ios variant of switch",
+        "component": "SwitchIOS"
+      },
+      "sizes": {
+        "name": "sizes",
+        "description": "sizes variant of switch",
+        "component": "SwitchSizes"
+      },
+      "thumbDefault": {
+        "name": "thumbDefault",
+        "description": "thumbDefault variant of switch",
+        "component": "SwitchThumbDefault"
+      },
+      "thumbRounded": {
+        "name": "thumbRounded",
+        "description": "thumbRounded variant of switch",
+        "component": "SwitchThumbRounded"
+      },
+      "thumbSquare": {
+        "name": "thumbSquare",
+        "description": "thumbSquare variant of switch",
+        "component": "SwitchThumbSquare"
+      },
+      "thumbIOS": {
+        "name": "thumbIOS",
+        "description": "thumbIOS variant of switch",
+        "component": "SwitchThumbIOS"
+      },
+      "withLabels": {
+        "name": "withLabels",
+        "description": "withLabels variant of switch",
+        "component": "SwitchWithLabels"
+      },
+      "withIcons": {
+        "name": "withIcons",
+        "description": "withIcons variant of switch",
+        "component": "SwitchWithIcons"
+      },
+      "disabled": {
+        "name": "disabled",
+        "description": "disabled variant of switch",
+        "component": "SwitchDisabled"
+      },
+      "defaultChecked": {
+        "name": "defaultChecked",
+        "description": "defaultChecked variant of switch",
+        "component": "SwitchDefaultChecked"
+      },
+      "customThumb": {
+        "name": "customThumb",
+        "description": "customThumb variant of switch",
+        "component": "SwitchCustomThumb"
+      },
+      "grid": {
+        "name": "grid",
+        "description": "grid variant of switch",
+        "component": "SwitchGrid"
+      }
+    }
+  },
+  "tabs-demo": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "tabs-demo",
+    "type": "registry:ui",
+    "title": "Tabs Demo",
+    "description": "Examples showcasing tabs component with different visual styles and layouts.",
+    "author": "shaduxe-ui",
+    "registryDependencies": [
+      "tabs"
+    ],
+    "files": [
+      {
+        "path": "default/example/tabs-demo",
+        "content": "import { Tabs, TabsContent, TabsList, TabsTrigger } from \"../ui/tabs\";\n\n// Basic demo\nexport function TabsDemo() {\n  return (\n    <Tabs defaultValue=\"account\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\n// Variant demos\nexport function TabsDefault() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"default\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport function TabsUnderline() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"underline\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport function TabsPill() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"pill\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport function TabsRounded() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"rounded\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport function TabsFolder() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"folder\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport const tabsVariants = {\n  demo: TabsDemo,\n  default: TabsDefault,\n  underline: TabsUnderline,\n  pill: TabsPill,\n  rounded: TabsRounded,\n  folder: TabsFolder,\n};",
+        "type": "registry:ui"
+      }
+    ],
+    "variants": {
+      "demo": {
+        "name": "demo",
+        "description": "demo variant of tabs",
+        "component": "TabsDemo"
+      },
+      "default": {
+        "name": "default",
+        "description": "default variant of tabs",
+        "component": "TabsDefault"
+      },
+      "underline": {
+        "name": "underline",
+        "description": "underline variant of tabs",
+        "component": "TabsUnderline"
+      },
+      "pill": {
+        "name": "pill",
+        "description": "pill variant of tabs",
+        "component": "TabsPill"
+      },
+      "rounded": {
+        "name": "rounded",
+        "description": "rounded variant of tabs",
+        "component": "TabsRounded"
+      },
+      "folder": {
+        "name": "folder",
+        "description": "folder variant of tabs",
+        "component": "TabsFolder"
+      }
+    }
+  },
+  "button-installation-example": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "button-installation-example",
+    "type": "registry:ui",
+    "title": "Button Installation Example",
+    "description": "Example showing how to install and use the button component.",
+    "author": "shaduxe-ui",
+    "dependencies": [
+      "motion"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      {
+        "path": "default/example/button-installation-example",
+        "content": "import { Button } from \"@/components/ui/button\";\nimport { motion } from \"motion/react\";\n\nexport default function Page() {\n  return (\n    <motion.div\n      initial={{ opacity: 0, y: 20 }}\n      animate={{ opacity: 1, y: 0 }}\n      transition={{ duration: 0.5 }}\n    >\n      <Button>Click me</Button>\n    </motion.div>\n  );\n}",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  "pricing-one": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "pricing-one",
+    "type": "registry:block",
+    "title": "Pricing Table",
+    "description": "A pricing component with feature comparison table and responsive layout.",
+    "author": "shaduxe-ui",
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "badge",
+      "button"
+    ],
+    "files": [
+      {
+        "path": "default/blocks/pricing-one",
+        "content": "import { Check, Minus, MoveRight } from \"lucide-react\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { Button } from \"@/components/ui/button\";\nimport { motion } from \"motion/react\";\n\ninterface Feature {\n  name: string;\n  tiers: (boolean | string)[];\n}\n\ninterface Plan {\n  name: string;\n  price: string;\n  description: string;\n  features: Feature[];\n  isPrimary: boolean;\n  ctaLabel: string;\n  ctaLink: string;\n}\n\nexport default function PricingOne() {\n  const plans: Plan[] = [\n    {\n      name: \"Starter\",\n      price: \"Free\",\n      description: \"Get started with essential features for small projects.\",\n      features: [\n        { name: \"Supabase Integration\", tiers: [true, true, true] },\n        { name: \"Stripe Checkout\", tiers: [true, true, true] },\n        { name: \"Custom Email Templates\", tiers: [false, true, true] },\n        { name: \"24/7 Support\", tiers: [false, false, true] },\n      ],\n      isPrimary: false,\n      ctaLabel: \"Learn More\",\n      ctaLink: \"#\",\n    },\n    {\n      name: \"Pro\",\n      price: \"$19\",\n      description: \"Advanced tools for growing businesses and teams.\",\n      features: [\n        { name: \"Supabase Integration\", tiers: [true, true, true] },\n        { name: \"Stripe Checkout\", tiers: [true, true, true] },\n        { name: \"Custom Email Templates\", tiers: [true, true, true] },\n        { name: \"24/7 Support\", tiers: [false, true, true] },\n      ],\n      isPrimary: true,\n      ctaLabel: \"Get Started\",\n      ctaLink: \"#\",\n    },\n    {\n      name: \"Enterprise\",\n      price: \"Contact Us\",\n      description: \"Custom solutions for enterprise-grade applications.\",\n      features: [\n        { name: \"Supabase Integration\", tiers: [true, true, true] },\n        { name: \"Stripe Checkout\", tiers: [true, true, true] },\n        { name: \"Custom Email Templates\", tiers: [true, true, true] },\n        { name: \"24/7 Support\", tiers: [true, true, true] },\n      ],\n      isPrimary: false,\n      ctaLabel: \"Contact Sales\",\n      ctaLink: \"#\",\n    },\n  ];\n\n  return (\n    <div className=\"w-full py-10 md:py-20\">\n      <div className=\"container mx-auto px-4\">\n        <div className=\"flex flex-col items-center justify-center gap-4 text-center\">\n          <motion.div\n            initial={{ opacity: 0, y: -20 }}\n            animate={{ opacity: 1, y: 0 }}\n            transition={{ duration: 0.5 }}\n          >\n            <Badge>Launch Your Product</Badge>\n          </motion.div>\n          <motion.h2\n            className=\"font-regular max-w-xl text-center text-3xl tracking-tighter md:text-5xl lg:text-7xl\"\n            initial={{ opacity: 0, y: -20 }}\n            animate={{ opacity: 1, y: 0 }}\n            transition={{ duration: 0.5, delay: 0.2 }}\n          >\n            No credit card required\n          </motion.h2>\n          <motion.p\n            className=\"max-w-xl text-center text-base leading-relaxed tracking-tight text-gray-400 md:text-lg\"\n            initial={{ opacity: 0, y: -20 }}\n            animate={{ opacity: 1, y: 0 }}\n            transition={{ duration: 0.5, delay: 0.4 }}\n          >\n            Launch smarter, faster, and better with pre-integrated tools like\n            Supabase, Stripe, Resend, and Framer Motion. Emerald empowers your\n            SaaS journey with a modern, scalable architecture.\n          </motion.p>\n        </div>\n        <motion.div\n          className=\"mt-10 md:mt-20\"\n          initial={{ opacity: 0, y: 20 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: 0.5, delay: 0.6 }}\n        >\n          <div className=\"md:hidden\">\n            {plans.map((plan, index) => (\n              <div key={index} className=\"mb-8 rounded-lg border p-6\">\n                <h3 className=\"text-2xl font-bold\">{plan.name}</h3>\n                <p className=\"mt-2 text-sm text-gray-400\">{plan.description}</p>\n                <div className=\"mt-4 flex items-baseline\">\n                  <span className=\"text-4xl font-bold\">{plan.price}</span>\n                  <span className=\"ml-2 text-sm text-gray-400\">\n                    {plan.price === \"Contact Us\" ? \"\" : \"/ month\"}\n                  </span>\n                </div>\n                <a href={plan.ctaLink}>\n                  <Button\n                    variant={plan.isPrimary ? \"default\" : \"outline\"}\n                    className=\"mt-6 w-full justify-center gap-2 bg-white text-black hover:bg-gray-200\"\n                  >\n                    {plan.ctaLabel} <MoveRight className=\"h-4 w-4\" />\n                  </Button>\n                </a>\n                <div className=\"mt-6\">\n                  <h4 className=\"mb-2 font-semibold\">Features:</h4>\n                  <ul className=\"space-y-2\">\n                    {plan.features.map((feature, featureIndex) => (\n                      <li key={featureIndex} className=\"flex items-center\">\n                        {typeof feature.tiers[index] === \"boolean\" ? (\n                          feature.tiers[index] ? (\n                            <Check className=\"mr-2 h-5 w-5 text-green-500\" />\n                          ) : (\n                            <Minus className=\"mr-2 h-5 w-5 text-gray-500\" />\n                          )\n                        ) : (\n                          <Check className=\"mr-2 h-5 w-5 text-green-500\" />\n                        )}\n                        <span className=\"text-sm\">\n                          {feature.name}\n                          {typeof feature.tiers[index] !== \"boolean\" && (\n                            <span className=\"ml-1 text-gray-400\">\n                              ({feature.tiers[index]})\n                            </span>\n                          )}\n                        </span>\n                      </li>\n                    ))}\n                  </ul>\n                </div>\n              </div>\n            ))}\n          </div>\n\n          <div className=\"hidden md:block\">\n            <div className=\"grid grid-cols-4 gap-0 divide-x divide-gray-800\">\n              <div />\n              {plans.map((plan, index) => (\n                <div\n                  key={index}\n                  className=\"flex flex-col justify-between gap-4 p-6\"\n                >\n                  <div>\n                    <p className=\"text-2xl font-bold\">{plan.name}</p>\n                    <p className=\"mt-2 h-12 text-sm text-gray-400\">\n                      {plan.description}\n                    </p>\n                    <div className=\"mt-6 flex items-baseline\">\n                      <span className=\"text-4xl font-bold\">{plan.price}</span>\n                      <span className=\"ml-2 text-sm text-gray-400\">\n                        {plan.price === \"Contact Us\" ? \"\" : \"/ month\"}\n                      </span>\n                    </div>\n                  </div>\n                  <a href={plan.ctaLink}>\n                    <Button\n                      variant={plan.isPrimary ? \"default\" : \"outline\"}\n                      className=\"mt-4 w-full justify-center gap-2\"\n                    >\n                      {plan.ctaLabel} <MoveRight className=\"h-4 w-4\" />\n                    </Button>\n                  </a>\n                </div>\n              ))}\n            </div>\n            <div className=\"mt-8 grid grid-cols-4 gap-0 divide-x divide-gray-800\">\n              {plans[0].features.map((feature, featureIndex) => (\n                <>\n                  <div\n                    key={`feature-${featureIndex}`}\n                    className=\"flex items-center p-4 font-medium\"\n                  >\n                    {feature.name}\n                  </div>\n                  {feature.tiers.map((tier, tierIndex) => (\n                    <div\n                      key={`feature-tier-${featureIndex}-${tierIndex}`}\n                      className=\"flex justify-center p-4\"\n                    >\n                      {typeof tier === \"boolean\" ? (\n                        tier ? (\n                          <Check className=\"h-5 w-5 text-green-500\" />\n                        ) : (\n                          <Minus className=\"h-5 w-5 text-gray-500\" />\n                        )\n                      ) : (\n                        <p className=\"text-sm text-gray-400\">{tier}</p>\n                      )}\n                    </div>\n                  ))}\n                </>\n              ))}\n            </div>\n          </div>\n        </motion.div>\n      </div>\n    </div>\n  );\n}",
+        "type": "registry:block"
+      }
+    ]
+  },
+  "pricing-two": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "pricing-two",
+    "type": "registry:block",
+    "title": "Featured Pricing Card",
+    "description": "An animated single card pricing component with feature lists and call-to-action.",
+    "author": "shaduxe-ui",
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "card",
+      "button",
+      "separator"
+    ],
+    "files": [
+      {
+        "path": "default/blocks/pricing-two",
+        "content": "\"use client\";\n\nimport {\n  Card,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { motion, useInView } from \"motion/react\";\nimport { useEffect, useRef, useState } from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { Check } from \"lucide-react\";\nimport { Separator } from \"@/components/ui/separator\";\n\nexport default function PricingTwo() {\n  const containerRef = useRef(null);\n  const isInView = useInView(containerRef, { once: true, amount: 0.2 });\n  const [hasAnimated, setHasAnimated] = useState(false);\n\n  useEffect(() => {\n    if (isInView && !hasAnimated) {\n      setHasAnimated(true);\n    }\n  }, [isInView, hasAnimated]);\n\n  const containerVariants = {\n    hidden: { opacity: 0 },\n    visible: {\n      opacity: 1,\n      transition: {\n        staggerChildren: 0.1,\n        delayChildren: 0.3,\n      },\n    },\n  };\n\n  const itemVariants = {\n    hidden: { y: 20, opacity: 0 },\n    visible: {\n      y: 0,\n      opacity: 1,\n      transition: {\n        type: \"spring\",\n        stiffness: 260,\n        damping: 20,\n      },\n    },\n  };\n\n  const listItemVariants = {\n    hidden: { opacity: 0, x: -20 },\n    visible: {\n      opacity: 1,\n      x: 0,\n      transition: {\n        type: \"spring\",\n        stiffness: 100,\n        damping: 10,\n      },\n    },\n  };\n\n  return (\n    <motion.section\n      ref={containerRef}\n      id=\"pricing\"\n      className=\"container py-12 md:py-24\"\n      initial=\"hidden\"\n      animate={hasAnimated ? \"visible\" : \"hidden\"}\n      variants={containerVariants}\n    >\n      <Card className=\"relative mx-auto w-full max-w-6xl overflow-hidden\">\n        <div className=\"flex flex-col lg:flex-row\">\n          <motion.div\n            className=\"flex flex-col justify-between p-6 lg:w-2/5 lg:p-10\"\n            variants={itemVariants}\n          >\n            <div>\n              <CardHeader className=\"p-0\">\n                <div className=\"flex items-start justify-between\">\n                  <div>\n                    <CardTitle className=\"text-3xl font-bold\">\n                      Ultimate Plan\n                    </CardTitle>\n                    <CardDescription className=\"mt-2\">\n                      Access everything you need to grow your business.\n                    </CardDescription>\n                  </div>\n                </div>\n              </CardHeader>\n              <motion.div className=\"mt-6 space-y-4\" variants={itemVariants}>\n                <div className=\"flex items-baseline\">\n                  <span className=\"text-5xl font-extrabold\">$99</span>\n                  <span className=\"ml-2 text-xl text-muted-foreground line-through\">\n                    $199\n                  </span>\n                </div>\n                <span className=\"block text-sm text-muted-foreground\">\n                  one-time payment\n                </span>\n              </motion.div>\n            </div>\n            <motion.div className=\"mt-8\" variants={itemVariants}>\n              <Button className=\"w-full\" size=\"lg\">\n                Get Started\n              </Button>\n            </motion.div>\n          </motion.div>\n          <Separator className=\"lg:my-6 lg:hidden\" />\n          <motion.div\n            className=\"bg-muted/50 p-6 lg:w-3/5 lg:p-10\"\n            variants={itemVariants}\n          >\n            <div className=\"space-y-6\">\n              <div>\n                <h3 className=\"mb-4 text-lg font-semibold\">Features:</h3>\n                <ul className=\"grid grid-cols-1 gap-3 md:grid-cols-2\">\n                  {[\n                    \"Unlimited Projects\",\n                    \"Advanced Analytics\",\n                    \"Team Collaboration\",\n                    \"Custom Branding\",\n                  ].map((feature, index) => (\n                    <motion.li\n                      key={index}\n                      className=\"flex items-center\"\n                      variants={listItemVariants}\n                      custom={index}\n                    >\n                      <Check className=\"mr-2 h-4 w-4 text-primary\" />\n                      <span className=\"text-sm\">{feature}</span>\n                    </motion.li>\n                  ))}\n                </ul>\n              </div>\n              <Separator />\n              <div>\n                <h3 className=\"mb-4 text-lg font-semibold\">Perks:</h3>\n                <ul className=\"grid grid-cols-1 gap-3 md:grid-cols-2\">\n                  {[\n                    \"24/7 Support\",\n                    \"Priority Assistance\",\n                    \"Exclusive Webinars\",\n                    \"Early Feature Access\",\n                  ].map((perk, index) => (\n                    <motion.li\n                      key={index}\n                      className=\"flex items-center\"\n                      variants={listItemVariants}\n                      custom={index + 4}\n                    >\n                      <Check className=\"mr-2 h-4 w-4 text-primary\" />\n                      <span className=\"text-sm\">{perk}</span>\n                    </motion.li>\n                  ))}\n                </ul>\n              </div>\n            </div>\n          </motion.div>\n        </div>\n      </Card>\n    </motion.section>\n  );\n}",
+        "type": "registry:block"
+      }
+    ]
+  },
+  "pricing-three": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "pricing-three",
+    "type": "registry:block",
+    "title": "Pricing Cards",
+    "description": "A three-column pricing card layout with feature lists and highlight for primary plan.",
+    "author": "shaduxe-ui",
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "card",
+      "badge",
+      "button"
+    ],
+    "files": [
+      {
+        "path": "default/blocks/pricing-three",
+        "content": "import {\n  Card,\n  CardContent,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Check, X } from \"lucide-react\";\n\nimport { Badge } from \"@/components/ui/badge\";\nimport { Button } from \"@/components/ui/button\";\nimport { motion } from \"motion/react\";\n\ninterface Feature {\n  name: string;\n  included: boolean;\n}\n\ninterface Plan {\n  name: string;\n  price: string;\n  description: string;\n  features: Feature[];\n  ctaLabel: string;\n  isPrimary: boolean;\n}\n\nexport default function PricingSection() {\n  const plans: Plan[] = [\n    {\n      name: \"Basic\",\n      price: \"$9\",\n      description: \"All the basics for starting a new business\",\n      features: [\n        { name: \"5 products\", included: true },\n        { name: \"Basic analytics\", included: true },\n        { name: \"48-hour support response time\", included: true },\n        { name: \"Advanced analytics\", included: false },\n        { name: \"Custom reporting\", included: false },\n      ],\n      ctaLabel: \"Get Started\",\n      isPrimary: false,\n    },\n    {\n      name: \"Pro\",\n      price: \"$29\",\n      description: \"Everything you need for a growing business\",\n      features: [\n        { name: \"25 products\", included: true },\n        { name: \"Advanced analytics\", included: true },\n        { name: \"24-hour support response time\", included: true },\n        { name: \"Custom reporting\", included: true },\n        { name: \"API access\", included: false },\n      ],\n      ctaLabel: \"Get Started\",\n      isPrimary: true,\n    },\n    {\n      name: \"Enterprise\",\n      price: \"Custom\",\n      description: \"Advanced features for scaling your business\",\n      features: [\n        { name: \"Unlimited products\", included: true },\n        { name: \"Advanced analytics\", included: true },\n        { name: \"1-hour support response time\", included: true },\n        { name: \"Custom reporting\", included: true },\n        { name: \"API access\", included: true },\n      ],\n      ctaLabel: \"Contact Sales\",\n      isPrimary: false,\n    },\n  ];\n\n  return (\n    <section className=\"py-24 sm:py-32\">\n      <div className=\"container px-4 md:px-6\">\n        <div className=\"mx-auto max-w-2xl text-center\">\n          <motion.div\n            initial={{ opacity: 0, y: 20 }}\n            animate={{ opacity: 1, y: 0 }}\n            transition={{ duration: 0.5 }}\n          >\n            <Badge variant=\"secondary\" className=\"mb-4\">\n              Pricing\n            </Badge>\n          </motion.div>\n          <motion.h2\n            className=\"text-3xl font-bold tracking-tight text-foreground sm:text-4xl\"\n            initial={{ opacity: 0, y: 20 }}\n            animate={{ opacity: 1, y: 0 }}\n            transition={{ duration: 0.5, delay: 0.1 }}\n          >\n            Simple, Transparent Pricing\n          </motion.h2>\n          <motion.p\n            className=\"mt-4 text-lg text-muted-foreground\"\n            initial={{ opacity: 0, y: 20 }}\n            animate={{ opacity: 1, y: 0 }}\n            transition={{ duration: 0.5, delay: 0.2 }}\n          >\n            Choose the plan that's right for you and start optimizing your\n            workflow today.\n          </motion.p>\n        </div>\n\n        <motion.div\n          className=\"mx-auto mt-16 flex max-w-6xl flex-col items-center justify-center gap-6 sm:mt-20 md:flex-row md:items-stretch md:gap-0\"\n          initial={{ opacity: 0, y: 20 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ duration: 0.5, delay: 0.3 }}\n        >\n          {plans.map((plan, planIdx) => (\n            <motion.div\n              key={plan.name}\n              className={`w-full max-w-sm md:w-1/3 ${\n                planIdx === 1\n                  ? \"z-10 md:-mx-0\"\n                  : planIdx === 0\n                    ? \"md:mr-[-1px]\"\n                    : \"md:ml-[-1px]\"\n              }`}\n              initial={{ opacity: 0, y: 20 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ duration: 0.5, delay: 0.1 * (planIdx + 4) }}\n            >\n              <Card\n                className={`flex h-full flex-col justify-between rounded-3xl border-2 ${\n                  planIdx === 1\n                    ? \"border-primary shadow-2xl md:scale-110\"\n                    : \"border-border\"\n                }`}\n              >\n                <CardHeader className=\"p-6\">\n                  <CardTitle\n                    className={`text-xl ${planIdx === 1 ? \"text-primary\" : \"\"}`}\n                  >\n                    {plan.name}\n                  </CardTitle>\n                  <div className=\"mt-4 flex items-baseline text-5xl font-extrabold\">\n                    {plan.price}\n                    {plan.price !== \"Custom\" && (\n                      <span className=\"ml-1 text-xl font-normal text-muted-foreground\">\n                        /month\n                      </span>\n                    )}\n                  </div>\n                  <p className=\"mt-4 text-sm text-muted-foreground\">\n                    {plan.description}\n                  </p>\n                </CardHeader>\n                <CardContent className=\"flex-grow p-6\">\n                  <ul className=\"space-y-3\">\n                    {plan.features.map((feature) => (\n                      <li key={feature.name} className=\"flex items-center\">\n                        {feature.included ? (\n                          <Check className=\"h-5 w-5 flex-shrink-0 text-primary\" />\n                        ) : (\n                          <X className=\"h-5 w-5 flex-shrink-0 text-muted-foreground\" />\n                        )}\n                        <span\n                          className={`ml-3 text-sm ${\n                            feature.included\n                              ? \"text-foreground\"\n                              : \"text-muted-foreground\"\n                          }`}\n                        >\n                          {feature.name}\n                        </span>\n                      </li>\n                    ))}\n                  </ul>\n                </CardContent>\n                <CardFooter className=\"p-6\">\n                  <Button\n                    variant={planIdx === 1 ? \"default\" : \"outline\"}\n                    className=\"w-full\"\n                    size=\"lg\"\n                  >\n                    {plan.ctaLabel}\n                  </Button>\n                </CardFooter>\n              </Card>\n            </motion.div>\n          ))}\n        </motion.div>\n      </div>\n    </section>\n  );\n}",
+        "type": "registry:block"
+      }
+    ]
+  },
+  "utils": {
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "utils",
+    "type": "registry:lib",
+    "title": "utils",
+    "author": "shaduxe-ui (https://shaduxe.com)",
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "files": [
+      {
+        "path": "lib/utils",
+        "type": "registry:lib"
+      }
+    ]
+  }
+}

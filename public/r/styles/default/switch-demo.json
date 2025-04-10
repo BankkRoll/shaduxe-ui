@@ -1,0 +1,100 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-demo",
+  "type": "registry:ui",
+  "title": "Switch Demo",
+  "description": "Examples showcasing switch component variants, sizes, and thumb variations.",
+  "author": "shaduxe-ui",
+  "registryDependencies": [
+    "switch"
+  ],
+  "files": [
+    {
+      "path": "default/example/switch-demo",
+      "content": "import { Switch } from \"../ui/switch\";\n\n// Basic demo\nexport function SwitchDemo() {\n  return <Switch />;\n}\n\n// Variant demos\nexport function SwitchDefault() {\n  return <Switch variant=\"default\" />;\n}\n\nexport function SwitchRounded() {\n  return <Switch variant=\"rounded\" />;\n}\n\nexport function SwitchSquare() {\n  return <Switch variant=\"square\" />;\n}\n\nexport function SwitchIOS() {\n  return <Switch variant=\"ios\" />;\n}\n\n// Size demo\nexport function SwitchSizes() {\n  return (\n    <div className=\"flex flex-col space-y-4\">\n      <Switch size=\"icon\" />\n      <Switch size=\"xs\" />\n      <Switch size=\"sm\" />\n      <Switch size=\"md\" />\n      <Switch size=\"lg\" />\n    </div>\n  );\n}\n\n// Thumb variant demos\nexport function SwitchThumbDefault() {\n  return <Switch thumbVariant=\"default\" />;\n}\n\nexport function SwitchThumbRounded() {\n  return <Switch thumbVariant=\"rounded\" />;\n}\n\nexport function SwitchThumbSquare() {\n  return <Switch thumbVariant=\"square\" />;\n}\n\nexport function SwitchThumbIOS() {\n  return <Switch thumbVariant=\"ios\" />;\n}\n\n// Feature demos\nexport function SwitchWithLabels() {\n  return <Switch showLabels />;\n}\n\nexport function SwitchWithIcons() {\n  return <Switch showIcons />;\n}\n\nexport function SwitchDisabled() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Switch disabled />\n      <label className=\"text-sm font-medium text-muted-foreground\">\n        Disabled\n      </label>\n    </div>\n  );\n}\n\nexport function SwitchDefaultChecked() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Switch defaultChecked />\n      <label className=\"text-sm font-medium\">Enabled</label>\n    </div>\n  );\n}\n\nexport function SwitchCustomThumb() {\n  return (\n    <div className=\"grid gap-4\">\n      <Switch variant=\"default\" thumbVariant=\"rounded\" />\n      <Switch variant=\"default\" thumbVariant=\"square\" />\n    </div>\n  );\n}\n\nexport function SwitchGrid() {\n  return (\n    <div className=\"grid grid-cols-2 gap-4 md:grid-cols-4\">\n      <SwitchDefault />\n      <SwitchRounded />\n      <SwitchSquare />\n      <SwitchIOS />\n    </div>\n  );\n}\n\nexport default function SwitchDemos() {\n  return (\n    <div className=\"grid gap-6\">\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Default</h3>\n        <SwitchDemo />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Variants</h3>\n        <SwitchGrid />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Sizes</h3>\n        <SwitchSizes />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">With Labels</h3>\n        <SwitchWithLabels />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">With Icons</h3>\n        <SwitchWithIcons />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">State</h3>\n        <div className=\"grid gap-4\">\n          <SwitchDisabled />\n          <SwitchDefaultChecked />\n        </div>\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Custom Thumb</h3>\n        <SwitchCustomThumb />\n      </div>\n    </div>\n  );\n}\n\nexport const switchVariants = {\n  demo: SwitchDemo,\n  default: SwitchDefault,\n  rounded: SwitchRounded,\n  square: SwitchSquare,\n  ios: SwitchIOS,\n  sizes: SwitchSizes,\n  thumbDefault: SwitchThumbDefault,\n  thumbRounded: SwitchThumbRounded,\n  thumbSquare: SwitchThumbSquare,\n  thumbIOS: SwitchThumbIOS,\n  withLabels: SwitchWithLabels,\n  withIcons: SwitchWithIcons,\n  disabled: SwitchDisabled,\n  defaultChecked: SwitchDefaultChecked,\n  customThumb: SwitchCustomThumb,\n  grid: SwitchGrid,\n};",
+      "type": "registry:ui"
+    }
+  ],
+  "variants": {
+    "demo": {
+      "name": "demo",
+      "description": "demo variant of switch",
+      "component": "SwitchDemo"
+    },
+    "default": {
+      "name": "default",
+      "description": "default variant of switch",
+      "component": "SwitchDefault"
+    },
+    "rounded": {
+      "name": "rounded",
+      "description": "rounded variant of switch",
+      "component": "SwitchRounded"
+    },
+    "square": {
+      "name": "square",
+      "description": "square variant of switch",
+      "component": "SwitchSquare"
+    },
+    "ios": {
+      "name": "ios",
+      "description": "ios variant of switch",
+      "component": "SwitchIOS"
+    },
+    "sizes": {
+      "name": "sizes",
+      "description": "sizes variant of switch",
+      "component": "SwitchSizes"
+    },
+    "thumbDefault": {
+      "name": "thumbDefault",
+      "description": "thumbDefault variant of switch",
+      "component": "SwitchThumbDefault"
+    },
+    "thumbRounded": {
+      "name": "thumbRounded",
+      "description": "thumbRounded variant of switch",
+      "component": "SwitchThumbRounded"
+    },
+    "thumbSquare": {
+      "name": "thumbSquare",
+      "description": "thumbSquare variant of switch",
+      "component": "SwitchThumbSquare"
+    },
+    "thumbIOS": {
+      "name": "thumbIOS",
+      "description": "thumbIOS variant of switch",
+      "component": "SwitchThumbIOS"
+    },
+    "withLabels": {
+      "name": "withLabels",
+      "description": "withLabels variant of switch",
+      "component": "SwitchWithLabels"
+    },
+    "withIcons": {
+      "name": "withIcons",
+      "description": "withIcons variant of switch",
+      "component": "SwitchWithIcons"
+    },
+    "disabled": {
+      "name": "disabled",
+      "description": "disabled variant of switch",
+      "component": "SwitchDisabled"
+    },
+    "defaultChecked": {
+      "name": "defaultChecked",
+      "description": "defaultChecked variant of switch",
+      "component": "SwitchDefaultChecked"
+    },
+    "customThumb": {
+      "name": "customThumb",
+      "description": "customThumb variant of switch",
+      "component": "SwitchCustomThumb"
+    },
+    "grid": {
+      "name": "grid",
+      "description": "grid variant of switch",
+      "component": "SwitchGrid"
+    }
+  }
+}

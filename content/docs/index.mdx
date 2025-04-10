@@ -1,0 +1,171 @@
+---
+title: Introduction
+description: Beautifully crafted component variants. The perfect extension to your shadcn/ui components. Built with React 19, Tailwind v4, and Motion One.
+author: bankk
+published: true
+---
+
+<div className="relative w-full overflow-hidden rounded-lg border p-8 mb-6">
+  <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+  <div className="relative">
+    <h1 className="scroll-m-20 text-balance text-4xl font-bold tracking-tight lg:text-5xl">
+      Welcome to shaduxe/ui
+    </h1>
+    <div className="mt-4 text-lg text-muted-foreground">
+      A collection of beautifully crafted component variants built on top of
+      shadcn/ui, designed to take your UI to the next level.
+    </div>
+    <div className="flex justify-center mx-auto mt-6">
+      <TechStackFull
+        technologies={[
+          "react",
+          "typescript",
+          "shadcn",
+          "motion",
+          "tailwindcss",
+        ]}
+      />
+    </div>
+  </div>
+</div>
+
+<Callout>
+  **Note:** This is the upgraded version of the UI library using **Tailwind CSS v4**. If you're specifically looking for the **Tailwind v3** version, please visit: [shaduxe-ui-v3 on GitHub](https://github.com/BankkRoll/shaduxe-ui-v3)
+</Callout>
+
+## Quick Start
+
+<Steps>
+  <Step>
+    Install Dependencies
+    
+    ```bash
+    npx shadcn@latest init
+    ```
+  </Step>
+
+  <Step>
+    Add Components 
+    
+    ```bash
+    npx shadcn@latest add button
+    ```
+  </Step>
+
+  <Step>
+    Use in Your Project
+    
+    ```tsx showLineNumbers
+    import { Button } from "@/components/ui/button"
+
+    export default function Page() {
+      return <Button>Click me</Button>
+    }
+    ```
+  </Step>
+</Steps>
+
+## Features
+
+<div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div className="flex flex-col gap-2 rounded-lg border bg-card p-6 shadow-sm">
+    <div className="flex items-center gap-2">
+      <IconCode className="size-5 text-primary" />
+      <h3 className="font-semibold">Copy & Paste</h3>
+    </div>
+    <div className="text-sm text-muted-foreground">
+      No installation needed. Just copy the code and customize it to your needs.
+    </div>
+  </div>
+
+  <div className="flex flex-col gap-2 rounded-lg border bg-card p-6 shadow-sm">
+    <div className="flex items-center gap-2">
+      <IconAccessibility className="size-5 text-primary" />
+      <h3 className="font-semibold">Accessible</h3>
+    </div>
+    <div className="text-sm text-muted-foreground">
+      ARIA compliant components following WAI-ARIA guidelines.
+    </div>
+  </div>
+
+  <div className="flex flex-col gap-2 rounded-lg border bg-card p-6 shadow-sm">
+    <div className="flex items-center gap-2">
+      <IconPalette className="size-5 text-primary" />
+      <h3 className="font-semibold">Themeable</h3>
+    </div>
+    <div className="text-sm text-muted-foreground">
+      Fully customizable with Tailwind CSS and CSS variables.
+    </div>
+  </div>
+
+  <div className="flex flex-col gap-2 rounded-lg border bg-card p-6 shadow-sm">
+    <div className="flex items-center gap-2">
+      <IconZap className="size-5 text-primary" />
+      <h3 className="font-semibold">Fast</h3>
+    </div>
+    <div className="text-sm text-muted-foreground">
+      Built with performance in mind. No unnecessary dependencies.
+    </div>
+  </div>
+
+  <div className="flex flex-col gap-2 rounded-lg border bg-card p-6 shadow-sm">
+    <div className="flex items-center gap-2">
+      <IconBraces className="size-5 text-primary" />
+      <h3 className="font-semibold">Type-Safe</h3>
+    </div>
+    <div className="text-sm text-muted-foreground">
+      Written in TypeScript with full type safety.
+    </div>
+  </div>
+
+  <div className="flex flex-col gap-2 rounded-lg border bg-card p-6 shadow-sm">
+    <div className="flex items-center gap-2">
+      <IconSparkles className="size-5 text-primary" />
+      <h3 className="font-semibold">Animated</h3>
+    </div>
+    <div className="text-sm text-muted-foreground">
+      Smooth animations powered by Motion One.
+    </div>
+  </div>
+</div>
+
+## FAQ
+
+<Accordion type="multiple" className="w-full">
+  <AccordionItem value="faq-1">
+    <AccordionTrigger>
+      How is shaduxe/ui different from shadcn/ui?
+    </AccordionTrigger>
+    <AccordionContent>
+      While shadcn/ui provides foundational components, shaduxe/ui offers pre-built variations with advanced features like:
+      - Modern animations and transitions
+      - Additional style variants
+      - Complex component combinations
+      - Ready-to-use templates
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem value="faq-2">
+    <AccordionTrigger>
+      Do I need to install shaduxe/ui separately?
+    </AccordionTrigger>
+    <AccordionContent>
+      No, shaduxe/ui components are direct extensions of existing shadcn/ui
+      components. Just copy the code you need and customize it.
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem value="faq-3">
+    <AccordionTrigger>
+      What frameworks are supported?
+    </AccordionTrigger>
+    <AccordionContent>
+      shaduxe/ui supports all frameworks compatible with shadcn/ui:
+      - Next.js
+      - Remix
+      - Astro
+      - Gatsby
+      And any other React-based framework.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-demo",
+  "type": "registry:ui",
+  "title": "Input Demo",
+  "description": "Examples showcasing input component variants, sizes, and icon integrations.",
+  "author": "shaduxe-ui",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "default/example/input-demo",
+      "content": "import { Mail, Search } from \"lucide-react\";\nimport { Input } from \"../ui/input\";\n\n// Basic demo\nexport function InputDemo() {\n  return <Input placeholder=\"Input\" />;\n}\n\n// Variant demos\nexport function InputDefault() {\n  return <Input variant=\"default\" placeholder=\"Default input\" />;\n}\n\nexport function InputUnderline() {\n  return <Input variant=\"underline\" placeholder=\"Underline input\" />;\n}\n\nexport function InputPill() {\n  return <Input variant=\"pill\" placeholder=\"Pill input\" />;\n}\n\n// Size demo\nexport function InputSizes() {\n  return (\n    <div className=\"flex flex-col space-y-4\">\n      <Input inputSize=\"xs\" placeholder=\"Extra Small\" />\n      <Input inputSize=\"sm\" placeholder=\"Small\" />\n      <Input inputSize=\"md\" placeholder=\"Medium\" />\n      <Input inputSize=\"lg\" placeholder=\"Large\" />\n      <Input inputSize=\"xl\" placeholder=\"Extra Large\" />\n    </div>\n  );\n}\n\n// Icon demos\nexport function InputIconLeft() {\n  return <Input Icon={Search} iconPlacement=\"left\" placeholder=\"Search...\" />;\n}\n\nexport function InputIconRight() {\n  return <Input Icon={Mail} iconPlacement=\"right\" placeholder=\"Email\" />;\n}\n\nexport const inputVariants = {\n  demo: InputDemo,\n  default: InputDefault,\n  underline: InputUnderline,\n  pill: InputPill,\n  sizes: InputSizes,\n  iconLeft: InputIconLeft,\n  iconRight: InputIconRight,\n};",
+      "type": "registry:ui"
+    }
+  ],
+  "variants": {
+    "demo": {
+      "name": "demo",
+      "description": "demo variant of input",
+      "component": "InputDemo"
+    },
+    "default": {
+      "name": "default",
+      "description": "default variant of input",
+      "component": "InputDefault"
+    },
+    "underline": {
+      "name": "underline",
+      "description": "underline variant of input",
+      "component": "InputUnderline"
+    },
+    "pill": {
+      "name": "pill",
+      "description": "pill variant of input",
+      "component": "InputPill"
+    },
+    "sizes": {
+      "name": "sizes",
+      "description": "sizes variant of input",
+      "component": "InputSizes"
+    },
+    "iconLeft": {
+      "name": "iconLeft",
+      "description": "iconLeft variant of input",
+      "component": "InputIconLeft"
+    },
+    "iconRight": {
+      "name": "iconRight",
+      "description": "iconRight variant of input",
+      "component": "InputIconRight"
+    }
+  }
+}

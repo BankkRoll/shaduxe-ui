@@ -1,0 +1,50 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-demo",
+  "type": "registry:ui",
+  "title": "Tabs Demo",
+  "description": "Examples showcasing tabs component with different visual styles and layouts.",
+  "author": "shaduxe-ui",
+  "registryDependencies": [
+    "tabs"
+  ],
+  "files": [
+    {
+      "path": "default/example/tabs-demo",
+      "content": "import { Tabs, TabsContent, TabsList, TabsTrigger } from \"../ui/tabs\";\n\n// Basic demo\nexport function TabsDemo() {\n  return (\n    <Tabs defaultValue=\"account\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\n// Variant demos\nexport function TabsDefault() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"default\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport function TabsUnderline() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"underline\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport function TabsPill() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"pill\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport function TabsRounded() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"rounded\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport function TabsFolder() {\n  return (\n    <Tabs defaultValue=\"account\" variant=\"folder\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"password\">Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\">Account settings</TabsContent>\n      <TabsContent value=\"password\">Password settings</TabsContent>\n    </Tabs>\n  );\n}\n\nexport const tabsVariants = {\n  demo: TabsDemo,\n  default: TabsDefault,\n  underline: TabsUnderline,\n  pill: TabsPill,\n  rounded: TabsRounded,\n  folder: TabsFolder,\n};",
+      "type": "registry:ui"
+    }
+  ],
+  "variants": {
+    "demo": {
+      "name": "demo",
+      "description": "demo variant of tabs",
+      "component": "TabsDemo"
+    },
+    "default": {
+      "name": "default",
+      "description": "default variant of tabs",
+      "component": "TabsDefault"
+    },
+    "underline": {
+      "name": "underline",
+      "description": "underline variant of tabs",
+      "component": "TabsUnderline"
+    },
+    "pill": {
+      "name": "pill",
+      "description": "pill variant of tabs",
+      "component": "TabsPill"
+    },
+    "rounded": {
+      "name": "rounded",
+      "description": "rounded variant of tabs",
+      "component": "TabsRounded"
+    },
+    "folder": {
+      "name": "folder",
+      "description": "folder variant of tabs",
+      "component": "TabsFolder"
+    }
+  }
+}

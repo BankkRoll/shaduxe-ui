@@ -1,0 +1,7 @@
+{
+  "name": "shaduxe/ui",
+  "short_name": "shaduxe",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

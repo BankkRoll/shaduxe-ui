@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"],
+      "@/components/example/*": ["./registry/default/example/*"],
+      "content-collections": ["./.content-collections/generated"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".content-colletions/generated",
+    "registry/default/example/feature-lis"
+, "content/docs/components/button.mdx", "content/docs/blocks/pricing-two.mdx"  ],
+  "exclude": [
+    "node_modules",
+    "packages/**/*",
+    "scripts/**/*",
+    "scripts/build-registry.ts",
+    "__registry__"
+  ]
+}

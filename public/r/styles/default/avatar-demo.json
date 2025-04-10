@@ -1,0 +1,45 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-demo",
+  "type": "registry:ui",
+  "title": "Avatar Demo",
+  "description": "Examples showcasing avatar component variants and sizes.",
+  "author": "shaduxe-ui",
+  "registryDependencies": [
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "default/example/avatar-demo",
+      "content": "import { Avatar, AvatarFallback, AvatarImage } from \"../ui/avatar\";\n\n// Basic demo\nexport function AvatarDemo() {\n  return (\n    <Avatar>\n      <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n\n// Variant demos\nexport function AvatarCircle() {\n  return (\n    <Avatar variant=\"circle\">\n      <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n\nexport function AvatarSquare() {\n  return (\n    <Avatar variant=\"square\">\n      <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n\n// Size demos\nexport function AvatarSizes() {\n  return (\n    <div className=\"flex flex-col space-y-4\">\n      <Avatar size=\"xs\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar size=\"sm\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar size=\"md\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar size=\"lg\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n      <Avatar size=\"xl\">\n        <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <AvatarFallback>CN</AvatarFallback>\n      </Avatar>\n    </div>\n  );\n}\n\n// Custom demos\nexport function AvatarWithFallback() {\n  return (\n    <Avatar>\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  );\n}\n\nexport const avatarVariants = {\n  demo: AvatarDemo,\n  circle: AvatarCircle,\n  square: AvatarSquare,\n  sizes: AvatarSizes,\n  withFallback: AvatarWithFallback,\n};",
+      "type": "registry:ui"
+    }
+  ],
+  "variants": {
+    "demo": {
+      "name": "demo",
+      "description": "demo variant of avatar",
+      "component": "AvatarDemo"
+    },
+    "circle": {
+      "name": "circle",
+      "description": "circle variant of avatar",
+      "component": "AvatarCircle"
+    },
+    "square": {
+      "name": "square",
+      "description": "square variant of avatar",
+      "component": "AvatarSquare"
+    },
+    "sizes": {
+      "name": "sizes",
+      "description": "sizes variant of avatar",
+      "component": "AvatarSizes"
+    },
+    "withFallback": {
+      "name": "withFallback",
+      "description": "withFallback variant of avatar",
+      "component": "AvatarWithFallback"
+    }
+  }
+}

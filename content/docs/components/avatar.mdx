@@ -1,0 +1,100 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+author: bankk
+published: true
+component: true
+links:
+  api: https://www.radix-ui.com/primitives/docs/components/avatar
+---
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Multiple shape variants: circle, square, rounded</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Flexible sizing from XS to 2XL</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Smart image loading with fallback support</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Built on Radix UI primitives for accessibility</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/avatar"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="avatar" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5-8} showLineNumbers
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
+export default function Home() {
+  return (
+      <Avatar>
+        <AvatarImage src="https://github.com/BankkRoll.png" alt="@BankkRoll" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+  );
+}
+```
+
+## Examples
+
+<ComponentPreview name="avatar-demo" />
+
+## Props
+
+### Avatar
+
+| Prop      | Type                         | Default     | Description                   |
+| --------- | ---------------------------- | ----------- | ----------------------------- |
+| variant   | `circle \| square \| rounded` | `circle`    | The shape variant of the avatar |
+| size      | `xs \| sm \| md \| lg \| xl \| 2xl` | `md`        | The size of the avatar         |
+| className | `string`                     | -           | Additional CSS classes        |
+
+### AvatarImage
+
+| Prop | Type     | Required | Description                 |
+| ---- | -------- | -------- | --------------------------- |
+| src  | `string` | Yes      | The image source URL        |
+| alt  | `string` | Yes      | Alternative text description |
+
+<Callout type="tip" className="mt-6">
+  For optimal performance in Next.js projects, consider using the `next/image`
+  component for the `AvatarImage`.
+</Callout>

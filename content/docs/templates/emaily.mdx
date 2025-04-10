@@ -1,0 +1,180 @@
+---
+title: Emaily
+description: Modern SaaS Starter Template powered by Next.js, Tailwind CSS, and Supabase Auth
+author: bankk
+published: true
+---
+
+<div className="relative w-full overflow-hidden rounded-lg border bg-gradient-to-b from-background/10 to-background/80 p-2 backdrop-blur">
+  <div className="w-full overflow-hidden rounded-lg border shadow-lg">
+    <video 
+      src="/templates/emaily.webm" 
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="w-full h-auto"
+    />
+  </div>
+</div>
+
+<div className="flex justify-center gap-6 my-8 w-full">
+  <Button variant="outline" disabled className="flex gap-2 items-center py-6 px-8 h-12">
+    <IconDownload className="size-5 mr-1" />
+    <span className="font-medium">Coming Soon</span>
+  </Button>
+  <a href="#" target="_blank">
+    <Button className="flex gap-2 items-center py-6 px-8 h-12">
+      <IconExternalLink className="size-5 mr-1" />
+      <span className="font-medium">Live Preview</span>
+    </Button>
+  </a>
+</div>
+
+## What is this?
+
+Emaily is a complete SaaS starter template built with Next.js, Tailwind CSS, and Supabase Auth. This template provides everything you need to launch your email marketing SaaS project without the hassle of setting up authentication, styling, or basic page structure.
+
+## Key Features
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+  <div className="space-y-4">
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Complete Authentication System</h3>
+        <p className="text-sm text-muted-foreground">Email/password signup and login, password reset, and email verification using Supabase Auth</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Responsive Design</h3>
+        <p className="text-sm text-muted-foreground">Fully responsive across all devices with mobile-first approach</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Modern UI Components</h3>
+        <p className="text-sm text-muted-foreground">Extensive library of pre-styled UI components using Tailwind CSS and shadcn/ui</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Dark/Light Mode</h3>
+        <p className="text-sm text-muted-foreground">Built-in theme support with seamless transitions</p>
+      </div>
+    </div>
+  </div>
+  <div className="space-y-4">
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Marketing Pages</h3>
+        <p className="text-sm text-muted-foreground">Pre-built landing page with sections for hero, features, and testimonials</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Animation</h3>
+        <p className="text-sm text-muted-foreground">Beautiful animations using the Motion One library for a premium feel</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">TypeScript</h3>
+        <p className="text-sm text-muted-foreground">Full TypeScript support for better developer experience</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">SEO Optimized</h3>
+        <p className="text-sm text-muted-foreground">Pre-configured metadata and semantic HTML</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Tech Stack
+
+<div className="mt-6">
+  <TechStackFull
+    technologies={[
+      "nextjs",
+      "supabase",
+      "typescript",
+      "tailwindcss",
+      "motion",
+      "shadcn",
+    ]}
+  />
+</div>
+
+## Included Pages & Components
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-8">
+  <div>
+    <h3 className="font-semibold mb-2">Pages</h3>
+    <ul className="space-y-1">
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Landing page with hero, features, and testimonials</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Authentication pages (sign-in, sign-up, reset-password)</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Dashboard shell (empty, ready for your custom content)</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>404 and error pages</span>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3 className="font-semibold mb-2">Authentication Features</h3>
+    <ul className="space-y-1">
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Email & password authentication</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Email verification flow</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Password reset flow</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Protected routes with middleware</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Server-side session validation</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+## Updates
+
+<div className="space-y-4 mt-6">
+  <div className="flex gap-2">
+    <div className="size-2 rounded-full bg-primary mt-2" />
+    <div>
+      <span className="text-xs text-muted-foreground">10 April 2025</span>
+      <p className="font-medium">Initial release</p>
+    </div>
+  </div>
+</div>
+

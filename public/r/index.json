@@ -1,0 +1,231 @@
+{
+  "name": "shaduxe-ui",
+  "homepage": "https://shaduxe.com",
+  "items": [
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "description": "An image element with a fallback for representing the user.",
+      "title": "Avatar",
+      "files": [
+        {
+          "path": "default/ui/avatar",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "description": "Interactive button with multiple variants and animations.",
+      "title": "Button",
+      "files": [
+        {
+          "path": "default/ui/button",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "description": "Form input component with various styles and icon support.",
+      "title": "Input",
+      "files": [
+        {
+          "path": "default/ui/input",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "mode-toggle",
+      "type": "registry:ui",
+      "description": "A toggle for switching between light and dark modes.",
+      "title": "Mode Toggle",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "default/ui/mode-toggle",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "title": "Switch",
+      "files": [
+        {
+          "path": "default/ui/switch",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "description": "A set of layered sections of content that display one panel at a time.",
+      "title": "Tabs",
+      "files": [
+        {
+          "path": "default/ui/tabs",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "avatar-demo",
+      "type": "registry:ui",
+      "description": "Examples showcasing avatar component variants and sizes.",
+      "title": "Avatar Demo",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "default/example/avatar-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "button-demo",
+      "type": "registry:ui",
+      "description": "Examples showcasing button component variants, sizes, and icon placements.",
+      "title": "Button Demo",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "default/example/button-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "input-demo",
+      "type": "registry:ui",
+      "description": "Examples showcasing input component variants, sizes, and icon integrations.",
+      "title": "Input Demo",
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "default/example/input-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "switch-demo",
+      "type": "registry:ui",
+      "description": "Examples showcasing switch component variants, sizes, and thumb variations.",
+      "title": "Switch Demo",
+      "registryDependencies": [
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "default/example/switch-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "tabs-demo",
+      "type": "registry:ui",
+      "description": "Examples showcasing tabs component with different visual styles and layouts.",
+      "title": "Tabs Demo",
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "default/example/tabs-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "button-installation-example",
+      "type": "registry:ui",
+      "description": "Example showing how to install and use the button component.",
+      "title": "Button Installation Example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "default/example/button-installation-example",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pricing-one",
+      "type": "registry:block",
+      "description": "A pricing component with feature comparison table and responsive layout.",
+      "title": "Pricing Table",
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "default/blocks/pricing-one",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pricing-two",
+      "type": "registry:block",
+      "description": "An animated single card pricing component with feature lists and call-to-action.",
+      "title": "Featured Pricing Card",
+      "registryDependencies": [
+        "card",
+        "button",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "default/blocks/pricing-two",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pricing-three",
+      "type": "registry:block",
+      "description": "A three-column pricing card layout with feature lists and highlight for primary plan.",
+      "title": "Pricing Cards",
+      "registryDependencies": [
+        "card",
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "default/blocks/pricing-three",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "lib/utils",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}

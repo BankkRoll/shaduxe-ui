@@ -1,0 +1,60 @@
+---
+title: Installation
+description: How to install and set up your project with shaduxe/ui components.
+author: bankk
+published: true
+---
+
+## Setup
+
+<Steps>
+  <Step>
+    Create a new project:
+
+    ```bash
+    npx create-next-app@latest my-app --typescript --tailwind --eslint
+    ```
+  </Step>
+  <Step>
+    Initialize shadcn/ui:
+    
+    ```bash
+    npx shadcn@latest init
+    ```
+  </Step>
+  <Step>
+    Install Motion One for animations:
+    
+    ```bash
+    npm install motion
+    ```
+  </Step>
+  <Step>
+    Add your first component:
+    
+    ```bash
+    npx shadcn@latest add button
+    ```
+  </Step>
+</Steps>
+
+## Usage Example
+
+```tsx showLineNumbers
+import { Button } from "@/components/ui/button";
+import { motion } from "motion/react";
+
+export default function Page() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Button>Click me</Button>
+    </motion.div>
+  );
+}
+```
+
+<ComponentPreview name="button-installation-example" />

@@ -1,0 +1,107 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+author: bankk
+published: true
+component: true
+links:
+  api: https://www.radix-ui.com/primitives/docs/utilities/tabs
+---
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Multiple style variants including default, underline, pill, rounded, and folder</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Flexible layout with horizontal and vertical orientation</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Keyboard accessible with arrow navigation</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Built on Radix UI primitives for accessibility</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/tabs"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="tabs" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5-13} showLineNumbers
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+
+export default function Home() {
+  return (
+    <Tabs defaultValue="account" className="w-[400px]">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        Make changes to your account here.
+      </TabsContent>
+      <TabsContent value="password">Change your password here.</TabsContent>
+    </Tabs>
+  );
+}
+```
+
+## Examples
+
+<ComponentPreview name="tabs-demo" />
+
+## Props
+
+| Prop      | Type                                                        | Default   | Description               |
+| --------- | ----------------------------------------------------------- | --------- | ------------------------- |
+| variant   | `default` \| `underline` \| `pill` \| `rounded` \| `folder` | `default` | Style variant of the tabs |
+| className | `string`                                                    | -         | Additional CSS classes    |
+
+### Supported HTML Attributes
+
+Because the Tabs use Radix UI's `Tabs` component, they inherit and support **all standard HTML attributes**, including:
+
+- `defaultValue`
+- `value`
+- `onValueChange`
+- `orientation`
+- `dir`
+- `activationMode`
+- `aria-*` attributes
+- `data-*` attributes
+- Event handlers like `onKeyDown`, `onFocus`, etc.
+
+The Tabs component uses Radix UI's primitives, ensuring proper accessibility, keyboard navigation and semantic HTML.

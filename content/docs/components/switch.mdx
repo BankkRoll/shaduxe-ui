@@ -1,0 +1,106 @@
+---
+title: Switch
+description: A toggle switch component for binary choices with various styles and sizes.
+author: bankk
+published: true
+component: true
+links:
+  api: https://www.radix-ui.com/primitives/docs/utilities/switch
+---
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Multiple style variants including default, rounded, square, and iOS-style</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Flexible sizing from XS to LG</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Support for text labels and icons</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Built on Radix UI primitives for accessibility</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/switch"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="switch" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { Switch } from "@/components/ui/switch"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5-6} showLineNumbers
+import { Switch } from "@/components/ui/switch";
+
+export default function Home() {
+  return (
+    <Switch id="airplane-mode" />
+    <label htmlFor="airplane-mode">Airplane Mode</label>
+  );
+}
+```
+
+## Examples
+
+<ComponentPreview name="switch-demo" />
+
+## Props
+
+| Prop         | Type                                        | Default   | Description                       |
+| ------------ | ------------------------------------------- | --------- | --------------------------------- |
+| variant      | `default` \| `rounded` \| `square` \| `ios` | `default` | Style variant of the switch       |
+| size         | `icon` \| `xs` \| `sm` \| `md` \| `lg`      | `md`      | Size of the switch                |
+| thumbVariant | `default` \| `rounded` \| `square` \| `ios` | -         | Style variant of the switch thumb |
+| showLabels   | `boolean`                                   | `false`   | Show text labels                  |
+| labelOn      | `string`                                    | `"On"`    | Text for the "on" label           |
+| labelOff     | `string`                                    | `"Off"`   | Text for the "off" label          |
+| showIcons    | `boolean`                                   | `false`   | Show icons in the switch thumb    |
+| className    | `string`                                    | -         | Additional CSS classes            |
+
+### Supported HTML Attributes
+
+Because the Switch uses Radix UI's `Switch` component, it inherits and supports **all standard HTML input attributes**, including:
+
+- `checked`
+- `defaultChecked`
+- `required`
+- `name`
+- `value`
+- `onCheckedChange`
+- `disabled`
+- `aria-*` attributes
+- `data-*` attributes
+- Event handlers like `onFocus`, `onBlur`, etc.
+
+The Switch component uses Radix UI's primitives, ensuring proper accessibility, keyboard navigation and semantic HTML.

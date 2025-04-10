@@ -1,0 +1,113 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-demo",
+  "type": "registry:ui",
+  "title": "Button Demo",
+  "description": "Examples showcasing button component variants, sizes, and icon placements.",
+  "author": "shaduxe-ui",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "default/example/button-demo",
+      "content": "import { ArrowLeft, ArrowRight } from \"lucide-react\";\nimport { Button } from \"../ui/button\";\n\n// Basic demo\nexport function ButtonDemo() {\n  return <Button>Click me</Button>;\n}\n\n// Variant demos\nexport function ButtonDefault() {\n  return <Button variant=\"default\">Default</Button>;\n}\n\nexport function ButtonDestructive() {\n  return <Button variant=\"destructive\">Delete</Button>;\n}\n\nexport function ButtonOutline() {\n  return <Button variant=\"outline\">Outline</Button>;\n}\n\nexport function ButtonSecondary() {\n  return <Button variant=\"secondary\">Secondary</Button>;\n}\n\nexport function ButtonGhost() {\n  return <Button variant=\"ghost\">Ghost</Button>;\n}\n\nexport function ButtonLink() {\n  return <Button variant=\"link\">Link</Button>;\n}\n\nexport function ButtonExpandIcon() {\n  return <Button variant=\"expandIcon\">Expand</Button>;\n}\n\nexport function ButtonRingHover() {\n  return <Button variant=\"ringHover\">Ring Hover</Button>;\n}\n\nexport function ButtonRingHoverOutline() {\n  return <Button variant=\"ringHoverOutline\">Ring Hover Outline</Button>;\n}\n\nexport function ButtonShine() {\n  return <Button variant=\"shine\">Shine</Button>;\n}\n\nexport function ButtonGooeyRight() {\n  return <Button variant=\"gooeyRight\">Gooey Right</Button>;\n}\n\nexport function ButtonGooeyLeft() {\n  return <Button variant=\"gooeyLeft\">Gooey Left</Button>;\n}\n\nexport function ButtonLinkHover1() {\n  return <Button variant=\"linkHover1\">Link Hover 1</Button>;\n}\n\nexport function ButtonLinkHover2() {\n  return <Button variant=\"linkHover2\">Link Hover 2</Button>;\n}\n\n// Size demo\nexport function ButtonSizes() {\n  return (\n    <div className=\"flex flex-col space-y-4\">\n      <Button size=\"icon\">\n        <ArrowRight className=\"h-4 w-4\" />\n      </Button>\n      <Button size=\"xs\">Extra Small</Button>\n      <Button size=\"sm\">Small</Button>\n      <Button size=\"md\">Medium</Button>\n      <Button size=\"lg\">Large</Button>\n      <Button size=\"xl\">Extra Large</Button>\n      <Button size=\"2xl\">2XL</Button>\n    </div>\n  );\n}\n\n// Icon placement demos\nexport function ButtonIconLeft() {\n  return (\n    <Button Icon={ArrowLeft} iconPlacement=\"left\">\n      Left Icon\n    </Button>\n  );\n}\n\nexport function ButtonIconRight() {\n  return (\n    <Button Icon={ArrowRight} iconPlacement=\"right\">\n      Right Icon\n    </Button>\n  );\n}\n\nexport const buttonVariants = {\n  demo: ButtonDemo,\n  default: ButtonDefault,\n  destructive: ButtonDestructive,\n  outline: ButtonOutline,\n  secondary: ButtonSecondary,\n  ghost: ButtonGhost,\n  link: ButtonLink,\n  expandIcon: ButtonExpandIcon,\n  ringHover: ButtonRingHover,\n  ringHoverOutline: ButtonRingHoverOutline,\n  shine: ButtonShine,\n  gooeyRight: ButtonGooeyRight,\n  gooeyLeft: ButtonGooeyLeft,\n  linkHover1: ButtonLinkHover1,\n  linkHover2: ButtonLinkHover2,\n  sizes: ButtonSizes,\n  iconLeft: ButtonIconLeft,\n  iconRight: ButtonIconRight,\n};",
+      "type": "registry:ui"
+    }
+  ],
+  "variants": {
+    "demo": {
+      "name": "demo",
+      "description": "demo variant of button",
+      "component": "ButtonDemo"
+    },
+    "default": {
+      "name": "default",
+      "description": "default variant of button",
+      "component": "ButtonDefault"
+    },
+    "destructive": {
+      "name": "destructive",
+      "description": "destructive variant of button",
+      "component": "ButtonDestructive"
+    },
+    "outline": {
+      "name": "outline",
+      "description": "outline variant of button",
+      "component": "ButtonOutline"
+    },
+    "secondary": {
+      "name": "secondary",
+      "description": "secondary variant of button",
+      "component": "ButtonSecondary"
+    },
+    "ghost": {
+      "name": "ghost",
+      "description": "ghost variant of button",
+      "component": "ButtonGhost"
+    },
+    "link": {
+      "name": "link",
+      "description": "link variant of button",
+      "component": "ButtonLink"
+    },
+    "expandIcon": {
+      "name": "expandIcon",
+      "description": "expandIcon variant of button",
+      "component": "ButtonExpandIcon"
+    },
+    "ringHover": {
+      "name": "ringHover",
+      "description": "ringHover variant of button",
+      "component": "ButtonRingHover"
+    },
+    "ringHoverOutline": {
+      "name": "ringHoverOutline",
+      "description": "ringHoverOutline variant of button",
+      "component": "ButtonRingHoverOutline"
+    },
+    "shine": {
+      "name": "shine",
+      "description": "shine variant of button",
+      "component": "ButtonShine"
+    },
+    "gooeyRight": {
+      "name": "gooeyRight",
+      "description": "gooeyRight variant of button",
+      "component": "ButtonGooeyRight"
+    },
+    "gooeyLeft": {
+      "name": "gooeyLeft",
+      "description": "gooeyLeft variant of button",
+      "component": "ButtonGooeyLeft"
+    },
+    "linkHover1": {
+      "name": "linkHover1",
+      "description": "linkHover1 variant of button",
+      "component": "ButtonLinkHover1"
+    },
+    "linkHover2": {
+      "name": "linkHover2",
+      "description": "linkHover2 variant of button",
+      "component": "ButtonLinkHover2"
+    },
+    "sizes": {
+      "name": "sizes",
+      "description": "sizes variant of button",
+      "component": "ButtonSizes"
+    },
+    "iconLeft": {
+      "name": "iconLeft",
+      "description": "iconLeft variant of button",
+      "component": "ButtonIconLeft"
+    },
+    "iconRight": {
+      "name": "iconRight",
+      "description": "iconRight variant of button",
+      "component": "ButtonIconRight"
+    }
+  }
+}

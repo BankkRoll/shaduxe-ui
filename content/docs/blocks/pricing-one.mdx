@@ -1,0 +1,120 @@
+---
+title: Pricing One
+description: A pricing section for your website.
+author: bankk
+published: true
+component: true
+---
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Responsive layout for mobile and desktop views</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Three-tier pricing with custom feature comparison</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Animated entrance with Motion One animations</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Support for feature availability indicators</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/pricing-one"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="pricing-one" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { PricingOne } from "@/components/blocks/pricing-one"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5} showLineNumbers
+import { PricingOne } from "@/components/blocks/pricing-one";
+
+export default function Home() {
+  return (
+    <PricingOne />
+  );
+}
+```
+
+<ComponentPreview name="pricing-one" />
+
+## Props
+
+| Prop        | Type                 | Default   | Description                          |
+| ----------- | -------------------- | --------- | ------------------------------------ |
+| className   | `string`             | -         | Additional CSS classes               |
+| plans       | `Plan[]`             | See below | Array of pricing plans to display    |
+
+### Plan Type
+
+```tsx
+interface Plan {
+  name: string;         // Plan name (e.g., "Starter", "Pro")
+  price: string;        // Price display (e.g., "Free", "$19")
+  description: string;  // Short plan description
+  features: Feature[];  // Features included in this plan
+  isPrimary: boolean;   // Whether to highlight this plan
+  ctaLabel: string;     // Call-to-action button text
+  ctaLink: string;      // Call-to-action link URL
+}
+
+interface Feature {
+  name: string;         // Feature name
+  tiers: (boolean | string)[]; // Availability in each plan
+}
+```
+
+## Customization
+
+You can customize the pricing block by modifying the plans array:
+
+```tsx
+const plans: Plan[] = [
+  {
+    name: "Custom Plan",
+    price: "$29",
+    description: "Your custom description here.",
+    features: [
+      { name: "Feature One", tiers: [true, true, true] },
+      { name: "Feature Two", tiers: [false, true, true] },
+      // Add more features...
+    ],
+    isPrimary: true,
+    ctaLabel: "Sign Up",
+    ctaLink: "/signup",
+  },
+  // Add more plans...
+];
+```

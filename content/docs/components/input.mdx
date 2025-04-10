@@ -1,0 +1,103 @@
+---
+title: Input
+description: Displays a form input field or a component that looks like an input field.
+author: bankk
+published: true
+component: true
+links:
+  api: https://www.radix-ui.com/primitives/docs/utilities/slot
+---
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Multiple style variants including default, underline, and pill</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Flexible sizing from XS to XL</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Support for icons with left or right placement</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Standard HTML input attributes for complete form integration</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/input"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="input" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { Input } from "@/components/ui/input"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5} showLineNumbers
+import { Input } from "@/components/ui/input";
+
+export default function Home() {
+  return (
+    <Input type="email" placeholder="Email" />
+  );
+}
+```
+
+## Examples
+
+<ComponentPreview name="input-demo" />
+
+## Props
+
+| Prop          | Type                                    | Default   | Description                    |
+| ------------- | --------------------------------------- | --------- | ------------------------------ |
+| variant       | `default` \| `underline` \| `pill`      | `default` | Style variant of the input     |
+| inputSize     | `xs` \| `sm` \| `md` \| `lg` \| `xl`    | `md`      | Size of the input              |
+| type          | `text` \| `email` \| `password` \| etc. | `text`    | Type of the input field        |
+| className     | `string`                                | -         | Additional CSS classes         |
+| Icon          | `React.ElementType`                     | -         | Icon component to be displayed |
+| iconPlacement | `"left"` \| `"right"`                   | `"left"`  | Placement of the icon          |
+
+### Supported HTML Attributes
+
+Because the Input uses standard HTML input elements, it inherits and supports **all standard HTML input attributes**, including:
+
+- `placeholder`
+- `disabled`
+- `required`
+- `readOnly`
+- `value`
+- `onChange`
+- `onFocus`
+- `onBlur`
+- `aria-*` attributes
+- `data-*` attributes
+
+The Input component ensures proper accessibility, keyboard navigation and semantic HTML.

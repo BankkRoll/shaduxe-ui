@@ -1,0 +1,103 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+author: bankk
+published: true
+component: true
+links:
+  api: https://www.radix-ui.com/primitives/docs/utilities/slot
+---
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Multiple style variants including default, outline, secondary, ghost, and more</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Flexible sizing from XS to 2XL</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Support for icons with left or right placement</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Advanced effects like shine, gooey, and hover animations</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/button"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="button" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { Button } from "@/components/ui/button"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5} showLineNumbers
+import { Button } from "@/components/ui/button";
+
+export default function Home() {
+  return (
+    <Button>Click me</Button>
+  );
+}
+```
+
+## Examples
+
+<ComponentPreview name="button-demo" />
+
+## Props
+
+| Prop          | Type                                                                                                                                                                                                       | Default   | Description                               |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------------------------------------- |
+| variant       | `default` \| `destructive` \| `outline` \| `secondary` \| `ghost` \| `link` \| `expandIcon` \| `ringHover` \| `ringHoverOutline` \| `shine` \| `gooeyRight` \| `gooeyLeft` \| `linkHover1` \| `linkHover2` | `default` | Button style variant                      |
+| size          | `icon` \| `xs` \| `sm` \| `md` \| `lg` \| `xl` \| `2xl`                                                                                                                                                    | `md`      | Size of the button                        |
+| asChild       | `boolean`                                                                                                                                                                                                  | `false`   | Render as a child component               |
+| Icon          | `React.ElementType`                                                                                                                                                                                        | -         | Icon component to display                 |
+| iconPlacement | `left` \| `right`                                                                                                                                                                                          | -         | Position of the icon relative to the text |
+| className     | `string`                                                                                                                                                                                                   | -         | Additional CSS classes                    |
+
+### Supported HTML Attributes
+
+Because the Button uses Radix UI, it inherits and supports **all standard HTML button attributes**, including:
+
+- `onClick`
+- `disabled`
+- `type` (button, submit, reset)
+- `form`
+- `formAction`
+- `name`
+- `value`
+- `aria-*` attributes
+- `data-*` attributes
+- Event handlers like `onMouseEnter`, `onFocus`, etc.
+
+The Button component uses Radix UI's primitives, ensuring proper accessibility, keyboard navigation and semantic HTML.

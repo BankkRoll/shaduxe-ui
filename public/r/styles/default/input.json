@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "Form input component with various styles and icon support.",
+  "author": "shaduxe-ui",
+  "files": [
+    {
+      "path": "default/ui/input",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\nconst inputVariants = cva(\n  \"flex w-full rounded-md text-sm transition-all file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"border border-input bg-background shadow-sm focus-visible:ring-1 focus-visible:ring-ring\",\n        underline:\n          \"border-b border-input bg-transparent px-0 focus-visible:border-primary rounded-none focus-visible:ring-0 focus-visible:outline-none transition-colors duration-200\",\n        pill: \"rounded-full border border-input bg-background px-6 focus-visible:ring-1 focus-visible:ring-ring\",\n      },\n      inputSize: {\n        xs: \"h-7 px-2 text-xs\",\n        sm: \"h-8 px-3 text-sm\",\n        md: \"h-10 px-4 py-2\",\n        lg: \"h-12 px-6 text-lg\",\n        xl: \"h-14 px-8 text-xl\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      inputSize: \"md\",\n    },\n  },\n);\n\ninterface IconProps {\n  Icon: React.ElementType;\n  iconPlacement: \"left\" | \"right\";\n}\n\ninterface IconlessProps {\n  Icon?: never;\n  iconPlacement?: undefined;\n}\n\nexport interface InputProps\n  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, \"size\">,\n    VariantProps<typeof inputVariants> {\n  asChild?: boolean;\n}\n\nexport type InputIconProps = IconProps | IconlessProps;\n\nconst Input = React.forwardRef<HTMLInputElement, InputProps & InputIconProps>(\n  (\n    {\n      className,\n      variant,\n      inputSize,\n      asChild = false,\n      type,\n      Icon,\n      iconPlacement,\n      ...props\n    },\n    ref,\n  ) => {\n    const Comp = asChild ? Slot : \"input\";\n\n    const inputClassName = cn(\n      inputVariants({ variant, inputSize, className }),\n      Icon && (iconPlacement === \"left\" ? \"pl-8\" : \"pr-8\"),\n    );\n\n    return (\n      <div className=\"relative\">\n        {Icon && (\n          <div\n            className={cn(\n              \"absolute top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none\",\n              iconPlacement === \"left\" ? \"left-2\" : \"right-2\",\n            )}\n          >\n            <Icon className=\"w-5 h-5\" />\n          </div>\n        )}\n        <Comp type={type} className={inputClassName} ref={ref} {...props} />\n      </div>\n    );\n  },\n);\nInput.displayName = \"Input\";\n\nexport { Input, inputVariants };",
+      "type": "registry:ui"
+    }
+  ]
+}
