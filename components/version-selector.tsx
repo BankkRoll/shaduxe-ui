@@ -33,7 +33,7 @@ export function VersionSelect() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="center"
-        className="bg-background min-w-[120px]"
+        className="z-100 bg-background min-w-[120px]"
       >
         <DropdownMenuItem
           onClick={() => handleVersionChange("v3")}
