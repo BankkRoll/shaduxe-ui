@@ -16,17 +16,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface DocPageProps {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 }
 
 async function getDocFromParams({ params }: DocPageProps) {
   // For the root /docs route, slug will be undefined or an empty array
   // We want to use an empty string to match our docs/index.mdx that has slugAsParams=""
-  const slug = params.slug?.length ? params.slug.join("/") : "";
+  const { slug = [] } = await params;
+  const slugPath = slug.length ? slug.join("/") : "";
 
-  const doc = allDocs.find((doc) => doc.slugAsParams === slug);
+  const doc = allDocs.find((doc) => doc.slugAsParams === slugPath);
 
   if (!doc) {
     return null;
@@ -74,7 +75,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams(): Promise<
-  DocPageProps["params"][]
+  { slug: string[] }[]
 > {
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams.split("/"),
