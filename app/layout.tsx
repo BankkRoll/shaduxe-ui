@@ -2,13 +2,13 @@ import "@/styles/globals.css";
 
 import { cn, constructMetadata } from "@/lib/utils";
 
-import { Metadata } from "next";
 import { PHProvider } from "@/components/layout/posthog-provider";
-import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import type { Viewport } from "next";
 import { fontSans } from "@/lib/fonts";
+import type { Viewport } from "next";
+import { Metadata } from "next";
 
 export const metadata: Metadata = constructMetadata({
   title: "shaduxe/ui",
