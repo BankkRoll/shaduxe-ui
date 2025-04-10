@@ -24,7 +24,7 @@ export function MainNav() {
 
       <VersionSelect />
 
-      <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
+      <nav className="hidden items-center space-x-6 text-sm font-medium md:flex ml-2 ">
         {docsConfig.mainNav.map((item) => (
           <Link
             key={item.href}
