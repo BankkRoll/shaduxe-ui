@@ -1,21 +1,22 @@
 import { Mdx } from "@/components/docs/mdx-components";
-import { Metadata } from "next";
 import { absoluteUrl } from "@/lib/utils";
 import { allPages } from "content-collections";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 }
 
 async function getPageFromParams(params: PageProps["params"]) {
-  const slug = params?.slug?.join("/");
-  const page = allPages.find((page) => page.slugAsParams === slug);
+  const { slug = [] } = await params;
+  const slugPath = slug.join("/");
+  const page = allPages.find((page) => page.slugAsParams === slugPath);
 
   if (!page) {
-    null;
+    return null;
   }
 
   return page;
@@ -56,7 +57,7 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   return allPages.map((page) => ({
     slug: page.slugAsParams.split("/"),
   }));

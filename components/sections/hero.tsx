@@ -50,10 +50,11 @@ export default function Hero() {
             <ChevronRight className="ml-1 h-4 w-4 text-muted-foreground" />
           </Button>
           <h1 className="max-w-2xl text-4xl md:text-6xl font-bold mt-4 leading-tight tracking-tight">
-            Beautiful UI components with <span className="text-primary">endless variations</span>
+            Beautiful UI components with{" "}
+            <span className="text-primary">endless variations</span>
           </h1>
           <p className="mt-6 text-lg text-foreground/80 max-w-xl">
-            A comprehensive collection of advanced components, pre-built blocks, 
+            A comprehensive collection of advanced components, pre-built blocks,
             and stunning templates with rich variants and customization options.
           </p>
           <div className="flex items-center space-x-4 mt-8">

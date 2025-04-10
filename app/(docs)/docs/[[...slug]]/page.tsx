@@ -74,9 +74,7 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams(): Promise<
-  { slug: string[] }[]
-> {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams.split("/"),
   }));

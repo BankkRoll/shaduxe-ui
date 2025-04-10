@@ -6,7 +6,6 @@ export default function Home() {
     <>
       <main className="flex-1">
         <div className="container border-x border-dashed mx-auto relative">
-
           <div className="block w-full h-px border-t border-border border-dashed"></div>
 
           {/* Hero section */}
