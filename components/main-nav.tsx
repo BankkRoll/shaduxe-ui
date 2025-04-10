@@ -8,6 +8,7 @@ import { docsConfig } from "@/config/docs";
 import posthog from "posthog-js";
 import { siteConfig } from "@/config/site";
 import { usePathname } from "next/navigation";
+import { VersionSelect } from "@/components/version-selector";
 
 export function MainNav() {
   const pathname = usePathname();
@@ -20,6 +21,9 @@ export function MainNav() {
           {siteConfig.name}
         </span>
       </Link>
+
+      <VersionSelect />
+
       <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
         {docsConfig.mainNav.map((item) => (
           <Link
