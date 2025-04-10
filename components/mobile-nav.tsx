@@ -13,6 +13,7 @@ import { docsConfig } from "@/config/docs";
 import posthog from "posthog-js";
 import { siteConfig } from "@/config/site";
 import { useRouter } from "next/navigation";
+import { VersionSelect } from "@/components/version-selector";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -56,7 +57,7 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left">
+      <SheetContent classname="pt-6" side="left">
         <MobileLink
           href="/"
           className="-mt-1 flex items-center"
@@ -72,6 +73,9 @@ export function MobileNav() {
 
         <ScrollArea className="my-4 h-[calc(100vh-4rem)] pb-8 pl-2">
           <div className="flex flex-col space-y-3">
+
+          <VersionSelect />
+
             {docsConfig.mainNav?.map(
               (item) =>
                 item.href && (
