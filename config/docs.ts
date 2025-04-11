@@ -48,8 +48,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Badge",
+          href: "/docs/components/badge",
+          items: [],
+        },
+        {
           title: "Button",
           href: "/docs/components/button",
+          items: [],
+        },
+        {
+          title: "Card",
+          href: "/docs/components/card",
           items: [],
         },
         {
@@ -73,7 +83,7 @@ export const docsConfig: DocsConfig = {
       title: "Blocks",
       items: [
         {
-          title: "Pricing Sections",
+          title: "Pricing Blocks",
           isAccordion: true,
           defaultOpen: true,
           subItems: [

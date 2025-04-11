@@ -15,6 +15,18 @@
       ]
     },
     {
+      "name": "badge",
+      "type": "registry:ui",
+      "description": "A label that can be used to indicate a status or category.",
+      "title": "Badge",
+      "files": [
+        {
+          "path": "default/ui/badge",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "description": "Interactive button with multiple variants and animations.",
@@ -22,6 +34,18 @@
       "files": [
         {
           "path": "default/ui/button",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "description": "Card component with various styles.",
+      "title": "Card",
+      "files": [
+        {
+          "path": "default/ui/card",
           "type": "registry:component"
         }
       ]
@@ -93,6 +117,21 @@
       ]
     },
     {
+      "name": "badge-demo",
+      "type": "registry:ui",
+      "description": "Examples showcasing badge component variants and sizes.",
+      "title": "Badge Demo",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "default/example/badge-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "button-demo",
       "type": "registry:ui",
       "description": "Examples showcasing button component variants, sizes, and icon placements.",
@@ -103,6 +142,21 @@
       "files": [
         {
           "path": "default/example/button-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "card-demo",
+      "type": "registry:ui",
+      "description": "Examples showcasing card component variants and sizes.",
+      "title": "Card Demo",
+      "registryDependencies": [
+        "card"
+      ],
+      "files": [
+        {
+          "path": "default/example/card-demo",
           "type": "registry:component"
         }
       ]

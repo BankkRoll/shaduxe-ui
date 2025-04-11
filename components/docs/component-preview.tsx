@@ -353,7 +353,7 @@ export function ComponentPreview({
             </div>
 
             <div className="preview-container flex justify-center pt-12">
-              <div className="w-full overflow-auto hide-scrollbar">
+              <div className="w-full overflow-auto hide-scrollbar p-4">
                 <ComponentToRender />
               </div>
             </div>

@@ -6,6 +6,55 @@ export function SwitchDemo() {
 }
 
 // Variant demos
+export function SwitchVariants() {
+  return (
+    <div className="flex items-center gap-4">
+      <Switch variant="default" />
+      <Switch variant="rounded" />
+      <Switch variant="square" />
+      <Switch variant="ios" />
+    </div>
+  );
+}
+
+// Size demos
+export function SwitchSizes() {
+  return (
+    <div className="flex items-center gap-4">
+      <Switch size="icon" />
+      <Switch size="xs" />
+      <Switch size="sm" />
+      <Switch size="md" />
+      <Switch size="lg" />
+    </div>
+  );
+}
+
+// Thumb variant demos
+export function SwitchThumbVariants() {
+  return (
+    <div className="flex items-center gap-4">
+      <Switch thumbVariant="default" />
+      <Switch thumbVariant="rounded" />
+      <Switch thumbVariant="square" />
+      <Switch thumbVariant="ios" />
+    </div>
+  );
+}
+
+// Feature demos
+export function SwitchFeatures() {
+  return (
+    <div className="flex items-center gap-4">
+      <Switch showLabels />
+      <Switch showIcons />
+      <Switch disabled />
+      <Switch defaultChecked />
+    </div>
+  );
+}
+
+// Individual variants for reference
 export function SwitchDefault() {
   return <Switch variant="default" />;
 }
@@ -22,20 +71,6 @@ export function SwitchIOS() {
   return <Switch variant="ios" />;
 }
 
-// Size demo
-export function SwitchSizes() {
-  return (
-    <div className="flex flex-col space-y-4">
-      <Switch size="icon" />
-      <Switch size="xs" />
-      <Switch size="sm" />
-      <Switch size="md" />
-      <Switch size="lg" />
-    </div>
-  );
-}
-
-// Thumb variant demos
 export function SwitchThumbDefault() {
   return <Switch thumbVariant="default" />;
 }
@@ -52,7 +87,6 @@ export function SwitchThumbIOS() {
   return <Switch thumbVariant="ios" />;
 }
 
-// Feature demos
 export function SwitchWithLabels() {
   return <Switch showLabels />;
 }
@@ -90,17 +124,6 @@ export function SwitchCustomThumb() {
   );
 }
 
-export function SwitchGrid() {
-  return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-      <SwitchDefault />
-      <SwitchRounded />
-      <SwitchSquare />
-      <SwitchIOS />
-    </div>
-  );
-}
-
 export default function SwitchDemos() {
   return (
     <div className="grid gap-6">
@@ -110,26 +133,19 @@ export default function SwitchDemos() {
       </div>
       <div>
         <h3 className="mb-2 text-sm font-medium">Variants</h3>
-        <SwitchGrid />
+        <SwitchVariants />
       </div>
       <div>
         <h3 className="mb-2 text-sm font-medium">Sizes</h3>
         <SwitchSizes />
       </div>
       <div>
-        <h3 className="mb-2 text-sm font-medium">With Labels</h3>
-        <SwitchWithLabels />
+        <h3 className="mb-2 text-sm font-medium">Thumb Variants</h3>
+        <SwitchThumbVariants />
       </div>
       <div>
-        <h3 className="mb-2 text-sm font-medium">With Icons</h3>
-        <SwitchWithIcons />
-      </div>
-      <div>
-        <h3 className="mb-2 text-sm font-medium">State</h3>
-        <div className="grid gap-4">
-          <SwitchDisabled />
-          <SwitchDefaultChecked />
-        </div>
+        <h3 className="mb-2 text-sm font-medium">Features</h3>
+        <SwitchFeatures />
       </div>
       <div>
         <h3 className="mb-2 text-sm font-medium">Custom Thumb</h3>
@@ -141,19 +157,21 @@ export default function SwitchDemos() {
 
 export const switchVariants = {
   demo: SwitchDemo,
+  variants: SwitchVariants,
   default: SwitchDefault,
   rounded: SwitchRounded,
   square: SwitchSquare,
   ios: SwitchIOS,
   sizes: SwitchSizes,
+  thumbVariants: SwitchThumbVariants,
   thumbDefault: SwitchThumbDefault,
   thumbRounded: SwitchThumbRounded,
   thumbSquare: SwitchThumbSquare,
   thumbIOS: SwitchThumbIOS,
+  features: SwitchFeatures,
   withLabels: SwitchWithLabels,
   withIcons: SwitchWithIcons,
   disabled: SwitchDisabled,
   defaultChecked: SwitchDefaultChecked,
   customThumb: SwitchCustomThumb,
-  grid: SwitchGrid,
 };

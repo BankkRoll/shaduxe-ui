@@ -181,32 +181,36 @@ export default function PricingOne() {
                 </div>
               ))}
             </div>
-            <div className="mt-8 grid grid-cols-4 gap-0 divide-x divide-gray-800">
+
+            <div className="mt-8">
               {plans[0].features.map((feature, featureIndex) => (
-                <>
-                  <div
-                    key={`feature-${featureIndex}`}
-                    className="flex items-center p-4 font-medium"
-                  >
+                <div
+                  key={`feature-row-${featureIndex}`}
+                  className="grid grid-cols-4 gap-0 divide-x divide-gray-800 border-b border-gray-800 last:border-b-0"
+                >
+                  <div className="flex items-center p-4 font-medium">
                     {feature.name}
                   </div>
-                  {feature.tiers.map((tier, tierIndex) => (
+
+                  {plans.map((plan, planIndex) => (
                     <div
-                      key={`feature-tier-${featureIndex}-${tierIndex}`}
+                      key={`plan-feature-${planIndex}-${featureIndex}`}
                       className="flex justify-center p-4"
                     >
-                      {typeof tier === "boolean" ? (
-                        tier ? (
+                      {typeof feature.tiers[planIndex] === "boolean" ? (
+                        feature.tiers[planIndex] ? (
                           <Check className="h-5 w-5 text-green-500" />
                         ) : (
                           <Minus className="h-5 w-5 text-gray-500" />
                         )
                       ) : (
-                        <p className="text-sm text-gray-400">{tier}</p>
+                        <p className="text-sm text-gray-400">
+                          {feature.tiers[planIndex]}
+                        </p>
                       )}
                     </div>
                   ))}
-                </>
+                </div>
               ))}
             </div>
           </div>

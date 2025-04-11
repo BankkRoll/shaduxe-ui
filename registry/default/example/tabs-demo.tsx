@@ -15,6 +15,70 @@ export function TabsDemo() {
 }
 
 // Variant demos
+export function TabsVariants() {
+  return (
+    <div className="flex flex-col gap-8">
+      <Tabs
+        defaultValue="account"
+        variant="default"
+        className="w-full max-w-md"
+      >
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">Default variant</TabsContent>
+        <TabsContent value="password">Password settings</TabsContent>
+      </Tabs>
+
+      <Tabs
+        defaultValue="account"
+        variant="underline"
+        className="w-full max-w-md"
+      >
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">Underline variant</TabsContent>
+        <TabsContent value="password">Password settings</TabsContent>
+      </Tabs>
+
+      <Tabs defaultValue="account" variant="pill" className="w-full max-w-md">
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">Pill variant</TabsContent>
+        <TabsContent value="password">Password settings</TabsContent>
+      </Tabs>
+
+      <Tabs
+        defaultValue="account"
+        variant="rounded"
+        className="w-full max-w-md"
+      >
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">Rounded variant</TabsContent>
+        <TabsContent value="password">Password settings</TabsContent>
+      </Tabs>
+
+      <Tabs defaultValue="account" variant="folder" className="w-full max-w-md">
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">Folder variant</TabsContent>
+        <TabsContent value="password">Password settings</TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+
+// Individual variants for reference
 export function TabsDefault() {
   return (
     <Tabs defaultValue="account" variant="default">
@@ -80,8 +144,24 @@ export function TabsFolder() {
   );
 }
 
+export default function TabsDemos() {
+  return (
+    <div className="grid gap-6">
+      <div>
+        <h3 className="mb-2 text-sm font-medium">Default</h3>
+        <TabsDemo />
+      </div>
+      <div>
+        <h3 className="mb-2 text-sm font-medium">Variants</h3>
+        <TabsVariants />
+      </div>
+    </div>
+  );
+}
+
 export const tabsVariants = {
   demo: TabsDemo,
+  variants: TabsVariants,
   default: TabsDefault,
   underline: TabsUnderline,
   pill: TabsPill,

@@ -14,7 +14,7 @@
   "files": [
     {
       "path": "default/example/input-demo",
-      "content": "import { Mail, Search } from \"lucide-react\";\nimport { Input } from \"../ui/input\";\n\n// Basic demo\nexport function InputDemo() {\n  return <Input placeholder=\"Input\" />;\n}\n\n// Variant demos\nexport function InputDefault() {\n  return <Input variant=\"default\" placeholder=\"Default input\" />;\n}\n\nexport function InputUnderline() {\n  return <Input variant=\"underline\" placeholder=\"Underline input\" />;\n}\n\nexport function InputPill() {\n  return <Input variant=\"pill\" placeholder=\"Pill input\" />;\n}\n\n// Size demo\nexport function InputSizes() {\n  return (\n    <div className=\"flex flex-col space-y-4\">\n      <Input inputSize=\"xs\" placeholder=\"Extra Small\" />\n      <Input inputSize=\"sm\" placeholder=\"Small\" />\n      <Input inputSize=\"md\" placeholder=\"Medium\" />\n      <Input inputSize=\"lg\" placeholder=\"Large\" />\n      <Input inputSize=\"xl\" placeholder=\"Extra Large\" />\n    </div>\n  );\n}\n\n// Icon demos\nexport function InputIconLeft() {\n  return <Input Icon={Search} iconPlacement=\"left\" placeholder=\"Search...\" />;\n}\n\nexport function InputIconRight() {\n  return <Input Icon={Mail} iconPlacement=\"right\" placeholder=\"Email\" />;\n}\n\nexport const inputVariants = {\n  demo: InputDemo,\n  default: InputDefault,\n  underline: InputUnderline,\n  pill: InputPill,\n  sizes: InputSizes,\n  iconLeft: InputIconLeft,\n  iconRight: InputIconRight,\n};",
+      "content": "import { Mail, Search } from \"lucide-react\";\nimport { Input } from \"../ui/input\";\n\n// Basic demo\nexport function InputDemo() {\n  return <Input placeholder=\"Input\" />;\n}\n\n// Variant demos\nexport function InputVariants() {\n  return (\n    <div className=\"flex flex-col gap-4 max-w-md\">\n      <Input variant=\"default\" placeholder=\"Default input\" />\n      <Input variant=\"underline\" placeholder=\"Underline input\" />\n      <Input variant=\"pill\" placeholder=\"Pill input\" />\n    </div>\n  );\n}\n\n// Size demos\nexport function InputSizes() {\n  return (\n    <div className=\"flex flex-col gap-4 max-w-md\">\n      <Input inputSize=\"xs\" placeholder=\"Extra Small\" />\n      <Input inputSize=\"sm\" placeholder=\"Small\" />\n      <Input inputSize=\"md\" placeholder=\"Medium\" />\n      <Input inputSize=\"lg\" placeholder=\"Large\" />\n      <Input inputSize=\"xl\" placeholder=\"Extra Large\" />\n    </div>\n  );\n}\n\n// Icon demos\nexport function InputIcons() {\n  return (\n    <div className=\"flex flex-col gap-4 max-w-md\">\n      <Input Icon={Search} iconPlacement=\"left\" placeholder=\"Search...\" />\n      <Input Icon={Mail} iconPlacement=\"right\" placeholder=\"Email\" />\n    </div>\n  );\n}\n\n// Individual variants for reference\nexport function InputDefault() {\n  return <Input variant=\"default\" placeholder=\"Default input\" />;\n}\n\nexport function InputUnderline() {\n  return <Input variant=\"underline\" placeholder=\"Underline input\" />;\n}\n\nexport function InputPill() {\n  return <Input variant=\"pill\" placeholder=\"Pill input\" />;\n}\n\nexport function InputIconLeft() {\n  return <Input Icon={Search} iconPlacement=\"left\" placeholder=\"Search...\" />;\n}\n\nexport function InputIconRight() {\n  return <Input Icon={Mail} iconPlacement=\"right\" placeholder=\"Email\" />;\n}\n\nexport default function InputDemos() {\n  return (\n    <div className=\"grid gap-6\">\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Default</h3>\n        <InputDemo />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Variants</h3>\n        <InputVariants />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Sizes</h3>\n        <InputSizes />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Icons</h3>\n        <InputIcons />\n      </div>\n    </div>\n  );\n}\n\nexport const inputVariants = {\n  demo: InputDemo,\n  variants: InputVariants,\n  default: InputDefault,\n  underline: InputUnderline,\n  pill: InputPill,\n  sizes: InputSizes,\n  icons: InputIcons,\n  iconLeft: InputIconLeft,\n  iconRight: InputIconRight,\n};",
       "type": "registry:ui"
     }
   ],
@@ -23,6 +23,11 @@
       "name": "demo",
       "description": "demo variant of input",
       "component": "InputDemo"
+    },
+    "variants": {
+      "name": "variants",
+      "description": "variants variant of input",
+      "component": "InputVariants"
     },
     "default": {
       "name": "default",
@@ -43,6 +48,11 @@
       "name": "sizes",
       "description": "sizes variant of input",
       "component": "InputSizes"
+    },
+    "icons": {
+      "name": "icons",
+      "description": "icons variant of input",
+      "component": "InputIcons"
     },
     "iconLeft": {
       "name": "iconLeft",

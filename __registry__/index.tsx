@@ -41,6 +41,16 @@ export const Index: Record<string, any> = {
       source: "https://ui.shaduxe.com/r/styles/default/avatar.json",
       chunks: [],
     },
+    badge: {
+      name: "badge",
+      type: "registry:ui",
+      registryDependencies: [],
+      files: ["registry/default/ui/badge.tsx"],
+      component: safeLazy(() => import("@/registry/default/ui/badge")),
+      variants: {},
+      source: "https://ui.shaduxe.com/r/styles/default/badge.json",
+      chunks: [],
+    },
     button: {
       name: "button",
       type: "registry:ui",
@@ -49,6 +59,16 @@ export const Index: Record<string, any> = {
       component: safeLazy(() => import("@/registry/default/ui/button")),
       variants: {},
       source: "https://ui.shaduxe.com/r/styles/default/button.json",
+      chunks: [],
+    },
+    card: {
+      name: "card",
+      type: "registry:ui",
+      registryDependencies: [],
+      files: ["registry/default/ui/card.tsx"],
+      component: safeLazy(() => import("@/registry/default/ui/card")),
+      variants: {},
+      source: "https://ui.shaduxe.com/r/styles/default/card.json",
       chunks: [],
     },
     input: {
@@ -148,6 +168,32 @@ export const Index: Record<string, any> = {
             }),
           ),
         },
+        variants: {
+          name: "variants",
+          description: "variants variant of avatar",
+          component: safeLazy(() =>
+            import("@/registry/default/example/avatar-demo").then((mod) => {
+              if (mod.AvatarVariants) {
+                return { default: mod.AvatarVariants };
+              } else {
+                console.error(
+                  "Variant component AvatarVariants not found in @/registry/default/example/avatar-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant variants not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
         circle: {
           name: "circle",
           description: "circle variant of avatar",
@@ -194,6 +240,32 @@ export const Index: Record<string, any> = {
                           "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
                       },
                       "Variant square not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        rounded: {
+          name: "rounded",
+          description: "rounded variant of avatar",
+          component: safeLazy(() =>
+            import("@/registry/default/example/avatar-demo").then((mod) => {
+              if (mod.AvatarRounded) {
+                return { default: mod.AvatarRounded };
+              } else {
+                console.error(
+                  "Variant component AvatarRounded not found in @/registry/default/example/avatar-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant rounded not found",
                     ),
                 };
               }
@@ -256,6 +328,405 @@ export const Index: Record<string, any> = {
       source: "https://ui.shaduxe.com/r/styles/default/avatar-demo.json",
       chunks: [],
     },
+    "badge-demo": {
+      name: "badge-demo",
+      type: "registry:ui",
+      registryDependencies: ["badge"],
+      files: ["registry/default/example/badge-demo.tsx"],
+      component: safeLazy(() =>
+        import("@/registry/default/example/badge-demo").then((mod) => {
+          // For demo components, try to use default export first, then specific demo component
+          if (mod.default) {
+            return { default: mod.default };
+          } else if (mod.BadgeDemo) {
+            return { default: mod.BadgeDemo };
+          } else {
+            console.error(
+              "Could not find default export or demo export in @/registry/default/example/badge-demo",
+            );
+            return {
+              default: () =>
+                React.createElement(
+                  "div",
+                  {
+                    className:
+                      "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                  },
+                  "Component failed to load",
+                ),
+            };
+          }
+        }),
+      ),
+      variants: {
+        demo: {
+          name: "demo",
+          description: "demo variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeDemo) {
+                return { default: mod.BadgeDemo };
+              } else {
+                console.error(
+                  "Variant component BadgeDemo not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant demo not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        variants: {
+          name: "variants",
+          description: "variants variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeVariants) {
+                return { default: mod.BadgeVariants };
+              } else {
+                console.error(
+                  "Variant component BadgeVariants not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant variants not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        specialVariants: {
+          name: "specialVariants",
+          description: "specialVariants variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeSpecialVariants) {
+                return { default: mod.BadgeSpecialVariants };
+              } else {
+                console.error(
+                  "Variant component BadgeSpecialVariants not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant specialVariants not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        default: {
+          name: "default",
+          description: "default variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeDefault) {
+                return { default: mod.BadgeDefault };
+              } else {
+                console.error(
+                  "Variant component BadgeDefault not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant default not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        secondary: {
+          name: "secondary",
+          description: "secondary variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeSecondary) {
+                return { default: mod.BadgeSecondary };
+              } else {
+                console.error(
+                  "Variant component BadgeSecondary not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant secondary not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        destructive: {
+          name: "destructive",
+          description: "destructive variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeDestructive) {
+                return { default: mod.BadgeDestructive };
+              } else {
+                console.error(
+                  "Variant component BadgeDestructive not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant destructive not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        outline: {
+          name: "outline",
+          description: "outline variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeOutline) {
+                return { default: mod.BadgeOutline };
+              } else {
+                console.error(
+                  "Variant component BadgeOutline not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant outline not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        ghost: {
+          name: "ghost",
+          description: "ghost variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeGhost) {
+                return { default: mod.BadgeGhost };
+              } else {
+                console.error(
+                  "Variant component BadgeGhost not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant ghost not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        link: {
+          name: "link",
+          description: "link variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeLink) {
+                return { default: mod.BadgeLink };
+              } else {
+                console.error(
+                  "Variant component BadgeLink not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant link not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        success: {
+          name: "success",
+          description: "success variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeSuccess) {
+                return { default: mod.BadgeSuccess };
+              } else {
+                console.error(
+                  "Variant component BadgeSuccess not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant success not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        warning: {
+          name: "warning",
+          description: "warning variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeWarning) {
+                return { default: mod.BadgeWarning };
+              } else {
+                console.error(
+                  "Variant component BadgeWarning not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant warning not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        info: {
+          name: "info",
+          description: "info variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeInfo) {
+                return { default: mod.BadgeInfo };
+              } else {
+                console.error(
+                  "Variant component BadgeInfo not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant info not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        sizes: {
+          name: "sizes",
+          description: "sizes variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeSizes) {
+                return { default: mod.BadgeSizes };
+              } else {
+                console.error(
+                  "Variant component BadgeSizes not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant sizes not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        shapes: {
+          name: "shapes",
+          description: "shapes variant of badge",
+          component: safeLazy(() =>
+            import("@/registry/default/example/badge-demo").then((mod) => {
+              if (mod.BadgeShapes) {
+                return { default: mod.BadgeShapes };
+              } else {
+                console.error(
+                  "Variant component BadgeShapes not found in @/registry/default/example/badge-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant shapes not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+      },
+      source: "https://ui.shaduxe.com/r/styles/default/badge-demo.json",
+      chunks: [],
+    },
     "button-demo": {
       name: "button-demo",
       type: "registry:ui",
@@ -307,6 +778,58 @@ export const Index: Record<string, any> = {
                           "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
                       },
                       "Variant demo not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        variants: {
+          name: "variants",
+          description: "variants variant of button",
+          component: safeLazy(() =>
+            import("@/registry/default/example/button-demo").then((mod) => {
+              if (mod.ButtonVariants) {
+                return { default: mod.ButtonVariants };
+              } else {
+                console.error(
+                  "Variant component ButtonVariants not found in @/registry/default/example/button-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant variants not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        specialVariants: {
+          name: "specialVariants",
+          description: "specialVariants variant of button",
+          component: safeLazy(() =>
+            import("@/registry/default/example/button-demo").then((mod) => {
+              if (mod.ButtonSpecialVariants) {
+                return { default: mod.ButtonSpecialVariants };
+              } else {
+                console.error(
+                  "Variant component ButtonSpecialVariants not found in @/registry/default/example/button-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant specialVariants not found",
                     ),
                 };
               }
@@ -703,6 +1226,32 @@ export const Index: Record<string, any> = {
             }),
           ),
         },
+        icons: {
+          name: "icons",
+          description: "icons variant of button",
+          component: safeLazy(() =>
+            import("@/registry/default/example/button-demo").then((mod) => {
+              if (mod.ButtonIcons) {
+                return { default: mod.ButtonIcons };
+              } else {
+                console.error(
+                  "Variant component ButtonIcons not found in @/registry/default/example/button-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant icons not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
         iconLeft: {
           name: "iconLeft",
           description: "iconLeft variant of button",
@@ -759,6 +1308,171 @@ export const Index: Record<string, any> = {
       source: "https://ui.shaduxe.com/r/styles/default/button-demo.json",
       chunks: [],
     },
+    "card-demo": {
+      name: "card-demo",
+      type: "registry:ui",
+      registryDependencies: ["card"],
+      files: ["registry/default/example/card-demo.tsx"],
+      component: safeLazy(() =>
+        import("@/registry/default/example/card-demo").then((mod) => {
+          // For demo components, try to use default export first, then specific demo component
+          if (mod.default) {
+            return { default: mod.default };
+          } else if (mod.CardDemo) {
+            return { default: mod.CardDemo };
+          } else {
+            console.error(
+              "Could not find default export or demo export in @/registry/default/example/card-demo",
+            );
+            return {
+              default: () =>
+                React.createElement(
+                  "div",
+                  {
+                    className:
+                      "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                  },
+                  "Component failed to load",
+                ),
+            };
+          }
+        }),
+      ),
+      variants: {
+        demo: {
+          name: "demo",
+          description: "demo variant of card",
+          component: safeLazy(() =>
+            import("@/registry/default/example/card-demo").then((mod) => {
+              if (mod.CardDemo) {
+                return { default: mod.CardDemo };
+              } else {
+                console.error(
+                  "Variant component CardDemo not found in @/registry/default/example/card-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant demo not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        variants: {
+          name: "variants",
+          description: "variants variant of card",
+          component: safeLazy(() =>
+            import("@/registry/default/example/card-demo").then((mod) => {
+              if (mod.CardVariants) {
+                return { default: mod.CardVariants };
+              } else {
+                console.error(
+                  "Variant component CardVariants not found in @/registry/default/example/card-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant variants not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        sizes: {
+          name: "sizes",
+          description: "sizes variant of card",
+          component: safeLazy(() =>
+            import("@/registry/default/example/card-demo").then((mod) => {
+              if (mod.CardSizes) {
+                return { default: mod.CardSizes };
+              } else {
+                console.error(
+                  "Variant component CardSizes not found in @/registry/default/example/card-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant sizes not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        radius: {
+          name: "radius",
+          description: "radius variant of card",
+          component: safeLazy(() =>
+            import("@/registry/default/example/card-demo").then((mod) => {
+              if (mod.CardRadius) {
+                return { default: mod.CardRadius };
+              } else {
+                console.error(
+                  "Variant component CardRadius not found in @/registry/default/example/card-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant radius not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        default: {
+          name: "default",
+          description: "default variant of card",
+          component: safeLazy(() =>
+            import("@/registry/default/example/card-demo").then((mod) => {
+              if (mod.CardDefault) {
+                return { default: mod.CardDefault };
+              } else {
+                console.error(
+                  "Variant component CardDefault not found in @/registry/default/example/card-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant default not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+      },
+      source: "https://ui.shaduxe.com/r/styles/default/card-demo.json",
+      chunks: [],
+    },
     "input-demo": {
       name: "input-demo",
       type: "registry:ui",
@@ -810,6 +1524,32 @@ export const Index: Record<string, any> = {
                           "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
                       },
                       "Variant demo not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        variants: {
+          name: "variants",
+          description: "variants variant of input",
+          component: safeLazy(() =>
+            import("@/registry/default/example/input-demo").then((mod) => {
+              if (mod.InputVariants) {
+                return { default: mod.InputVariants };
+              } else {
+                console.error(
+                  "Variant component InputVariants not found in @/registry/default/example/input-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant variants not found",
                     ),
                 };
               }
@@ -914,6 +1654,32 @@ export const Index: Record<string, any> = {
                           "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
                       },
                       "Variant sizes not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        icons: {
+          name: "icons",
+          description: "icons variant of input",
+          component: safeLazy(() =>
+            import("@/registry/default/example/input-demo").then((mod) => {
+              if (mod.InputIcons) {
+                return { default: mod.InputIcons };
+              } else {
+                console.error(
+                  "Variant component InputIcons not found in @/registry/default/example/input-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant icons not found",
                     ),
                 };
               }
@@ -1027,6 +1793,32 @@ export const Index: Record<string, any> = {
                           "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
                       },
                       "Variant demo not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        variants: {
+          name: "variants",
+          description: "variants variant of switch",
+          component: safeLazy(() =>
+            import("@/registry/default/example/switch-demo").then((mod) => {
+              if (mod.SwitchVariants) {
+                return { default: mod.SwitchVariants };
+              } else {
+                console.error(
+                  "Variant component SwitchVariants not found in @/registry/default/example/switch-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant variants not found",
                     ),
                 };
               }
@@ -1163,6 +1955,32 @@ export const Index: Record<string, any> = {
             }),
           ),
         },
+        thumbVariants: {
+          name: "thumbVariants",
+          description: "thumbVariants variant of switch",
+          component: safeLazy(() =>
+            import("@/registry/default/example/switch-demo").then((mod) => {
+              if (mod.SwitchThumbVariants) {
+                return { default: mod.SwitchThumbVariants };
+              } else {
+                console.error(
+                  "Variant component SwitchThumbVariants not found in @/registry/default/example/switch-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant thumbVariants not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
         thumbDefault: {
           name: "thumbDefault",
           description: "thumbDefault variant of switch",
@@ -1261,6 +2079,32 @@ export const Index: Record<string, any> = {
                           "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
                       },
                       "Variant thumbIOS not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        features: {
+          name: "features",
+          description: "features variant of switch",
+          component: safeLazy(() =>
+            import("@/registry/default/example/switch-demo").then((mod) => {
+              if (mod.SwitchFeatures) {
+                return { default: mod.SwitchFeatures };
+              } else {
+                console.error(
+                  "Variant component SwitchFeatures not found in @/registry/default/example/switch-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant features not found",
                     ),
                 };
               }
@@ -1397,32 +2241,6 @@ export const Index: Record<string, any> = {
             }),
           ),
         },
-        grid: {
-          name: "grid",
-          description: "grid variant of switch",
-          component: safeLazy(() =>
-            import("@/registry/default/example/switch-demo").then((mod) => {
-              if (mod.SwitchGrid) {
-                return { default: mod.SwitchGrid };
-              } else {
-                console.error(
-                  "Variant component SwitchGrid not found in @/registry/default/example/switch-demo",
-                );
-                return {
-                  default: () =>
-                    React.createElement(
-                      "div",
-                      {
-                        className:
-                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
-                      },
-                      "Variant grid not found",
-                    ),
-                };
-              }
-            }),
-          ),
-        },
       },
       source: "https://ui.shaduxe.com/r/styles/default/switch-demo.json",
       chunks: [],
@@ -1478,6 +2296,32 @@ export const Index: Record<string, any> = {
                           "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
                       },
                       "Variant demo not found",
+                    ),
+                };
+              }
+            }),
+          ),
+        },
+        variants: {
+          name: "variants",
+          description: "variants variant of tabs",
+          component: safeLazy(() =>
+            import("@/registry/default/example/tabs-demo").then((mod) => {
+              if (mod.TabsVariants) {
+                return { default: mod.TabsVariants };
+              } else {
+                console.error(
+                  "Variant component TabsVariants not found in @/registry/default/example/tabs-demo",
+                );
+                return {
+                  default: () =>
+                    React.createElement(
+                      "div",
+                      {
+                        className:
+                          "p-4 text-red-500 bg-red-50 border border-red-100 rounded",
+                      },
+                      "Variant variants not found",
                     ),
                 };
               }

@@ -14,7 +14,7 @@ type TechComponents = Record<string, TechComponentType>;
 
 const techComponents: TechComponents = {
   nextjs: {
-    name: "Next.js 14",
+    name: "Next.js",
     icon: (
       <svg
         role="img"
@@ -76,13 +76,13 @@ const techComponents: TechComponents = {
     ),
   },
   motion: {
-    name: "Framer Motion",
+    name: "Motion",
     icon: (
       <svg
         role="img"
-        viewBox="0 0 24 24"
+        viewBox="0 0 24 9"
         xmlns="http://www.w3.org/2000/svg"
-        aria-label="Framer Motion"
+        aria-label="Motion"
         className="size-8"
         fill="none"
         stroke="currentColor"
@@ -90,13 +90,15 @@ const techComponents: TechComponents = {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <title>Framer Motion</title>
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M12 12l-8 -8v16l16 -16v16l-4 -4" />
-        <path d="M20 12l-8 8l-4 -4" />
+        <title>Motion</title>
+        <path
+          d="M 9.062 0 L 4.32 8.992 L 0 8.992 L 3.703 1.971 C 4.277 0.882 5.709 0 6.902 0 Z M 19.656 2.248 C 19.656 1.006 20.623 0 21.816 0 C 23.009 0 23.976 1.006 23.976 2.248 C 23.976 3.49 23.009 4.496 21.816 4.496 C 20.623 4.496 19.656 3.49 19.656 2.248 Z M 9.872 0 L 14.192 0 L 9.45 8.992 L 5.13 8.992 Z M 14.974 0 L 19.294 0 L 15.592 7.021 C 15.018 8.11 13.585 8.992 12.392 8.992 L 10.232 8.992 Z"
+          fill="rgb(0, 0, 0)"
+        />
       </svg>
     ),
   },
+
   shadcn: {
     name: "shadcn",
     icon: (

@@ -68,7 +68,7 @@ export function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "relative z-10 size-7 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground [&_svg]:size-3.5",
+        "cursor-pointer relative z-10 size-7 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground [&_svg]:size-3.5",
         className,
       )}
       onClick={handleCopy}

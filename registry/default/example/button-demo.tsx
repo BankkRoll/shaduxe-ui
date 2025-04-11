@@ -7,6 +7,67 @@ export function ButtonDemo() {
 }
 
 // Variant demos
+export function ButtonVariants() {
+  return (
+    <div className="flex flex-wrap items-center gap-4">
+      <Button variant="default">Default</Button>
+      <Button variant="destructive">Destructive</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
+    </div>
+  );
+}
+
+// Special variants
+export function ButtonSpecialVariants() {
+  return (
+    <div className="flex flex-wrap items-center gap-4">
+      <Button variant="expandIcon">Expand</Button>
+      <Button variant="ringHover">Ring Hover</Button>
+      <Button variant="ringHoverOutline">Ring Outline</Button>
+      <Button variant="shine">Shine</Button>
+      <Button variant="gooeyRight">Gooey Right</Button>
+      <Button variant="gooeyLeft">Gooey Left</Button>
+      <Button variant="linkHover1">Link Hover 1</Button>
+      <Button variant="linkHover2">Link Hover 2</Button>
+    </div>
+  );
+}
+
+// Size demos
+export function ButtonSizes() {
+  return (
+    <div className="flex items-center gap-4">
+      <Button size="icon">
+        <ArrowRight className="h-4 w-4" />
+      </Button>
+      <Button size="xs">XS</Button>
+      <Button size="sm">SM</Button>
+      <Button size="md">MD</Button>
+      <Button size="lg">LG</Button>
+      <Button size="xl">XL</Button>
+      <Button size="2xl">2XL</Button>
+    </div>
+  );
+}
+
+// Icon placement demos
+export function ButtonIcons() {
+  return (
+    <div className="flex items-center gap-4">
+      <Button Icon={ArrowLeft} iconPlacement="left">
+        Left Icon
+      </Button>
+      <Button Icon={ArrowRight} iconPlacement="right">
+        Right Icon
+      </Button>
+    </div>
+  );
+}
+
+// Individual variants for reference
 export function ButtonDefault() {
   return <Button variant="default">Default</Button>;
 }
@@ -63,24 +124,6 @@ export function ButtonLinkHover2() {
   return <Button variant="linkHover2">Link Hover 2</Button>;
 }
 
-// Size demo
-export function ButtonSizes() {
-  return (
-    <div className="flex flex-col space-y-4">
-      <Button size="icon">
-        <ArrowRight className="h-4 w-4" />
-      </Button>
-      <Button size="xs">Extra Small</Button>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-      <Button size="xl">Extra Large</Button>
-      <Button size="2xl">2XL</Button>
-    </div>
-  );
-}
-
-// Icon placement demos
 export function ButtonIconLeft() {
   return (
     <Button Icon={ArrowLeft} iconPlacement="left">
@@ -97,8 +140,37 @@ export function ButtonIconRight() {
   );
 }
 
+export default function ButtonDemos() {
+  return (
+    <div className="grid gap-6">
+      <div>
+        <h3 className="mb-2 text-sm font-medium">Default</h3>
+        <ButtonDemo />
+      </div>
+      <div>
+        <h3 className="mb-2 text-sm font-medium">Basic Variants</h3>
+        <ButtonVariants />
+      </div>
+      <div>
+        <h3 className="mb-2 text-sm font-medium">Special Variants</h3>
+        <ButtonSpecialVariants />
+      </div>
+      <div>
+        <h3 className="mb-2 text-sm font-medium">Sizes</h3>
+        <ButtonSizes />
+      </div>
+      <div>
+        <h3 className="mb-2 text-sm font-medium">Icons</h3>
+        <ButtonIcons />
+      </div>
+    </div>
+  );
+}
+
 export const buttonVariants = {
   demo: ButtonDemo,
+  variants: ButtonVariants,
+  specialVariants: ButtonSpecialVariants,
   default: ButtonDefault,
   destructive: ButtonDestructive,
   outline: ButtonOutline,
@@ -114,6 +186,7 @@ export const buttonVariants = {
   linkHover1: ButtonLinkHover1,
   linkHover2: ButtonLinkHover2,
   sizes: ButtonSizes,
+  icons: ButtonIcons,
   iconLeft: ButtonIconLeft,
   iconRight: ButtonIconRight,
 };

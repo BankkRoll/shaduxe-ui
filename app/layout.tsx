@@ -6,9 +6,9 @@ import { PHProvider } from "@/components/layout/posthog-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { fontSans } from "@/lib/fonts";
 import type { Viewport } from "next";
 import { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = constructMetadata({
   title: "shaduxe/ui",
@@ -41,11 +41,11 @@ export default function RootLayout({
       <body
         className={cn(
           "relative flex min-h-screen w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",
-          fontSans.variable,
+          GeistSans.className,
         )}
       >
         <PHProvider>
-          <ThemeProvider attribute="class" defaultTheme="system">
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <TooltipProvider>
               {children}
               <Toaster />

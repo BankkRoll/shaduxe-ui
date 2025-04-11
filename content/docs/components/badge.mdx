@@ -1,0 +1,77 @@
+---
+title: Badge
+description: Small status descriptors for UI elements.
+author: bankk
+published: true
+component: true
+links:
+  api: https://ui.shaduxe.com/r/badge
+---
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/badge"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="badge" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { Badge } from "@/components/ui/badge"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5} showLineNumbers
+import { Badge } from "@/components/ui/badge";
+
+export default function Home() {
+  return (
+    <Badge>New</Badge>
+  );
+}
+```
+
+## Examples
+
+<ComponentPreview name="badge-demo" />
+
+## Props
+
+| Prop      | Type                                                                                                        | Default   | Description                      |
+| --------- | ----------------------------------------------------------------------------------------------------------- | --------- | -------------------------------- |
+| variant   | `default` \| `secondary` \| `destructive` \| `outline` \| `ghost` \| `link` \| `success` \| `warning` \| `info` | `default` | Style variant of the badge       |
+| size      | `xs` \| `sm` \| `md` \| `lg`                                                                                | `md`      | Size of the badge                |
+| shape     | `default` \| `rounded` \| `square`                                                                          | `default` | Shape variant of the badge       |
+| className | `string`                                                                                                    | -         | Additional CSS classes           |
+
+### Supported HTML Attributes
+
+Because the Badge uses a standard HTML div element, it inherits and supports **all standard HTML div attributes**, including:
+
+- `id`
+- `onClick`
+- `role`
+- `tabIndex`
+- `aria-*` attributes
+- `data-*` attributes
+- Event handlers like `onMouseEnter`, `onFocus`, etc.
+
+The Badge component ensures proper accessibility and semantic HTML. 

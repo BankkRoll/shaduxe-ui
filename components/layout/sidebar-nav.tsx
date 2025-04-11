@@ -2,11 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { SidebarNavItem } from "@/types";
-import {
-  ChevronDownIcon,
-  ChevronRightIcon,
-  ExternalLinkIcon,
-} from "@radix-ui/react-icons";
+import { ChevronDownIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,15 +17,9 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   const pathname = usePathname();
 
   return items.length ? (
-    <div className="w-full">
+    <div className="w-full pb-20">
       {items.map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.05, duration: 0.2 }}
-          className="pb-6"
-        >
+        <div key={index} className="pb-4">
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
@@ -40,7 +30,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
               groupId={`group-${index}`}
             />
           )}
-        </motion.div>
+        </div>
       ))}
     </div>
   ) : null;
@@ -102,7 +92,7 @@ export function DocsSidebarNavItems({
   return items?.length ? (
     <div
       className={cn(
-        "grid grid-flow-row auto-rows-max gap-0.5 text-sm",
+        "relative grid grid-flow-row auto-rows-max gap-0.5 text-sm",
         level > 0 && "ml-4 mt-1",
       )}
     >
@@ -113,6 +103,7 @@ export function DocsSidebarNavItems({
           (item.subItems && item.subItems.length > 0)
         );
         const isAccordion = item.isAccordion || (hasNestedItems && !item.href);
+        const isActive = pathname === item.href;
 
         return (
           <div key={index} className="w-full">
@@ -121,11 +112,11 @@ export function DocsSidebarNavItems({
                 <button
                   onClick={() => toggleAccordion(item.title)}
                   className={cn(
-                    "group flex w-full items-center justify-between rounded-md border border-transparent px-2 py-1.5 transition-colors",
+                    "group flex w-full items-center justify-between rounded-md border border-transparent px-2 py-1",
                     item.disabled && "cursor-not-allowed opacity-60",
                     isExpanded
-                      ? "bg-accent text-accent-foreground"
-                      : "text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground",
+                      ? "font-medium text-foreground"
+                      : "text-muted-foreground",
                   )}
                 >
                   <span className="flex w-full justify-between items-center">
@@ -175,64 +166,63 @@ export function DocsSidebarNavItems({
                 href={item.href}
                 onClick={() => item.event && posthog.capture(item.event)}
                 className={cn(
-                  "group relative flex w-full items-center justify-between rounded-md border border-transparent px-2 py-1.5",
+                  "group relative flex w-full items-center rounded-md border border-transparent px-2 py-1",
                   item.disabled && "cursor-not-allowed opacity-60",
-                  pathname === item.href
-                    ? "bg-accent font-medium text-accent-foreground"
-                    : "text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground",
+                  isActive
+                    ? "font-medium text-foreground"
+                    : "text-muted-foreground",
                 )}
                 target={item.external ? "_blank" : ""}
                 rel={item.external ? "noreferrer" : ""}
               >
-                {pathname === item.href && (
+                {isActive && (
                   <motion.div
-                    layoutId={`${groupId}-${level}-${index}`}
-                    className="absolute inset-0 rounded-md bg-accent/50"
+                    layoutId={groupId}
+                    className="absolute inset-0 rounded-r-md border-l-2 border-neutral-300 bg-neutral-100 dark:border-neutral-600 dark:bg-neutral-800"
                     initial={false}
                     transition={{
                       type: "spring",
                       stiffness: 350,
                       damping: 30,
+                      mass: 1,
+                      velocity: 200,
                     }}
                   />
                 )}
-                <span className="relative z-10 flex items-center">
-                  <span className="truncate">{item.title}</span>
-                  {renderBadges(item)}
-                </span>
-
-                <div className="flex items-center">
-                  {hasNestedItems && (
-                    <ChevronRightIcon
-                      className={cn(
-                        "relative z-10 ml-1 h-4 w-4 transition-transform",
-                        expanded[item.title] && "rotate-90",
-                      )}
-                    />
-                  )}
-                  {item.external && (
-                    <ExternalLinkIcon className="relative z-10 ml-1 size-3" />
-                  )}
-                </div>
+                <span className="relative z-10 shrink-0">{item.title}</span>
+                {renderBadges(item)}
+                {item.external && (
+                  <ExternalLinkIcon className="relative z-10 ml-2 size-4" />
+                )}
+                {hasNestedItems && (
+                  <ChevronDownIcon
+                    className={cn(
+                      "relative z-10 ml-auto h-4 w-4 transition-transform",
+                      isExpanded ? "rotate-180" : "",
+                    )}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleAccordion(item.title);
+                    }}
+                  />
+                )}
               </Link>
             ) : (
               <span
                 className={cn(
-                  "flex w-full cursor-not-allowed items-center justify-between rounded-md p-2 text-muted-foreground opacity-60",
+                  "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground",
+                  item.disabled && "cursor-not-allowed opacity-60",
                 )}
               >
-                <span className="flex items-center">
-                  <span>{item.title}</span>
-                  {renderBadges(item)}
-                </span>
-
-                {hasNestedItems && <ChevronRightIcon className="h-4 w-4" />}
+                {item.title}
+                {renderBadges(item)}
               </span>
             )}
             {/* Handle nested items for non-accordion link items that have child items */}
             {item.href && hasNestedItems && (
               <AnimatePresence initial={false}>
-                {expanded[item.title] && (
+                {isExpanded && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
@@ -278,7 +268,7 @@ function renderBadges(item: SidebarNavItem) {
           <span
             key={i}
             className={cn(
-              "relative z-10 ml-2 rounded-md px-1.5 py-0.5 text-xs font-medium leading-none text-[#000000] no-underline group-hover:no-underline",
+              "relative z-10 ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline",
               badge.variant === "premium"
                 ? "bg-green-500"
                 : badge.variant === "new"
@@ -301,30 +291,9 @@ function renderBadges(item: SidebarNavItem) {
 
   if (item.label) {
     return (
-      <>
-        {Array.isArray(item.label) ? (
-          item.label.map((label, i) => (
-            <span
-              key={i}
-              className={cn(
-                "relative z-10 ml-2 rounded-md px-1.5 py-0.5 text-xs font-medium leading-none text-[#000000] no-underline group-hover:no-underline",
-                label === "PAID" ? "bg-green-500" : "bg-[#adfa1d]",
-              )}
-            >
-              {label}
-            </span>
-          ))
-        ) : (
-          <span
-            className={cn(
-              "relative z-10 ml-2 rounded-md px-1.5 py-0.5 text-xs font-medium leading-none text-[#000000] no-underline group-hover:no-underline",
-              item.label === "PAID" ? "bg-[#4ade80]" : "bg-[#adfa1d]",
-            )}
-          >
-            {item.label}
-          </span>
-        )}
-      </>
+      <span className="relative z-10 ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+        {item.label}
+      </span>
     );
   }
 

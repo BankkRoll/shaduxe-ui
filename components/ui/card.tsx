@@ -1,20 +1,53 @@
+import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+const cardVariants = cva("rounded-xl text-card-foreground", {
+  variants: {
+    variant: {
+      default: "bg-card border shadow",
+      flat: "bg-card border",
+      elevated: "bg-card border shadow-md",
+      ghost: "bg-transparent",
+      outline: "border bg-transparent",
+      opaque: "bg-card/80 backdrop-blur-sm border",
+      gradient: "bg-gradient-to-br from-primary/20 to-primary/5 border shadow",
+    },
+    size: {
+      sm: "p-4",
+      md: "p-6",
+      lg: "p-8",
+      xl: "p-10",
+    },
+    radius: {
+      default: "rounded-xl",
+      sm: "rounded-lg",
+      md: "rounded-xl",
+      lg: "rounded-2xl",
+      full: "rounded-full",
+      none: "rounded-none",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "md",
+    radius: "default",
+  },
+});
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-xl border bg-card text-card-foreground shadow",
-      className,
-    )}
-    {...props}
-  />
-));
+export interface CardProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof cardVariants> {}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, variant, size, radius, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(cardVariants({ variant, size, radius }), className)}
+      {...props}
+    />
+  ),
+);
 Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<
@@ -67,7 +100,7 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(" flex items-center p-6 pt-0", className)}
+    className={cn("flex items-center p-6 pt-0", className)}
     {...props}
   />
 ));
@@ -75,9 +108,10 @@ CardFooter.displayName = "CardFooter";
 
 export {
   Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
   CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  cardVariants,
 };

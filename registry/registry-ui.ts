@@ -10,6 +10,14 @@ export const ui: Registry = [
     files: ["default/ui/avatar.tsx"],
   },
   {
+    name: "badge",
+    type: "registry:ui",
+    title: "Badge",
+    description: "A label that can be used to indicate a status or category.",
+    author: "shaduxe-ui",
+    files: ["default/ui/badge.tsx"],
+  },
+  {
     name: "button",
     type: "registry:ui",
     title: "Button",
@@ -40,6 +48,14 @@ export const ui: Registry = [
         },
       },
     },
+  },
+  {
+    name: "card",
+    type: "registry:ui",
+    title: "Card",
+    description: "Card component with various styles.",
+    author: "shaduxe-ui",
+    files: ["default/ui/card.tsx"],
   },
   {
     name: "input",
