@@ -1,6 +1,6 @@
 "use client";
 
-import { CommandMenu } from "@/components/command-menu";
+import { CommandMenu } from "@/components/layout/search-command-menu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,7 +22,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { VersionSelect } from "@/components/version-selector";
+import { VersionSelect } from "@/components/layout/version-selector";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { trackEvent } from "@/lib/events";

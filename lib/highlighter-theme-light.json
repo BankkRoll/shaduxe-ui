@@ -10,7 +10,63 @@
     "editor.lineHighlightBorder": "#e2e8f060",
     "editor.selectionBackground": "#3b82f620",
     "editorLineNumber.foreground": "#64748b80",
-    "editorLineNumber.activeForeground": "#1e293b"
+    "editorLineNumber.activeForeground": "#1e293b",
+    "editorLink.activeForeground": "#3b82f688",
+    "button.background": "#3b82f6",
+    "button.foreground": "#ffffff",
+    "button.hoverBackground": "#2563eb",
+    "list.highlightForeground": "#1e293b",
+    "textLink.foreground": "#3b82f6",
+    "scrollbar.shadow": "#e2e8f0",
+    "textLink.activeForeground": "#2563eb",
+    "list.activeSelectionForeground": "#ffffff",
+    "list.focusForeground": "#1e293b",
+    "list.hoverForeground": "#1e293b",
+    "list.inactiveSelectionForeground": "#1e293b",
+    "list.inactiveSelectionBackground": "#e2e8f0",
+    "list.focusBackground": "#e2e8f0",
+    "list.focusAndSelectionOutline": "#3b82f6",
+    "list.focusHighlightForeground": "#3b82f6",
+    "list.hoverBackground": "#e2e8f0",
+    "list.focusOutline": "#3b82f6",
+    "list.activeSelectionBackground": "#3b82f6",
+    "editorIndentGuide.background": "#1e293b20",
+    "editor.foldBackground": "#e2e8f040",
+    "editor.hoverHighlightBackground": "#e2e8f040",
+    "editor.inactiveSelectionBackground": "#e2e8f040",
+    "gitDecoration.modifiedResourceForeground": "#3b82f6",
+    "gitDecoration.untrackedResourceForeground": "#16a34a",
+    "gitDecoration.conflictingResourceForeground": "#ca8a04",
+    "gitDecoration.deletedResourceForeground": "#dc2626",
+    "listFilterWidget.background": "#f1f5f9",
+    "input.background": "#f1f5f9",
+    "titleBar.activeForeground": "#1e293b",
+    "editorWidget.background": "#f1f5f9",
+    "editorGutter.background": "#f8fafc",
+    "debugToolBar.background": "#f1f5f9",
+    "commandCenter.background": "#f1f5f9",
+    "sideBarSectionHeader.background": "#f1f5f9",
+    "focusBorder": "#3b82f640",
+    "titleBar.activeBackground": "#f8fafc",
+    "titleBar.inactiveBackground": "#f1f5f9",
+    "breadcrumb.background": "#f8fafc",
+    "activityBar.background": "#f8fafc",
+    "activityBar.foreground": "#1e293b",
+    "panel.background": "#f8fafc",
+    "sideBar.background": "#f1f5f9",
+    "sideBarTitle.foreground": "#1e293b",
+    "tab.hoverBackground": "#e2e8f0",
+    "terminal.background": "#f8fafc",
+    "statusBar.background": "#f1f5f9",
+    "statusBar.foreground": "#1e293b",
+    "selection.background": "#3b82f620",
+    "editorPane.background": "#f8fafc",
+    "badge.background": "#f1f5f9",
+    "banner.background": "#f1f5f9",
+    "menu.background": "#f1f5f9",
+    "activityBarBadge.background": "#3b82f6",
+    "activityBarBadge.foreground": "#ffffff",
+    "statusBarItem.errorBackground": "#ef4444"
   },
   "semanticTokenColors": {
     "comment": {
@@ -76,12 +132,24 @@
       "foreground": "#6d28d9",
       "fontStyle": "bold"
     },
+    "selfTypeKeyword": {
+      "foreground": "#6d28d9",
+      "fontStyle": "bold"
+    },
+    "builtinType": {
+      "foreground": "#6d28d9",
+      "fontStyle": "bold"
+    },
     "interface": {
       "foreground": "#6d28d9"
     },
     "typeParameter": {
       "foreground": "#6d28d9",
       "fontStyle": "bold"
+    },
+    "lifetime": {
+      "foreground": "#6d28d9",
+      "fontStyle": "italic"
     },
     "namespace": {
       "foreground": "#334155"
@@ -90,6 +158,15 @@
       "foreground": "#0369a1"
     },
     "decorator": {
+      "foreground": "#be185d"
+    },
+    "builtinAttribute": {
+      "foreground": "#be185d"
+    },
+    "generic.attribute": {
+      "foreground": "#be185d"
+    },
+    "derive": {
       "foreground": "#be185d"
     },
     "operator": {
@@ -103,6 +180,15 @@
     },
     "parameter": {
       "foreground": "#475569"
+    },
+    "variable.mutable": {
+      "fontStyle": "underline"
+    },
+    "parameter.mutable": {
+      "fontStyle": "underline"
+    },
+    "selfKeyword.mutable": {
+      "fontStyle": "underline bold"
     },
     "variable.constant": {
       "foreground": "#6d28d9"
@@ -340,6 +426,20 @@
     {
       "name": "Imports/Exports",
       "scope": ["keyword.control.import", "keyword.control.export"],
+      "settings": {
+        "foreground": "#4f46e5"
+      }
+    },
+    {
+      "name": "HTML Custom Tag",
+      "scope": ["meta.tag.other.unrecognized.html entity.name.tag.html"],
+      "settings": {
+        "foreground": "#be185d"
+      }
+    },
+    {
+      "name": "HTML Keywords",
+      "scope": ["text.html keyword"],
       "settings": {
         "foreground": "#4f46e5"
       }

@@ -62,9 +62,12 @@ export function CodeBlockWrapper({
         return React.cloneElement(child as React.ReactElement, {
           className: cn(
             child.props.className,
+            "language-" + language,
+            "rounded-t-none font-mono text-[13px] leading-[1.45] font-normal",
             showLineNumbers && "data-line-numbers",
           ),
-          ref: codeRef,
+          "data-line-numbers": showLineNumbers,
+          "data-rehype-pretty-code-figure": true,
           children: React.Children.map(child.props.children, processChild),
         });
       }
@@ -73,36 +76,46 @@ export function CodeBlockWrapper({
       if (child.type === "code") {
         const codeEl = child as React.ReactElement;
 
-        // Process lines for highlighting if needed
-        if (highlightLines.length > 0 && codeEl.props.children) {
-          const lines = React.Children.toArray(codeEl.props.children);
-          const highlightedLines = lines.map((line, index) => {
-            if (
-              React.isValidElement(line) &&
-              highlightLines.includes(index + 1)
-            ) {
-              return React.cloneElement(line as React.ReactElement, {
-                className: cn(line.props.className, "line--highlighted"),
-              });
-            }
-            return line;
+        // Split content into lines if it's a string
+        let lines: React.ReactNode[] = [];
+        if (typeof codeEl.props.children === "string") {
+          const content = codeEl.props.children as string;
+          lines = content.split("\n").map((line, i) => {
+            const isHighlighted = highlightLines.includes(i + 1);
+            return (
+              <div
+                key={i}
+                data-line=""
+                className={cn(isHighlighted && "line--highlighted")}
+              >
+                {line || " "}
+              </div>
+            );
           });
+        } else if (React.Children.count(codeEl.props.children) > 0) {
+          // If children are already elements, map them
+          lines = React.Children.map(codeEl.props.children, (line, i) => {
+            if (!React.isValidElement(line)) return line;
 
-          return React.cloneElement(codeEl, {
-            className: cn(
-              codeEl.props.className,
-              showLineNumbers && "data-line-numbers",
-            ),
-            children: highlightedLines,
+            const lineElement = line as React.ReactElement;
+            const isHighlighted = highlightLines.includes(i + 1);
+            return React.cloneElement(lineElement, {
+              "data-line": "",
+              className: cn(
+                lineElement.props.className,
+                isHighlighted && "line--highlighted",
+              ),
+            });
           });
         }
 
         return React.cloneElement(codeEl, {
           className: cn(
-            codeEl.props.className,
+            "language-" + language,
+            "grid min-w-full break-words rounded-none border-0 bg-transparent p-0",
             showLineNumbers && "data-line-numbers",
           ),
-          children: codeEl.props.children,
+          children: lines,
         });
       }
 
@@ -118,7 +131,7 @@ export function CodeBlockWrapper({
     };
 
     return React.Children.map(children, processChild);
-  }, [children, showLineNumbers, highlightLines]);
+  }, [children, showLineNumbers, language, highlightLines]);
 
   return (
     <Collapsible
@@ -178,7 +191,7 @@ export function CodeBlockWrapper({
             "h-full",
             isOpened
               ? "overflow-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-foreground/10 hover:scrollbar-thumb-muted-foreground/20"
-              : "overflow-hidden",
+              : "overflow-hidden no-scrollbar",
             "[&_pre]:my-0 [&_pre]:py-4 [&_pre]:h-full",
             showLineNumbers && "[&_pre]:data-line-numbers",
             isOpened ? "[&_pre]:overflow-auto" : "[&_pre]:overflow-hidden",

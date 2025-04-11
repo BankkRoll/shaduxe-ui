@@ -19,6 +19,7 @@ interface ComponentSourceProps extends React.HTMLAttributes<HTMLDivElement> {
   name?: string;
   component?: string;
   variant?: string;
+  showLineNumbers?: boolean;
 }
 
 export function ComponentSource({
@@ -27,6 +28,7 @@ export function ComponentSource({
   component,
   name,
   variant,
+  showLineNumbers = true,
   ...props
 }: ComponentSourceProps) {
   // Prioritize name over component for consistency with component-preview
@@ -134,8 +136,26 @@ export function ComponentSource({
             <span>{error}</span>
           </div>
         ) : sourceCode ? (
-          <pre className="language-tsx rounded-t-none">
-            <code className="language-tsx">{sourceCode}</code>
+          <pre
+            className={cn(
+              "language-tsx",
+              "font-mono text-[13px] leading-[1.45] font-normal",
+              showLineNumbers && "data-line-numbers",
+            )}
+            data-rehype-pretty-code-figure=""
+          >
+            <code
+              className={cn(
+                "language-tsx",
+                "grid min-w-full break-words rounded-none border-0 bg-transparent p-0",
+              )}
+            >
+              {sourceCode.split("\n").map((line, i) => (
+                <div key={i} data-line="">
+                  {line || " "}
+                </div>
+              ))}
+            </code>
           </pre>
         ) : (
           children

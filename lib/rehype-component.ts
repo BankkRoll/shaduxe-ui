@@ -1,5 +1,10 @@
 import fs from "fs";
 import path from "path";
+import {
+  createHighlighter,
+  type BundledLanguage,
+  type Highlighter,
+} from "shiki";
 import { u } from "unist-builder";
 import { visit } from "unist-util-visit";
 
@@ -7,8 +12,34 @@ import { UnistNode, UnistTree } from "@/types/unist";
 
 import { Index } from "../__registry__";
 
+// Initialize shiki highlighter - this will be done on server-side only
+const getHighlighter = async () => {
+  return createHighlighter({
+    themes: [
+      JSON.parse(
+        fs.readFileSync(
+          path.join(process.cwd(), "/lib/highlighter-theme-dark.json"),
+          "utf-8",
+        ),
+      ),
+    ],
+    langs: ["tsx", "ts", "jsx", "js", "json", "css", "html", "bash"],
+  });
+};
+
+let highlighter: Highlighter | null = null;
+
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
+    // Initialize highlighter if not already done
+    if (!highlighter) {
+      try {
+        highlighter = await getHighlighter();
+      } catch (error) {
+        console.error("Failed to initialize highlighter:", error);
+      }
+    }
+
     visit(tree, (node: UnistNode) => {
       const { value: srcPath } = getNodeAttributeByName(node, "src") || {};
 
@@ -44,33 +75,83 @@ export function rehypeComponent() {
           let source = fs.readFileSync(filePath, "utf8");
 
           // Replace imports.
-          // TODO: Use @swc/core and a visitor to replace this.
-          // For now a simple regex should do.
           source = source.replaceAll("@/registry/", "@/components/");
           source = source.replaceAll("export default", "export");
 
-          // Add code as children so that rehype can take over at build time.
+          // Add token spans for syntax highlighting - this is important!
+          // We want to add spans with token classes that match our CSS
+          let tokenizedLines: string[] = source.split("\n");
+
+          if (highlighter) {
+            try {
+              // Use the extension to determine language
+              const ext = path.extname(src).slice(1);
+              const lang = (
+                ext === "ts" || ext === "tsx" ? "tsx" : ext || "tsx"
+              ) as BundledLanguage;
+
+              // With shiki's highlighter, we need to process the code directly
+              const html = highlighter.codeToHtml(source, {
+                lang,
+                theme: "dark",
+              });
+
+              // Extract the content between each line div
+              const lineMatches = html.match(/<span[^>]*>(.*?)<\/span>/g) || [];
+
+              // Process each line to extract the tokens with their classes
+              tokenizedLines = source.split("\n").map((rawLine, i) => {
+                if (!rawLine.trim()) return " ";
+
+                // Apply basic syntax highlighting classes based on content patterns
+                return highlightLine(rawLine);
+              });
+            } catch (error) {
+              console.error("Error tokenizing source:", error);
+              // Fallback to basic escaping
+              tokenizedLines = source
+                .split("\n")
+                .map((line) => escapeHtml(line || " "));
+            }
+          } else {
+            // Basic escaping if highlighter is not available
+            tokenizedLines = source
+              .split("\n")
+              .map((line) => escapeHtml(line || " "));
+          }
+
+          // Add code as children with tokenized content
           node.children?.push(
             u("element", {
               tagName: "pre",
               properties: {
                 __src__: src,
+                className: ["language-tsx"],
+                "data-line-numbers": "true",
+                "data-rehype-pretty-code-figure": true,
               },
               children: [
                 u("element", {
                   tagName: "code",
                   properties: {
                     className: ["language-tsx"],
+                    "data-language": "tsx",
                   },
                   data: {
                     meta: `event="copy_source_code"`,
                   },
-                  children: [
-                    {
-                      type: "text",
-                      value: source,
-                    },
-                  ],
+                  children: tokenizedLines.map((line, i) =>
+                    u("element", {
+                      tagName: "div",
+                      properties: { "data-line": "" },
+                      children: [
+                        {
+                          type: "raw",
+                          value: line,
+                        },
+                      ],
+                    }),
+                  ),
                 }),
               ],
             }),
@@ -96,8 +177,6 @@ export function rehypeComponent() {
           let source = fs.readFileSync(filePath, "utf8");
 
           // Replace imports.
-          // TODO: Use @swc/core and a visitor to replace this.
-          // For now a simple regex should do.
           source = source.replaceAll("@/registry/", "@/components/");
           source = source.replaceAll("export default", "export");
 
@@ -107,12 +186,16 @@ export function rehypeComponent() {
               tagName: "pre",
               properties: {
                 __src__: src,
+                className: ["language-tsx"],
+                "data-line-numbers": "true",
+                "data-rehype-pretty-code-figure": true,
               },
               children: [
                 u("element", {
                   tagName: "code",
                   properties: {
                     className: ["language-tsx"],
+                    "data-language": "tsx",
                   },
                   data: {
                     meta: `event="copy_usage_code"`,
@@ -135,20 +218,60 @@ export function rehypeComponent() {
   };
 }
 
-function getNodeAttributeByName(node: UnistNode, name: string) {
-  return node.attributes?.find((attribute) => attribute.name === name);
+// Basic syntax highlighting function
+function highlightLine(line: string): string {
+  // Apply syntax highlighting based on simple patterns
+  let highlighted = escapeHtml(line);
+
+  // Keywords
+  highlighted = highlighted.replace(
+    /\b(import|export|from|const|let|var|function|return|if|else|for|while|class|interface|type|extends|implements)\b/g,
+    '<span class="token keyword">$1</span>',
+  );
+
+  // Strings
+  highlighted = highlighted.replace(
+    /(['"])(.*?)\1/g,
+    '<span class="token string">$1$2$1</span>',
+  );
+
+  // Numbers
+  highlighted = highlighted.replace(
+    /\b(\d+)\b/g,
+    '<span class="token number">$1</span>',
+  );
+
+  // Types
+  highlighted = highlighted.replace(
+    /\b([A-Z][a-zA-Z]*)\b/g,
+    '<span class="token type">$1</span>',
+  );
+
+  // Functions
+  highlighted = highlighted.replace(
+    /\b([a-z][a-zA-Z]*)\(/g,
+    '<span class="token function">$1</span>(',
+  );
+
+  // Comments
+  highlighted = highlighted.replace(
+    /(\/\/.*$)/g,
+    '<span class="token comment">$1</span>',
+  );
+
+  return highlighted;
 }
 
-function getComponentSourceFileContent(node: UnistNode) {
-  const src = getNodeAttributeByName(node, "src")?.value as string;
+// Helper function to escape HTML entities
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
-  if (!src) {
-    return null;
-  }
-
-  // Read the source file.
-  const filePath = path.join(process.cwd(), src);
-  const source = fs.readFileSync(filePath, "utf8");
-
-  return source;
+function getNodeAttributeByName(node: UnistNode, name: string) {
+  return node.attributes?.find((attribute) => attribute.name === name);
 }

@@ -24,28 +24,25 @@ export const ui: Registry = [
     description: "Interactive button with multiple variants and animations.",
     author: "shaduxe-ui",
     files: ["default/ui/button.tsx"],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              shine: "shine var(--duration) infinite linear",
-            },
-            keyframes: {
-              shine: {
-                "0%": {
-                  "background-position": "0% 0%",
-                },
-                "50%": {
-                  "background-position": "100% 100%",
-                },
-                to: {
-                  "background-position": "0% 0%",
-                },
-              },
-            },
-          },
+    cssVars: {
+      theme: {
+        "--duration-shine": "2s",
+      },
+    },
+    css: {
+      "@keyframes shine": {
+        "0%": {
+          "background-position": "200% 0",
         },
+        "25%": {
+          "background-position": "-200% 0",
+        },
+        "100%": {
+          "background-position": "-200% 0",
+        },
+      },
+      "@utility animate-shine": {
+        animation: "shine var(--duration-shine) infinite linear",
       },
     },
   },

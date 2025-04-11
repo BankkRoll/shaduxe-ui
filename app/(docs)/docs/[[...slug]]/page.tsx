@@ -5,7 +5,7 @@ import { Contribute } from "@/components/docs/contribute";
 import { Mdx } from "@/components/docs/mdx-components";
 import { DocPager } from "@/components/docs/pager";
 import { TableOfContents } from "@/components/docs/toc";
-import { MotionWrapper } from "@/components/motion-wrapper";
+import { MotionWrapper } from "@/components/docs/motion-wrapper";
 import { badgeVariants } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { siteConfig } from "@/config/site";
