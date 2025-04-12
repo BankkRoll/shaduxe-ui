@@ -209,6 +209,11 @@ async function buildRegistryItems(validatedRegistry: Registry) {
       }],
       variants: Object.keys(variants).length > 0 ? variants : undefined,
       meta: item.meta && Object.keys(item.meta).length > 0 ? item.meta : undefined,
+      // Add cssVars and css properties
+      cssVars: item.cssVars,
+      css: item.css,
+      // Include tailwind config for backward compatibility with v3
+      tailwind: item.tailwind,
     };
     
     // Add to style registry
@@ -260,6 +265,11 @@ async function buildRegistryItems(validatedRegistry: Registry) {
         target: ""
       }],
       meta: item.meta && Object.keys(item.meta).length > 0 ? item.meta : undefined,
+      // Add cssVars and css properties
+      cssVars: item.cssVars,
+      css: item.css,
+      // Include tailwind config for backward compatibility with v3
+      tailwind: item.tailwind,
     };
     
     // Add to style registry
