@@ -21,17 +21,15 @@ export default function Home() {
           {/* ComponentDemos section */}
           <ComponentDemos />
 
-          {/* Last horizontal line */}
-          <div className="block w-full h-px border-t border-border border-dotted"></div>
+          {/* <div className="block w-full h-px border-t border-border border-dotted"></div> */}
 
-          {/* Middle horizontal line */}
-          <div className="block w-full h-px border-t border-border border-dashed"></div>
+          {/* <div className="block w-full h-px border-t border-border border-dashed"></div> */}
 
-          <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div>
-          <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div>
+          {/* <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div> */}
+          {/* <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div> */}
 
           {/* Pricing section */}
-          <Pricing />
+          {/* <Pricing /> */}
         </div>
       </main>
     </>

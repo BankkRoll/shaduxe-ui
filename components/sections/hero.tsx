@@ -2,7 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight, Plus } from "lucide-react";
 import { motion } from "motion/react";
 
 import { Badge } from "@/components/ui/badge";
@@ -181,6 +181,9 @@ export default function Hero() {
                 </div>
                 <h3 className="text-sm font-medium mb-3">Button Sizes</h3>
                 <div className="flex flex-wrap items-center gap-2">
+                  <Button size="icon">
+                    <Plus className="h-4 w-4" />
+                  </Button>
                   <Button variant="default" size="xs">
                     XS
                   </Button>
@@ -230,6 +233,56 @@ export default function Hero() {
                 </div>
               </motion.div>
 
+              {/* Tabs Showcase */}
+              <motion.div
+                className="col-span-6 bg-card/80 backdrop-blur-sm border rounded-lg p-4 shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <h3 className="text-sm font-medium mb-3">Tabs Variants</h3>
+                <div className="space-y-4">
+                  <div>
+                    <span className="text-xs text-muted-foreground mb-1 block">
+                      Default
+                    </span>
+                    <Tabs variant="folder" defaultValue="tab1">
+                      <TabsList>
+                        <TabsTrigger value="tab1">Account</TabsTrigger>
+                        <TabsTrigger value="tab2">Settings</TabsTrigger>
+                        <TabsTrigger value="tab3">Notifications</TabsTrigger>
+                      </TabsList>
+                    </Tabs>
+                  </div>
+
+                  <div>
+                    <span className="text-xs text-muted-foreground mb-1 block">
+                      Underline
+                    </span>
+                    <Tabs variant="underline" defaultValue="tab1">
+                      <TabsList>
+                        <TabsTrigger value="tab1">Account</TabsTrigger>
+                        <TabsTrigger value="tab2">Settings</TabsTrigger>
+                        <TabsTrigger value="tab3">Notifications</TabsTrigger>
+                      </TabsList>
+                    </Tabs>
+                  </div>
+
+                  <div>
+                    <span className="text-xs text-muted-foreground mb-1 block">
+                      Pill
+                    </span>
+                    <Tabs variant="pill" defaultValue="tab1">
+                      <TabsList>
+                        <TabsTrigger value="tab1">Account</TabsTrigger>
+                        <TabsTrigger value="tab2">Settings</TabsTrigger>
+                        <TabsTrigger value="tab3">Notifications</TabsTrigger>
+                      </TabsList>
+                    </Tabs>
+                  </div>
+                </div>
+              </motion.div>
+
               {/* Switch Showcase */}
               <motion.div
                 className="col-span-6 bg-card/80 backdrop-blur-sm border rounded-lg p-4 shadow-lg"
@@ -268,56 +321,6 @@ export default function Hero() {
                   <Switch size="sm" defaultChecked />
                   <Switch size="md" />
                   <Switch size="lg" defaultChecked />
-                </div>
-              </motion.div>
-
-              {/* Tabs Showcase */}
-              <motion.div
-                className="col-span-6 bg-card/80 backdrop-blur-sm border rounded-lg p-4 shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                <h3 className="text-sm font-medium mb-3">Tabs Variants</h3>
-                <div className="space-y-4">
-                  <div>
-                    <span className="text-xs text-muted-foreground mb-1 block">
-                      Default
-                    </span>
-                    <Tabs variant="default" defaultValue="tab1">
-                      <TabsList>
-                        <TabsTrigger value="tab1">Account</TabsTrigger>
-                        <TabsTrigger value="tab2">Settings</TabsTrigger>
-                        <TabsTrigger value="tab3">Notifications</TabsTrigger>
-                      </TabsList>
-                    </Tabs>
-                  </div>
-
-                  <div>
-                    <span className="text-xs text-muted-foreground mb-1 block">
-                      Underline
-                    </span>
-                    <Tabs variant="underline" defaultValue="tab1">
-                      <TabsList>
-                        <TabsTrigger value="tab1">Account</TabsTrigger>
-                        <TabsTrigger value="tab2">Settings</TabsTrigger>
-                        <TabsTrigger value="tab3">Notifications</TabsTrigger>
-                      </TabsList>
-                    </Tabs>
-                  </div>
-
-                  <div>
-                    <span className="text-xs text-muted-foreground mb-1 block">
-                      Pill
-                    </span>
-                    <Tabs variant="pill" defaultValue="tab1">
-                      <TabsList>
-                        <TabsTrigger value="tab1">Account</TabsTrigger>
-                        <TabsTrigger value="tab2">Settings</TabsTrigger>
-                        <TabsTrigger value="tab3">Notifications</TabsTrigger>
-                      </TabsList>
-                    </Tabs>
-                  </div>
                 </div>
               </motion.div>
 

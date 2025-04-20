@@ -178,7 +178,7 @@ export function DocsSidebarNavItems({
                 {isActive && (
                   <motion.div
                     layoutId={groupId}
-                    className="absolute inset-0 rounded-r-md border-l-2 border-neutral-300 bg-neutral-100 dark:border-neutral-600 dark:bg-neutral-800"
+                    className="absolute inset-0 rounded-r-md border-l-2 border-accent bg-primary/10"
                     initial={false}
                     transition={{
                       type: "spring",
