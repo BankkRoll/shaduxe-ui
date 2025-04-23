@@ -320,7 +320,10 @@ export function SiteHeader() {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-lg h-full z-100">
+            <SheetContent
+              side="right"
+              className="p-2 w-full max-w-lg h-full z-100"
+            >
               <SheetHeader>
                 <SheetTitle hidden></SheetTitle>
                 {/* User Profile Section in Sheet */}
@@ -417,7 +420,7 @@ export function SiteHeader() {
                 )}
               </SheetHeader>
 
-              <ScrollArea className="h-[calc(100vh-15rem)]">
+              <ScrollArea className="p-2 h-[calc(100vh-15rem)]">
                 <div className="space-y-5 pb-6">
                   {/* Navigation Items */}
                   {docsConfig.sidebarNav.map((section, sectionIndex) => (
