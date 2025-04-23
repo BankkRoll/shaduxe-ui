@@ -103,7 +103,7 @@ async function handleCheckoutSession(
     email: session.customer_details?.email || null,
     product_type: productType,
     product_id: productId || null,
-    license_type: licenseType || null,
+    license_type: productType === "lifetime" ? licenseType || null : null,
   });
 
   if (paidUserError) {

@@ -3,13 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -50,11 +44,8 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   CreditCard,
-  Download,
-  FileText,
   Loader2,
   Package,
-  RefreshCw,
   Shield,
   ShieldCheck,
   UserCircle,
@@ -104,6 +95,8 @@ export default function UserDashboard() {
   });
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [allTemplates, setAllTemplates] = useState<Template[]>([]);
+  const [hasLifetimeAccess, setHasLifetimeAccess] = useState(false);
 
   // Team state
   const [teamState, setTeamState] = useState<any>(null);
@@ -140,11 +133,6 @@ export default function UserDashboard() {
       pageSize: 5,
     },
   );
-  const [downloadsPagination, setDownloadsPagination] =
-    useState<PaginationState>({
-      page: 1,
-      pageSize: 5,
-    });
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -170,6 +158,10 @@ export default function UserDashboard() {
         .eq("user_id", currentUser.id)
         .single();
 
+      // Set lifetime access status
+      const hasLifetime = !!profileData?.has_lifetime_access;
+      setHasLifetimeAccess(hasLifetime);
+
       // Get user purchased templates
       const { data: templatesData } = await supabase
         .from("user_templates")
@@ -188,23 +180,21 @@ export default function UserDashboard() {
         .eq("user_id", currentUser.id)
         .order("purchase_date", { ascending: false });
 
-      // Get download history
-      const { data: downloadsData } = await supabase
-        .from("template_downloads")
-        .select(
-          `
-          *,
-          templates:template_id (*)
-        `,
-        )
-        .eq("user_id", currentUser.id)
-        .order("download_date", { ascending: false });
+      // If user has lifetime access, get all templates
+      if (hasLifetime) {
+        const { data: allTemplatesData } = await supabase
+          .from("templates")
+          .select("*")
+          .eq("published", true);
+
+        setAllTemplates(allTemplatesData || []);
+      }
 
       setUserData({
         profile: profileData || null,
         templates: templatesData || [],
         payments: paymentsData || [],
-        downloads: downloadsData || [],
+        downloads: [], // Keep empty array for compatibility
       });
 
       setLoading(false);
@@ -553,20 +543,30 @@ export default function UserDashboard() {
     );
   }
 
-  const { profile, templates, payments, downloads } = userData;
+  const { profile, templates, payments } = userData;
 
-  // Calculate pagination values
+  // Calculate pagination values for templates
+  // If user has lifetime access, show all templates instead of just purchased ones
+  const templateData = hasLifetimeAccess
+    ? allTemplates.map((template) => ({
+        templates: template,
+        template_id: template.id,
+        purchase_date: profile?.access_granted_date || new Date().toISOString(),
+        created_at: null,
+        id: parseInt(template.id.replace(/\D/g, "")) || 0,
+        stripe_checkout_session_id: null,
+        user_id: user?.id || "",
+      }))
+    : templates;
+
   const { data: paginatedTemplates } = getPaginatedData(
-    templates,
+    templateData,
     templatesPagination,
   );
+
   const { data: paginatedPayments } = getPaginatedData(
     payments,
     paymentsPagination,
-  );
-  const { data: paginatedDownloads } = getPaginatedData(
-    downloads,
-    downloadsPagination,
   );
 
   return (
@@ -606,14 +606,9 @@ export default function UserDashboard() {
             <div className="flex items-center gap-1">
               <Package className="size-4" />
               <span>
-                {templates.length} Template{templates.length !== 1 ? "s" : ""}{" "}
-                Purchased
-              </span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Download className="size-4" />
-              <span>
-                {downloads.length} Download{downloads.length !== 1 ? "s" : ""}
+                {hasLifetimeAccess
+                  ? "All Templates Included"
+                  : `${templates.length} Template${templates.length !== 1 ? "s" : ""} Purchased`}
               </span>
             </div>
           </div>
@@ -630,14 +625,18 @@ export default function UserDashboard() {
             <UserCircle className="size-4" />
             <span>Personal</span>
           </TabsTrigger>
-          {/* TODO: Add team license check to only show team tab if user has a team license.... using a method that shows wether they ahve it or not form above */}
-          <TabsTrigger
-            value="team"
-            className="cursor-pointer flex items-center gap-2"
-          >
-            <Users className="size-4" />
-            <span>Team</span>
-          </TabsTrigger>
+          {/* Only show team tab if they have team license */}
+          {(teamState ||
+            (userData.profile?.has_lifetime_access &&
+              payments.some((p) => p.license_type === "team"))) && (
+            <TabsTrigger
+              value="team"
+              className="cursor-pointer flex items-center gap-2"
+            >
+              <Users className="size-4" />
+              <span>Team</span>
+            </TabsTrigger>
+          )}
         </TabsList>
 
         {/* Personal Dashboard Tab */}
@@ -645,12 +644,14 @@ export default function UserDashboard() {
           {/* Templates Section */}
           <section>
             <h2 className="text-xl font-semibold mb-4">
-              Your Templates & Licenses
+              {hasLifetimeAccess
+                ? "All Available Templates"
+                : "Your Templates & Licenses"}
             </h2>
 
-            {templates.length > 0 ? (
-              <Card>
-                <ScrollArea className="h-[400px] rounded-md border border-dashed ">
+            {paginatedTemplates.length > 0 ? (
+              <Card className="border-dashed">
+                <ScrollArea className="h-[400px] rounded-md">
                   <div className="p-4">
                     <table className="w-full">
                       <thead>
@@ -659,10 +660,9 @@ export default function UserDashboard() {
                             Template
                           </th>
                           <th className="h-12 px-4 text-left align-middle font-medium">
-                            Purchase Date
-                          </th>
-                          <th className="h-12 px-4 text-right align-middle font-medium">
-                            Status
+                            {hasLifetimeAccess
+                              ? "Access Since"
+                              : "Purchase Date"}
                           </th>
                           <th className="h-12 px-4 text-right align-middle font-medium">
                             Actions
@@ -670,9 +670,9 @@ export default function UserDashboard() {
                         </tr>
                       </thead>
                       <tbody>
-                        {paginatedTemplates.map((template) => (
+                        {paginatedTemplates.map((template, index) => (
                           <tr
-                            key={template.id}
+                            key={`${template.template_id}-${index}`}
                             className="border-b hover:bg-muted/30 transition-colors"
                           >
                             <td className="p-4">
@@ -699,9 +699,6 @@ export default function UserDashboard() {
                                 : "Unknown"}
                             </td>
                             <td className="p-4 text-right">
-                              <Badge>Active</Badge>
-                            </td>
-                            <td className="p-4 text-right">
                               <TemplateDownloadButton
                                 templateId={template.template_id}
                                 variant="ghost"
@@ -716,7 +713,7 @@ export default function UserDashboard() {
                   <ScrollBar orientation="horizontal" />
                 </ScrollArea>
                 {renderPagination(
-                  templates.length,
+                  templateData.length,
                   templatesPagination,
                   setTemplatesPagination,
                 )}
@@ -744,8 +741,8 @@ export default function UserDashboard() {
             <h2 className="text-xl font-semibold mb-4">Billing History</h2>
 
             {payments.length > 0 ? (
-              <Card>
-                <ScrollArea className="h-[400px] rounded-md border border-dashed ">
+              <Card className="border-dashed">
+                <ScrollArea className="h-[400px] rounded-md">
                   <div className="p-4">
                     <table className="w-full">
                       <thead>
@@ -780,7 +777,7 @@ export default function UserDashboard() {
                                     {payment.product_type === "template"
                                       ? `Template: ${payment.product_id || "Unknown"}`
                                       : payment.product_type === "lifetime"
-                                        ? "Lifetime Access"
+                                        ? `Lifetime Access (${payment.license_type || "Personal"})`
                                         : payment.product_type}
                                   </div>
                                   <div className="text-sm text-muted-foreground">
@@ -841,94 +838,6 @@ export default function UserDashboard() {
               </Card>
             )}
           </section>
-
-          {/* Recent Downloads Section */}
-          <section>
-            <h2 className="text-xl font-semibold mb-4">Recent Downloads</h2>
-
-            {downloads.length > 0 ? (
-              <Card>
-                <ScrollArea className="h-[400px] rounded-md border border-dashed ">
-                  <div className="p-4">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="border-b">
-                          <th className="h-12 px-4 text-left align-middle font-medium">
-                            Template
-                          </th>
-                          <th className="h-12 px-4 text-left align-middle font-medium">
-                            Download Date
-                          </th>
-                          <th className="h-12 px-4 text-right align-middle font-medium">
-                            Actions
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {paginatedDownloads.map((download) => (
-                          <tr
-                            key={download.id}
-                            className="border-b hover:bg-muted/30 transition-colors"
-                          >
-                            <td className="p-4">
-                              <div className="flex items-center gap-3">
-                                <div className="w-9 h-9 flex items-center justify-center bg-primary/10 rounded-md">
-                                  <FileText className="size-4 text-primary" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">
-                                    {download.templates?.name ||
-                                      download.template_id}
-                                  </div>
-                                  <div className="text-sm text-muted-foreground">
-                                    ID: {download.template_id}
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="p-4 text-muted-foreground">
-                              {download.download_date
-                                ? format(
-                                    new Date(download.download_date),
-                                    "MMM d, yyyy h:mm a",
-                                  )
-                                : "Unknown"}
-                            </td>
-                            <td className="p-4 text-right">
-                              <TemplateDownloadButton
-                                templateId={download.template_id}
-                                variant="ghost"
-                                size="sm"
-                              />
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <ScrollBar orientation="horizontal" />
-                </ScrollArea>
-                {renderPagination(
-                  downloads.length,
-                  downloadsPagination,
-                  setDownloadsPagination,
-                )}
-              </Card>
-            ) : (
-              <Card className="bg-muted/30 border border-dashed">
-                <CardContent className="flex flex-col items-center justify-center py-12">
-                  <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
-                    <Download className="size-8 text-muted-foreground" />
-                  </div>
-                  <h3 className="font-medium text-lg mb-2">No downloads yet</h3>
-                  <p className="text-muted-foreground max-w-md text-center">
-                    You haven't downloaded any templates yet. After purchasing,
-                    you can download your templates here.
-                  </p>
-                </CardContent>
-              </Card>
-            )}
-          </section>
         </TabsContent>
 
         {/* Team Dashboard Tab */}
@@ -973,7 +882,7 @@ export default function UserDashboard() {
               )}
 
               {/* License Information */}
-              <Card>
+              <Card className="border-dashed">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <Shield className="h-5 w-5 text-primary" />
@@ -1012,7 +921,7 @@ export default function UserDashboard() {
 
               {/* Add Team Members */}
               {teamState.role === "owner" && (
-                <Card>
+                <Card className="border-dashed">
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
                       <UserPlus className="h-5 w-5 text-primary" />
@@ -1113,7 +1022,7 @@ export default function UserDashboard() {
               </Dialog>
 
               {/* Team Members List */}
-              <Card>
+              <Card className="border-dashed">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
                     <Users className="h-5 w-5 text-primary" />
@@ -1183,17 +1092,6 @@ export default function UserDashboard() {
                     </div>
                   )}
                 </CardContent>
-                <CardFooter>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={fetchTeamData}
-                    className="w-full"
-                  >
-                    <RefreshCw className="h-4 w-4 mr-2" />
-                    Refresh Team Data
-                  </Button>
-                </CardFooter>
               </Card>
             </>
           )}
