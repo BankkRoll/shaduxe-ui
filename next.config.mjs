@@ -23,6 +23,16 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/docs/templates",
+        destination: "/docs/templates/emaily",
+        permanent: true,
+      },
+      {
+        source: "/docs/blocks",
+        destination: "/docs/blocks/pricing-one",
+        permanent: true,
+      },
+      {
         source: "/docs/components",
         destination: "/docs/components/avatar",
         permanent: true,

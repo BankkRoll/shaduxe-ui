@@ -254,7 +254,7 @@ function StripeSuccessContent() {
         )}
 
         {isTeamLicense && (
-          <Link href="/dashboard/team" passHref className="w-full">
+          <Link href="/dashboard" passHref className="w-full">
             <Button variant="outline" className="w-full">
               <Users className="h-4 w-4 mr-2" />
               Manage Team

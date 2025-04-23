@@ -16,10 +16,6 @@ export async function GET(request: Request) {
 
   try {
     const supabase = await createClient();
-
-    // Remove authentication requirement - the success page should work for anyone with the correct session ID
-
-    // Get the purchase record without requiring user authentication
     const { data: purchase, error: purchaseError } = await supabase
       .from("paid_users")
       .select(
