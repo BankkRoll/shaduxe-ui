@@ -11,7 +11,7 @@
     "release:cli": "pnpm prefix:cli release",
     "preinstall": "npx only-allow pnpm",
     "dev": "concurrently \"content-collections watch\" \"next dev --turbo\"",
-    "prebuild": "pnpm build:docs && pnpm build:registry",
+    "prebuild": "pnpm build:registry && pnpm build:docs",
     "build": "next build",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
     "build:docs": "content-collections build",
