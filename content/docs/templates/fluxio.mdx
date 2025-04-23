@@ -1,0 +1,193 @@
+---
+title: Fluxio
+description: Modern SaaS Starter Template powered by Next.js, Tailwind CSS v4, and React 19
+author: bankk
+published: true
+version: 1.0.0
+links:
+  preview: https://shaduxe-fluxio.vercel.app/
+---
+
+<div className="relative w-full overflow-hidden rounded-lg border bg-gradient-to-b from-background/10 to-background/80 p-2 backdrop-blur">
+  <div className="w-full overflow-hidden rounded-lg border shadow-lg">
+    <video 
+      src="/templates/fluxio.mp4"  
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="w-full h-auto"
+    />
+  </div>
+</div>
+
+## Pricing
+
+<div className="mt-4 mb-8">
+  <div className="p-5 border rounded-lg bg-muted/5">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <div className="flex items-baseline gap-2 mb-1">
+          <span className="text-2xl font-bold">$49.99</span>
+          <span className="text-sm text-muted-foreground line-through">$99</span>
+          <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">Save 50%</span>
+        </div>
+        <p className="text-sm text-muted-foreground">One-time payment for this template or get PRO for all access</p>
+      </div>
+      
+      <div className="flex flex-col sm:flex-row gap-3">
+        <TemplateDownloadButton 
+          templateId="fluxio" 
+          variant="default" 
+          size="md"
+          className="flex gap-2 items-center"
+        >
+          Buy now: $49.99
+        </TemplateDownloadButton>
+        
+        <a href="/pricing">
+          <Button variant="outline">
+            View All Pricing
+          </Button>
+        </a>
+        
+        <a href="https://shaduxe-fluxio.vercel.app/" target="_blank">
+          <Button variant="secondary" className="flex gap-2 items-center">
+            <IconExternalLink className="size-4" />
+            <span>Live Preview</span>
+          </Button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+## What is this?
+
+Fluxio is a modern, production-ready SaaS starter template built with Next.js, Tailwind CSS v4, and React 19. This template provides everything you need to launch your networking solutions project without the hassle of setting up styling or basic page structure.
+
+## Key Features
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+  <div className="space-y-4">
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Responsive Design</h3>
+        <p className="text-sm text-muted-foreground">Fully responsive across all devices with mobile-first approach</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Modern UI Components</h3>
+        <p className="text-sm text-muted-foreground">Extensive library of pre-styled UI components using Tailwind CSS v4 and shadcn/ui</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Dark/Light Mode</h3>
+        <p className="text-sm text-muted-foreground">Built-in theme support with seamless transitions</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Marketing Pages</h3>
+        <p className="text-sm text-muted-foreground">Pre-built landing page with sections for hero, features, testimonials, pricing, and FAQ</p>
+      </div>
+    </div>
+  </div>
+  <div className="space-y-4">
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">Animation</h3>
+        <p className="text-sm text-muted-foreground">Beautiful animations using the Motion library for a premium feel</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">TypeScript</h3>
+        <p className="text-sm text-muted-foreground">Full TypeScript support for better developer experience</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">SEO Optimized</h3>
+        <p className="text-sm text-muted-foreground">Pre-configured metadata and semantic HTML</p>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <IconCheck className="size-5 text-green-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h3 className="font-medium">High-Speed Data Transfer</h3>
+        <p className="text-sm text-muted-foreground">Optimized components for displaying data transfer capabilities</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Tech Stack
+
+<div className="mt-6">
+  <TechStackFull
+    technologies={[
+      "nextjs",
+      "typescript",
+      "shadcn",
+      "tailwindcss",
+      "motion",
+    ]}
+  />
+</div>
+
+## Included Pages & Components
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-8">
+  <div>
+    <h3 className="font-semibold mb-2">Pages</h3>
+    <ul className="space-y-1">
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Landing page with hero, features, testimonials, pricing, and FAQ</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>404 and error pages</span>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3 className="font-semibold mb-2">Components</h3>
+    <ul className="space-y-1">
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>API Integration Showcase components</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Real-Time Monitoring UI elements</span>
+      </li>
+      <li className="flex items-center gap-2">
+        <IconArrowRight className="size-4 text-primary" />
+        <span>Scalability Visualization components</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+## Updates
+
+<div className="space-y-4 mt-6">
+  <div className="flex gap-2">
+    <div className="size-2 rounded-full bg-primary mt-2" />
+    <div>
+      <span className="text-xs text-muted-foreground">22 April 2025</span>
+      <p className="font-medium">Initial release</p>
+    </div>
+  </div>
+</div>

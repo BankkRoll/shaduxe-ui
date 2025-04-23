@@ -1,0 +1,173 @@
+---
+title: Pricing Four
+description: A modern split-card pricing section with testimonials and feature comparison.
+author: bankk
+published: true
+component: true
+---
+
+<ComponentPreview name="pricing-four" />
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Split-card layout with pricing and features side by side</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Integrated testimonials with auto-rotation</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Animated entrance with Motion One animations</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Support for badges, benefits, and feature icons</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/pricing-four"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="pricing-four" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { PricingFour } from "@/components/blocks/pricing-four"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5} showLineNumbers
+import { PricingFour } from "@/components/blocks/pricing-four";
+
+export default function Home() {
+  return (
+    <PricingFour />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type      | Default     | Description                          |
+| ------------- | --------- | ----------- | ------------------------------------ |
+| className     | `string`  | -           | Additional CSS classes               |
+| cardClassName | `string`  | -           | Classes applied to the card component|
+| maxWidth      | `string`  | "max-w-4xl" | Max width of the container           |
+
+## Configuration
+
+The component uses a built-in configuration object for all data. You can modify this object in the component source code to customize the pricing card.
+
+The configuration includes:
+
+```tsx
+const pricingConfig = {
+  badge: {
+    icon: Crown,
+    text: "Premium Template",
+  },
+  title: "Next.js Starter Template",
+  subtitle: "Build your next SaaS application with this premium starter template",
+  price: {
+    current: "$69.99",
+    original: "$99.99",
+    discount: "30% Off",
+  },
+  benefits: [
+    {
+      text: "One-time payment, lifetime updates",
+      icon: Check,
+    },
+    {
+      text: "30-day money-back guarantee",
+      icon: Shield,
+    },
+    {
+      text: "Created by developers for developers",
+      icon: Heart,
+    },
+  ],
+  features: [
+    "Modern Next.js 14 App Router",
+    "TypeScript and Tailwind CSS",
+    "Supabase Auth Integration",
+    // ...more features
+  ].map((text) => ({ text })),
+  featuresIcon: Check,
+  featuresTitle: "Included Features",
+  featuresBadge: {
+    icon: Stars,
+    text: "All Features",
+  },
+  primaryButton: {
+    text: "Purchase Template",
+    chevronIcon: ChevronRight,
+    href: "#",
+  },
+  secondaryButton: {
+    text: "Live Demo",
+    icon: ExternalLink,
+    href: "#",
+  },
+  testimonials: [
+    {
+      id: 1,
+      name: "Alex Johnson",
+      role: "Full Stack Developer",
+      company: "TechFlow",
+      content: "This starter template saved me weeks of setup time...",
+      rating: 5,
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    },
+    // ...more testimonials
+  ],
+  testimonialRotationSpeed: 5000,
+}
+```
+
+## Customization
+
+To customize the pricing card, modify the `pricingConfig` object directly in the component file:
+
+```tsx
+// In pricing-four.tsx
+const pricingConfig = {
+  badge: {
+    icon: Award, // Change the badge icon
+    text: "Best Value", // Change the badge text
+  },
+  title: "Pro Plan", // Change the plan title
+  price: {
+    current: "$49.99",
+    original: "$79.99",
+    discount: "40% Off",
+  },
+  // ... customize other aspects
+};
+```
+
+If you need more advanced customization, you can fork the component and modify it to accept props for dynamic configuration. 

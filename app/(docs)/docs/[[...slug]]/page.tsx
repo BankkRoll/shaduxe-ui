@@ -3,11 +3,10 @@ import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
 
 import { Contribute } from "@/components/docs/contribute";
 import { Mdx } from "@/components/docs/mdx-components";
+import { MotionWrapper } from "@/components/docs/motion-wrapper";
 import { DocPager } from "@/components/docs/pager";
 import { TableOfContents } from "@/components/docs/toc";
-import { MotionWrapper } from "@/components/docs/motion-wrapper";
 import { badgeVariants } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { allDocs } from "content-collections";
@@ -90,7 +89,7 @@ export default async function DocPage({ params }: DocPageProps) {
   const toc = await getTableOfContents(doc.body.raw);
 
   return (
-    <main className="relative lg:gap-10 xl:grid xl:grid-cols-[1fr_300px]">
+    <main className="relative lg:gap-10 xl:grid xl:grid-cols-[1fr_200px]">
       <div className="mx-auto py-6 lg:py-8 w-full min-w-0">
         <MotionWrapper animate="fadeIn">
           <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
@@ -138,26 +137,53 @@ export default async function DocPage({ params }: DocPageProps) {
                   <ExternalLinkIcon className="size-3" />
                 </Link>
               )}
+              {doc.links?.preview && (
+                <Link
+                  href={doc.links.preview}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(
+                    badgeVariants({ variant: "secondary" }),
+                    "gap-1",
+                  )}
+                >
+                  Preview
+                  <ExternalLinkIcon className="size-3" />
+                </Link>
+              )}
+              {doc.version && (
+                <div
+                  className={cn(badgeVariants({ variant: "outline" }), "gap-1")}
+                >
+                  v{doc.version}
+                </div>
+              )}
+            </div>
+          ) : doc.version ? (
+            <div className="flex items-center space-x-2 pt-4">
+              {doc.version && (
+                <div
+                  className={cn(badgeVariants({ variant: "default" }), "gap-1")}
+                >
+                  v{doc.version}
+                </div>
+              )}
             </div>
           ) : null}
           <div className="pb-12 pt-8">
             <Mdx code={doc.body.code} />
           </div>
           <DocPager doc={doc} />
+          <Contribute doc={doc} />
         </MotionWrapper>
       </div>
-      {doc.toc && (
-        <div className="hidden border-l border-dashed border-border/50 pl-6 text-sm xl:block">
-          <div className="sticky top-12">
-            <ScrollArea className="pb-10">
-              <div className="sticky h-[calc(100vh-3.5rem)] space-y-4 py-12">
-                <TableOfContents toc={toc} />
-                <Contribute doc={doc} />
-              </div>
-            </ScrollArea>
-          </div>
+
+      {/* TOC Sidebar */}
+      <div className="hidden text-sm xl:block">
+        <div className="sticky top-16 pt-10">
+          <TableOfContents toc={toc} />
         </div>
-      )}
+      </div>
     </main>
   );
 }

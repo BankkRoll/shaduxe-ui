@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "default/example/switch-demo",
-      "content": "import { Switch } from \"../ui/switch\";\n\n// Basic demo\nexport function SwitchDemo() {\n  return <Switch />;\n}\n\n// Variant demos\nexport function SwitchVariants() {\n  return (\n    <div className=\"flex items-center gap-4\">\n      <Switch variant=\"default\" />\n      <Switch variant=\"rounded\" />\n      <Switch variant=\"square\" />\n      <Switch variant=\"ios\" />\n    </div>\n  );\n}\n\n// Size demos\nexport function SwitchSizes() {\n  return (\n    <div className=\"flex items-center gap-4\">\n      <Switch size=\"icon\" />\n      <Switch size=\"xs\" />\n      <Switch size=\"sm\" />\n      <Switch size=\"md\" />\n      <Switch size=\"lg\" />\n    </div>\n  );\n}\n\n// Thumb variant demos\nexport function SwitchThumbVariants() {\n  return (\n    <div className=\"flex items-center gap-4\">\n      <Switch thumbVariant=\"default\" />\n      <Switch thumbVariant=\"rounded\" />\n      <Switch thumbVariant=\"square\" />\n      <Switch thumbVariant=\"ios\" />\n    </div>\n  );\n}\n\n// Feature demos\nexport function SwitchFeatures() {\n  return (\n    <div className=\"flex items-center gap-4\">\n      <Switch showLabels />\n      <Switch showIcons />\n      <Switch disabled />\n      <Switch defaultChecked />\n    </div>\n  );\n}\n\n// Individual variants for reference\nexport function SwitchDefault() {\n  return <Switch variant=\"default\" />;\n}\n\nexport function SwitchRounded() {\n  return <Switch variant=\"rounded\" />;\n}\n\nexport function SwitchSquare() {\n  return <Switch variant=\"square\" />;\n}\n\nexport function SwitchIOS() {\n  return <Switch variant=\"ios\" />;\n}\n\nexport function SwitchThumbDefault() {\n  return <Switch thumbVariant=\"default\" />;\n}\n\nexport function SwitchThumbRounded() {\n  return <Switch thumbVariant=\"rounded\" />;\n}\n\nexport function SwitchThumbSquare() {\n  return <Switch thumbVariant=\"square\" />;\n}\n\nexport function SwitchThumbIOS() {\n  return <Switch thumbVariant=\"ios\" />;\n}\n\nexport function SwitchWithLabels() {\n  return <Switch showLabels />;\n}\n\nexport function SwitchWithIcons() {\n  return <Switch showIcons />;\n}\n\nexport function SwitchDisabled() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Switch disabled />\n      <label className=\"text-sm font-medium text-muted-foreground\">\n        Disabled\n      </label>\n    </div>\n  );\n}\n\nexport function SwitchDefaultChecked() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Switch defaultChecked />\n      <label className=\"text-sm font-medium\">Enabled</label>\n    </div>\n  );\n}\n\nexport function SwitchCustomThumb() {\n  return (\n    <div className=\"grid gap-4\">\n      <Switch variant=\"default\" thumbVariant=\"rounded\" />\n      <Switch variant=\"default\" thumbVariant=\"square\" />\n    </div>\n  );\n}\n\nexport default function SwitchDemos() {\n  return (\n    <div className=\"grid gap-6\">\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Default</h3>\n        <SwitchDemo />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Variants</h3>\n        <SwitchVariants />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Sizes</h3>\n        <SwitchSizes />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Thumb Variants</h3>\n        <SwitchThumbVariants />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Features</h3>\n        <SwitchFeatures />\n      </div>\n      <div>\n        <h3 className=\"mb-2 text-sm font-medium\">Custom Thumb</h3>\n        <SwitchCustomThumb />\n      </div>\n    </div>\n  );\n}\n\nexport const switchVariants = {\n  demo: SwitchDemo,\n  variants: SwitchVariants,\n  default: SwitchDefault,\n  rounded: SwitchRounded,\n  square: SwitchSquare,\n  ios: SwitchIOS,\n  sizes: SwitchSizes,\n  thumbVariants: SwitchThumbVariants,\n  thumbDefault: SwitchThumbDefault,\n  thumbRounded: SwitchThumbRounded,\n  thumbSquare: SwitchThumbSquare,\n  thumbIOS: SwitchThumbIOS,\n  features: SwitchFeatures,\n  withLabels: SwitchWithLabels,\n  withIcons: SwitchWithIcons,\n  disabled: SwitchDisabled,\n  defaultChecked: SwitchDefaultChecked,\n  customThumb: SwitchCustomThumb,\n};",
+      "content": "import { Switch } from \"../ui/switch\";\n\n// Basic demo\nexport function SwitchDemo() {\n  return (\n    <div className=\"flex items-center p-2\">\n      <Switch />\n    </div>\n  );\n}\n\n// All variants and sizes in a responsive grid\nexport function SwitchVariants() {\n  // All variants and sizes\n  const variants = [\"default\", \"rounded\", \"square\", \"ios\"] as const;\n\n  const sizes = [\"icon\", \"xs\", \"sm\", \"md\", \"lg\", \"xl\", \"2xl\"] as const;\n  const thumbVariants = [\"default\", \"rounded\", \"square\", \"ios\"] as const;\n\n  return (\n    <div className=\"grid gap-8 p-2\">\n      <div className=\"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4\">\n        <h4 className=\"text-sm font-medium col-span-full mb-2\">\n          Variants (with default size)\n        </h4>\n        {variants.map((variant) => (\n          <div key={variant} className=\"flex flex-col items-center gap-2\">\n            <Switch variant={variant} />\n            <span className=\"text-xs text-muted-foreground\">{variant}</span>\n          </div>\n        ))}\n      </div>\n\n      <div className=\"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4\">\n        <h4 className=\"text-sm font-medium col-span-full mb-2\">\n          Sizes (with default variant)\n        </h4>\n        {sizes.map((size) => (\n          <div key={size} className=\"flex flex-col items-center gap-2\">\n            <Switch size={size} />\n            <span className=\"text-xs text-muted-foreground\">{size}</span>\n          </div>\n        ))}\n      </div>\n\n      <div className=\"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4\">\n        <h4 className=\"text-sm font-medium col-span-full mb-2\">\n          Thumb Variants (with default variant & size)\n        </h4>\n        {thumbVariants.map((thumbVariant) => (\n          <div key={thumbVariant} className=\"flex flex-col items-center gap-2\">\n            <Switch thumbVariant={thumbVariant} />\n            <span className=\"text-xs text-muted-foreground\">\n              thumb-{thumbVariant}\n            </span>\n          </div>\n        ))}\n      </div>\n\n      <div className=\"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4\">\n        <h4 className=\"text-sm font-medium col-span-full mb-2\">Features</h4>\n        <div className=\"flex flex-col items-center gap-2\">\n          <Switch showLabels labelOn=\"On\" labelOff=\"Off\" />\n          <span className=\"text-xs text-muted-foreground\">With labels</span>\n        </div>\n        <div className=\"flex flex-col items-center gap-2\">\n          <Switch showIcons />\n          <span className=\"text-xs text-muted-foreground\">With icons</span>\n        </div>\n        <div className=\"flex flex-col items-center gap-2\">\n          <Switch disabled />\n          <span className=\"text-xs text-muted-foreground\">Disabled</span>\n        </div>\n        <div className=\"flex flex-col items-center gap-2\">\n          <Switch defaultChecked />\n          <span className=\"text-xs text-muted-foreground\">Default checked</span>\n        </div>\n      </div>\n    </div>\n  );\n}\n\n// Individual variants\nexport function SwitchDefault() {\n  return (\n    <div className=\"flex items-center p-2\">\n      <Switch variant=\"default\" />\n    </div>\n  );\n}\n\nexport function SwitchRounded() {\n  return (\n    <div className=\"flex items-center p-2\">\n      <Switch variant=\"rounded\" />\n    </div>\n  );\n}\n\nexport function SwitchSquare() {\n  return (\n    <div className=\"flex items-center p-2\">\n      <Switch variant=\"square\" />\n    </div>\n  );\n}\n\nexport function SwitchIOS() {\n  return (\n    <div className=\"flex items-center p-2\">\n      <Switch variant=\"ios\" />\n    </div>\n  );\n}\n\nexport function SwitchWithLabels() {\n  return (\n    <div className=\"flex items-center p-2\">\n      <Switch showLabels />\n    </div>\n  );\n}\n\nexport function SwitchWithIcons() {\n  return (\n    <div className=\"flex items-center p-2\">\n      <Switch showIcons />\n    </div>\n  );\n}\n\nexport function SwitchDisabled() {\n  return (\n    <div className=\"flex items-center p-2\">\n      <Switch disabled />\n    </div>\n  );\n}\n\nexport function SwitchDefaultChecked() {\n  return (\n    <div className=\"flex items-center p-2\">\n      <Switch defaultChecked />\n    </div>\n  );\n}\n\nexport const switchVariants = {\n  demo: SwitchDemo,\n  variants: SwitchVariants,\n  default: SwitchDefault,\n  rounded: SwitchRounded,\n  square: SwitchSquare,\n  ios: SwitchIOS,\n  withLabels: SwitchWithLabels,\n  withIcons: SwitchWithIcons,\n  disabled: SwitchDisabled,\n  defaultChecked: SwitchDefaultChecked,\n};",
       "type": "registry:ui"
     }
   ],
@@ -46,41 +46,6 @@
       "description": "ios variant of switch",
       "component": "SwitchIOS"
     },
-    "sizes": {
-      "name": "sizes",
-      "description": "sizes variant of switch",
-      "component": "SwitchSizes"
-    },
-    "thumbVariants": {
-      "name": "thumbVariants",
-      "description": "thumbVariants variant of switch",
-      "component": "SwitchThumbVariants"
-    },
-    "thumbDefault": {
-      "name": "thumbDefault",
-      "description": "thumbDefault variant of switch",
-      "component": "SwitchThumbDefault"
-    },
-    "thumbRounded": {
-      "name": "thumbRounded",
-      "description": "thumbRounded variant of switch",
-      "component": "SwitchThumbRounded"
-    },
-    "thumbSquare": {
-      "name": "thumbSquare",
-      "description": "thumbSquare variant of switch",
-      "component": "SwitchThumbSquare"
-    },
-    "thumbIOS": {
-      "name": "thumbIOS",
-      "description": "thumbIOS variant of switch",
-      "component": "SwitchThumbIOS"
-    },
-    "features": {
-      "name": "features",
-      "description": "features variant of switch",
-      "component": "SwitchFeatures"
-    },
     "withLabels": {
       "name": "withLabels",
       "description": "withLabels variant of switch",
@@ -100,11 +65,6 @@
       "name": "defaultChecked",
       "description": "defaultChecked variant of switch",
       "component": "SwitchDefaultChecked"
-    },
-    "customThumb": {
-      "name": "customThumb",
-      "description": "customThumb variant of switch",
-      "component": "SwitchCustomThumb"
     }
   }
 }

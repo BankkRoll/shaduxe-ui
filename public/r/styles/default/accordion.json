@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "type": "registry:ui",
+  "title": "Accordion",
+  "description": "A vertically stacked set of headers that each contain a title, content, and controls.",
+  "author": "shaduxe-ui",
+  "dependencies": [
+    "@radix-ui/react-accordion",
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "default/ui/accordion",
+      "content": "\"use client\";\n\nimport * as AccordionPrimitive from \"@radix-ui/react-accordion\";\nimport { cva, VariantProps } from \"class-variance-authority\";\nimport { ChevronDownIcon } from \"lucide-react\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst accordionVariants = cva(\n  \"flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180\",\n  {\n    variants: {\n      variant: {\n        default: \"hover:underline\",\n        outline: \"border border-input p-3 hover:bg-accent\",\n        ghost: \"hover:bg-accent p-3\",\n        underline: \"border-b border-input pb-3 hover:border-primary\",\n      },\n      iconPosition: {\n        right: \"flex-row\",\n        left: \"flex-row-reverse\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      iconPosition: \"right\",\n    },\n  },\n);\n\ntype AccordionTriggerProps = React.ComponentProps<\n  typeof AccordionPrimitive.Trigger\n> &\n  React.PropsWithChildren<{\n    icon?: React.ReactNode;\n  }> &\n  VariantProps<typeof accordionVariants>;\n\nfunction Accordion({\n  ...props\n}: React.ComponentProps<typeof AccordionPrimitive.Root>) {\n  return <AccordionPrimitive.Root data-slot=\"accordion\" {...props} />;\n}\n\nfunction AccordionItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof AccordionPrimitive.Item>) {\n  return (\n    <AccordionPrimitive.Item\n      data-slot=\"accordion-item\"\n      className={cn(\"border-b last:border-b-0\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction AccordionTrigger({\n  className,\n  children,\n  variant,\n  iconPosition,\n  icon,\n  ...props\n}: AccordionTriggerProps) {\n  return (\n    <AccordionPrimitive.Header className=\"flex\">\n      <AccordionPrimitive.Trigger\n        data-slot=\"accordion-trigger\"\n        className={cn(\n          \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\",\n          accordionVariants({ variant, iconPosition }),\n          className,\n        )}\n        {...props}\n      >\n        {children}\n        {icon || (\n          <ChevronDownIcon className=\"text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200\" />\n        )}\n      </AccordionPrimitive.Trigger>\n    </AccordionPrimitive.Header>\n  );\n}\n\nconst accordionContentVariants = cva(\"overflow-hidden text-sm\", {\n  variants: {\n    variant: {\n      default: \"\",\n      outline: \"px-3\",\n      ghost: \"px-3\",\n      underline: \"\",\n    },\n    animation: {\n      default:\n        \"data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\",\n      fade: \"data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in\",\n      none: \"\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    animation: \"default\",\n  },\n});\n\ntype AccordionContentProps = React.ComponentProps<\n  typeof AccordionPrimitive.Content\n> &\n  VariantProps<typeof accordionContentVariants>;\n\nfunction AccordionContent({\n  className,\n  children,\n  variant,\n  animation,\n  ...props\n}: AccordionContentProps) {\n  return (\n    <AccordionPrimitive.Content\n      data-slot=\"accordion-content\"\n      className={cn(\n        accordionContentVariants({ variant, animation }),\n        className,\n      )}\n      {...props}\n    >\n      <div className={cn(\"pt-0 pb-4\", className)}>{children}</div>\n    </AccordionPrimitive.Content>\n  );\n}\n\nexport {\n  Accordion,\n  AccordionContent,\n  accordionContentVariants,\n  AccordionItem,\n  AccordionTrigger,\n  accordionVariants,\n};",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "--animate-accordion-down": "accordion-down 0.2s ease-out",
+      "--animate-accordion-up": "accordion-up 0.2s ease-out"
+    }
+  },
+  "css": {
+    "@keyframes accordion-down": {
+      "from": {
+        "height": 0
+      },
+      "to": {
+        "height": "var(--radix-accordion-content-height)"
+      }
+    },
+    "@keyframes accordion-up": {
+      "from": {
+        "height": "var(--radix-accordion-content-height)"
+      },
+      "to": {
+        "height": 0
+      }
+    }
+  }
+}

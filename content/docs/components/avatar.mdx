@@ -5,7 +5,8 @@ author: bankk
 published: true
 component: true
 links:
-  api: https://www.radix-ui.com/primitives/docs/components/avatar
+  docs: https://www.radix-ui.com/docs/primitives/components/avatar
+  api: https://www.radix-ui.com/docs/primitives/components/avatar#api-reference
 ---
 
 <ComponentPreview name="avatar-demo" />
@@ -35,7 +36,7 @@ links:
     Update your imports:
     
     ```tsx
-    import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+    import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
     ```
   </Step>
 </Steps>
@@ -43,14 +44,14 @@ links:
 ## Usage
 
 ```tsx {1,5-8} showLineNumbers
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Home() {
   return (
-      <Avatar>
-        <AvatarImage src="https://github.com/BankkRoll.png" alt="@BankkRoll" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
   );
 }
 ```
@@ -59,18 +60,45 @@ export default function Home() {
 
 ### Avatar
 
-| Prop      | Type                         | Default     | Description                   |
-| --------- | ---------------------------- | ----------- | ----------------------------- |
-| variant   | `circle \| square \| rounded` | `circle`    | The shape variant of the avatar |
-| size      | `xs \| sm \| md \| lg \| xl \| 2xl` | `md`        | The size of the avatar         |
-| className | `string`                     | -           | Additional CSS classes        |
+| Prop    | Type                 | Default   | Description               |
+| ------- | -------------------- | --------- | ------------------------- |
+| size    | `sm` \| `md` \| `lg` | `md`      | Size of the avatar        |
+| variant | `default` \| `round` | `default` | Style variant of avatar   |
+
+## Radix UI Props
+
+### Avatar
+
+- `asChild` - Change the default rendered element for the one passed as a child, merging their props and behavior.
+- `onLoadingStatusChange` - Event handler called when the image loading status changes.
 
 ### AvatarImage
 
-| Prop | Type     | Required | Description                 |
-| ---- | -------- | -------- | --------------------------- |
-| src  | `string` | Yes      | The image source URL        |
-| alt  | `string` | Yes      | Alternative text description |
+- `asChild` - Change the default rendered element for the one passed as a child, merging their props and behavior.
+- `onLoadingStatusChange` - Event handler called when the image loading status changes.
+- `src` - The image source to use for the avatar.
+- `alt` - The alt text to use for the avatar image.
+
+### AvatarFallback
+
+- `asChild` - Change the default rendered element for the one passed as a child, merging their props and behavior.
+- `delayMs` - Delay (in ms) before showing the fallback. Useful to prevent flickering where the fallback shows briefly before the image loads.
+
+## HTML Attributes
+
+All Avatar components support standard HTML attributes:
+
+### Avatar
+
+- Standard `div` element attributes.
+
+### AvatarImage
+
+- Standard `img` element attributes.
+
+### AvatarFallback
+
+- Standard `div` element attributes.
 
 <Callout type="tip" className="mt-6">
   For optimal performance in Next.js projects, consider using the `next/image`

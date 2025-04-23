@@ -4,8 +4,6 @@ description: Containers for displaying related content and actions in a single u
 author: bankk
 published: true
 component: true
-links:
-  api: https://ui.shaduxe.com/r/card
 ---
 
 <ComponentPreview name="card-demo" />
@@ -70,52 +68,27 @@ export default function Home() {
 
 ### Card
 
-| Prop      | Type                                                                      | Default   | Description                |
-| --------- | ------------------------------------------------------------------------- | --------- | -------------------------- |
-| variant   | `default` \| `flat` \| `elevated` \| `ghost` \| `outline` \| `opaque` \| `gradient` | `default` | Style variant of the card  |
-| size      | `sm` \| `md` \| `lg` \| `xl`                                              | `md`      | Size of the card padding   |
-| radius    | `default` \| `sm` \| `md` \| `lg` \| `full` \| `none`                     | `default` | Border radius of the card  |
-| className | `string`                                                                  | -         | Additional CSS classes     |
+| Prop      | Type                                | Default   | Description                |
+| --------- | ----------------------------------- | --------- | -------------------------- |
+| variant   | `default` \| `ghost` \| `outline`   | `default` | Style variant of the card  |
 
-### CardHeader
+## HTML Attributes
 
-| Prop      | Type     | Default | Description              |
-| --------- | -------- | ------- | ------------------------ |
-| className | `string` | -       | Additional CSS classes   |
+All Card components support standard HTML attributes:
 
-### CardTitle
-
-| Prop      | Type     | Default | Description              |
-| --------- | -------- | ------- | ------------------------ |
-| className | `string` | -       | Additional CSS classes   |
-
-### CardDescription
-
-| Prop      | Type     | Default | Description              |
-| --------- | -------- | ------- | ------------------------ |
-| className | `string` | -       | Additional CSS classes   |
-
-### CardContent
-
-| Prop      | Type     | Default | Description              |
-| --------- | -------- | ------- | ------------------------ |
-| className | `string` | -       | Additional CSS classes   |
-
-### CardFooter
-
-| Prop      | Type     | Default | Description              |
-| --------- | -------- | ------- | ------------------------ |
-| className | `string` | -       | Additional CSS classes   |
-
-### Supported HTML Attributes
-
-All Card components use standard HTML div elements, so they inherit and support **all standard HTML div attributes**, including:
-
+### Card, CardHeader, CardContent, CardFooter
+Standard HTML div attributes:
 - `id`
 - `onClick`
 - `role`
 - `aria-*` attributes
 - `data-*` attributes
-- Event handlers like `onMouseEnter`, `onFocus`, etc.
+- Event handlers like `onMouseEnter`, etc.
 
-The Card components ensure proper accessibility and semantic HTML. 
+### CardTitle
+Standard HTML h3 attributes.
+
+### CardDescription
+Standard HTML paragraph attributes.
+
+The Card components ensure proper semantic structure through appropriate HTML elements. 

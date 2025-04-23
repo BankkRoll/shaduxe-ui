@@ -1,8 +1,11 @@
 ---
 title: Emaily
-description: Modern SaaS Starter Template powered by Next.js, Tailwind CSS, and Supabase Auth
+description: Modern SaaS Starter Template powered by Next.js, Tailwind CSS v4, React 19, and Supabase Auth
 author: bankk
 published: true
+version: 1.0.0
+links:
+  preview: https://shaduxe-emaily.vercel.app
 ---
 
 <div className="relative w-full overflow-hidden rounded-lg border bg-gradient-to-b from-background/10 to-background/80 p-2 backdrop-blur">
@@ -18,17 +21,44 @@ published: true
   </div>
 </div>
 
-<div className="flex justify-center gap-6 my-8 w-full">
-  <Button variant="outline" disabled className="flex gap-2 items-center py-6 px-8 h-12">
-    <IconDownload className="size-5 mr-1" />
-    <span className="font-medium">Coming Soon</span>
-  </Button>
-  <a href="https://shaduxe-emaily.vercel.app" target="_blank">
-    <Button className="flex gap-2 items-center py-6 px-8 h-12">
-      <IconExternalLink className="size-5 mr-1" />
-      <span className="font-medium">Live Preview</span>
-    </Button>
-  </a>
+## Pricing
+
+<div className="mt-4 mb-8">
+  <div className="p-5 border rounded-lg bg-muted/5">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <div className="flex items-baseline gap-2 mb-1">
+          <span className="text-2xl font-bold">$49.99</span>
+          <span className="text-sm text-muted-foreground line-through">$99</span>
+          <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">Save 50%</span>
+        </div>
+        <p className="text-sm text-muted-foreground">One-time payment for this template or get PRO for all access</p>
+      </div>
+      
+      <div className="flex flex-col sm:flex-row gap-3">
+        <TemplateDownloadButton 
+          templateId="emaily" 
+          variant="default" 
+          className="w-full flex gap-2 items-center"
+        >
+          Buy now: $49.99
+        </TemplateDownloadButton>
+        
+        <a href="/pricing">
+          <Button variant="outline" className="w-full">
+            View All Pricing
+          </Button>
+        </a>
+        
+        <a href="https://shaduxe-emaily.vercel.app" target="_blank">
+          <Button variant="secondary" className="w-full flex gap-2 items-center">
+            <IconExternalLink className="size-4" />
+            <span>Live Preview</span>
+          </Button>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 
 ## What is this?
@@ -172,7 +202,7 @@ Emaily is a complete SaaS starter template built with Next.js, Tailwind CSS, and
   <div className="flex gap-2">
     <div className="size-2 rounded-full bg-primary mt-2" />
     <div>
-      <span className="text-xs text-muted-foreground">01 April 2025</span>
+      <span className="text-xs text-muted-foreground">22 April 2025</span>
       <p className="font-medium">Initial release</p>
     </div>
   </div>

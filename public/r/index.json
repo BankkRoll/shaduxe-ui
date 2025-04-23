@@ -3,6 +3,30 @@
   "homepage": "https://shaduxe.com",
   "items": [
     {
+      "name": "accordion",
+      "type": "registry:ui",
+      "description": "A vertically stacked set of headers that each contain a title, content, and controls.",
+      "title": "Accordion",
+      "files": [
+        {
+          "path": "default/ui/accordion",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "description": "A component that displays a message to the user.",
+      "title": "Alert",
+      "files": [
+        {
+          "path": "default/ui/alert",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "description": "An image element with a fallback for representing the user.",
@@ -102,6 +126,36 @@
       ]
     },
     {
+      "name": "accordion-demo",
+      "type": "registry:ui",
+      "description": "Examples showcasing accordion component variants and sizes.",
+      "title": "Accordion Demo",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "default/example/accordion-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "alert-demo",
+      "type": "registry:ui",
+      "description": "Examples showcasing alert component variants and sizes.",
+      "title": "Alert Demo",
+      "registryDependencies": [
+        "alert"
+      ],
+      "files": [
+        {
+          "path": "default/example/alert-demo",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "avatar-demo",
       "type": "registry:ui",
       "description": "Examples showcasing avatar component variants and sizes.",
@@ -147,12 +201,28 @@
       ]
     },
     {
+      "name": "button-installation-example",
+      "type": "registry:ui",
+      "description": "Example showing how to install and use the button component.",
+      "title": "Button Installation Example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "default/example/button-installation-example",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "card-demo",
       "type": "registry:ui",
       "description": "Examples showcasing card component variants and sizes.",
       "title": "Card Demo",
       "registryDependencies": [
-        "card"
+        "card",
+        "button"
       ],
       "files": [
         {
@@ -202,21 +272,6 @@
       "files": [
         {
           "path": "default/example/tabs-demo",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "button-installation-example",
-      "type": "registry:ui",
-      "description": "Example showing how to install and use the button component.",
-      "title": "Button Installation Example",
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "default/example/button-installation-example",
           "type": "registry:component"
         }
       ]
@@ -272,11 +327,65 @@
       ]
     },
     {
+      "name": "pricing-four",
+      "type": "registry:block",
+      "description": "A pricing component with testimonials and responsive layout.",
+      "title": "Pricing with Testimonials",
+      "registryDependencies": [
+        "card",
+        "badge",
+        "button",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "default/blocks/pricing-four",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "testimonial-one",
+      "type": "registry:block",
+      "description": "A testimonial component with a single testimonial.",
+      "title": "Testimonial One",
+      "registryDependencies": [
+        "card",
+        "badge",
+        "button",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "default/blocks/testimonial-one",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "testimonial-two",
+      "type": "registry:block",
+      "description": "A testimonial component with a single testimonial.",
+      "title": "Testimonial Two",
+      "registryDependencies": [
+        "card",
+        "badge",
+        "button",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "default/blocks/testimonial-two",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "utils",
       "type": "registry:lib",
       "files": [
         {
-          "path": "lib/utils",
+          "path": "default/lib/utils",
           "type": "registry:lib"
         }
       ]

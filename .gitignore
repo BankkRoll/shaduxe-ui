@@ -62,3 +62,8 @@ Thumbs.db
 .env.development
 .env.production
 .env.test
+
+.husky/
+
+supabase/
+!utils/supabase/

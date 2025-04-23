@@ -62,7 +62,7 @@ export default function Hero() {
               <div className="flex items-center space-x-4 mt-8">
                 <Link href="/docs/blocks/pricing-one" passHref>
                   <Button
-                    variant="expandIcon"
+                    effect="expandIcon"
                     Icon={ArrowRight}
                     iconPlacement="right"
                   >
@@ -71,7 +71,7 @@ export default function Hero() {
                 </Link>
                 <Link href="/docs/components/avatar" passHref>
                   <Button
-                    variant="expandIcon"
+                    effect="expandIcon"
                     Icon={ArrowRight}
                     iconPlacement="right"
                   >
@@ -349,17 +349,11 @@ export default function Hero() {
                   </CardFooter>
                 </Card>
                 <div className="mt-3 grid grid-cols-2 gap-3">
-                  <Card variant="flat" className="p-3">
-                    <p className="text-xs font-medium">Flat</p>
-                  </Card>
                   <Card variant="outline" className="p-3">
                     <p className="text-xs font-medium">Outline</p>
                   </Card>
                   <Card variant="ghost" className="p-3">
                     <p className="text-xs font-medium">Ghost</p>
-                  </Card>
-                  <Card variant="elevated" className="p-3">
-                    <p className="text-xs font-medium">Elevated</p>
                   </Card>
                 </div>
               </motion.div>

@@ -1,11 +1,12 @@
 ---
 title: Switch
-description: A toggle switch component for binary choices with various styles and sizes.
+description: A control that allows the user to toggle between checked and not checked.
 author: bankk
 published: true
 component: true
 links:
-  api: https://www.radix-ui.com/primitives/docs/utilities/switch
+  docs: https://www.radix-ui.com/primitives/docs/components/switch
+  api: https://www.radix-ui.com/primitives/docs/components/switch#api-reference
 ---
 
 <ComponentPreview name="switch-demo" />
@@ -46,37 +47,56 @@ import { Switch } from "@/components/ui/switch";
 
 export default function Home() {
   return (
-    <Switch id="airplane-mode" />
+    <Switch />
+  );
+}
+```
+
+## Usage with Labels and Icons
+
+```tsx {1,5-11} showLineNumbers
+import { Switch } from "@/components/ui/switch";
+
+export default function Home() {
+  return (
+    <Switch 
+      id="theme-mode" 
+      showLabels 
+      labelOn="Light" 
+      labelOff="Dark"
+      showIcons
+    />
   );
 }
 ```
 
 ## Props
 
-| Prop         | Type                                        | Default   | Description                       |
-| ------------ | ------------------------------------------- | --------- | --------------------------------- |
-| variant      | `default` \| `rounded` \| `square` \| `ios` | `default` | Style variant of the switch       |
-| size         | `icon` \| `xs` \| `sm` \| `md` \| `lg`      | `md`      | Size of the switch                |
-| thumbVariant | `default` \| `rounded` \| `square` \| `ios` | -         | Style variant of the switch thumb |
-| showLabels   | `boolean`                                   | `false`   | Show text labels                  |
-| labelOn      | `string`                                    | `"On"`    | Text for the "on" label           |
-| labelOff     | `string`                                    | `"Off"`   | Text for the "off" label          |
-| showIcons    | `boolean`                                   | `false`   | Show icons in the switch thumb    |
-| className    | `string`                                    | -         | Additional CSS classes            |
+| Prop     | Type                               | Default     | Description                        |
+| -------- | ---------------------------------- | ----------- | ---------------------------------- |
+| variant  | `default` \| `lg` \| `outline`     | `default`   | Style variant of the switch        |
+| disabled | `boolean`                          | `false`     | Whether the switch is disabled     |
 
-### Supported HTML Attributes
+## Radix UI Props
 
-Because the Switch uses Radix UI's `Switch` component, it inherits and supports **all standard HTML input attributes**, including:
+The Switch component is built on Radix UI's Switch primitive and supports all its props:
 
-- `checked`
-- `defaultChecked`
-- `required`
-- `name`
-- `value`
-- `onCheckedChange`
-- `disabled`
+### Switch Root Props
+
+- `checked`: boolean - The controlled state of the switch
+- `defaultChecked`: boolean - The default state when uncontrolled
+- `onCheckedChange`: (checked: boolean) => void - Event handler called when the checked state changes
+- `name`: string - The name of the switch, used when submitting a form
+- `value`: string - The value of the switch, used when submitting a form
+- `required`: boolean - When true, indicates that the user must check the switch
+- `disabled`: boolean - When true, prevents the user from interacting with the switch
+
+### HTML Attributes
+
+The component also supports standard HTML button attributes:
+- `id`
 - `aria-*` attributes
-- `data-*` attributes
+- `data-*` attributes 
 - Event handlers like `onFocus`, `onBlur`, etc.
 
-The Switch component uses Radix UI's primitives, ensuring proper accessibility, keyboard navigation and semantic HTML.
+This ensures proper accessibility, keyboard navigation, and form integration.

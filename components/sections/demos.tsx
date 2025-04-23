@@ -8,7 +8,7 @@ export default function ComponentDemos() {
   return (
     <section
       id="blocks"
-      className="flex flex-col items-center justify-center mx-auto max-w-7xl py-24"
+      className="flex flex-col items-center justify-center mx-auto max-w-7xl py-24 sm:px-6"
     >
       <SectionTitle
         title="Pre-built Blocks"
@@ -20,17 +20,9 @@ export default function ComponentDemos() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <ComponentPreview preview={true} name="pricing-one" />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <ComponentPreview preview={true} name="pricing-two" />
+          <ComponentPreview preview={true} name="testimonial-one" />
         </motion.div>
 
         <motion.div
@@ -38,7 +30,15 @@ export default function ComponentDemos() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <ComponentPreview preview={true} name="pricing-three" />
+          <ComponentPreview preview={true} name="pricing-four" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <ComponentPreview preview={true} name="testimonial-two" />
         </motion.div>
       </div>
     </section>

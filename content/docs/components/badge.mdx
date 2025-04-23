@@ -4,8 +4,6 @@ description: Small status descriptors for UI elements.
 author: bankk
 published: true
 component: true
-links:
-  api: https://ui.shaduxe.com/r/badge
 ---
 
 <ComponentPreview name="badge-demo" />
@@ -57,13 +55,11 @@ export default function Home() {
 | Prop      | Type                                                                                                        | Default   | Description                      |
 | --------- | ----------------------------------------------------------------------------------------------------------- | --------- | -------------------------------- |
 | variant   | `default` \| `secondary` \| `destructive` \| `outline` \| `ghost` \| `link` \| `success` \| `warning` \| `info` | `default` | Style variant of the badge       |
-| size      | `xs` \| `sm` \| `md` \| `lg`                                                                                | `md`      | Size of the badge                |
-| shape     | `default` \| `rounded` \| `square`                                                                          | `default` | Shape variant of the badge       |
-| className | `string`                                                                                                    | -         | Additional CSS classes           |
+| size      | `icon` \| `xs` \| `sm` \| `md` \| `default` \| `lg` \| `xl` \| `2xl`                                       | `default` | Size of the badge                |
 
-### Supported HTML Attributes
+## HTML Attributes
 
-Because the Badge uses a standard HTML div element, it inherits and supports **all standard HTML div attributes**, including:
+The Badge component is built with a standard HTML div element and supports all its attributes:
 
 - `id`
 - `onClick`
@@ -73,4 +69,4 @@ Because the Badge uses a standard HTML div element, it inherits and supports **a
 - `data-*` attributes
 - Event handlers like `onMouseEnter`, `onFocus`, etc.
 
-The Badge component ensures proper accessibility and semantic HTML. 
+The Badge component ensures proper accessibility through appropriate HTML attributes.

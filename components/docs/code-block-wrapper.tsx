@@ -38,100 +38,98 @@ export function CodeBlockWrapper({
   ...props
 }: CodeBlockProps) {
   const [isOpened, setIsOpened] = React.useState(false);
-  const [rawCode, setRawCode] = React.useState<string | null>(null);
-  const codeRef = React.useRef<HTMLPreElement>(null);
+  const [codeContent, setCodeContent] = React.useState<string>("");
+  const codeRef = React.useRef<HTMLDivElement>(null);
 
-  // Extract raw text from the code block for copying
+  // Extract code content from children or DOM for the copy button
   React.useEffect(() => {
-    if (codeRef.current) {
-      const codeElement = codeRef.current.querySelector("code");
-      if (codeElement) {
-        setRawCode(codeElement.textContent);
+    // More robust code extraction
+    const extractCode = () => {
+      if (!codeRef.current) return;
+
+      try {
+        // First try: get code from <code> element (most common)
+        const codeElement = codeRef.current.querySelector("code");
+        if (codeElement?.textContent) {
+          setCodeContent(codeElement.textContent);
+          return;
+        }
+
+        // Second try: get code from <pre> element
+        const preElement = codeRef.current.querySelector("pre");
+        if (preElement?.textContent) {
+          setCodeContent(preElement.textContent);
+          return;
+        }
+
+        // Last resort: get all text content
+        setCodeContent(codeRef.current.textContent || "");
+      } catch (err) {
+        console.error("Failed to extract code for copy:", err);
       }
-    }
-  }, [children]);
+    };
 
-  // Process code content to add line numbers and highlighting
-  const processedChildren = React.useMemo(() => {
-    // Function to recursively modify children
-    const processChild = (child: React.ReactNode): React.ReactNode => {
-      if (!React.isValidElement(child)) return child;
+    // Initial extraction
+    extractCode();
 
-      // Handle pre tag
-      if (child.type === "pre") {
-        return React.cloneElement(child as React.ReactElement, {
-          className: cn(
-            child.props.className,
-            "language-" + language,
-            "rounded-t-none font-mono text-[13px] leading-[1.45] font-normal",
-            showLineNumbers && "data-line-numbers",
-          ),
-          "data-line-numbers": showLineNumbers,
-          "data-rehype-pretty-code-figure": true,
-          children: React.Children.map(child.props.children, processChild),
+    // Use a more efficient approach with delayed observer
+    const timer = setTimeout(() => {
+      extractCode();
+
+      // Only set up observer if content wasn't found initially
+      if (!codeContent) {
+        const observer = new MutationObserver(() => {
+          extractCode();
         });
-      }
 
-      // Handle code tag
-      if (child.type === "code") {
-        const codeEl = child as React.ReactElement;
-
-        // Split content into lines if it's a string
-        let lines: React.ReactNode[] = [];
-        if (typeof codeEl.props.children === "string") {
-          const content = codeEl.props.children as string;
-          lines = content.split("\n").map((line, i) => {
-            const isHighlighted = highlightLines.includes(i + 1);
-            return (
-              <div
-                key={i}
-                data-line=""
-                className={cn(isHighlighted && "line--highlighted")}
-              >
-                {line || " "}
-              </div>
-            );
-          });
-        } else if (React.Children.count(codeEl.props.children) > 0) {
-          // If children are already elements, map them
-          lines = React.Children.map(codeEl.props.children, (line, i) => {
-            if (!React.isValidElement(line)) return line;
-
-            const lineElement = line as React.ReactElement;
-            const isHighlighted = highlightLines.includes(i + 1);
-            return React.cloneElement(lineElement, {
-              "data-line": "",
-              className: cn(
-                lineElement.props.className,
-                isHighlighted && "line--highlighted",
-              ),
-            });
+        if (codeRef.current) {
+          observer.observe(codeRef.current, {
+            childList: true,
+            subtree: true,
+            characterData: true,
           });
         }
 
-        return React.cloneElement(codeEl, {
-          className: cn(
-            "language-" + language,
-            "grid min-w-full break-words rounded-none border-0 bg-transparent p-0",
-            showLineNumbers && "data-line-numbers",
-          ),
-          children: lines,
-        });
+        return () => observer.disconnect();
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [children, codeContent]);
+
+  // Process and add line numbers when the component mounts or when code content changes
+  React.useEffect(() => {
+    if (!codeRef.current || !showLineNumbers) return;
+
+    const preElement = codeRef.current.querySelector("pre");
+    const codeElement = preElement?.querySelector("code");
+
+    if (preElement && codeElement) {
+      // Add line-numbers class for styling
+      preElement.classList.add("line-numbers");
+
+      // Only process if we don't already have line numbers
+      if (!preElement.querySelector(".line-numbers-rows")) {
+        const linesCount = (codeContent.match(/\n/g) || []).length + 1;
+
+        // Create the line numbers container
+        const lineNumbersContainer = document.createElement("span");
+        lineNumbersContainer.className = "line-numbers-rows";
+
+        // Add line number spans
+        for (let i = 0; i < linesCount; i++) {
+          const lineSpan = document.createElement("span");
+          lineNumbersContainer.appendChild(lineSpan);
+        }
+
+        // Append to the pre element
+        preElement.appendChild(lineNumbersContainer);
       }
 
-      // Recursively process other elements
-      if (child.props && child.props.children) {
-        return React.cloneElement(child as React.ReactElement, {
-          ...child.props,
-          children: React.Children.map(child.props.children, processChild),
-        });
-      }
-
-      return child;
-    };
-
-    return React.Children.map(children, processChild);
-  }, [children, showLineNumbers, language, highlightLines]);
+      // Add data attribute for styling
+      preElement.setAttribute("data-line-numbers", "true");
+    }
+  }, [codeContent, showLineNumbers]);
 
   return (
     <Collapsible
@@ -171,33 +169,37 @@ export function CodeBlockWrapper({
           )}
         </div>
         <div className="flex items-center gap-1.5">
-          {rawCode && (
-            <CopyButton
-              value={rawCode}
-              variant="ghost"
-              className="opacity-70 hover:opacity-100 transition-opacity h-7 w-7"
-            />
-          )}
+          <CopyButton
+            value={codeContent}
+            variant="ghost"
+            className="opacity-100 h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
+          />
         </div>
       </div>
 
       {/* Code content */}
       <CollapsibleContent
         forceMount
-        className="relative z-10 h-[500px] transition-all duration-300"
+        className={cn(
+          "relative z-10 transition-all duration-300",
+          isOpened ? "max-h-[900px]" : "max-h-[500px]",
+        )}
       >
         <div
+          ref={codeRef}
           className={cn(
-            "h-full",
+            "h-full w-full",
             isOpened
-              ? "overflow-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-foreground/10 hover:scrollbar-thumb-muted-foreground/20"
-              : "overflow-hidden no-scrollbar",
-            "[&_pre]:my-0 [&_pre]:py-4 [&_pre]:h-full",
-            showLineNumbers && "[&_pre]:data-line-numbers",
-            isOpened ? "[&_pre]:overflow-auto" : "[&_pre]:overflow-hidden",
+              ? "overflow-y-auto  h-[500px] scrollbar scrollbar-track-transparent scrollbar-thumb-muted-foreground/10 hover:scrollbar-thumb-muted-foreground/20"
+              : "overflow-y-hidden h-[500px]",
+            "overflow-x-auto",
+            "[&_pre]:my-0 [&_pre]:px-4 [&_pre]:py-4 [&_pre]:min-h-[500px]",
+            "[&_pre]:bg-transparent [&_code]:whitespace-pre",
+            `language-${language}`,
           )}
+          data-rehype-pretty-code-fragment=""
         >
-          {processedChildren}
+          {children}
         </div>
       </CollapsibleContent>
 

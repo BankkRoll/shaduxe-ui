@@ -14,7 +14,7 @@ export interface NavItem {
   description?: string;
   badge?: {
     text: string;
-    variant: "new" | "premium" | "beta" | "popular" | "custom" | "coming-soon";
+    variant: "new" | "pro" | "beta" | "popular" | "custom" | "coming-soon";
     color?: string;
   }[];
 }

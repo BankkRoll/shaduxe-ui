@@ -1,14 +1,16 @@
-import "@/styles/globals.css";
+import "@/app/globals.css";
 
 import { cn, constructMetadata } from "@/lib/utils";
 
 import { PHProvider } from "@/components/layout/posthog-provider";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { GeistSans } from "geist/font/sans";
 import type { Viewport } from "next";
 import { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = constructMetadata({
   title: "shaduxe/ui",
@@ -47,7 +49,9 @@ export default function RootLayout({
         <PHProvider>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <TooltipProvider>
+              <SiteHeader />
               {children}
+              <SiteFooter />
               <Toaster />
             </TooltipProvider>
           </ThemeProvider>

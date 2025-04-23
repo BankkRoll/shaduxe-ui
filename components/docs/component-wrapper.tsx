@@ -19,7 +19,9 @@ const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
           "lab-bg [background-size:16px_16px]",
         )}
       />
-      <div className="z-50">{children}</div>
+      <div className="w-full h-full flex items-center justify-center z-50">
+        {children}
+      </div>
     </div>
   );
 };

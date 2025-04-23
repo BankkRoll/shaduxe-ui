@@ -2,6 +2,26 @@ import { Registry } from "@/registry/schema";
 
 export const examples: Registry = [
   {
+    name: "accordion-demo",
+    type: "registry:ui",
+    title: "Accordion Demo",
+    description: "Examples showcasing accordion component variants and sizes.",
+    author: "shaduxe-ui",
+    files: ["default/example/accordion-demo.tsx"],
+    registryDependencies: ["accordion"],
+    dependencies: ["lucide-react"],
+  },
+  {
+    name: "alert-demo",
+    type: "registry:ui",
+    title: "Alert Demo",
+    description: "Examples showcasing alert component variants and sizes.",
+    author: "shaduxe-ui",
+    files: ["default/example/alert-demo.tsx"],
+    registryDependencies: ["alert"],
+    dependencies: ["lucide-react"],
+  },
+  {
     name: "avatar-demo",
     type: "registry:ui",
     title: "Avatar Demo",
@@ -19,6 +39,7 @@ export const examples: Registry = [
     files: ["default/example/badge-demo.tsx"],
     registryDependencies: ["badge"],
   },
+
   {
     name: "button-demo",
     type: "registry:ui",
@@ -31,13 +52,23 @@ export const examples: Registry = [
     dependencies: ["lucide-react"],
   },
   {
+    name: "button-installation-example",
+    type: "registry:ui",
+    title: "Button Installation Example",
+    description: "Example showing how to install and use the button component.",
+    author: "shaduxe-ui",
+    files: ["default/example/button-installation-example.tsx"],
+    dependencies: ["motion"],
+    registryDependencies: ["button"],
+  },
+  {
     name: "card-demo",
     type: "registry:ui",
     title: "Card Demo",
     description: "Examples showcasing card component variants and sizes.",
     author: "shaduxe-ui",
     files: ["default/example/card-demo.tsx"],
-    registryDependencies: ["card"],
+    registryDependencies: ["card", "button"],
   },
   {
     name: "input-demo",
@@ -69,15 +100,5 @@ export const examples: Registry = [
     author: "shaduxe-ui",
     files: ["default/example/tabs-demo.tsx"],
     registryDependencies: ["tabs"],
-  },
-  {
-    name: "button-installation-example",
-    type: "registry:ui",
-    title: "Button Installation Example",
-    description: "Example showing how to install and use the button component.",
-    author: "shaduxe-ui",
-    files: ["default/example/button-installation-example.tsx"],
-    dependencies: ["motion"],
-    registryDependencies: ["button"],
   },
 ];

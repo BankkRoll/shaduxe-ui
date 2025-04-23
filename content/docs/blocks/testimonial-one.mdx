@@ -1,0 +1,134 @@
+---
+title: Testimonial One
+description: A modern testimonial section with auto-rotating cards and company logos.
+author: bankk
+published: true
+component: true
+---
+
+<ComponentPreview name="testimonial-one" />
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Auto-rotating testimonial cards with smooth transitions</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Company logo cloud section</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Animated entrance with Motion One animations</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Support for ratings, avatars, and company information</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/testimonial-one"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="testimonial-one" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import TestimonialOne from "@/components/blocks/testimonial-one"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5} showLineNumbers
+import TestimonialOne from "@/components/blocks/testimonial-one";
+
+export default function Home() {
+  return (
+    <TestimonialOne />
+  );
+}
+```
+
+## Props
+
+| Prop      | Type       | Default | Description          |
+| --------- | ---------- | ------- | -------------------- |
+| className | `string`   | -       | Additional CSS classes |
+
+## Configuration
+
+The component uses a built-in configuration object for all data. You can modify this object in the component source code to customize the testimonials section.
+
+The configuration includes:
+
+```tsx
+const testimonialsConfig = {
+  title: "Loved by the community",
+  subtitle: "Don't just take our word for it. See what developers and companies have to say about our starter template.",
+  badgeText: "Trusted by developers",
+  testimonials: [
+    {
+      id: 1,
+      name: "Alex Johnson",
+      role: "Full Stack Developer",
+      company: "TechFlow",
+      content: "This starter template saved me weeks of setup time...",
+      rating: 5,
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    },
+    // More testimonials...
+  ],
+  trustedCompanies: ["Google", "Microsoft", "Airbnb", "Spotify", "Netflix"],
+  autoRotateInterval: 6000,
+  trustedCompaniesTitle: "Trusted by developers from companies worldwide",
+}
+```
+
+## Customization
+
+To customize the testimonials section, modify the `testimonialsConfig` object directly in the component file:
+
+```tsx
+// In testimonial-one.tsx
+const testimonialsConfig = {
+  title: "What Our Customers Say", // Change the title
+  subtitle: "Real feedback from our valued customers", // Change the subtitle
+  badgeText: "Customer Reviews", // Change the badge text
+  testimonials: [
+    // Add your own testimonials
+    {
+      id: 1,
+      name: "Sarah Smith",
+      role: "Marketing Director",
+      company: "TechCorp",
+      content: "Your product transformed our workflow...",
+      rating: 5,
+      avatar: "/avatars/sarah.jpg",
+    },
+    // More testimonials...
+  ],
+  // Change the trusted companies
+  trustedCompanies: ["YourCompany", "AnotherOne", "ThirdCompany"],
+};
+```

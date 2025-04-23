@@ -11,6 +11,10 @@ export const docsConfig: DocsConfig = {
       title: "Docs",
       href: "/docs",
     },
+    {
+      title: "Pricing",
+      href: "/pricing",
+    },
   ],
   sidebarNav: [
     {
@@ -34,7 +38,13 @@ export const docsConfig: DocsConfig = {
         {
           title: "Emaily",
           href: "/docs/templates/emaily",
-          badge: [{ text: "COMING SOON", variant: "coming-soon" }],
+          badge: [{ text: "PRO", variant: "pro" }],
+          items: [],
+        },
+        {
+          title: "Fluxio",
+          href: "/docs/templates/fluxio",
+          badge: [{ text: "PRO", variant: "pro" }],
           items: [],
         },
       ],
@@ -42,6 +52,18 @@ export const docsConfig: DocsConfig = {
     {
       title: "Components",
       items: [
+        {
+          title: "Accordion",
+          href: "/docs/components/accordion",
+          badge: [{ text: "NEW", variant: "new" }],
+          items: [],
+        },
+        {
+          title: "Alert",
+          href: "/docs/components/alert",
+          badge: [{ text: "NEW", variant: "new" }],
+          items: [],
+        },
         {
           title: "Avatar",
           href: "/docs/components/avatar",
@@ -98,6 +120,28 @@ export const docsConfig: DocsConfig = {
             {
               title: "Pricing Three",
               href: "/docs/blocks/pricing-three",
+            },
+            {
+              title: "Pricing Four",
+              href: "/docs/blocks/pricing-four",
+              badge: [{ text: "NEW", variant: "new" }],
+            },
+          ],
+        },
+        {
+          title: "Testimonial Blocks",
+          isAccordion: true,
+          defaultOpen: true,
+          subItems: [
+            {
+              title: "Testimonial One",
+              href: "/docs/blocks/testimonial-one",
+              badge: [{ text: "NEW", variant: "new" }],
+            },
+            {
+              title: "Testimonial Two",
+              href: "/docs/blocks/testimonial-two",
+              badge: [{ text: "NEW", variant: "new" }],
             },
           ],
         },

@@ -170,7 +170,7 @@ export function DocsSidebarNavItems({
                   item.disabled && "cursor-not-allowed opacity-60",
                   isActive
                     ? "font-medium text-foreground"
-                    : "text-muted-foreground",
+                    : "text-muted-foreground hover:border-l-2 hover:border-l-accent hover:bg-primary/5 ",
                 )}
                 target={item.external ? "_blank" : ""}
                 rel={item.external ? "noreferrer" : ""}
@@ -178,7 +178,7 @@ export function DocsSidebarNavItems({
                 {isActive && (
                   <motion.div
                     layoutId={groupId}
-                    className="absolute inset-0 rounded-r-md border-l-2 border-accent bg-primary/10"
+                    className="absolute inset-0 rounded-md border-l-2 border-accent bg-primary/10 px-2 py-2"
                     initial={false}
                     transition={{
                       type: "spring",
@@ -269,7 +269,7 @@ function renderBadges(item: SidebarNavItem) {
             key={i}
             className={cn(
               "relative z-10 ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline",
-              badge.variant === "premium"
+              badge.variant === "pro"
                 ? "bg-green-500"
                 : badge.variant === "new"
                   ? "bg-[#adfa1d]"

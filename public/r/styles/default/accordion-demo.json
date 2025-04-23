@@ -1,0 +1,53 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-demo",
+  "type": "registry:ui",
+  "title": "Accordion Demo",
+  "description": "Examples showcasing accordion component variants and sizes.",
+  "author": "shaduxe-ui",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "path": "default/example/accordion-demo",
+      "content": "import { AlertCircle, ChevronRight, Plus } from \"lucide-react\";\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"../ui/accordion\";\n\n// Basic demo\nexport function AccordionDemo() {\n  return (\n    <Accordion type=\"single\" collapsible className=\"w-full\">\n      <AccordionItem value=\"item-1\">\n        <AccordionTrigger>Is it accessible?</AccordionTrigger>\n        <AccordionContent>\n          Yes. It adheres to the WAI-ARIA design pattern.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-2\">\n        <AccordionTrigger>Is it styled?</AccordionTrigger>\n        <AccordionContent>\n          Yes. It comes with default styles that match the other components'\n          aesthetic.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-3\">\n        <AccordionTrigger>Is it animated?</AccordionTrigger>\n        <AccordionContent>\n          Yes. It's animated by default, but you can disable it if you prefer.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  );\n}\n\n// All variants demo\nexport function AccordionVariants() {\n  return (\n    <div className=\"grid gap-6 w-full\">\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Default Variant</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger variant=\"default\">\n              Default Variant\n            </AccordionTrigger>\n            <AccordionContent>\n              This is the default accordion style with hover underline.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Outline Variant</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger variant=\"outline\">\n              Outline Variant\n            </AccordionTrigger>\n            <AccordionContent variant=\"outline\">\n              This accordion has a border around the trigger and aligned content\n              padding.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Ghost Variant</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger variant=\"ghost\">Ghost Variant</AccordionTrigger>\n            <AccordionContent variant=\"ghost\">\n              This accordion has a background color on hover.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Underline Variant</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger variant=\"underline\">\n              Underline Variant\n            </AccordionTrigger>\n            <AccordionContent>\n              This accordion has a bottom border with hover effect.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n    </div>\n  );\n}\n\n// Multiple demo\nexport function AccordionMultiple() {\n  return (\n    <Accordion type=\"multiple\" className=\"w-full\">\n      <AccordionItem value=\"item-1\">\n        <AccordionTrigger>Can I select multiple items?</AccordionTrigger>\n        <AccordionContent>\n          Yes. You can select multiple items by setting the type prop to\n          \"multiple\".\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-2\">\n        <AccordionTrigger>Can I close all items?</AccordionTrigger>\n        <AccordionContent>\n          Yes. You can close all items by clicking on the open ones.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  );\n}\n\n// Icon position\nexport function AccordionIconPosition() {\n  return (\n    <div className=\"grid gap-6\">\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Right Icon (Default)</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger iconPosition=\"right\">\n              Icon on Right Side\n            </AccordionTrigger>\n            <AccordionContent>\n              This accordion has the chevron icon on the right (default).\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Left Icon</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger iconPosition=\"left\">\n              Icon on Left Side\n            </AccordionTrigger>\n            <AccordionContent>\n              This accordion has the chevron icon on the left.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n    </div>\n  );\n}\n\n// Custom Icons\nexport function AccordionCustomIcons() {\n  return (\n    <div className=\"grid gap-6\">\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Plus Icon</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger icon={<Plus className=\"h-4 w-4 text-primary\" />}>\n              Custom Plus Icon\n            </AccordionTrigger>\n            <AccordionContent>\n              This accordion uses a plus icon instead of the default chevron.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Arrow Icon</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger\n              icon={<ChevronRight className=\"h-4 w-4 text-primary\" />}\n            >\n              Custom Arrow Icon\n            </AccordionTrigger>\n            <AccordionContent>\n              This accordion uses a right arrow icon instead of the default down\n              chevron.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Alert Icon</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger\n              variant=\"ghost\"\n              icon={<AlertCircle className=\"h-4 w-4 text-red-500\" />}\n            >\n              Important Information\n            </AccordionTrigger>\n            <AccordionContent>\n              This accordion highlights important information with an alert\n              icon.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n    </div>\n  );\n}\n\n// Animation Variants\nexport function AccordionAnimations() {\n  return (\n    <div className=\"grid gap-6\">\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Default Animation</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger>Default Animation</AccordionTrigger>\n            <AccordionContent animation=\"default\">\n              This accordion uses the default slide animation.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Fade Animation</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger>Fade Animation</AccordionTrigger>\n            <AccordionContent animation=\"fade\">\n              This accordion uses a fade in/out animation.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">No Animation</h4>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          <AccordionItem value=\"item-1\">\n            <AccordionTrigger>No Animation</AccordionTrigger>\n            <AccordionContent animation=\"none\">\n              This accordion has no animation for instant visibility.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </div>\n    </div>\n  );\n}\n\n// Export all variants\nexport const accordionDemos = {\n  demo: AccordionDemo,\n  variants: AccordionVariants,\n  multiple: AccordionMultiple,\n  iconPosition: AccordionIconPosition,\n  customIcons: AccordionCustomIcons,\n  animations: AccordionAnimations,\n};",
+      "type": "registry:ui"
+    }
+  ],
+  "variants": {
+    "demo": {
+      "name": "demo",
+      "description": "demo variant of accordion",
+      "component": "AccordionDemo"
+    },
+    "variants": {
+      "name": "variants",
+      "description": "variants variant of accordion",
+      "component": "AccordionVariants"
+    },
+    "multiple": {
+      "name": "multiple",
+      "description": "multiple variant of accordion",
+      "component": "AccordionMultiple"
+    },
+    "iconPosition": {
+      "name": "iconPosition",
+      "description": "iconPosition variant of accordion",
+      "component": "AccordionIconPosition"
+    },
+    "customIcons": {
+      "name": "customIcons",
+      "description": "customIcons variant of accordion",
+      "component": "AccordionCustomIcons"
+    },
+    "animations": {
+      "name": "animations",
+      "description": "animations variant of accordion",
+      "component": "AccordionAnimations"
+    }
+  }
+}

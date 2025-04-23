@@ -123,44 +123,26 @@ export function ComponentSource({
       expandButtonTitle="View Full Code"
       className={cn("my-6 overflow-hidden rounded-md", className)}
       language="tsx"
+      fileName={componentName ? `${componentName}.tsx` : undefined}
+      showLineNumbers={showLineNumbers}
       {...props}
     >
-      <div className="relative w-full">
-        {loading ? (
-          <div className="flex items-center justify-center p-8 text-sm text-muted-foreground">
-            <Loader className="mr-2 size-4 animate-spin" />
-            <span>Loading source code...</span>
-          </div>
-        ) : error ? (
-          <div className="flex items-center justify-center p-8 text-sm text-red-500">
-            <span>{error}</span>
-          </div>
-        ) : sourceCode ? (
-          <pre
-            className={cn(
-              "language-tsx",
-              "font-mono text-[13px] leading-[1.45] font-normal",
-              showLineNumbers && "data-line-numbers",
-            )}
-            data-rehype-pretty-code-figure=""
-          >
-            <code
-              className={cn(
-                "language-tsx",
-                "grid min-w-full break-words rounded-none border-0 bg-transparent p-0",
-              )}
-            >
-              {sourceCode.split("\n").map((line, i) => (
-                <div key={i} data-line="">
-                  {line || " "}
-                </div>
-              ))}
-            </code>
-          </pre>
-        ) : (
-          children
-        )}
-      </div>
+      {loading ? (
+        <div className="flex items-center justify-center p-8 text-sm text-muted-foreground">
+          <Loader className="mr-2 size-4 animate-spin" />
+          <span>Loading source code...</span>
+        </div>
+      ) : error ? (
+        <div className="flex items-center justify-center p-8 text-sm text-red-500">
+          <span>{error}</span>
+        </div>
+      ) : sourceCode ? (
+        <pre className="language-tsx">
+          <code className="language-tsx">{sourceCode}</code>
+        </pre>
+      ) : (
+        children
+      )}
     </CodeBlockWrapper>
   );
 }

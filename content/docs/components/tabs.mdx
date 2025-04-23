@@ -5,7 +5,8 @@ author: bankk
 published: true
 component: true
 links:
-  api: https://www.radix-ui.com/primitives/docs/utilities/tabs
+  docs: https://www.radix-ui.com/primitives/docs/components/switch
+  api: https://www.radix-ui.com/primitives/docs/components/switch#api-reference
 ---
 
 <ComponentPreview name="tabs-demo" />
@@ -63,23 +64,37 @@ export default function Home() {
 
 ## Props
 
-| Prop      | Type                                                        | Default   | Description               |
-| --------- | ----------------------------------------------------------- | --------- | ------------------------- |
-| variant   | `default` \| `underline` \| `pill` \| `rounded` \| `folder` | `default` | Style variant of the tabs |
-| className | `string`                                                    | -         | Additional CSS classes    |
+### Tabs
 
-### Supported HTML Attributes
+| Prop          | Type                                                        | Default   | Description                       |
+| ------------- | ----------------------------------------------------------- | --------- | --------------------------------- |
+| variant       | `default` \| `underline` \| `pill` \| `rounded` \| `folder` | `default` | Style variant of the tabs         |
 
-Because the Tabs use Radix UI's `Tabs` component, they inherit and support **all standard HTML attributes**, including:
+## Radix UI Props
 
-- `defaultValue`
-- `value`
-- `onValueChange`
-- `orientation`
-- `dir`
-- `activationMode`
-- `aria-*` attributes
-- `data-*` attributes
-- Event handlers like `onKeyDown`, `onFocus`, etc.
+The Tabs components are built on Radix UI's Tabs primitive and support all their props:
 
-The Tabs component uses Radix UI's primitives, ensuring proper accessibility, keyboard navigation and semantic HTML.
+### Tabs Root Props
+
+- `defaultValue`: string - The value of the tab that should be active when initially rendered
+- `value`: string - The controlled value of the currently active tab
+- `onValueChange`: (value: string) => void - Event handler called when the value changes
+- `orientation`: 'horizontal' | 'vertical' - The orientation of the tabs
+- `dir`: 'ltr' | 'rtl' - The reading direction
+- `activationMode`: 'automatic' | 'manual' - Whether to auto-activate tabs on focus
+
+### TabsList Props
+
+- Standard Radix UI TabsList props
+
+### TabsTrigger Props
+
+- `value`: string (required) - A unique value for the tab
+- `disabled`: boolean - When true, prevents the user from interacting with the tab
+
+### TabsContent Props
+
+- `value`: string (required) - A unique value that associates the content with a trigger
+- `forceMount`: boolean - Force mounting when more control is needed
+
+Additionally, all components support relevant HTML attributes and event handlers appropriate to their element type.

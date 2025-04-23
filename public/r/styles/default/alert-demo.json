@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-demo",
+  "type": "registry:ui",
+  "title": "Alert Demo",
+  "description": "Examples showcasing alert component variants and sizes.",
+  "author": "shaduxe-ui",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "alert"
+  ],
+  "files": [
+    {
+      "path": "default/example/alert-demo",
+      "content": "import { AlertCircle, AlertTriangle, CheckCircle, Info } from \"lucide-react\";\nimport { Alert, AlertDescription, AlertTitle } from \"../ui/alert\";\n\n// Basic demo\nexport function AlertDemo() {\n  return (\n    <Alert>\n      <AlertTitle>Heads up!</AlertTitle>\n      <AlertDescription>\n        You can add components to your app using the cli.\n      </AlertDescription>\n    </Alert>\n  );\n}\n\n// All variants in a responsive grid\nexport function AlertVariants() {\n  return (\n    <div className=\"grid gap-4\">\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Default Alert</h4>\n        <Alert>\n          <AlertCircle />\n          <AlertTitle>Default Alert</AlertTitle>\n          <AlertDescription>\n            This is a default alert with an icon.\n          </AlertDescription>\n        </Alert>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Destructive Alert</h4>\n        <Alert variant=\"destructive\">\n          <AlertCircle />\n          <AlertTitle>Destructive Alert</AlertTitle>\n          <AlertDescription>\n            This is a destructive alert for critical errors or warnings.\n          </AlertDescription>\n        </Alert>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Success Alert</h4>\n        <Alert variant=\"success\">\n          <CheckCircle />\n          <AlertTitle>Success Alert</AlertTitle>\n          <AlertDescription>\n            Your changes have been saved successfully.\n          </AlertDescription>\n        </Alert>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Warning Alert</h4>\n        <Alert variant=\"warning\">\n          <AlertTriangle />\n          <AlertTitle>Warning Alert</AlertTitle>\n          <AlertDescription>\n            Please be careful with these settings.\n          </AlertDescription>\n        </Alert>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Info Alert</h4>\n        <Alert variant=\"info\">\n          <Info />\n          <AlertTitle>Info Alert</AlertTitle>\n          <AlertDescription>\n            This is an informative alert with additional details.\n          </AlertDescription>\n        </Alert>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Outline Alert</h4>\n        <Alert variant=\"outline\">\n          <Info />\n          <AlertTitle>Outline Alert</AlertTitle>\n          <AlertDescription>\n            This alert has a simple outline style.\n          </AlertDescription>\n        </Alert>\n      </div>\n    </div>\n  );\n}\n\n// Sizes demo\nexport function AlertSizes() {\n  return (\n    <div className=\"grid gap-4\">\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Small Alert</h4>\n        <Alert size=\"sm\">\n          <Info />\n          <AlertTitle>Small Alert</AlertTitle>\n          <AlertDescription>\n            This is a small alert with compact sizing.\n          </AlertDescription>\n        </Alert>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Default Size Alert</h4>\n        <Alert>\n          <Info />\n          <AlertTitle>Default Size Alert</AlertTitle>\n          <AlertDescription>This is a default size alert.</AlertDescription>\n        </Alert>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Large Alert</h4>\n        <Alert size=\"lg\">\n          <Info />\n          <AlertTitle>Large Alert</AlertTitle>\n          <AlertDescription>\n            This is a large alert with more padding.\n          </AlertDescription>\n        </Alert>\n      </div>\n    </div>\n  );\n}\n\n// Without Icon\nexport function AlertWithoutIcon() {\n  return (\n    <div className=\"grid gap-4\">\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Alert Without Icon</h4>\n        <Alert withIcon={false}>\n          <AlertTitle>No Icon</AlertTitle>\n          <AlertDescription>\n            This alert doesn't have an icon and adjusts its layout accordingly.\n          </AlertDescription>\n        </Alert>\n      </div>\n\n      <div>\n        <h4 className=\"text-sm font-medium mb-2\">Alert With Custom Icon</h4>\n        <Alert icon={<Info className=\"text-blue-500 h-6 w-6\" />}>\n          <AlertTitle>Custom Icon</AlertTitle>\n          <AlertDescription>\n            This alert has a custom styled icon.\n          </AlertDescription>\n        </Alert>\n      </div>\n    </div>\n  );\n}\n\n// Export all variants\nexport const alertDemos = {\n  demo: AlertDemo,\n  variants: AlertVariants,\n  sizes: AlertSizes,\n  withoutIcon: AlertWithoutIcon,\n};",
+      "type": "registry:ui"
+    }
+  ],
+  "variants": {
+    "demo": {
+      "name": "demo",
+      "description": "demo variant of alert",
+      "component": "AlertDemo"
+    },
+    "variants": {
+      "name": "variants",
+      "description": "variants variant of alert",
+      "component": "AlertVariants"
+    },
+    "sizes": {
+      "name": "sizes",
+      "description": "sizes variant of alert",
+      "component": "AlertSizes"
+    },
+    "withoutIcon": {
+      "name": "withoutIcon",
+      "description": "withoutIcon variant of alert",
+      "component": "AlertWithoutIcon"
+    }
+  }
+}

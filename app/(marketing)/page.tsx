@@ -1,6 +1,7 @@
 import ComponentDemos from "@/components/sections/demos";
 import Hero from "@/components/sections/hero";
 import Pricing from "@/components/sections/pricing";
+import PricingTemplatesSection from "@/components/sections/pricing-templates";
 
 export default function Home() {
   return (
@@ -18,18 +19,16 @@ export default function Home() {
           <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div>
           <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div>
 
-          {/* ComponentDemos section */}
           <ComponentDemos />
 
-          {/* <div className="block w-full h-px border-t border-border border-dotted"></div> */}
+          {/* Middle horizontal line */}
+          <div className="block w-full h-px border-t border-border border-dashed"></div>
 
-          {/* <div className="block w-full h-px border-t border-border border-dashed"></div> */}
+          <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div>
+          <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div>
 
-          {/* <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div> */}
-          {/* <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div> */}
-
-          {/* Pricing section */}
-          {/* <Pricing /> */}
+          <PricingTemplatesSection />
+          <Pricing />
         </div>
       </main>
     </>

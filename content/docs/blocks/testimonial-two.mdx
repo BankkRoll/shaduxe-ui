@@ -1,0 +1,131 @@
+---
+title: Testimonial Two
+description: A modern testimonial section with manual navigation and quote styling.
+author: bankk
+published: true
+component: true
+---
+
+<ComponentPreview name="testimonial-two" />
+
+## Features
+
+<div className="mt-6 grid gap-4">
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Manual navigation with prev/next buttons</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Stylized quote design with decorative elements</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Animated transitions between testimonials</span>
+  </div>
+  <div className="flex items-center gap-2">
+    <IconCheck className="size-5 text-green-500" />
+    <span>Support for verified badges and company logos</span>
+  </div>
+</div>
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/testimonial-two"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="testimonial-two" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { TestimonialTwo } from "@/components/blocks/testimonial-two"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1,5} showLineNumbers
+import { TestimonialTwo } from "@/components/blocks/testimonial-two";
+
+export default function Home() {
+  return (
+    <TestimonialTwo />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                 | Default   | Description                          |
+| ----------- | -------------------- | --------- | ------------------------------------ |
+| className   | `string`             | -         | Additional CSS classes               |
+| title       | `string`             | "Loved by Developers" | Section title |
+| subtitle    | `string`             | "See what others are saying..." | Section subtitle |
+| testimonials| `Testimonial[]`      | See below | Array of testimonials to display     |
+| showVerifiedBadge | `boolean`    | true      | Whether to show verified badge       |
+| trustedCompanies | `string[]`    | []        | Array of company names to display    |
+| autoRotateInterval | `number` | 6000    | Interval for auto-rotation in ms     |
+
+### Testimonial Type
+
+```tsx
+interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+  rating: number;
+  avatar: string;
+}
+```
+
+## Customization
+
+You can customize the testimonial section by passing props:
+
+```tsx
+const testimonials = [
+  {
+    id: 1,
+    name: "Michael Chen",
+    role: "CTO",
+    company: "TechStart Inc",
+    content: "The pro plan has been instrumental in scaling our development process.",
+    rating: 5,
+    avatar: "/avatars/2.jpg"
+  }
+];
+
+const trustedCompanies = [
+  "Google",
+  "Microsoft",
+  "Apple",
+  "Amazon"
+];
+
+<TestimonialTwo 
+  title="Customer Success Stories"
+  subtitle="Real experiences from our users"
+  testimonials={testimonials}
+  showVerifiedBadge={true}
+  trustedCompanies={trustedCompanies}
+  autoRotateInterval={8000}
+/>
+``` 

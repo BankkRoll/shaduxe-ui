@@ -110,7 +110,7 @@ export function SiteFooter() {
             </nav>
             <div className="flex flex-row items-center gap-1">
               <p className="text-xs text-muted-foreground">
-                © 2024 shaduxe/ui
+                © 2024-2025 shaduxe/ui
               </p>
               <p className="hidden text-xs text-muted-foreground md:flex">
                 - All rights reserved.

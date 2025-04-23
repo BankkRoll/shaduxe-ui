@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 const badgeVariants = cva(
-  "inline-flex items-center border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center rounded-md border text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
   {
     variants: {
       variant: {
@@ -23,21 +23,19 @@ const badgeVariants = cva(
         info: "border-transparent bg-blue-500 text-white shadow hover:bg-blue-500/80",
       },
       size: {
-        xs: "h-5 text-[10px] px-1.5 py-0",
-        sm: "h-6 text-xs px-2 py-0.5",
-        md: "h-7 text-xs px-2.5 py-0.5",
-        lg: "h-8 text-sm px-3 py-1",
-      },
-      shape: {
-        default: "rounded-md",
-        rounded: "rounded-full",
-        square: "rounded-none",
+        icon: "h-4 w-4 text-[8px] p-0.5",
+        xs: "h-5 text-[10px] px-1.5 py-0.5",
+        sm: "h-6 text-xs px-1.5 py-0.5",
+        md: "h-7 text-xs px-2 py-0.5",
+        default: "h-8 text-sm px-2.5 py-0.5",
+        lg: "h-8 text-sm px-3 py-0.75",
+        xl: "h-9 text-base px-3.5 py-1",
+        "2xl": "h-10 text-lg px-4 py-1",
       },
     },
     defaultVariants: {
       variant: "default",
-      size: "md",
-      shape: "default",
+      size: "default",
     },
   },
 );
@@ -46,15 +44,14 @@ export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
 
-const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-  ({ className, variant, size, shape, ...props }, ref) => (
+function Badge({ className, variant, size, ...props }: BadgeProps) {
+  return (
     <div
-      ref={ref}
-      className={cn(badgeVariants({ variant, size, shape }), className)}
+      data-slot="badge"
+      className={cn(badgeVariants({ variant, size }), className)}
       {...props}
     />
-  ),
-);
-Badge.displayName = "Badge";
+  );
+}
 
 export { Badge, badgeVariants };

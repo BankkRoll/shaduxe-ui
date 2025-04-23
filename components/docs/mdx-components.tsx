@@ -6,15 +6,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { Callout } from "@/components/docs/callout";
+import ClientButton from "@/components/docs/client-button";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { ComponentSource } from "@/components/docs/component-source";
-import RepoDownload from "@/components/docs/repo-download";
 import TechStack, { TechStackFull } from "@/components/docs/tech-stack";
-import TemplatePreview from "@/components/docs/template-preview";
+import TemplateDownloadWrapper from "@/components/docs/template-download-wrapper";
 import { Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import { useMDXComponent } from "@content-collections/mdx/react";
@@ -45,12 +44,11 @@ const components = {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  Button,
+  Button: ClientButton,
   Callout,
   TechStack,
   TechStackFull,
-  RepoDownload,
-  TemplatePreview,
+  TemplateDownloadButton: TemplateDownloadWrapper,
   Image,
   ComponentPreview,
   CodeBlockCommand,

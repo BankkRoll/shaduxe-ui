@@ -14,25 +14,31 @@ interface DocsPagerProps {
 export function DocPager({ doc }: DocsPagerProps) {
   const pager = getPagerForDoc(doc);
 
-  if (!pager) {
+  if (!pager?.prev && !pager?.next) {
     return null;
   }
 
   return (
-    <div className="flex flex-row items-center justify-between">
-      {pager?.prev?.href && (
+    <div className="flex flex-row items-center justify-between my-6 pt-6 border-t">
+      {pager?.prev?.href ? (
         <Link
           href={pager.prev.href}
-          className={buttonVariants({ variant: "outline" })}
+          className={buttonVariants({ variant: "outline", size: "sm" })}
         >
           <ChevronLeftIcon className="mr-2 size-4" />
           {pager.prev.title}
         </Link>
+      ) : (
+        <div />
       )}
+
       {pager?.next?.href && (
         <Link
           href={pager.next.href}
-          className={cn(buttonVariants({ variant: "outline" }), "ml-auto")}
+          className={cn(
+            buttonVariants({ variant: "outline", size: "sm" }),
+            "ml-auto",
+          )}
         >
           {pager.next.title}
           <ChevronRightIcon className="ml-2 size-4" />
@@ -43,25 +49,55 @@ export function DocPager({ doc }: DocsPagerProps) {
 }
 
 export function getPagerForDoc(doc: Doc) {
-  const flattenedLinks = [null, ...flatten(docsConfig.sidebarNav), null];
-  const activeIndex = flattenedLinks.findIndex(
-    (link) => doc.slug === link?.href,
-  );
-  const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
+  // Flatten the navigation items
+  const flattenedLinks = flatten(docsConfig.sidebarNav);
+
+  // Find the active link based on the slug pattern
+  // This handles both exact matches and deeper routing
+  let activeIndex = -1;
+
+  flattenedLinks.forEach((link, index) => {
+    if (!link?.href) return;
+
+    // Check for exact match first
+    if (doc.slug === link.href) {
+      activeIndex = index;
+      return;
+    }
+
+    // Check if the current doc is nested under this link (for deeper routing)
+    if (doc.slug.startsWith(link.href + "/")) {
+      activeIndex = index;
+    }
+  });
+
+  if (activeIndex === -1) {
+    return { prev: null, next: null };
+  }
+
+  const prev = activeIndex > 0 ? flattenedLinks[activeIndex - 1] : null;
   const next =
-    activeIndex !== flattenedLinks.length - 1
+    activeIndex < flattenedLinks.length - 1
       ? flattenedLinks[activeIndex + 1]
       : null;
-  return {
-    prev,
-    next,
-  };
+
+  return { prev, next };
 }
 
 export function flatten(links: NavItemWithChildren[]): NavItem[] {
   return links
     .reduce<NavItem[]>((flat, link) => {
-      return flat.concat(link.items?.length ? flatten(link.items) : link);
+      // If it's a section with items, add the items after flattening
+      if (link.items?.length) {
+        return flat.concat(flatten(link.items));
+      }
+
+      // If it's a regular link, add it to the flat array
+      if (link.href) {
+        flat.push(link);
+      }
+
+      return flat;
     }, [])
     .filter((link) => !link?.disabled);
 }

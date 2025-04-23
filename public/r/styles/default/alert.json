@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "type": "registry:ui",
+  "title": "Alert",
+  "description": "A component that displays a message to the user.",
+  "author": "shaduxe-ui",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "default/ui/alert",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst alertVariants = cva(\n  \"relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-card text-card-foreground\",\n        destructive:\n          \"text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90\",\n        success:\n          \"border-green-200 bg-green-50 text-green-800 dark:border-green-800 dark:bg-green-950/50 dark:text-green-300 [&>svg]:text-green-500 dark:[&>svg]:text-green-400\",\n        warning:\n          \"border-yellow-200 bg-yellow-50 text-yellow-800 dark:border-yellow-800 dark:bg-yellow-950/50 dark:text-yellow-300 [&>svg]:text-yellow-500 dark:[&>svg]:text-yellow-400\",\n        info: \"border-blue-200 bg-blue-50 text-blue-800 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300 [&>svg]:text-blue-500 dark:[&>svg]:text-blue-400\",\n        outline: \"border-border bg-transparent\",\n      },\n      size: {\n        sm: \"px-3 py-2 text-xs\",\n        default: \"px-4 py-3 text-sm\",\n        lg: \"px-6 py-4 text-base\",\n      },\n      withIcon: {\n        true: \"has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3\",\n        false: \"grid-cols-[0_1fr]\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n      withIcon: true,\n    },\n  },\n);\n\ninterface AlertProps\n  extends React.ComponentProps<\"div\">,\n    VariantProps<typeof alertVariants> {\n  icon?: React.ReactNode;\n}\n\nfunction Alert({\n  className,\n  variant,\n  size,\n  withIcon,\n  icon,\n  ...props\n}: AlertProps) {\n  return (\n    <div\n      data-slot=\"alert\"\n      role=\"alert\"\n      className={cn(alertVariants({ variant, size, withIcon }), className)}\n      {...props}\n    >\n      {icon}\n      {props.children}\n    </div>\n  );\n}\n\nfunction AlertTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-title\"\n      className={cn(\n        \"col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction AlertDescription({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"alert-description\"\n      className={cn(\n        \"text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport { Alert, AlertDescription, AlertTitle };",
+      "type": "registry:ui"
+    }
+  ]
+}

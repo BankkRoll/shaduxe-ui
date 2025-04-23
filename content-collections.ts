@@ -122,8 +122,10 @@ const documents = defineCollection({
         doc: z.string().optional(),
         api: z.string().optional(),
         github: z.string().optional(),
+        preview: z.string().optional(),
       })
       .optional(),
+    version: z.string().optional(),
     featured: z.boolean().optional().default(false),
     component: z.boolean().optional().default(false),
     toc: z.boolean().optional().default(true),

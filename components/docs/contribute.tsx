@@ -1,5 +1,5 @@
 import { Doc } from "content-collections";
-import { BugIcon, LightbulbIcon, PencilIcon } from "lucide-react";
+import { BugIcon, GithubIcon, LightbulbIcon, PencilIcon } from "lucide-react";
 import Link from "next/link";
 
 import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github";
@@ -7,7 +7,7 @@ import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github";
 export function Contribute({ doc }: { doc: Doc }) {
   const contributeLinks = [
     {
-      text: "Report an issue",
+      text: "Report issue",
       icon: BugIcon,
       href: getGitHubIssueUrl({
         owner: "BankkRoll",
@@ -18,7 +18,7 @@ export function Contribute({ doc }: { doc: Doc }) {
       }),
     },
     {
-      text: "Request a feature",
+      text: "Request feature",
       icon: LightbulbIcon,
       href: getGitHubIssueUrl({
         owner: "BankkRoll",
@@ -36,23 +36,25 @@ export function Contribute({ doc }: { doc: Doc }) {
   ];
 
   return (
-    <div className="space-y-2">
-      <p className="font-medium">Contribute</p>
-      <ul className="m-0 list-none">
+    <div className="mt-8 pt-4 border-t flex flex-col md:flex-row items-center justify-between text-sm">
+      <div className="flex items-center text-muted-foreground">
+        <GithubIcon className="mr-2 size-3.5" />
+        <span>Contribute</span>
+      </div>
+      <div className="flex items-center gap-4">
         {contributeLinks.map((link, index) => (
-          <li key={index} className="mt-0 pt-2">
-            <Link
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <link.icon className="mr-2 size-4" />
-              {link.text}
-            </Link>
-          </li>
+          <Link
+            key={index}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <link.icon className="mr-1.5 size-3.5" />
+            {link.text}
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

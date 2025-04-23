@@ -6,7 +6,8 @@
   "description": "A toggle for switching between light and dark modes.",
   "author": "shaduxe-ui",
   "dependencies": [
-    "next-themes"
+    "next-themes",
+    "@radix-ui/react-icons"
   ],
   "registryDependencies": [
     "button"
@@ -14,7 +15,7 @@
   "files": [
     {
       "path": "default/ui/mode-toggle",
-      "content": "\"use client\";\n\nimport { MoonIcon, SunIcon } from \"@radix-ui/react-icons\";\n\nimport { Button } from \"@/components/ui/button\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { useTheme } from \"next-themes\";\n\nconst ModeToggle = React.forwardRef<\n  HTMLButtonElement,\n  React.ComponentPropsWithoutRef<typeof Button> & { className?: string }\n>(({ className, ...props }, ref) => {\n  const { theme, setTheme } = useTheme();\n\n  return (\n    <Button\n      ref={ref}\n      variant=\"outline\"\n      type=\"button\"\n      size=\"icon\"\n      className={cn(\"px-2\", className)}\n      aria-label=\"Toggle theme\"\n      onClick={() => setTheme(theme === \"dark\" ? \"light\" : \"dark\")}\n      {...props}\n    >\n      <SunIcon className=\"size-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200\" />\n      <MoonIcon className=\"hidden size-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200\" />\n    </Button>\n  );\n});\n\nModeToggle.displayName = \"ModeToggle\";\n\nexport default ModeToggle;",
+      "content": "\"use client\";\n\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\nimport { MoonIcon, SunIcon } from \"@radix-ui/react-icons\";\nimport { useTheme } from \"next-themes\";\nimport React from \"react\";\n\nexport function ModeToggle({\n  className,\n  ...props\n}: React.ComponentPropsWithoutRef<typeof Button> & { className?: string }) {\n  const { theme, setTheme } = useTheme();\n\n  return (\n    <Button\n      data-slot=\"mode-toggle\"\n      variant=\"outline\"\n      type=\"button\"\n      size=\"icon\"\n      className={cn(\"cursor-pointer px-2\", className)}\n      aria-label=\"Toggle theme\"\n      onClick={() => setTheme(theme === \"dark\" ? \"light\" : \"dark\")}\n      {...props}\n    >\n      <SunIcon className=\"size-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200\" />\n      <MoonIcon className=\"hidden size-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200\" />\n    </Button>\n  );\n}\n\nexport default ModeToggle;",
       "type": "registry:ui"
     }
   ]

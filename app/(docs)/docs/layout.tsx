@@ -8,9 +8,9 @@ interface DocsLayoutProps {
 
 export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
-    <div className="container flex-1 items-start md:grid md:grid-cols-[240px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-10">
-      <aside className="fixed border-r border-dashed top-16 z-30 -ml-2 hidden h-[100vh] w-full shrink-0 md:sticky md:block">
-        <ScrollArea className="h-[calc(100vh-1rem)] pr-6">
+    <div className="container mx-auto flex-1 items-start lg:grid lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-4">
+      <aside className="fixed border-r border-dashed top-16 z-30 -ml-2 hidden h-[100vh] w-full shrink-0 lg:sticky lg:block">
+        <ScrollArea className="h-[calc(100vh-1rem)] pr-2">
           <DocsSidebarNav items={docsConfig.sidebarNav} />
         </ScrollArea>
       </aside>

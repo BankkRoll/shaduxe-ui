@@ -1,0 +1,86 @@
+---
+title: Alert
+description: Displays a callout for user attention with various styles, sizes, and icon options.
+author: bankk
+published: true
+component: true
+---
+
+<ComponentPreview name="alert-demo" />
+
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/alert"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="alert" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1-2,6-10} showLineNumbers
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
+
+export default function Home() {
+  return (
+    <Alert>
+      <AlertCircle />
+      <AlertTitle>Heads up!</AlertTitle>
+      <AlertDescription>You can add components to your app using the CLI.</AlertDescription>
+    </Alert>
+  );
+}
+```
+
+## Props
+
+### Alert
+
+| Prop      | Type                                                                                | Default   | Description                               |
+| --------- | ----------------------------------------------------------------------------------- | --------- | ----------------------------------------- |
+| variant   | `default` \| `destructive` \| `success` \| `warning` \| `info` \| `outline`         | `default` | Style variant of the alert                |
+| size      | `sm` \| `default` \| `lg`                                                           | `default` | Size of the alert                         |
+| withIcon  | `boolean`                                                                           | `true`    | Show space for icon                       |
+| icon      | `React.ReactNode`                                                                   | -         | Custom icon element to display            |
+
+## HTML Attributes
+
+All Alert components support standard HTML attributes:
+
+### Alert
+
+Standard HTML div attributes:
+- `id`
+- `role` (automatically set to "alert")
+- `aria-*` attributes
+- `data-*` attributes
+- Event handlers like `onClick`, `onMouseEnter`, etc.
+
+### AlertTitle and AlertDescription
+
+Standard HTML div attributes and event handlers.
+
+The Alert components ensure proper accessibility by providing appropriate role attributes and semantic structure.

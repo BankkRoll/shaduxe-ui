@@ -14,7 +14,7 @@
   "files": [
     {
       "path": "default/example/button-installation-example",
-      "content": "import { Button } from \"@/components/ui/button\";\nimport { motion } from \"motion/react\";\n\nexport default function Page() {\n  return (\n    <motion.div\n      initial={{ opacity: 0, y: 20 }}\n      animate={{ opacity: 1, y: 0 }}\n      transition={{ duration: 0.5 }}\n    >\n      <Button>Click me</Button>\n    </motion.div>\n  );\n}",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { motion } from \"motion/react\";\n\nexport default function Page() {\n  return (\n    <motion.div\n      initial={{ opacity: 0, y: 20 }}\n      animate={{ opacity: 1, y: 0 }}\n      transition={{ duration: 0.5 }}\n      className=\"flex items-center p-2\"\n    >\n      <Button>Click me</Button>\n    </motion.div>\n  );\n}",
       "type": "registry:ui"
     }
   ]

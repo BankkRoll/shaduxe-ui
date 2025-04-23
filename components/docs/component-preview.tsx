@@ -353,48 +353,31 @@ export function ComponentPreview({
             </div>
 
             <div className="preview-container flex justify-center pt-12">
-              <div className="w-full overflow-auto hide-scrollbar p-4">
+              <div className="w-full overflow-auto hide-scrollbar">
                 <ComponentToRender />
               </div>
             </div>
           </ComponentWrapper>
         </TabsContent>
         <TabsContent value="code">
-          <CodeBlockWrapper expandButtonTitle="View Full Code">
-            <div className="relative w-full">
-              {sourceCode ? (
-                <pre className="language-tsx rounded-t-none">
-                  <code className="language-tsx">{sourceCode}</code>
-                </pre>
-              ) : (
-                <div className="flex items-center justify-center p-8 text-sm text-muted-foreground">
-                  <Loader className="mr-2 size-4 animate-spin" />
-                  <span>Loading source code...</span>
-                </div>
-              )}
-            </div>
+          <CodeBlockWrapper
+            expandButtonTitle="View Full Code"
+            language="tsx"
+            fileName={`${name}.tsx`}
+          >
+            {isLoading ? (
+              <div className="flex items-center justify-center p-8 text-sm text-muted-foreground min-h-[500px] max-w-screen w-full overflow-auto hide-scrollbar">
+                <Loader className="mr-2 size-4 animate-spin" />
+                <span>Loading source code...</span>
+              </div>
+            ) : (
+              <pre className="language-tsx font-mono text-[13px] leading-relaxed min-h-[500px] max-w-screen w-full overflow-auto hide-scrollbar">
+                <code>{sourceCode || "// No source code available"}</code>
+              </pre>
+            )}
           </CodeBlockWrapper>
         </TabsContent>
       </Tabs>
-
-      {/* Add CSS for hiding scrollbars while maintaining scroll functionality */}
-      <style jsx global>{`
-        .hide-scrollbar {
-          scrollbar-width: none; /* Firefox */
-          -ms-overflow-style: none; /* Internet Explorer and Edge */
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none; /* Chrome, Safari and Opera */
-        }
-
-        /* Preview container */
-        .preview-container {
-          position: relative;
-          max-width: 100%;
-          overflow-x: auto;
-          overflow-y: visible;
-        }
-      `}</style>
     </div>
   );
 }

@@ -1,0 +1,112 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+author: bankk
+published: true
+component: true
+links:
+  docs: https://www.radix-ui.com/docs/primitives/components/accordion
+  api: https://www.radix-ui.com/primitives/docs/components/accordion#api-reference
+---
+
+<ComponentPreview name="accordion-demo" />
+
+
+## Installation
+
+<Steps>
+  <Step>
+    Run the following command:
+    <Tabs defaultValue="cli">
+    <TabsList>
+      <TabsTrigger value="cli">CLI</TabsTrigger>
+      <TabsTrigger value="manual">Manual</TabsTrigger>
+    </TabsList>
+      <TabsContent value="cli">
+        ```bash
+        npx shadcn@latest add "https://ui.shaduxe.com/r/accordion"
+        ```
+      </TabsContent>
+      <TabsContent value="manual">
+        <ComponentSource name="accordion" />
+      </TabsContent>
+    </Tabs>
+  </Step>
+  <Step>
+    Update your imports:
+    
+    ```tsx
+    import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+    ```
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx {1-6,10-17} showLineNumbers
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+export default function Home() {
+  return (
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```
+
+## Props
+
+### AccordionTrigger
+
+| Prop         | Type                           | Default   | Description                          |
+| ------------ | ------------------------------ | --------- | ------------------------------------ |
+| variant      | `default` \| `outline` \| `ghost` \| `underline` \| `card` | `default` | Style variant of the trigger        |
+| iconPosition | `right` \| `left`              | `right`   | Position of the chevron icon         |
+| icon         | `React.ReactNode`              | -         | Custom icon element                  |
+
+### AccordionContent
+
+| Prop      | Type                          | Default   | Description                    |
+| --------- | ----------------------------- | --------- | ------------------------------ |
+| variant   | `default` \| `outline` \| `ghost` \| `underline` \| `card` | `default` | Style variant of the content     |
+| animation | `default` \| `fade` \| `none` | `default` | Animation style when expanding |
+
+## Radix UI Props
+
+The Accordion components are built on Radix UI primitives and support all their props:
+
+### Accordion
+
+Radix UI Accordion Root props:
+- `type`: 'single' | 'multiple'
+- `collapsible`: boolean
+- `value`: string
+- `defaultValue`: string
+- `onValueChange`: (value: string) => void
+
+### AccordionItem
+
+Radix UI Accordion Item props:
+- `value`: string (required)
+- `disabled`: boolean
+
+### AccordionTrigger
+
+Radix UI Accordion Trigger props
+
+### AccordionContent
+
+Radix UI Accordion Content props
+
+All components also support HTML attributes and event handlers appropriate to their element type.

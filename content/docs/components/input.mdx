@@ -5,7 +5,8 @@ author: bankk
 published: true
 component: true
 links:
-  api: https://www.radix-ui.com/primitives/docs/utilities/slot
+  docs: https://www.radix-ui.com/primitives/docs/components/slot
+  api: https://www.radix-ui.com/primitives/docs/components/slot#api-reference
 ---
 
 <ComponentPreview name="input-demo" />
@@ -52,21 +53,42 @@ export default function Home() {
 }
 ```
 
+## Usage with Icon
+
+```tsx {1-2,6-10} showLineNumbers
+import { Input } from "@/components/ui/input";
+import { Mail } from "lucide-react";
+
+export default function Home() {
+  return (
+    <Input
+      type="email"
+      placeholder="Email Address"
+      Icon={Mail}
+      iconPlacement="left"
+    />
+  );
+}
+```
+
 ## Props
 
 | Prop          | Type                                    | Default   | Description                    |
 | ------------- | --------------------------------------- | --------- | ------------------------------ |
 | variant       | `default` \| `underline` \| `pill`      | `default` | Style variant of the input     |
-| inputSize     | `xs` \| `sm` \| `md` \| `lg` \| `xl`    | `md`      | Size of the input              |
-| type          | `text` \| `email` \| `password` \| etc. | `text`    | Type of the input field        |
-| className     | `string`                                | -         | Additional CSS classes         |
+| inputSize     | `xs` \| `sm` \| `md` \| `lg` \| `xl` \| `2xl` | `md` | Size of the input              |
+| asChild       | `boolean`                               | `false`   | Render as a child component    |
 | Icon          | `React.ElementType`                     | -         | Icon component to be displayed |
-| iconPlacement | `"left"` \| `"right"`                   | `"left"`  | Placement of the icon          |
+| iconPlacement | `left` \| `right`                       | `left`    | Placement of the icon          |
 
-### Supported HTML Attributes
+## HTML & Radix UI Props
 
-Because the Input uses standard HTML input elements, it inherits and supports **all standard HTML input attributes**, including:
+The Input component supports:
 
+### HTML Attributes
+
+Standard HTML input attributes (except 'size' which is replaced by `inputSize`):
+- `type`
 - `placeholder`
 - `disabled`
 - `required`
@@ -78,4 +100,4 @@ Because the Input uses standard HTML input elements, it inherits and supports **
 - `aria-*` attributes
 - `data-*` attributes
 
-The Input component ensures proper accessibility, keyboard navigation and semantic HTML.
+The Input component ensures proper accessibility and semantic HTML.

@@ -3,63 +3,277 @@ import { Button } from "../ui/button";
 
 // Basic demo
 export function ButtonDemo() {
-  return <Button>Click me</Button>;
+  return (
+    <div className="flex items-center p-2">
+      <Button>Click me</Button>
+    </div>
+  );
 }
 
-// Variant demos
+// All variants and sizes in a responsive grid
 export function ButtonVariants() {
   return (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="grid gap-8 p-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <h4 className="text-sm font-medium col-span-full mb-2">
+          Variants (with default size)
+        </h4>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="default">default</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="destructive">destructive</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="outline">outline</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="secondary">secondary</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="ghost">ghost</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="link">link</Button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <h4 className="text-sm font-medium col-span-full mb-2">
+          Effects (with appropriate variants)
+        </h4>
+        <div className="flex flex-col items-center gap-2">
+          <Button effect="ringHover">ringHover</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button effect="ringHoverOutline">ringHoverOutline</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button effect="shine">shine</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button effect="gooeyRight">gooeyRight</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button effect="gooeyLeft">gooeyLeft</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="link" effect="underline">
+            underline
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="link" effect="hoverUnderline">
+            hoverUnderline
+          </Button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <h4 className="text-sm font-medium col-span-full mb-2">
+          Sizes (with default variant)
+        </h4>
+        <div className="flex flex-col items-center gap-2">
+          <Button size="icon">
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button size="xs">xs</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button size="sm">sm</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button size="md">md</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button size="default">default</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button size="lg">lg</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button size="xl">xl</Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button size="2xl">2xl</Button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <h4 className="text-sm font-medium col-span-full mb-2">
+          Expandable Icons
+        </h4>
+        <div className="flex flex-col items-center gap-2">
+          <Button effect="expandIcon" Icon={ArrowLeft} iconPlacement="left">
+            Expand Left
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button effect="expandIcon" Icon={ArrowRight} iconPlacement="right">
+            Expand Right
+          </Button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <h4 className="text-sm font-medium col-span-full mb-2">
+          Variant + Effect Combinations
+        </h4>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="destructive" effect="gooeyRight" size="lg">
+            Destructive Gooey
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="outline" effect="shine" size="sm">
+            Outline Shine
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="secondary" effect="ringHover" size="xl">
+            Secondary Ring
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="destructive" effect="gooeyLeft">
+            Destructive Gooey Left
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Button variant="link" effect="underline">
+            Link Underline
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Individual variants
+export function ButtonDefault() {
+  return (
+    <div className="flex items-center p-2">
       <Button variant="default">Default</Button>
+    </div>
+  );
+}
+
+export function ButtonDestructive() {
+  return (
+    <div className="flex items-center p-2">
       <Button variant="destructive">Destructive</Button>
+    </div>
+  );
+}
+
+export function ButtonOutline() {
+  return (
+    <div className="flex items-center p-2">
       <Button variant="outline">Outline</Button>
+    </div>
+  );
+}
+
+export function ButtonSecondary() {
+  return (
+    <div className="flex items-center p-2">
       <Button variant="secondary">Secondary</Button>
+    </div>
+  );
+}
+
+export function ButtonGhost() {
+  return (
+    <div className="flex items-center p-2">
       <Button variant="ghost">Ghost</Button>
+    </div>
+  );
+}
+
+export function ButtonLink() {
+  return (
+    <div className="flex items-center p-2">
       <Button variant="link">Link</Button>
     </div>
   );
 }
 
-// Special variants
-export function ButtonSpecialVariants() {
+// Individual effect examples
+export function ButtonRingHover() {
   return (
-    <div className="flex flex-wrap items-center gap-4">
-      <Button variant="expandIcon">Expand</Button>
-      <Button variant="ringHover">Ring Hover</Button>
-      <Button variant="ringHoverOutline">Ring Outline</Button>
-      <Button variant="shine">Shine</Button>
-      <Button variant="gooeyRight">Gooey Right</Button>
-      <Button variant="gooeyLeft">Gooey Left</Button>
-      <Button variant="linkHover1">Link Hover 1</Button>
-      <Button variant="linkHover2">Link Hover 2</Button>
+    <div className="flex items-center p-2">
+      <Button effect="ringHover">Ring Hover</Button>
     </div>
   );
 }
 
-// Size demos
-export function ButtonSizes() {
+export function ButtonRingHoverOutline() {
   return (
-    <div className="flex items-center gap-4">
-      <Button size="icon">
-        <ArrowRight className="h-4 w-4" />
+    <div className="flex items-center p-2">
+      <Button effect="ringHoverOutline">Ring Hover Outline</Button>
+    </div>
+  );
+}
+
+export function ButtonShine() {
+  return (
+    <div className="flex items-center p-2">
+      <Button effect="shine">Shine</Button>
+    </div>
+  );
+}
+
+export function ButtonGooeyRight() {
+  return (
+    <div className="flex items-center p-2">
+      <Button effect="gooeyRight">Gooey Right</Button>
+    </div>
+  );
+}
+
+export function ButtonGooeyLeft() {
+  return (
+    <div className="flex items-center p-2">
+      <Button effect="gooeyLeft">Gooey Left</Button>
+    </div>
+  );
+}
+
+export function ButtonUnderline() {
+  return (
+    <div className="flex items-center p-2">
+      <Button variant="link" effect="underline">
+        Underline
       </Button>
-      <Button size="xs">XS</Button>
-      <Button size="sm">SM</Button>
-      <Button size="md">MD</Button>
-      <Button size="lg">LG</Button>
-      <Button size="xl">XL</Button>
-      <Button size="2xl">2XL</Button>
     </div>
   );
 }
 
-// Icon placement demos
-export function ButtonIcons() {
+export function ButtonHoverUnderline() {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center p-2">
+      <Button variant="link" effect="hoverUnderline">
+        Hover Underline
+      </Button>
+    </div>
+  );
+}
+
+export function ButtonIconLeft() {
+  return (
+    <div className="flex items-center p-2">
       <Button Icon={ArrowLeft} iconPlacement="left">
         Left Icon
       </Button>
+    </div>
+  );
+}
+
+export function ButtonIconRight() {
+  return (
+    <div className="flex items-center p-2">
       <Button Icon={ArrowRight} iconPlacement="right">
         Right Icon
       </Button>
@@ -67,102 +281,22 @@ export function ButtonIcons() {
   );
 }
 
-// Individual variants for reference
-export function ButtonDefault() {
-  return <Button variant="default">Default</Button>;
-}
-
-export function ButtonDestructive() {
-  return <Button variant="destructive">Delete</Button>;
-}
-
-export function ButtonOutline() {
-  return <Button variant="outline">Outline</Button>;
-}
-
-export function ButtonSecondary() {
-  return <Button variant="secondary">Secondary</Button>;
-}
-
-export function ButtonGhost() {
-  return <Button variant="ghost">Ghost</Button>;
-}
-
-export function ButtonLink() {
-  return <Button variant="link">Link</Button>;
-}
-
-export function ButtonExpandIcon() {
-  return <Button variant="expandIcon">Expand</Button>;
-}
-
-export function ButtonRingHover() {
-  return <Button variant="ringHover">Ring Hover</Button>;
-}
-
-export function ButtonRingHoverOutline() {
-  return <Button variant="ringHoverOutline">Ring Hover Outline</Button>;
-}
-
-export function ButtonShine() {
-  return <Button variant="shine">Shine</Button>;
-}
-
-export function ButtonGooeyRight() {
-  return <Button variant="gooeyRight">Gooey Right</Button>;
-}
-
-export function ButtonGooeyLeft() {
-  return <Button variant="gooeyLeft">Gooey Left</Button>;
-}
-
-export function ButtonLinkHover1() {
-  return <Button variant="linkHover1">Link Hover 1</Button>;
-}
-
-export function ButtonLinkHover2() {
-  return <Button variant="linkHover2">Link Hover 2</Button>;
-}
-
-export function ButtonIconLeft() {
+export function ButtonExpandIconLeft() {
   return (
-    <Button Icon={ArrowLeft} iconPlacement="left">
-      Left Icon
-    </Button>
+    <div className="flex items-center p-2">
+      <Button effect="expandIcon" Icon={ArrowLeft} iconPlacement="left">
+        Expand Left
+      </Button>
+    </div>
   );
 }
 
-export function ButtonIconRight() {
+export function ButtonExpandIconRight() {
   return (
-    <Button Icon={ArrowRight} iconPlacement="right">
-      Right Icon
-    </Button>
-  );
-}
-
-export default function ButtonDemos() {
-  return (
-    <div className="grid gap-6">
-      <div>
-        <h3 className="mb-2 text-sm font-medium">Default</h3>
-        <ButtonDemo />
-      </div>
-      <div>
-        <h3 className="mb-2 text-sm font-medium">Basic Variants</h3>
-        <ButtonVariants />
-      </div>
-      <div>
-        <h3 className="mb-2 text-sm font-medium">Special Variants</h3>
-        <ButtonSpecialVariants />
-      </div>
-      <div>
-        <h3 className="mb-2 text-sm font-medium">Sizes</h3>
-        <ButtonSizes />
-      </div>
-      <div>
-        <h3 className="mb-2 text-sm font-medium">Icons</h3>
-        <ButtonIcons />
-      </div>
+    <div className="flex items-center p-2">
+      <Button effect="expandIcon" Icon={ArrowRight} iconPlacement="right">
+        Expand Right
+      </Button>
     </div>
   );
 }
@@ -170,23 +304,21 @@ export default function ButtonDemos() {
 export const buttonVariants = {
   demo: ButtonDemo,
   variants: ButtonVariants,
-  specialVariants: ButtonSpecialVariants,
   default: ButtonDefault,
   destructive: ButtonDestructive,
   outline: ButtonOutline,
   secondary: ButtonSecondary,
   ghost: ButtonGhost,
   link: ButtonLink,
-  expandIcon: ButtonExpandIcon,
   ringHover: ButtonRingHover,
   ringHoverOutline: ButtonRingHoverOutline,
   shine: ButtonShine,
   gooeyRight: ButtonGooeyRight,
   gooeyLeft: ButtonGooeyLeft,
-  linkHover1: ButtonLinkHover1,
-  linkHover2: ButtonLinkHover2,
-  sizes: ButtonSizes,
-  icons: ButtonIcons,
+  underline: ButtonUnderline,
+  hoverUnderline: ButtonHoverUnderline,
   iconLeft: ButtonIconLeft,
   iconRight: ButtonIconRight,
+  expandIconLeft: ButtonExpandIconLeft,
+  expandIconRight: ButtonExpandIconRight,
 };

@@ -1,12 +1,12 @@
 "use client";
 
-import * as React from "react";
+import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import * as React from "react";
 
 const inputVariants = cva(
-  "flex w-full rounded-md text-sm transition-all file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+  "flex px-2 w-full rounded-md text-sm transition-all file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -17,11 +17,12 @@ const inputVariants = cva(
         pill: "rounded-full border border-input bg-background px-6 focus-visible:ring-1 focus-visible:ring-ring",
       },
       inputSize: {
-        xs: "h-7 px-2 text-xs",
-        sm: "h-8 px-3 text-sm",
-        md: "h-10 px-4 py-2",
-        lg: "h-12 px-6 text-lg",
-        xl: "h-14 px-8 text-xl",
+        xs: "h-7 text-xs",
+        sm: "h-8 text-sm",
+        md: "h-9 text-sm",
+        lg: "h-10 text-base",
+        xl: "h-11 text-lg",
+        "2xl": "h-12 text-xl",
       },
     },
     defaultVariants: {
@@ -49,44 +50,43 @@ export interface InputProps
 
 export type InputIconProps = IconProps | IconlessProps;
 
-const Input = React.forwardRef<HTMLInputElement, InputProps & InputIconProps>(
-  (
-    {
-      className,
-      variant,
-      inputSize,
-      asChild = false,
-      type,
-      Icon,
-      iconPlacement,
-      ...props
-    },
-    ref,
-  ) => {
-    const Comp = asChild ? Slot : "input";
+function Input({
+  className,
+  variant,
+  inputSize,
+  asChild = false,
+  type,
+  Icon,
+  iconPlacement,
+  ...props
+}: InputProps & InputIconProps) {
+  const Comp = asChild ? Slot : "input";
 
-    const inputClassName = cn(
-      inputVariants({ variant, inputSize, className }),
-      Icon && (iconPlacement === "left" ? "pl-8" : "pr-8"),
-    );
+  const inputClassName = cn(
+    inputVariants({ variant, inputSize, className }),
+    Icon && (iconPlacement === "left" ? "pl-8" : "pr-8"),
+  );
 
-    return (
-      <div className="relative">
-        {Icon && (
-          <div
-            className={cn(
-              "absolute top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none",
-              iconPlacement === "left" ? "left-2" : "right-2",
-            )}
-          >
-            <Icon className="w-5 h-5" />
-          </div>
-        )}
-        <Comp type={type} className={inputClassName} ref={ref} {...props} />
-      </div>
-    );
-  },
-);
-Input.displayName = "Input";
+  return (
+    <div className="relative">
+      {Icon && (
+        <div
+          className={cn(
+            "absolute top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none",
+            iconPlacement === "left" ? "left-2" : "right-2",
+          )}
+        >
+          <Icon className="w-5 h-5" />
+        </div>
+      )}
+      <Comp
+        data-slot="input"
+        type={type}
+        className={inputClassName}
+        {...props}
+      />
+    </div>
+  );
+}
 
 export { Input, inputVariants };
