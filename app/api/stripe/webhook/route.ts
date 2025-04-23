@@ -1,6 +1,4 @@
-// app/api/stripe/webhook/route.ts
-
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -26,11 +24,12 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const supabase = await createClient();
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  );
 
   try {
-    // Implement idempotency protection
-    // Check if this event has already been processed
     const { data: existingEvent } = await supabase
       .from("stripe_events")
       .select("id")
@@ -38,12 +37,10 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (existingEvent) {
-      // Event already processed - return success to avoid retries
       console.log(`Event ${event.id} already processed, skipping.`);
       return NextResponse.json({ received: true, idempotent: true });
     }
 
-    // Process the event based on its type
     switch (event.type) {
       case "checkout.session.completed": {
         const session = event.data.object as Stripe.Checkout.Session;
@@ -53,8 +50,6 @@ export async function POST(request: NextRequest) {
       case "payment_intent.payment_failed": {
         const paymentIntent = event.data.object as Stripe.PaymentIntent;
         console.log("Payment failed:", paymentIntent.id);
-        // We don't need to handle this specifically as our system
-        // only grants access after confirmed payment
         break;
       }
       case "customer.created":
@@ -67,7 +62,6 @@ export async function POST(request: NextRequest) {
         console.log(`Unhandled event type: ${event.type}`);
     }
 
-    // Record this event as processed to prevent duplicate processing
     await supabase.from("stripe_events").insert({
       stripe_event_id: event.id,
       event_type: event.type,
@@ -79,7 +73,6 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error(`Error processing webhook event ${event.id}:`, error);
 
-    // Return 200 to acknowledge receipt (prevents Stripe retries)
     return NextResponse.json(
       { received: true, error: "Processing error occurred but was logged" },
       { status: 200 },
@@ -101,7 +94,6 @@ async function handleCheckoutSession(
   const productId = session.metadata.product_id;
   const productTitle = session.metadata.product_title || "";
 
-  // Store the purchase data in the paid_users table
   const { error: paidUserError } = await supabase.from("paid_users").insert({
     user_id: userId,
     stripe_checkout_session_id: session.id,
@@ -118,9 +110,7 @@ async function handleCheckoutSession(
     throw new Error(`Failed to save paid user data: ${paidUserError.message}`);
   }
 
-  // Handle different purchase types
   if (productType === "lifetime") {
-    // Update user profile for lifetime access
     const { error: profileError } = await supabase
       .from("user_profiles")
       .upsert({
@@ -133,7 +123,6 @@ async function handleCheckoutSession(
       throw new Error(`Failed to update user profile: ${profileError.message}`);
     }
 
-    // If this is a team license, create a team license entry
     if (licenseType === "team") {
       const { error: teamLicenseError } = await supabase
         .from("team_licenses")
@@ -141,7 +130,7 @@ async function handleCheckoutSession(
           owner_user_id: userId,
           stripe_checkout_session_id: session.id,
           purchase_date: new Date().toISOString(),
-          max_seats: 20, // From your pricing config
+          max_seats: 20,
           used_seats: 0,
         });
 
@@ -152,7 +141,6 @@ async function handleCheckoutSession(
       }
     }
   } else if (productType === "template" && productId) {
-    // Add template access for individual template purchase
     const { error: templateError } = await supabase
       .from("user_templates")
       .insert({
@@ -171,14 +159,12 @@ async function handleCheckoutSession(
 }
 
 async function syncCustomerData(customer: Stripe.Customer, supabase: any) {
-  // Skip if the customer has no metadata
   if (!customer.metadata?.supabase_user_id) {
     return;
   }
 
   const userId = customer.metadata.supabase_user_id;
 
-  // Update the user's stripe_customer_id if needed
   await supabase.from("user_profiles").upsert({
     user_id: userId,
     stripe_customer_id: customer.id,
