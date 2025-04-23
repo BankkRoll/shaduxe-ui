@@ -1,5 +1,6 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CheckCircle2, ChevronLeft, FileText, Home } from "lucide-react";
+import { CheckCircle2, ChevronLeft, FileText, Home, Users } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
@@ -40,6 +41,7 @@ function StripeSuccessContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [purchaseData, setPurchaseData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [errorDetails, setErrorDetails] = useState<string | null>(null);
 
   const sessionId = searchParams.get("session_id");
 
@@ -61,14 +63,17 @@ function StripeSuccessContent() {
         );
 
         if (!response.ok) {
-          throw new Error("Failed to fetch session data");
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to fetch session data");
         }
 
         const data = await response.json();
+        console.log("Purchase data:", data);
         setPurchaseData(data);
       } catch (err) {
         console.error("Error fetching session:", err);
         setError("Failed to load purchase information");
+        setErrorDetails((err as Error).message);
       } finally {
         setIsLoading(false);
       }
@@ -82,7 +87,9 @@ function StripeSuccessContent() {
       <div className="container min-h-screen py-10 space-y-10 max-w-6xl mx-auto">
         <div className="flex flex-col items-center justify-center min-h-[60vh]">
           <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
-          <p className="mt-4 text-muted-foreground">Confirming...</p>
+          <p className="mt-4 text-muted-foreground">
+            Confirming your purchase...
+          </p>
         </div>
       </div>
     );
@@ -96,13 +103,32 @@ function StripeSuccessContent() {
           <CardDescription>We couldn't confirm your purchase</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-center">{error}</p>
+          <p className="text-muted-foreground text-center mb-2">{error}</p>
+          {errorDetails && (
+            <p className="text-xs text-destructive/70 text-center">
+              {errorDetails}
+            </p>
+          )}
+          <div className="mt-4 p-3 bg-muted/30 rounded-lg text-sm">
+            <p>You can try:</p>
+            <ul className="list-disc pl-5 mt-2 space-y-1">
+              <li>Refreshing this page</li>
+              <li>Checking your email for purchase confirmation</li>
+              <li>Contacting support if you were charged</li>
+            </ul>
+          </div>
         </CardContent>
-        <CardFooter className="flex justify-center">
+        <CardFooter className="flex justify-center gap-3">
+          <Link href="/pricing" passHref>
+            <Button variant="outline">
+              <ChevronLeft className="h-4 w-4 mr-2" />
+              Back to pricing
+            </Button>
+          </Link>
           <Link href="/" passHref>
             <Button>
               <Home className="h-4 w-4 mr-2" />
-              Return home
+              Home
             </Button>
           </Link>
         </CardFooter>
@@ -113,6 +139,7 @@ function StripeSuccessContent() {
   const isPaidUser = purchaseData?.product_type === "lifetime";
   const isSingleTemplate =
     purchaseData?.product_type === "template" && purchaseData?.product_id;
+  const isTeamLicense = isPaidUser && purchaseData?.license_type === "team";
 
   return (
     <Card className="w-full max-w-md mx-auto border border-primary/20 shadow-sm">
@@ -145,26 +172,54 @@ function StripeSuccessContent() {
             <div className="text-muted-foreground">Type:</div>
             <div className="font-medium">
               {isPaidUser
-                ? "Lifetime Access"
+                ? isTeamLicense
+                  ? "Team License"
+                  : "Personal License"
                 : isSingleTemplate
                   ? "Single Template"
                   : "Purchase"}
             </div>
+            {isTeamLicense && purchaseData?.team_license && (
+              <>
+                <div className="text-muted-foreground">Seats:</div>
+                <div className="font-medium flex items-center">
+                  <Users className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
+                  <span>
+                    {purchaseData.team_license.max_seats} team members
+                  </span>
+                </div>
+              </>
+            )}
             {isSingleTemplate && (
               <>
                 <div className="text-muted-foreground">Template:</div>
-                <div className="font-medium">{purchaseData?.product_id}</div>
+                <div className="font-medium">
+                  {purchaseData?.template?.name || purchaseData?.product_id}
+                </div>
               </>
             )}
+            <div className="text-muted-foreground">Status:</div>
+            <div className="font-medium">
+              <Badge
+                variant="outline"
+                className="bg-green-50 text-green-700 border-green-200"
+              >
+                Active
+              </Badge>
+            </div>
           </div>
         </div>
 
         <div className="text-sm text-center text-muted-foreground">
           <p>
             {isPaidUser
-              ? "You now have PRO lifetime access to shaduxe/ui!"
+              ? isTeamLicense
+                ? "You now have TEAM lifetime access to shaduxe/ui with up to " +
+                  purchaseData?.team_license?.max_seats +
+                  " team members!"
+                : "You now have PRO lifetime access to shaduxe/ui!"
               : isSingleTemplate
-                ? `You now have access to the ${purchaseData?.product_id} template!`
+                ? `You now have access to the ${purchaseData?.template?.name || purchaseData?.product_id} template!`
                 : "Thank you for your purchase!"}
           </p>
         </div>
@@ -194,6 +249,15 @@ function StripeSuccessContent() {
             <Button className="w-full">
               <Home className="h-4 w-4 mr-2" />
               Return Home
+            </Button>
+          </Link>
+        )}
+
+        {isTeamLicense && (
+          <Link href="/dashboard/team" passHref className="w-full">
+            <Button variant="outline" className="w-full">
+              <Users className="h-4 w-4 mr-2" />
+              Manage Team
             </Button>
           </Link>
         )}

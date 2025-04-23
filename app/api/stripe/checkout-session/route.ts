@@ -16,36 +16,37 @@ export async function GET(request: Request) {
 
   try {
     const supabase = await createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
 
-    if (!user) {
-      return NextResponse.json(
-        { error: "User not authenticated" },
-        { status: 401 },
-      );
-    }
+    // Remove authentication requirement - the success page should work for anyone with the correct session ID
 
-    // Get the purchase record
+    // Get the purchase record without requiring user authentication
     const { data: purchase, error: purchaseError } = await supabase
       .from("paid_users")
       .select(
         `
-        *,
-        user_profiles!inner (
-          has_lifetime_access,
-          access_granted_date
-        )
+        *
       `,
       )
       .eq("stripe_checkout_session_id", session_id)
-      .eq("user_id", user.id)
       .single();
 
     if (purchaseError || !purchase) {
-      return NextResponse.json({ error: "Session not found" }, { status: 404 });
+      console.error("Purchase error:", purchaseError);
+      return NextResponse.json(
+        {
+          error: "Session not found",
+          details: purchaseError?.message,
+        },
+        { status: 404 },
+      );
     }
+
+    // Get user profile data separately
+    const { data: userProfile } = await supabase
+      .from("user_profiles")
+      .select("has_lifetime_access, access_granted_date")
+      .eq("user_id", purchase.user_id)
+      .single();
 
     // If this was a template purchase, get template details
     let templateDetails = null;
@@ -61,14 +62,33 @@ export async function GET(request: Request) {
       }
     }
 
+    // Check if this is a team license
+    let teamLicense = null;
+    if (
+      purchase.product_type === "lifetime" &&
+      purchase.license_type === "team"
+    ) {
+      const { data: license } = await supabase
+        .from("team_licenses")
+        .select("max_seats, used_seats")
+        .eq("stripe_checkout_session_id", session_id)
+        .single();
+
+      if (license) {
+        teamLicense = license;
+      }
+    }
+
     return NextResponse.json({
       ...purchase,
+      user_profile: userProfile || null,
       template: templateDetails,
+      team_license: teamLicense,
     });
   } catch (err) {
     console.error("Error fetching session data:", err);
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: "Internal Server Error", details: (err as Error).message },
       { status: 500 },
     );
   }
