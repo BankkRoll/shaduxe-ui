@@ -192,9 +192,7 @@ export default function PrivacyPolicyPage() {
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                 <li>Email address</li>
                 <li>Name and contact information</li>
-                <li>
-                  Authentication credentials (securely stored via Supabase Auth)
-                </li>
+                <li>Authentication credentials</li>
                 <li>Account preferences and settings</li>
                 <li>Profile information you choose to provide</li>
                 <li>Communication preferences</li>
@@ -207,9 +205,7 @@ export default function PrivacyPolicyPage() {
                 For processing payments, we collect:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                <li>
-                  Payment method details (processed securely through Stripe)
-                </li>
+                <li>Payment method details</li>
                 <li>Billing name and address</li>
                 <li>Transaction history</li>
                 <li>Purchase records and license information</li>
@@ -292,7 +288,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
               <li>Encryption of data in transit (TLS/SSL) and at rest</li>
-              <li>Secure authentication via Supabase Auth</li>
+              <li>Secure authentication</li>
               <li>Regular security assessments and penetration testing</li>
               <li>Role-based access controls for internal systems</li>
               <li>Data backup and disaster recovery procedures</li>
@@ -319,9 +315,8 @@ export default function PrivacyPolicyPage() {
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
               <li>
                 <strong>Service Providers:</strong> Third-party vendors who
-                provide services on our behalf, such as Stripe for payment
-                processing and Supabase for database and authentication
-                services.
+                provide services on our behalf, such as Stripe ,Supabase, or
+                other third-party services we use.
               </li>
               <li>
                 <strong>Business Partners:</strong> Trusted partners who assist

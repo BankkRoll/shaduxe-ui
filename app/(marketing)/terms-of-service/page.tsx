@@ -544,10 +544,8 @@ export default function TermsOfServicePage() {
               services, or resources.
             </p>
             <p className="text-muted-foreground">
-              Our Services use Stripe for payment processing and Supabase for
-              user authentication and database services. Your use of these
-              services is subject to their respective terms of service and
-              privacy policies.
+              We use third-party services. Your use of these services is subject
+              to their respective terms of service and privacy policies.
             </p>
           </section>
 
