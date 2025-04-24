@@ -709,35 +709,31 @@ const TemplateCard = ({
                   }
                   transition={{ duration: 0.6, delay: 0.2 + index * 0.05 }}
                 >
-                  <Link
-                    href={
-                      template.live_preview_url ||
-                      template.preview_url ||
-                      `/templates/${template.id}/preview`
-                    }
-                    target="_blank"
-                    className="absolute inset-0"
-                  >
-                    <video
-                      src={
-                        template.video_url || `/templates/${template.id}.mp4`
-                      }
-                      poster={
-                        template.image_url || `/templates/${template.id}.png`
-                      }
-                      className="w-full h-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                    />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                      <div className="flex items-center gap-2">
-                        Live Preview
-                        <ExternalLink className="w-5 h-5" />
+                  {template.live_preview_url ? (
+                    <Link
+                      href={template.live_preview_url}
+                      target="_blank"
+                      className="absolute inset-0"
+                    >
+                      <img
+                        alt={template.name}
+                        src={`/templates/${template.id}.png`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                        <div className="flex items-center gap-2">
+                          Live Preview
+                          <ExternalLink className="w-5 h-5" />
+                        </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  ) : (
+                    <img
+                      alt={template.name}
+                      src={`/templates/${template.id}.png`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </motion.div>
 
                 {/* Template Metadata */}
