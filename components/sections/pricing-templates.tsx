@@ -323,18 +323,10 @@ const TemplateCard = ({
                     target="_blank"
                     className="absolute inset-0"
                   >
-                    <video
-                      src={
-                        template.video_url || `/templates/${template.id}.mp4`
-                      }
-                      poster={
-                        template.image_url || `/templates/${template.id}.png`
-                      }
+                    <img
+                      src={`/templates/${template.id}.png`}
                       className="w-full h-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
+                      alt="preview"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center text-white">
                       <div className="flex items-center gap-2">
