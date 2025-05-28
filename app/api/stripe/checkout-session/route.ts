@@ -37,14 +37,12 @@ export async function GET(request: Request) {
       );
     }
 
-    // Get user profile data separately
     const { data: userProfile } = await supabase
       .from("user_profiles")
       .select("has_lifetime_access, access_granted_date")
       .eq("user_id", purchase.user_id)
       .single();
 
-    // If this was a template purchase, get template details
     let templateDetails = null;
     if (purchase.product_type === "template" && purchase.product_id) {
       const { data: template } = await supabase
@@ -58,7 +56,6 @@ export async function GET(request: Request) {
       }
     }
 
-    // Check if this is a team license
     let teamLicense = null;
     if (
       purchase.product_type === "lifetime" &&

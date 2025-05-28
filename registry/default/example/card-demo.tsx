@@ -35,7 +35,7 @@ export function CardVariants() {
 
   return (
     <div className="grid gap-8 p-2">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <h4 className="text-sm font-medium col-span-full mb-2">
           Variants (with default size)
         </h4>

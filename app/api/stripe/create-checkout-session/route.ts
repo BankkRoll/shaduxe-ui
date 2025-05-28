@@ -33,10 +33,8 @@ export async function POST(req: Request) {
     const origin = headersList.get("origin") || headersList.get("host");
     const baseUrl = origin?.startsWith("http") ? origin : `https://${origin}`;
 
-    // Get or create Stripe customer
     let stripeCustomerId: string;
 
-    // Check if user already has a Stripe customer ID
     const { data: userProfile } = await supabase
       .from("user_profiles")
       .select("stripe_customer_id")
@@ -44,15 +42,12 @@ export async function POST(req: Request) {
       .single();
 
     if (userProfile?.stripe_customer_id) {
-      // Use existing Stripe customer
       stripeCustomerId = userProfile.stripe_customer_id;
 
-      // Update customer email if needed
       await stripe.customers.update(stripeCustomerId, {
         email: user.email,
       });
     } else {
-      // Create new Stripe customer
       const customer = await stripe.customers.create({
         email: user.email,
         metadata: {
@@ -62,14 +57,12 @@ export async function POST(req: Request) {
 
       stripeCustomerId = customer.id;
 
-      // Store Stripe customer ID in user profile
       await supabase.from("user_profiles").upsert({
         user_id: user.id,
         stripe_customer_id: stripeCustomerId,
       });
     }
 
-    // Determine price and product data based on product type and license type
     let priceData;
     let productTitle: string;
 
@@ -87,11 +80,9 @@ export async function POST(req: Request) {
           name: productTitle,
           description: `Lifetime access to all templates - ${licenseType} license`,
         },
-        // Use price from the request if provided, otherwise use the default from config
         unit_amount: price || licenseConfig.basePrice,
       };
     } else if (productType === "template" && productId) {
-      // Get template price from database
       const { data: template, error } = await supabase
         .from("templates")
         .select("name, description, price")
@@ -122,7 +113,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Create the checkout session with promotion code support
     const checkoutSessionParams: Stripe.Checkout.SessionCreateParams = {
       payment_method_types: ["card"],
       mode: "payment",
@@ -133,7 +123,6 @@ export async function POST(req: Request) {
         },
       ],
       customer: stripeCustomerId,
-      // Allow promotion codes directly in the Stripe Checkout UI
       allow_promotion_codes: true,
       success_url: `${baseUrl}/stripe/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/stripe/error`,
@@ -155,7 +144,6 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("Error creating checkout session:", error);
 
-    // Enhanced error handling
     let errorMessage = "Internal Server Error";
     let statusCode = 500;
 
