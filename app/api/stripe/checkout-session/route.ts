@@ -1,5 +1,3 @@
-// app/api/stripe/checkout-session/route.ts
-
 import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 

@@ -327,7 +327,6 @@ export function CommandMenu({ ...props }: DialogProps) {
         <DialogTitle className="sr-only">Search documentation</DialogTitle>
         <div className="flex flex-col h-full sm:h-[60vh] sm:max-h-[60vh] bg-background/95 backdrop-blur-sm overflow-hidden">
           <div className="flex flex-col md:flex-row h-full">
-            {/* Left panel */}
             <div className="w-full md:w-1/2 lg:w-2/5 border-r border-border/10">
               <CommandInput
                 placeholder="Type to search..."
@@ -348,7 +347,6 @@ export function CommandMenu({ ...props }: DialogProps) {
                   </div>
                 </CommandEmpty>
 
-                {/* Command groups */}
                 {Object.entries(groupedCommands).map(([section, commands]) => (
                   <CommandGroup
                     key={section}
@@ -411,7 +409,6 @@ export function CommandMenu({ ...props }: DialogProps) {
               </CommandList>
             </div>
 
-            {/* Right panel */}
             <div className="w-full bg-muted/50 md:w-1/2 lg:w-3/5 hidden md:block">
               {selectedItem ? (
                 <div className="p-6 h-full overflow-y-auto max-h-[85vh]">
@@ -496,7 +493,6 @@ export function CommandMenu({ ...props }: DialogProps) {
             </div>
           </div>
 
-          {/* Footer with branding */}
           <div className="h-8 border-t border-border/10 flex items-center justify-between px-4 text-xs text-muted-foreground/70 bg-muted/20 backdrop-blur-sm">
             <div className="flex items-center">
               <img

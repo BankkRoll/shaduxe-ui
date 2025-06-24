@@ -137,7 +137,6 @@ export default function PricingSection() {
           initial="hidden"
           animate={isSectionInView ? "visible" : "hidden"}
         >
-          {/* Personal License Card */}
           <motion.div
             className="w-full lg:w-2/3 p-0.5 rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none"
             variants={itemVariants}
@@ -248,7 +247,6 @@ export default function PricingSection() {
             </div>
           </motion.div>
 
-          {/* Team License Card */}
           <motion.div
             className="w-full lg:w-1/3 p-0.5 rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none"
             variants={itemVariants}
@@ -372,7 +370,6 @@ export default function PricingSection() {
           untill recahing $169 and team will follow same pattern.
         </motion.div>
 
-        {/* Value Proposition */}
         <motion.div
           className="mt-12 max-w-3xl mx-auto"
           ref={valuePropositionRef}
@@ -473,7 +470,6 @@ export default function PricingSection() {
           </div>
         </motion.div>
 
-        {/* FAQs */}
         <motion.div
           className="mt-12 max-w-3xl mx-auto"
           ref={faqsRef}

@@ -44,7 +44,6 @@ export function SiteFooter() {
     >
       <div className="container mx-auto p-4">
         <div className="grid w-full grid-cols-2 gap-4">
-          {/* Left Side */}
           <motion.div
             variants={childVariants}
             className="flex flex-col items-start justify-center space-y-2"
@@ -67,7 +66,6 @@ export function SiteFooter() {
             </p>
           </motion.div>
 
-          {/* Right Side */}
           <motion.div
             variants={childVariants}
             className="flex flex-col items-end justify-center space-y-2"

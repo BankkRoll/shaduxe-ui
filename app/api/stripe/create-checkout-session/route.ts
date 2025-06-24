@@ -1,5 +1,3 @@
-// app/api/stripe/create-checkout-session/route.ts
-
 import pricingConfig from "@/config/pricing";
 import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";

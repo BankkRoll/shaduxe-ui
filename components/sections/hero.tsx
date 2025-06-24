@@ -22,7 +22,6 @@ import { Separator } from "../ui/separator";
 export default function Hero() {
   return (
     <div className="relative min-h-[100vh] w-full overflow-hidden">
-      {/* Subtle grid pattern */}
       <div className="absolute inset-0 opacity-[0.1] pointer-events-none overflow-hidden">
         <div className="w-full h-px bg-gradient-to-r from-transparent via-foreground to-transparent absolute top-1/4"></div>
         <div className="w-full h-px bg-gradient-to-r from-foreground via-transparent to-foreground absolute top-2/4"></div>
@@ -34,7 +33,6 @@ export default function Hero() {
 
       <div className="container relative z-10 mx-auto px-4 py-16 md:py-24">
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left content */}
           <div className="lg:col-span-5 z-10 pt-4 lg:pt-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -82,10 +80,8 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right content - Component showcase */}
           <div className="lg:col-span-7 relative z-0">
             <div className="relative grid grid-cols-12 gap-4 h-[750px]">
-              {/* Avatar Showcase */}
               <motion.div
                 className="col-span-6 bg-card/80 backdrop-blur-sm border rounded-lg p-4 shadow-lg"
                 initial={{ opacity: 0, y: -20 }}
@@ -151,7 +147,6 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Button Showcase */}
               <motion.div
                 className="col-span-6 bg-card/80 backdrop-blur-sm border rounded-lg p-4 shadow-lg"
                 initial={{ opacity: 0, y: -20 }}
@@ -199,7 +194,6 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Badge Showcase */}
               <motion.div
                 className="col-span-6 bg-card/80 backdrop-blur-sm border rounded-lg p-4 shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
@@ -233,7 +227,6 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Tabs Showcase */}
               <motion.div
                 className="col-span-6 bg-card/80 backdrop-blur-sm border rounded-lg p-4 shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
@@ -283,7 +276,6 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Switch Showcase */}
               <motion.div
                 className="col-span-6 bg-card/80 backdrop-blur-sm border rounded-lg p-4 shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
@@ -324,7 +316,6 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Card Showcase */}
               <motion.div
                 className="col-span-6 bg-card/80 backdrop-blur-sm border rounded-lg p-4 shadow-lg"
                 initial={{ opacity: 0, y: 20 }}

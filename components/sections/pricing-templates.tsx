@@ -86,9 +86,7 @@ const TemplateCard = ({
       <div className="absolute inset-px bg-gradient-to-b from-primary/10 to-primary/5 rounded-2xl pointer-events-none" />
 
       <div className="relative p-6 lg:p-8 w-full">
-        {/* Mobile View (flex-col) - Image always at top */}
         <div className="flex flex-col w-full lg:hidden">
-          {/* Template Preview */}
           <motion.div className="w-full" variants={fadeInVariants}>
             <motion.div
               className="relative aspect-[16/9] rounded-lg overflow-hidden bg-muted/10 border border-muted/20 w-full"
@@ -123,7 +121,6 @@ const TemplateCard = ({
               </Link>
             </motion.div>
 
-            {/* Template Metadata */}
             <motion.div
               className="flex flex-wrap items-center gap-3 mt-4 text-sm text-muted-foreground"
               initial={{ opacity: 0, y: 10 }}
@@ -152,7 +149,6 @@ const TemplateCard = ({
             </motion.div>
           </motion.div>
 
-          {/* Template Info */}
           <motion.div
             className="w-full flex flex-col justify-between gap-6 mt-6"
             variants={fadeInVariants}
@@ -175,7 +171,6 @@ const TemplateCard = ({
                 </p>
               </motion.div>
 
-              {/* Tech Stack */}
               {template.tech_stack &&
                 Array.isArray(template.tech_stack) &&
                 template.tech_stack.length > 0 && (
@@ -194,7 +189,6 @@ const TemplateCard = ({
                   </motion.div>
                 )}
 
-              {/* Features */}
               {template.features &&
                 Array.isArray(template.features) &&
                 template.features.length > 0 && (
@@ -297,12 +291,9 @@ const TemplateCard = ({
           </motion.div>
         </div>
 
-        {/* Desktop View (flex-row) - Alternating sides */}
         <div className="hidden lg:flex lg:flex-row gap-8 w-full">
           {isEven ? (
-            // Even index (image on left)
             <>
-              {/* Template Preview */}
               <motion.div className="lg:w-1/2 w-full" variants={fadeInVariants}>
                 <motion.div
                   className="relative aspect-[16/9] rounded-lg overflow-hidden bg-muted/10 border border-muted/20 w-full"
@@ -337,7 +328,6 @@ const TemplateCard = ({
                   </Link>
                 </motion.div>
 
-                {/* Template Metadata */}
                 <motion.div
                   className="flex flex-wrap items-center gap-3 mt-4 text-sm text-muted-foreground"
                   initial={{ opacity: 0, y: 10 }}
@@ -368,7 +358,6 @@ const TemplateCard = ({
                 </motion.div>
               </motion.div>
 
-              {/* Template Info */}
               <motion.div
                 className="lg:w-1/2 flex flex-col justify-between gap-6 w-full"
                 variants={fadeInVariants}
@@ -391,7 +380,6 @@ const TemplateCard = ({
                     </p>
                   </motion.div>
 
-                  {/* Tech Stack */}
                   {template.tech_stack &&
                     Array.isArray(template.tech_stack) &&
                     template.tech_stack.length > 0 && (
@@ -415,7 +403,6 @@ const TemplateCard = ({
                       </motion.div>
                     )}
 
-                  {/* Features */}
                   {template.features &&
                     Array.isArray(template.features) &&
                     template.features.length > 0 && (
@@ -526,9 +513,7 @@ const TemplateCard = ({
               </motion.div>
             </>
           ) : (
-            // Odd index (image on right)
             <>
-              {/* Template Info */}
               <motion.div
                 className="lg:w-1/2 flex flex-col justify-between gap-6 w-full"
                 variants={fadeInVariants}
@@ -551,7 +536,6 @@ const TemplateCard = ({
                     </p>
                   </motion.div>
 
-                  {/* Tech Stack */}
                   {template.tech_stack &&
                     Array.isArray(template.tech_stack) &&
                     template.tech_stack.length > 0 && (
@@ -575,7 +559,6 @@ const TemplateCard = ({
                       </motion.div>
                     )}
 
-                  {/* Features */}
                   {template.features &&
                     Array.isArray(template.features) &&
                     template.features.length > 0 && (
@@ -685,7 +668,6 @@ const TemplateCard = ({
                 </motion.div>
               </motion.div>
 
-              {/* Template Preview */}
               <motion.div className="lg:w-1/2 w-full" variants={fadeInVariants}>
                 <motion.div
                   className="relative aspect-[16/9] rounded-lg overflow-hidden bg-muted/10 border border-muted/20 w-full"
@@ -724,7 +706,6 @@ const TemplateCard = ({
                   )}
                 </motion.div>
 
-                {/* Template Metadata */}
                 <motion.div
                   className="flex flex-wrap items-center gap-3 mt-4 text-sm text-muted-foreground"
                   initial={{ opacity: 0, y: 10 }}

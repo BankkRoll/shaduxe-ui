@@ -49,6 +49,7 @@ export function SiteHeader() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [user, setUser] = React.useState<User | null>(null);
   const [userProfile, setUserProfile] = React.useState<any>(null);
+  const [commandKey, setCommandKey] = React.useState("Ctrl");
   const pathname = usePathname();
   const router = useRouter();
   const supabase = createClient();
@@ -141,15 +142,6 @@ export function SiteHeader() {
             "https://github.com/",
             "https://api.github.com/repos/",
           ),
-          {
-            headers: process.env.GITHUB_OAUTH_TOKEN
-              ? {
-                  Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-                  "Content-Type": "application/json",
-                }
-              : {},
-            next: { revalidate: 3600 },
-          },
         );
 
         if (response.ok) {
@@ -161,6 +153,10 @@ export function SiteHeader() {
       }
     }
     fetchStars();
+  }, []);
+
+  React.useEffect(() => {
+    setCommandKey(navigator.platform.includes("Mac") ? "⌘" : "Ctrl");
   }, []);
 
   // Render badge component with appropriate variant
@@ -191,7 +187,6 @@ export function SiteHeader() {
       )}
     >
       <div className="w-full justify-center container mx-auto flex h-14 items-center justify-between gap-2 px-2">
-        {/* Left Section - Logo + Nav */}
         <div className="flex items-center gap-2 sm:gap-4">
           <Link href="/">
             <div className="flex items-center gap-1 sm:gap-2">
@@ -207,7 +202,6 @@ export function SiteHeader() {
           </Link>
 
           <VersionSelect />
-          {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList className="flex items-center gap-1">
               {docsConfig.mainNav.map((item) => (
@@ -236,7 +230,6 @@ export function SiteHeader() {
           </NavigationMenu>
         </div>
 
-        {/* Center - Command Menu */}
         <div className="flex flex-1 items-center justify-center px-1 sm:px-4">
           <div className="w-full max-w-[min(calc(100vw-8rem),32rem)]">
             <CommandMenu>
@@ -258,10 +251,7 @@ export function SiteHeader() {
                     <span className="inline-flex sm:hidden">Search...</span>
                   </div>
                   <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-                    <span className="text-xs">
-                      {navigator.platform.includes("Mac") ? "⌘" : "Ctrl"}
-                    </span>
-                    K
+                    <span className="text-xs">{commandKey}</span>K
                   </kbd>
                 </div>
               </Button>
@@ -269,7 +259,6 @@ export function SiteHeader() {
           </div>
         </div>
 
-        {/* Right Section - Actions */}
         <div className="flex items-center gap-1 sm:gap-2">
           <Link
             href={siteConfig.links.github}
@@ -291,12 +280,10 @@ export function SiteHeader() {
 
           <ModeToggle />
 
-          {/* Desktop Auth Button */}
           <div className="hidden lg:flex">
             <AuthButton user={user} />
           </div>
 
-          {/* Mobile Menu */}
           <Sheet open={showMobileMenu} onOpenChange={setShowMobileMenu}>
             <SheetTrigger asChild>
               <Button
@@ -326,7 +313,6 @@ export function SiteHeader() {
             >
               <SheetHeader>
                 <SheetTitle hidden></SheetTitle>
-                {/* User Profile Section in Sheet */}
                 {user ? (
                   <div className="mb-6 space-y-4 border-b pb-6">
                     <div className="flex items-center gap-4">
@@ -422,7 +408,6 @@ export function SiteHeader() {
 
               <ScrollArea className="p-2 h-[calc(100vh-15rem)]">
                 <div className="space-y-5 pb-6">
-                  {/* Navigation Items */}
                   {docsConfig.sidebarNav.map((section, sectionIndex) => (
                     <div key={sectionIndex} className="space-y-3">
                       <h4 className="font-medium text-sm text-foreground/80 tracking-tight">
@@ -528,7 +513,6 @@ export function SiteHeader() {
                                   <ChevronRight className="h-4 w-4" />
                                 )}
                               </Link>
-                              {/* Handle traditional nested items */}
                               {item.items && item.items.length > 0 && (
                                 <div key={itemIndex} className="pl-4 space-y-1">
                                   {item.items.map((subItem, subIndex) => (

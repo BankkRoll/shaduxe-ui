@@ -10,10 +10,8 @@ export default function Home() {
         <div className="container border-x border-dashed mx-auto relative">
           <div className="block w-full h-px border-t border-border border-dashed"></div>
 
-          {/* Hero section */}
           <Hero />
 
-          {/* Middle horizontal line */}
           <div className="block w-full h-px border-t border-border border-dashed"></div>
 
           <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div>
@@ -21,7 +19,6 @@ export default function Home() {
 
           <ComponentDemos />
 
-          {/* Middle horizontal line */}
           <div className="block w-full h-px border-t border-border border-dashed"></div>
 
           <div className="mt-6 block w-full h-px border-t border-border border-dashed"></div>

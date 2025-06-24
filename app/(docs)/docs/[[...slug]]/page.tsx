@@ -178,7 +178,6 @@ export default async function DocPage({ params }: DocPageProps) {
         </MotionWrapper>
       </div>
 
-      {/* TOC Sidebar */}
       <div className="hidden text-sm xl:block">
         <div className="sticky top-16 pt-10">
           <TableOfContents toc={toc} />

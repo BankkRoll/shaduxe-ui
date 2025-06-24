@@ -219,7 +219,6 @@ export function DocsSidebarNavItems({
                 {renderBadges(item)}
               </span>
             )}
-            {/* Handle nested items for non-accordion link items that have child items */}
             {item.href && hasNestedItems && (
               <AnimatePresence initial={false}>
                 {isExpanded && (

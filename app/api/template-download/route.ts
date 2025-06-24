@@ -10,7 +10,6 @@ const octokit = new Octokit({
 const templateRepos: Record<string, { owner: string; repo: string }> = {
   emaily: { owner: "BankkRoll", repo: "Emaily-Nextjs-Starter-Template" },
   fluxio: { owner: "BankkRoll", repo: "Fluxio-Nextjs-Starter-Template" },
-
 };
 
 export async function POST(request: NextRequest) {
@@ -68,7 +67,7 @@ export async function POST(request: NextRequest) {
         {
           owner: repoInfo.owner,
           repo: repoInfo.repo,
-          ref: "main", 
+          ref: "main",
         },
       );
 
