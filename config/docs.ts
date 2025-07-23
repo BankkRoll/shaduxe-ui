@@ -55,13 +55,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Accordion",
           href: "/docs/components/accordion",
-          badge: [{ text: "NEW", variant: "new" }],
           items: [],
         },
         {
           title: "Alert",
           href: "/docs/components/alert",
-          badge: [{ text: "NEW", variant: "new" }],
           items: [],
         },
         {
@@ -124,7 +122,6 @@ export const docsConfig: DocsConfig = {
             {
               title: "Pricing Four",
               href: "/docs/blocks/pricing-four",
-              badge: [{ text: "NEW", variant: "new" }],
             },
           ],
         },
@@ -136,12 +133,10 @@ export const docsConfig: DocsConfig = {
             {
               title: "Testimonial One",
               href: "/docs/blocks/testimonial-one",
-              badge: [{ text: "NEW", variant: "new" }],
             },
             {
               title: "Testimonial Two",
               href: "/docs/blocks/testimonial-two",
-              badge: [{ text: "NEW", variant: "new" }],
             },
           ],
         },

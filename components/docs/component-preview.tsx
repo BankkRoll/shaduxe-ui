@@ -284,7 +284,7 @@ export function ComponentPreview({
   return (
     <div
       className={cn(
-        "relative my-4 flex flex-col space-y-2 lg:max-w-[120ch]",
+        "relative my-4 flex flex-col space-y-2 w-full",
         className,
       )}
       {...props}
@@ -352,8 +352,8 @@ export function ComponentPreview({
               </Button>
             </div>
 
-            <div className="preview-container flex justify-center pt-12">
-              <div className="w-full overflow-auto hide-scrollbar">
+            <div className="preview-container flex justify-center pt-12 w-full">
+              <div className="w-full overflow-hidden hide-scrollbar">
                 <ComponentToRender />
               </div>
             </div>
@@ -366,12 +366,12 @@ export function ComponentPreview({
             fileName={`${name}.tsx`}
           >
             {isLoading ? (
-              <div className="flex items-center justify-center p-8 text-sm text-muted-foreground min-h-[500px] max-w-screen w-full overflow-auto hide-scrollbar">
+              <div className="flex items-center justify-center p-8 text-sm text-muted-foreground min-h-[500px] w-full overflow-auto hide-scrollbar">
                 <Loader className="mr-2 size-4 animate-spin" />
                 <span>Loading source code...</span>
               </div>
             ) : (
-              <pre className="language-tsx font-mono text-[13px] leading-relaxed min-h-[500px] max-w-screen w-full overflow-auto hide-scrollbar">
+              <pre className="language-tsx font-mono text-[13px] leading-relaxed min-h-[500px] w-full overflow-auto hide-scrollbar">
                 <code>{sourceCode || "// No source code available"}</code>
               </pre>
             )}
