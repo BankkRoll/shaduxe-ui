@@ -1,6 +1,4 @@
-# shaduxe/ui
-
-![og-meta](https://github.com/user-attachments/assets/2f571cbc-fa29-476e-b6e4-88e5372c69dc)
+![Site-Preview](https://api.microlink.io/?url=https://ui.shaduxe.com&screenshot=true&embed=screenshot.url)
 
 **shaduxe/ui** is a built off [shadcn/ui](https://ui.shadcn.com), and now built with **Tailwind v4** to deliver even more advanced and beautifully designed components. With shaduxe/ui, you can install, customize, and deploy accessible and reusable components and blocks effortlessly.
 
